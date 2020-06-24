@@ -1,16 +1,15 @@
-# al_quran
+# The Holy Qur'an
 
-A new Flutter project.
+Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
+The data is fetched using API. So, it is not being stored locally. Information about API is given at the bottom of README.md
 
-## Getting Started
+<img src="screenShots/holyQuran.png">
 
-This project is a starting point for a Flutter application.
+## Screen Shots
 
-A few resources to get you started if this is your first Flutter project:
+<img src="screenShots/home.jpg" width=350> <img src="screenShots/surah.jpg" width=350> <img src="screenShots/detail.jpg" width=350>
+<img src="screenShots/animate.jpg" width=350> <img src="screenShots/drawer.jpg" width=350>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## API Information
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+API Used: https://alquran.cloud/api
