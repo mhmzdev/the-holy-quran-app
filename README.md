@@ -7,8 +7,8 @@ The data is fetched using API. So, it is not being stored locally. Information a
 
 ## Screen Shots
 
-<img src="screenShots/home.jpg" width=350> <img src="screenShots/surah.jpg" width=350> <img src="screenShots/detail.jpg" width=350>
-<img src="screenShots/animate.jpg" width=350> <img src="screenShots/drawer.jpg" width=350>
+<img src="screenShots/home.jpg" width=280> <img src="screenShots/surah.jpg" width=280> <img src="screenShots/detail.jpg" width=280>
+<img src="screenShots/animate.jpg" width=280> <img src="screenShots/drawer.jpg" width=280>
 
 ## API Information
 
