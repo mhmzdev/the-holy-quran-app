@@ -1,0 +1,44 @@
+name: al_quran
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.3
+  http: ^0.12.1
+  shimmer: ^1.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+# The following section is specific to Flutter.
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
+
+
+  fonts:
+    - family: Sogeo
+      fonts:
+        - asset: fonts/sui.ttf
+    #     - asset: fonts/Raleway-Italic.ttf
+    #       style: italic
+    # - family: RobotoMono
+    #   fonts:
+    #     - asset: fonts/RobotoMono-Regular.ttf
+    #     - asset: fonts/RobotoMono-Bold.ttf
+    #       weight: 700
