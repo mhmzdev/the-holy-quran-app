@@ -266,7 +266,7 @@ class Developer extends StatelessWidget {
               maxRadius: height * 0.063,
               child: CircleAvatar(
                 maxRadius: height * 0.06,
-                backgroundImage: AssetImage('assets/myPic.JPG'),
+                backgroundImage: AssetImage('assets/myPic.jpg'),
               ),
             ),
             Text(
