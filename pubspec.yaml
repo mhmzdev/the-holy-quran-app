@@ -1,5 +1,5 @@
 name: al_quran
-description: A new Flutter project.
+description: Flutter App for the holy book of Qur'an.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -17,12 +17,18 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   http: ^0.12.1
-  shimmer: ^1.1.1
-  fancy_on_boarding: any
+  shimmer: ^1.1.1  
   shared_preferences: ^0.5.7+3
   share: ^0.6.4+3
   url_launcher: ^5.4.11
   launch_review: ^2.0.0
+  
+  flutter_overboard: ^1.1.5
+  flutter_svg: ^0.18.0
+
+dependency_overrides:
+  image:
+  xml:
 
 dev_dependencies:
   flutter_test:

@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: initScreen == 0 || initScreen == null
           ? '/introduction'
-          : 'homeScreen',
+          : '/homeScreen',
       routes: {
         '/introduction': (context) => OnBoardingCard(),
         '/homeScreen': (context) => HomeScreen(

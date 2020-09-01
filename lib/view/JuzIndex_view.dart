@@ -1,9 +1,7 @@
 import 'package:al_quran/animations/bottomAnimation.dart';
-import 'package:al_quran/controller/quranAPI.dart';
 import 'package:al_quran/customWidgets/backBtn.dart';
 import 'package:al_quran/customWidgets/customImagePos.dart';
 import 'package:al_quran/customWidgets/flare.dart';
-import 'package:al_quran/customWidgets/loadingShimmer.dart';
 import 'package:al_quran/customWidgets/title.dart';
 import 'package:al_quran/view/juz_view.dart';
 import 'package:flutter/material.dart';
@@ -18,59 +16,41 @@ class JuzIndex extends StatelessWidget {
       body: SafeArea(
           child: Stack(
         children: <Widget>[
-          FutureBuilder(
-            future: QuranAPI().getJuzList(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                    child: LoadingShimmer(
-                  text: "Juzz",
-                ));
-              } else if (snapshot.hasError || (snapshot.hasData == null)) {
-                return Center(
-                    child: Text(
-                        "Connectivity Error! Please Check your Connection"));
-              } else {
-                return Container(
-                  padding: EdgeInsets.all(8.0),
-                  margin: EdgeInsets.fromLTRB(0, height * 0.2, 0, 0),
-                  child: GridView.builder(
-                    itemCount: snapshot.data.juzList.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3),
-                    itemBuilder: (context, index) {
-                      return WidgetAnimator(
-                        GestureDetector(
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Juz(
-                                        juzIndex: snapshot
-                                            .data.juzList[index].juzIndex,
-                                      ))),
-                          child: Card(
-                            shape: StadiumBorder(),
-                            color: Colors.transparent,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.grey[800],
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  border: Border.all(
-                                      color: Colors.white, width: 1)),
-                              alignment: Alignment.center,
-                              child: Text(
-                                "${snapshot.data.juzList[index].juzIndex}",
-                                style: Theme.of(context).textTheme.bodyText1,
-                              ),
-                            ),
-                          ),
+          Container(
+            padding: EdgeInsets.all(8.0),
+            margin: EdgeInsets.fromLTRB(0, height * 0.2, 0, 0),
+            child: GridView.builder(
+              itemCount: 30,
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              itemBuilder: (context, index) {
+                return WidgetAnimator(
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Juz(
+                                  juzIndex: index + 1,
+                                ))),
+                    child: Card(
+                      shape: StadiumBorder(),
+                      color: Colors.transparent,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey[800],
+                            borderRadius: BorderRadius.circular(15.0),
+                            border: Border.all(color: Colors.white, width: 1)),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "${index + 1}",
+                          style: Theme.of(context).textTheme.bodyText1,
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   ),
                 );
-              }
-            },
+              },
+            ),
           ),
           BackBtn(),
           CustomImage(

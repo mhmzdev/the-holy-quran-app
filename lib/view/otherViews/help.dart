@@ -88,7 +88,7 @@ class HelpGuide extends StatelessWidget {
             guideNo: 8,
             title: "Developer's Info",
             guideDescription:
-                "Name: Muhammad Hamza \nEmail: hamza.6.shakeel@gmail.com \nGitHub: @m-hamzashakeel \nSocial Username: @m_hamzashakeel",
+                "Name: Muhammad Hamza \nEmail: hamza.6.shakeel@gmail.com \nGitHub: @m-hamzashakeel \nWebsite: m-hamzashakeel.github.io",
           )
         ],
       ),

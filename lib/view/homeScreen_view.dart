@@ -34,6 +34,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     _canBeDragged = isDragOpenFromLeft || isDragCloseFromRight;
   }
 
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   void _onDragUpdate(DragUpdateDetails details) {
     if (_canBeDragged) {
       double delta = details.primaryDelta / widget.maxSlide;
@@ -137,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             ..setEntry(3, 2, 0.001)
                             ..rotateY(-math.pi / 2 * animationController.value),
                           alignment: Alignment.centerLeft,
-                          child: mainScreen()),
+                          child: MainScreen()),
                     ),
                     Positioned(
                       top: 4.0 + MediaQuery.of(context).padding.top,
@@ -159,7 +165,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget mainScreen() {
+}
+
+class MainScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Container(
         width: MediaQuery.of(context).size.width,
         color: Colors.grey[800],
@@ -201,7 +211,7 @@ class MyDrawer extends StatelessWidget {
 
     return SizedBox(
       width: width * 0.835,
-      height: double.infinity,
+      height: height,
       child: Material(
         color: Colors.grey[800],
         child: Padding(

@@ -1,4 +1,3 @@
-import 'package:al_quran/model/juzIndexModel.dart';
 import 'package:al_quran/model/juzModel.dart';
 import 'package:al_quran/model/sajdaModel.dart';
 import 'package:al_quran/model/surahModel.dart';
@@ -25,18 +24,6 @@ class QuranAPI {
 
     if (response.statusCode == 200) {
       return SajdaList.fromJSON(json.decode(response.body));
-    } else {
-      print("Failed to load");
-      throw Exception("Failed  to Load Post");
-    }
-  }
-
-  Future<JuzList> getJuzList() async {
-    String url = "http://api.quran.com:3000/api/v3/juzs";
-    final response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      return JuzList.fromJSON(json.decode(response.body));
     } else {
       print("Failed to load");
       throw Exception("Failed  to Load Post");
