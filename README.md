@@ -7,9 +7,13 @@ The data is fetched using API. So, it is not being stored locally. Information a
 
 ## Screen Shots
 
-<img src="screenShots/home.jpg" width=230> <img src="screenShots/surah.jpg" width=230> <img src="screenShots/detail.jpg" width=230>
+<img src="assets/github_gif/intro.gif" width=230> <img src="screenShots/home.jpg" width=230> <img src="assets/github_gif/drawer3d.gif" width=230>
 
-<img src="screenShots/sajda.jpg" width=230> <img src="screenShots/animate.jpg" width=230> <img src="screenShots/drawer.jpg" width=230>
+<img src="assets/github_gif/surahIndex.gif.jpg" width=230> <img src="assets/github_gif/surahView.gif" width=230> <img src="assets/github_gif/sajdaIndex.gif" width=230>
+
+<img src="assets/github_gif/juzIndex.gif" width=230> <img src="assets/github_gif/juzView.gif" width=230> <img src="screenShots/helpGuide.jpg" width=230> 
+
+<img src="screenShots/shareApp.jpg" width=230> 
 
 ## API Information
 
