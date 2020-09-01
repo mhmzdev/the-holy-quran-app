@@ -42,7 +42,7 @@ class SajdaAyat {
       surahName: json['surah']['name'],
       surahEnglishName: json['surah']['englishName'],
       englishNameTranslation: json['surah']['englishNameTranslation'],
-      juzNumber: json['juz'],
+        juzNumber: json['juz'],
       manzilNumber: json['manzil'],
       rukuNumber: json['ruku'],
       revelationType: json['surah']['revelationType'],

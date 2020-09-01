@@ -16,10 +16,12 @@ class Surah {
   final String name;
   final String englishName;
   final String englishNameTranslation;
+  final String revelationType;
   final List<Ayat> ayahs;
 
   Surah(
       {this.number,
+      this.revelationType,
       this.name,
       this.ayahs,
       this.englishName,
@@ -33,6 +35,7 @@ class Surah {
         name: json['name'],
         number: json['number'],
         englishName: json['englishName'],
+        revelationType: json['revelationType'],
         englishNameTranslation: json['englishNameTranslation'],
         ayahs: ayahsList);
   }
@@ -44,6 +47,7 @@ class Ayat {
   Ayat({this.text, this.number});
 
   factory Ayat.fromJSON(Map<String, dynamic> json) {
-    return Ayat(text: json['text'], number: json['numberInSurah']);
+    return Ayat(
+      text: json['text'], number: json['numberInSurah']);
   }
 }

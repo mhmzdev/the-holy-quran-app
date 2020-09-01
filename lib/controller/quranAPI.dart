@@ -1,3 +1,5 @@
+import 'package:al_quran/model/juzIndexModel.dart';
+import 'package:al_quran/model/juzModel.dart';
 import 'package:al_quran/model/sajdaModel.dart';
 import 'package:al_quran/model/surahModel.dart';
 import 'package:http/http.dart' as http;
@@ -23,6 +25,30 @@ class QuranAPI {
 
     if (response.statusCode == 200) {
       return SajdaList.fromJSON(json.decode(response.body));
+    } else {
+      print("Failed to load");
+      throw Exception("Failed  to Load Post");
+    }
+  }
+
+  Future<JuzList> getJuzList() async {
+    String url = "http://api.quran.com:3000/api/v3/juzs";
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      return JuzList.fromJSON(json.decode(response.body));
+    } else {
+      print("Failed to load");
+      throw Exception("Failed  to Load Post");
+    }
+  }
+
+  Future<JuzModel> getJuzz(int index) async {
+    String url = "http://api.alquran.cloud/v1/juz/$index/quran-uthmani";
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      return JuzModel.fromJSON(json.decode(response.body));
     } else {
       print("Failed to load");
       throw Exception("Failed  to Load Post");

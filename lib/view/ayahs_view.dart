@@ -29,16 +29,16 @@ class SurahAyats extends StatelessWidget {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                  (context, index) => line(height, index),
+                  (context, index) => line(height, index, width),
                   childCount: ayatsList.length),
             )
           ],
         ));
   }
 
-  Widget line(double height, int index) {
+  Widget line(double height, int index, double width) {
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: EdgeInsets.fromLTRB(width * 0.015, 0, 0, 0),
       child: WidgetAnimator(
         ListTile(
           trailing: CircleAvatar(

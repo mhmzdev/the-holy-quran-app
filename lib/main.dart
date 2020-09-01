@@ -1,9 +1,21 @@
+import 'package:al_quran/view/JuzIndex_view.dart';
 import 'package:al_quran/view/homeScreen_view.dart';
-import 'package:al_quran/view/sajda_view.dart';
+import 'package:al_quran/view/otherViews/help.dart';
+import 'package:al_quran/view/otherViews/introduction.dart';
+import 'package:al_quran/view/otherViews/shareApp.dart';
+import 'package:al_quran/view/sajdaIndex_view.dart';
 import 'package:al_quran/view/surahIndex_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+int initScreen;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  initScreen = prefs.getInt("initScreen");
+  await prefs.setInt("initScreen", 1);
   runApp(MyApp());
 }
 
@@ -28,14 +40,32 @@ final darkTheme = ThemeData(
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Al-Qur'an",
       theme: darkTheme,
-      home: HomeScreen(),
+      home: Builder(
+        builder: (context) => HomeScreen(
+          maxSlide: MediaQuery.of(context).size.width * 0.835,
+        ),
+      ),
+      initialRoute: initScreen == 0 || initScreen == null
+          ? '/introduction'
+          : 'homeScreen',
       routes: {
+        '/introduction': (context) => OnBoardingCard(),
+        '/homeScreen': (context) => HomeScreen(
+              maxSlide: MediaQuery.of(context).size.width * 0.835,
+            ),
         '/surahIndex': (context) => SurahIndex(),
         '/sajda': (context) => Sajda(),
+        '/juzzIndex': (context) => JuzIndex(),
+        '/help': (context) => Help(),
+        '/shareApp': (context) => ShareApp()
       },
     );
   }
