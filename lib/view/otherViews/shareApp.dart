@@ -89,7 +89,7 @@ class ShareAppBtn extends StatefulWidget {
 
 class _ShareAppBtnState extends State<ShareAppBtn> {
   String text = "Download the latest Holy Qur'an App on Play store\n\n"
-      "https://play.google.com/store/apps/details?id=com.example.alquran \n\nShare More! It is Sadaq-e-Jaria :)";
+      "https://play.google.com/store/apps/details?id=com.hmz.alquran \n\nShare More! It is Sadaq-e-Jaria :)";
 
   void share(BuildContext context) {
     final RenderBox box = context.findRenderObject();
@@ -146,7 +146,7 @@ class RateFeedBackBtn extends StatelessWidget {
               ],
             ),
             onPressed: () =>
-                LaunchReview.launch(androidAppId: "com.example.alquran")),
+                LaunchReview.launch(androidAppId: "com.hmz.alquran")),
       ),
     );
   }
