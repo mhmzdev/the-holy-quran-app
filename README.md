@@ -7,13 +7,11 @@ The data is fetched using API. So, it is not being stored locally. Information a
 
 ## Screen Shots
 
-<img src="assets/github_gif/intro.gif" width=200> <img src="screenShots/home.jpg" width=200> <img src="assets/github_gif/drawer3d.gif" width=200>
+<img src="assets/github_gif/intro.gif" width=180> <img src="screenShots/home.jpg" width=180> <img src="assets/github_gif/drawer3d.gif" width=180> <img src="assets/github_gif/surahIndex.gif" width=180>
 
-<img src="assets/github_gif/surahIndex.gif" width=200> <img src="assets/github_gif/surahView.gif" width=200> <img src="assets/github_gif/sajdaIndex.gif" width=200>
+<img src="assets/github_gif/surahView.gif" width=180> <img src="assets/github_gif/sajdaIndex.gif" width=180> <img src="assets/github_gif/juzIndex.gif" width=180> <img src="assets/github_gif/juzView.gif" width=180>
 
-<img src="assets/github_gif/juzIndex.gif" width=200> <img src="assets/github_gif/juzView.gif" width=200> <img src="screenShots/helpGuide.jpg" width=200> 
-
-<img src="screenShots/shareApp.jpg" width=200> 
+<img src="screenShots/helpGuide.jpg" width=180> <img src="screenShots/shareApp.jpg" width=180> 
 
 ## API Information
 
