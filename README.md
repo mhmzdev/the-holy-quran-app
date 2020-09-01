@@ -3,7 +3,7 @@
 Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
 The data is fetched using API. So, it is not being stored locally. Information about API is given at the bottom of README.md
 
-<img src="screenShots/holyQuran.png">
+<img src="screenShots/banner.png">
 
 ## Screen Shots
 
