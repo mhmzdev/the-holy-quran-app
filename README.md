@@ -12,7 +12,7 @@ The data is fetched using API. So, it is not being stored locally. Information a
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&label=Contributions&colorA=red&colorB=black	)](#)
 
 ## Get it on Play Store
-Download <a href="https://play.google.com/store/apps/details?id=com.hmz.al_quran&pli=1">here</a>
+Download <a target="_blank" href="https://play.google.com/store/apps/details?id=com.hmz.al_quran&pli=1">here</a>
 
 ## Installation steps
 
