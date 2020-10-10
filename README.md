@@ -16,8 +16,8 @@ The data is fetched using API. So, it is not being stored locally. Information a
 Open CMD where you want to clone the project & run the following commands
 
 ```
-git clone https://github.com/m-hamzashakeel/Titanic-Survival-ML-Model.git
-cd Titanic-Survival-ML-Model
+git clone https://github.com/m-hamzashakeel/The_Holy_Quran_App.git
+cd The_Holy_Quran_App
 flutter pub get
 flutter run
 ```
