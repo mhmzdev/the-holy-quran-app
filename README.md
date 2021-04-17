@@ -11,6 +11,10 @@ The data is fetched using API. So, it is not being stored locally. Information a
 [![GitHub Issues](https://img.shields.io/github/issues/saadhaxxan/Car_Game_Python_Pygame.svg?style=flat&label=Issues&maxAge=2592000)](https://github.com/m-hamzashakeel/Titanic-Survival-ML-Model/issues)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&label=Contributions&colorA=red&colorB=black	)](#)
 
+## 📁 Download Now
+
+Get it from <a href="https://play.google.com/store/apps/details?id=com.hmz.al_quran">Play Store</a>
+
 ## 💻 Installation steps
 
 Open CMD where you want to clone the project & run the following commands
