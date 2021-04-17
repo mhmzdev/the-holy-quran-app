@@ -1,8 +1,10 @@
 import 'package:al_quran/customWidgets/appVersion.dart';
 import 'package:al_quran/customWidgets/backBtn.dart';
 import 'package:al_quran/customWidgets/title.dart';
+import 'package:al_quran/darkModeController/darkThemeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:launch_review/launch_review.dart';
+import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:al_quran/share_icon_icons.dart';
@@ -39,7 +41,8 @@ class ShareInfo extends StatelessWidget {
           SizedBox(height: height * 0.13),
           Image.asset('assets/grad_logo.png', height: height * 0.2),
           SizedBox(height: height * 0.02),
-          Text("The Holy Qur'an App is also available as Open Source on GitHub!",
+          Text(
+              "The Holy Qur'an App is also available as Open Source on GitHub!",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.caption),
           SizedBox(height: height * 0.05),
@@ -57,6 +60,7 @@ class ShareInfo extends StatelessWidget {
 class GitHubRepoBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
@@ -64,7 +68,7 @@ class GitHubRepoBtn extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.055,
         child: FlatButton(
             padding: EdgeInsets.all(5.0),
-            color: Colors.grey[700],
+            color: themeChange.darkTheme ? Colors.grey[700] : Colors.grey[400],
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -72,7 +76,9 @@ class GitHubRepoBtn extends StatelessWidget {
                   ShareIcon.github,
                   size: MediaQuery.of(context).size.height * 0.03,
                 ),
-                Text("  GitHub Repo")
+                Text(
+                  "  GitHub Repo",
+                )
               ],
             ),
             onPressed: () =>

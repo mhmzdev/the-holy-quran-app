@@ -2,8 +2,13 @@ import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:al_quran/animations/bottomAnimation.dart';
-import 'package:al_quran/customWidgets/appVersion.dart';
+import 'package:al_quran/customWidgets/appName.dart';
+import 'package:al_quran/customWidgets/calligraphy.dart';
+import 'package:al_quran/customWidgets/quranRailPNG.dart';
+import 'package:al_quran/darkModeController/darkThemeProvider.dart';
+import 'package:al_quran/view/myDrawer.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final double maxSlide;
@@ -107,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     double width = MediaQuery.of(context).size.width;
 
     return WillPopScope(
@@ -120,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           animation: animationController,
           builder: (context, _) {
             return Material(
-              color: Colors.grey[850],
+              color: themeChange.darkTheme ? Colors.grey[850] : Colors.white70,
               child: SafeArea(
                 child: Stack(
                   children: <Widget>[
@@ -128,12 +134,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       offset: Offset(
                           widget.maxSlide * (animationController.value - 1), 0),
                       child: Transform(
-                          transform: Matrix4.identity()
-                            ..setEntry(3, 2, 0.001)
-                            ..rotateY(
-                                math.pi / 2 * (1 - animationController.value)),
-                          alignment: Alignment.centerRight,
-                          child: MyDrawer()),
+                        transform: Matrix4.identity()
+                          ..setEntry(3, 2, 0.001)
+                          ..rotateY(
+                              math.pi / 2 * (1 - animationController.value)),
+                        alignment: Alignment.centerRight,
+                        child: MyDrawer(),
+                      ),
                     ),
                     Transform.translate(
                       offset: Offset(
@@ -152,7 +159,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       child: IconButton(
                         icon: Icon(Icons.menu),
                         onPressed: toggle,
-                        color: Colors.white,
+                        color:
+                            themeChange.darkTheme ? Colors.white : Colors.black,
                       ),
                     ),
                   ],
@@ -164,169 +172,32 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
     );
   }
-
 }
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+
     return Container(
-        width: MediaQuery.of(context).size.width,
-        color: Colors.grey[800],
-        child: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            AppName(),
-            Calligraphy(),
-            QuranRail(),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[SurahBtn(), JuzzIndexBtn(), SajdaBtn()],
-              ),
-            ),
-            AyahBottom(),
-          ],
-        ));
-  }
-}
-
-class MyDrawer extends StatelessWidget {
-  myListTile(BuildContext context, double height, IconData tileIcon,
-      String title, String pushName) {
-    return Card(
-      color: Colors.grey[700],
-      child: ListTile(
-        leading: Icon(tileIcon, size: height * 0.035),
-        title: Text(title),
-        onTap: () => Navigator.pushNamed(context, pushName),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-    return SizedBox(
-      width: width * 0.835,
-      height: height,
-      child: Material(
-        color: Colors.grey[800],
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              DrawerAppName(),
-              Column(
-                children: <Widget>[
-                  myListTile(context, height, Icons.format_list_bulleted,
-                      "Juzz Index", "/juzzIndex"),
-                  myListTile(context, height, Icons.format_list_numbered,
-                      "Surah Index", "/surahIndex"),
-                  myListTile(context, height, Icons.format_align_left,
-                      "Sajda Index", "/sajda"),
-                  myListTile(
-                      context, height, Icons.help, "Help Guide", "/help"),
-                  myListTile(context, height, Icons.info, "Introduction",
-                      "/introduction"),
-                  myListTile(
-                      context, height, Icons.share, "Share App", "/shareApp"),
-                ],
-              ),
-              AppVersion()
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class DrawerAppName extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              "\nThe",
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: height * 0.025,
-                  color: Colors.grey[200]),
-            ),
-            Text(
-              "Holy\nQur'an",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[200],
-                  fontSize: height * 0.035),
-            )
-          ],
-        ),
-        Image.asset('assets/grad_logo.png', height: height * 0.17)
-      ],
-    );
-  }
-}
-
-class AppName extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      top: MediaQuery.of(context).size.height * 0.12,
-      left: MediaQuery.of(context).size.width * 0.05,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      width: MediaQuery.of(context).size.width,
+      color: themeChange.darkTheme ? Colors.grey[800] : Colors.white,
+      child: Stack(
+        fit: StackFit.expand,
         children: <Widget>[
-          Text("The", style: Theme.of(context).textTheme.headline2),
-          Text(
-            "Holy\nQur'an",
-            style: Theme.of(context).textTheme.headline1,
-          )
+          AppName(),
+          Calligraphy(),
+          QuranRail(),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[SurahBtn(), JuzzIndexBtn(), SajdaBtn()],
+            ),
+          ),
+          AyahBottom(),
         ],
       ),
     );
-  }
-}
-
-class Calligraphy extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return Positioned(
-        right: width * 0.01,
-        top: height * 0.045,
-        child: Image.asset(
-          "assets/grad_logo.png",
-          height: height * 0.28,
-        ));
-  }
-}
-
-class QuranRail extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return Positioned(
-        left: width * 0,
-        bottom: height * 0.0,
-        child: Opacity(
-          opacity: 0.2,
-          child: Image.asset("assets/quranRail.png", height: height * 0.4),
-        ));
   }
 }
 
@@ -344,9 +215,13 @@ class SurahBtn extends StatelessWidget {
         child: RaisedButton(
           shape: StadiumBorder(),
           onPressed: () => Navigator.pushNamed(context, '/surahIndex'),
-          child: WidgetAnimator(Text("Surah Index",
+          child: WidgetAnimator(
+            Text(
+              "Surah Index",
               style: TextStyle(
-                  fontSize: height * 0.023, fontWeight: FontWeight.w600))),
+                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
+            ),
+          ),
           color: Color(0xffee8f8b),
         ),
       ),
@@ -370,9 +245,13 @@ class SajdaBtn extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, '/sajda');
           },
-          child: WidgetAnimator(Text("Sajda Index",
+          child: WidgetAnimator(
+            Text(
+              "Sajda Index",
               style: TextStyle(
-                  fontSize: height * 0.023, fontWeight: FontWeight.w600))),
+                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
+            ),
+          ),
           color: Color(0xffee8f8b),
         ),
       ),
@@ -396,9 +275,13 @@ class JuzzIndexBtn extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, '/juzzIndex');
           },
-          child: WidgetAnimator(Text("Juzz Index",
+          child: WidgetAnimator(
+            Text(
+              "Juzz Index",
               style: TextStyle(
-                  fontSize: height * 0.023, fontWeight: FontWeight.w600))),
+                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
+            ),
+          ),
           color: Color(0xffee8f8b),
         ),
       ),

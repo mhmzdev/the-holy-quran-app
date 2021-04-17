@@ -1,4 +1,6 @@
+import 'package:al_quran/darkModeController/darkThemeProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomTitle extends StatelessWidget {
@@ -7,6 +9,7 @@ class CustomTitle extends StatelessWidget {
   CustomTitle({this.title});
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -14,7 +17,7 @@ class CustomTitle extends StatelessWidget {
       top: height * 0.12,
       left: width * 0.1,
       child: Shimmer.fromColors(
-        baseColor: Colors.white,
+        baseColor: themeChange.darkTheme ? Colors.white : Colors.black,
         highlightColor: Colors.grey,
         enabled: true,
         child: Text(

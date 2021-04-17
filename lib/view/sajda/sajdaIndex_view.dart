@@ -5,8 +5,10 @@ import 'package:al_quran/customWidgets/customImagePos.dart';
 import 'package:al_quran/customWidgets/flare.dart';
 import 'package:al_quran/customWidgets/loadingShimmer.dart';
 import 'package:al_quran/customWidgets/title.dart';
-import 'package:al_quran/view/sajdaAyahs_view.dart';
+import 'package:al_quran/darkModeController/darkThemeProvider.dart';
+import 'package:al_quran/view/sajda/sajdaAyahs_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Sajda extends StatelessWidget {
   @override
@@ -236,6 +238,7 @@ class _SajdaInformationState extends State<SajdaInformation>
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -249,9 +252,11 @@ class _SajdaInformationState extends State<SajdaInformation>
             width: width * 0.75,
             height: height * 0.39,
             decoration: ShapeDecoration(
-                color: Colors.grey[800],
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0))),
+              color: themeChange.darkTheme ? Colors.grey[800] : Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -5,12 +5,15 @@ import 'package:al_quran/customWidgets/customImagePos.dart';
 import 'package:al_quran/customWidgets/flare.dart';
 import 'package:al_quran/customWidgets/loadingShimmer.dart';
 import 'package:al_quran/customWidgets/title.dart';
-import 'package:al_quran/view/ayahs_view.dart';
+import 'package:al_quran/darkModeController/darkThemeProvider.dart';
+import 'package:al_quran/view/surahas/ayahs_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SurahIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -88,20 +91,18 @@ class SurahIndex extends StatelessWidget {
                           ),
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SurahAyats(
-                                          ayatsList:
-                                              snapshot.data.surahs[index].ayahs,
-                                          surahName:
-                                              snapshot.data.surahs[index].name,
-                                          surahEnglishName: snapshot
-                                              .data.surahs[index].englishName,
-                                          englishMeaning: snapshot
-                                              .data
-                                              .surahs[index]
-                                              .englishNameTranslation,
-                                        )));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SurahAyats(
+                                  ayatsList: snapshot.data.surahs[index].ayahs,
+                                  surahName: snapshot.data.surahs[index].name,
+                                  surahEnglishName:
+                                      snapshot.data.surahs[index].englishName,
+                                  englishMeaning: snapshot.data.surahs[index]
+                                      .englishNameTranslation,
+                                ),
+                              ),
+                            );
                           },
                         ),
                       );
@@ -110,64 +111,76 @@ class SurahIndex extends StatelessWidget {
                 );
               } else {
                 return Center(
-                    child: Text("Connectivity Error! Please Try Again Later"));
+                  child: Text("Connectivity Error! Please Try Again Later"),
+                );
               }
             },
           ),
           CustomImage(
             opacity: 0.3,
             height: height * 0.17,
-            networkImgURL: 'https://i.ibb.co/WvWbc7Y/kaaba.png',
+            networkImgURL:
+                'https://user-images.githubusercontent.com/43790152/115107331-a3a58d00-9f83-11eb-86f9-8bbbcd3ec96f.png',
           ),
           BackBtn(),
           CustomTitle(
             title: "Surah Index",
           ),
-          Flare(
-            color: Color(0xfff9e9b8),
-            offset: Offset(width, -height),
-            bottom: -50,
-            flareDuration: Duration(seconds: 17),
-            left: 100,
-            height: 60,
-            width: 60,
-          ),
-          Flare(
-            color: Color(0xfff9e9b8),
-            offset: Offset(width, -height),
-            bottom: -50,
-            flareDuration: Duration(seconds: 12),
-            left: 10,
-            height: 25,
-            width: 25,
-          ),
-          Flare(
-            color: Color(0xfff9e9b8),
-            offset: Offset(width, -height),
-            bottom: -40,
-            left: -100,
-            flareDuration: Duration(seconds: 18),
-            height: 50,
-            width: 50,
-          ),
-          Flare(
-            color: Color(0xfff9e9b8),
-            offset: Offset(width, -height),
-            bottom: -50,
-            left: -80,
-            flareDuration: Duration(seconds: 15),
-            height: 50,
-            width: 50,
-          ),
-          Flare(
-            color: Color(0xfff9e9b8),
-            offset: Offset(width, -height),
-            bottom: -20,
-            left: -120,
-            flareDuration: Duration(seconds: 12),
-            height: 40,
-            width: 40,
-          ),
+          themeChange.darkTheme
+              ? Flare(
+                  color: Color(0xfff9e9b8),
+                  offset: Offset(width, -height),
+                  bottom: -50,
+                  flareDuration: Duration(seconds: 17),
+                  left: 100,
+                  height: 60,
+                  width: 60,
+                )
+              : Container(),
+          themeChange.darkTheme
+              ? Flare(
+                  color: Color(0xfff9e9b8),
+                  offset: Offset(width, -height),
+                  bottom: -50,
+                  flareDuration: Duration(seconds: 12),
+                  left: 10,
+                  height: 25,
+                  width: 25,
+                )
+              : Container(),
+          themeChange.darkTheme
+              ? Flare(
+                  color: Color(0xfff9e9b8),
+                  offset: Offset(width, -height),
+                  bottom: -40,
+                  left: -100,
+                  flareDuration: Duration(seconds: 18),
+                  height: 50,
+                  width: 50,
+                )
+              : Container(),
+          themeChange.darkTheme
+              ? Flare(
+                  color: Color(0xfff9e9b8),
+                  offset: Offset(width, -height),
+                  bottom: -50,
+                  left: -80,
+                  flareDuration: Duration(seconds: 15),
+                  height: 50,
+                  width: 50,
+                )
+              : Container(),
+          themeChange.darkTheme
+              ? Flare(
+                  color: Color(0xfff9e9b8),
+                  offset: Offset(width, -height),
+                  bottom: -20,
+                  left: -120,
+                  flareDuration: Duration(seconds: 12),
+                  height: 40,
+                  width: 40,
+                )
+              : Container(),
         ],
       ),
     ));
@@ -217,6 +230,7 @@ class _SurahInformationState extends State<SurahInformation>
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -230,9 +244,11 @@ class _SurahInformationState extends State<SurahInformation>
             width: width * 0.75,
             height: height * 0.37,
             decoration: ShapeDecoration(
-                color: Colors.grey[800],
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0))),
+              color: themeChange.darkTheme ? Colors.grey[800] : Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

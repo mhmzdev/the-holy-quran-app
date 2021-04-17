@@ -12,8 +12,9 @@ class Help extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             CustomImage(
-              networkImgURL: "https://i.ibb.co/JyP79Kf/grad-logo.png",
-              opacity: 0.3,
+              networkImgURL:
+                  "https://user-images.githubusercontent.com/43790152/115107801-8625f280-9f86-11eb-9d8b-2b1cc74a5796.png",
+              opacity: 0.5,
               height: MediaQuery.of(context).size.height * 0.18,
             ),
             BackBtn(),

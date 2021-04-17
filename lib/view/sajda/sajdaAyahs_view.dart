@@ -1,5 +1,7 @@
 import 'package:al_quran/animations/bottomAnimation.dart';
+import 'package:al_quran/darkModeController/darkThemeProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SajdaAyah extends StatelessWidget {
@@ -26,6 +28,8 @@ class SajdaAyah extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -33,7 +37,8 @@ class SajdaAyah extends StatelessWidget {
         body: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
-              backgroundColor: Colors.grey[850],
+              backgroundColor:
+                  themeChange.darkTheme ? Colors.grey[850] : Colors.white,
               pinned: true,
               expandedHeight: height * 0.27,
               flexibleSpace: flexibleAppBar(context, height, width),
