@@ -3,7 +3,7 @@ description: Flutter App for the holy book of Qur'an.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+2
+version: 1.0.1+4
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -19,6 +19,7 @@ dependencies:
   http: ^0.12.1
   shimmer: ^1.1.1  
   shared_preferences: ^0.5.7+3
+  provider:
   share: ^0.6.4+3
   url_launcher: ^5.4.11
   launch_review: ^2.0.0
@@ -27,8 +28,8 @@ dependencies:
   flutter_svg: ^0.18.0
 
 dependency_overrides:
-  image:
-  xml:
+  # image:
+  # xml:
 
 dev_dependencies:
   flutter_test:
