@@ -45,9 +45,7 @@ flutter run
 
 ### ☀ Light Mode Theme
 
-<img src="https://user-images.githubusercontent.com/43790152/115233109-f40e1d80-a130-11eb-8c3a-ac3e2686dbad.gif" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233686-a7771200-a131-11eb-9502-ba8d63a40157.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233677-a5ad4e80-a131-11eb-925c-8adfa04c6876.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233689-a80fa880-a131-11eb-888e-e5d97424f9f2.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233684-a6de7b80-a131-11eb-86cd-7d3ca74fcd79.jpeg" width=180>
-
-<img src="https://user-images.githubusercontent.com/43790152/115233681-a645e500-a131-11eb-8e85-10343086412e.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233695-a8a83f00-a131-11eb-9bed-202292be47e7.jpeg" width=180> 
+<img src="https://user-images.githubusercontent.com/43790152/115233109-f40e1d80-a130-11eb-8c3a-ac3e2686dbad.gif" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233686-a7771200-a131-11eb-9502-ba8d63a40157.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233677-a5ad4e80-a131-11eb-925c-8adfa04c6876.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233689-a80fa880-a131-11eb-888e-e5d97424f9f2.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233684-a6de7b80-a131-11eb-86cd-7d3ca74fcd79.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233681-a645e500-a131-11eb-8e85-10343086412e.jpeg" width=180> <img src="https://user-images.githubusercontent.com/43790152/115233695-a8a83f00-a131-11eb-9bed-202292be47e7.jpeg" width=180> 
 
 
 ## 🔗 API Information
