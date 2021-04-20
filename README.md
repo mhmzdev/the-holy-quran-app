@@ -58,6 +58,9 @@ API Used: https://alquran.cloud/api
 - Translations
 - Audio Mode
 
+## 🔑 License
+- This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
+
 ## 🧑 Author
 
 #### Muhammad Hamza
