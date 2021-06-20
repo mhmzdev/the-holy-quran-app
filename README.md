@@ -29,7 +29,7 @@ It will be best compatible with `Flutter 1.22` version.
 Open CMD where you want to clone the project & run the following commands
 
 ```
-git clone https://github.com/m-hamzashakeel/The_Holy_Quran_App.git
+git clone https://github.com/mhmzdev/The_Holy_Quran_App.git
 cd The_Holy_Quran_App
 flutter packages get
 flutter run
@@ -65,7 +65,7 @@ API Used: https://alquran.cloud/api
 
 #### Muhammad Hamza
 [![LinkedIn Link](https://img.shields.io/badge/Connect-Hamza-blue.svg?logo=linkedin&longCache=true&style=social&label=Connect
-)](https://www.linkedin.com/in/mhamzadev)
+)](https://www.linkedin.com/in/mhmzdev)
 
 You can also follow my GitHub Profile to stay updated about my latest projects:
 
