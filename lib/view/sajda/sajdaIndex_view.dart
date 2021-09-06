@@ -56,7 +56,7 @@ class Sajda extends StatelessWidget {
                             onLongPress: () {
                               showDialog(
                                   context: context,
-                                  child: SajdaInformation(
+                                  builder: (_) => new SajdaInformation(
                                     juzNumber: snapshot
                                         .data.sajdaAyahs[index].juzNumber,
                                     rukuNumber: snapshot
