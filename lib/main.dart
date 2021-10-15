@@ -13,7 +13,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-int initScreen;
+int? initScreen;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
     return ChangeNotifierProvider(create: (_) {
       return darkThemeProvider;
     }, child: Consumer<DarkThemeProvider>(
-      builder: (BuildContext context, value, Widget child) {
+      builder: (BuildContext context, value, Widget? child) {
         return MaterialApp(
           title: "They Holy Qur'an",
           debugShowCheckedModeBanner: false,

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomTitle extends StatelessWidget {
-  final String title;
+  final String? title;
 
   CustomTitle({this.title});
   @override
@@ -21,7 +21,7 @@ class CustomTitle extends StatelessWidget {
         highlightColor: Colors.grey,
         enabled: true,
         child: Text(
-          title,
+          title!,
           style: Theme.of(context).textTheme.headline1,
         ),
       ),

@@ -188,12 +188,12 @@ class SurahIndex extends StatelessWidget {
 }
 
 class SurahInformation extends StatefulWidget {
-  final int surahNumber;
-  final String arabicName;
-  final String englishName;
-  final String englishNameTranslation;
-  final int ayahs;
-  final String revelationType;
+  final int? surahNumber;
+  final String? arabicName;
+  final String? englishName;
+  final String? englishNameTranslation;
+  final int? ayahs;
+  final String? revelationType;
 
   SurahInformation(
       {this.arabicName,
@@ -209,8 +209,8 @@ class SurahInformation extends StatefulWidget {
 
 class _SurahInformationState extends State<SurahInformation>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> scaleAnimation;
+  late AnimationController controller;
+  late Animation<double> scaleAnimation;
 
   @override
   void initState() {
@@ -264,11 +264,11 @@ class _SurahInformationState extends State<SurahInformation>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      widget.englishName,
+                      widget.englishName!,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     Text(
-                      widget.arabicName,
+                      widget.arabicName!,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ],

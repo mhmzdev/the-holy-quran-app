@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SurahAyats extends StatelessWidget {
-  final List<Ayat> ayatsList;
-  final String surahName;
-  final String surahEnglishName;
-  final String englishMeaning;
+  final List<Ayat>? ayatsList;
+  final String? surahName;
+  final String? surahEnglishName;
+  final String? englishMeaning;
   SurahAyats(
       {this.ayatsList,
       this.englishMeaning,
@@ -35,7 +35,7 @@ class SurahAyats extends StatelessWidget {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                   (context, index) => line(height, index, width),
-                  childCount: ayatsList.length),
+                  childCount: ayatsList!.length),
             )
           ],
         ));
@@ -53,11 +53,11 @@ class SurahAyats extends StatelessWidget {
                 radius: height * 0.012,
                 backgroundColor: Colors.white,
                 child: Text(
-                  ayatsList[index].number.toString(),
+                  ayatsList![index].number.toString(),
                   style: TextStyle(fontSize: height * 0.015),
                 )),
           ),
-          title: Text(ayatsList[index].text,
+          title: Text(ayatsList![index].text!,
               textAlign: TextAlign.right,
               style: TextStyle(fontSize: height * 0.03, color: Colors.black)),
         ),
@@ -68,7 +68,7 @@ class SurahAyats extends StatelessWidget {
   Widget flexibleAppBar(BuildContext context, double width, double height) {
     return FlexibleSpaceBar(
         centerTitle: true,
-        title: Text(surahEnglishName,
+        title: Text(surahEnglishName!,
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: height * 0.045)),
         background: Stack(
@@ -84,9 +84,9 @@ class SurahAyats extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(englishMeaning),
+          Text(englishMeaning!),
           Text(
-            surahName,
+            surahName!,
             style: Theme.of(context).textTheme.headline1,
           )
         ],

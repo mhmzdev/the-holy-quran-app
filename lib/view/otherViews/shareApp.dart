@@ -98,7 +98,7 @@ class _ShareAppBtnState extends State<ShareAppBtn> {
       "https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)";
 
   void share(BuildContext context) {
-    final RenderBox box = context.findRenderObject();
+    final RenderBox box = context.findRenderObject() as RenderBox;
 
     Share.share(text,
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);

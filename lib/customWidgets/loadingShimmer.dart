@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoadingShimmer extends StatelessWidget {
-  final String text;
+  final String? text;
   LoadingShimmer({this.text});
   @override
   Widget build(BuildContext context) {

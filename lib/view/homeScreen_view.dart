@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:math' as math;
-
+import 'dart:async';
 import 'package:al_quran/animations/bottomAnimation.dart';
 import 'package:al_quran/customWidgets/appName.dart';
 import 'package:al_quran/customWidgets/calligraphy.dart';
@@ -12,26 +12,23 @@ import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final double maxSlide;
-  HomeScreen({@required this.maxSlide});
+  HomeScreen({required this.maxSlide});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  AnimationController animationController;
+  late AnimationController animationController;
 
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 250));
+    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 250));
   }
 
-  void toggle() => animationController.isDismissed
-      ? animationController.forward()
-      : animationController.reverse();
+  void toggle() => animationController.isDismissed ? animationController.forward() : animationController.reverse();
 
-  bool _canBeDragged;
+  late bool _canBeDragged;
 
   void _onDragStart(DragStartDetails details) {
     bool isDragOpenFromLeft = animationController.isDismissed;
@@ -47,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   void _onDragUpdate(DragUpdateDetails details) {
     if (_canBeDragged) {
-      double delta = details.primaryDelta / widget.maxSlide;
+      double delta = details.primaryDelta! / widget.maxSlide;
       animationController.value += delta;
     }
   }
@@ -59,8 +56,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       return;
     }
     if (details.velocity.pixelsPerSecond.dx.abs() >= _kMinFlingVelocity) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx /
-          MediaQuery.of(context).size.width;
+      double visualVelocity = details.velocity.pixelsPerSecond.dx / MediaQuery.of(context).size.width;
 
       animationController.fling(velocity: visualVelocity);
     } else if (animationController.value < 0.5) {
@@ -71,11 +67,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   Future<bool> _onWillPop() async {
-    return (await showDialog(
+    return (await (showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             title: new Text(
               "Exit Application",
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -106,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ],
           ),
-        )) ??
+        ) as FutureOr<bool>?)) ??
         false;
   }
 
@@ -131,20 +126,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 child: Stack(
                   children: <Widget>[
                     Transform.translate(
-                      offset: Offset(
-                          widget.maxSlide * (animationController.value - 1), 0),
+                      offset: Offset(widget.maxSlide * (animationController.value - 1), 0),
                       child: Transform(
                         transform: Matrix4.identity()
                           ..setEntry(3, 2, 0.001)
-                          ..rotateY(
-                              math.pi / 2 * (1 - animationController.value)),
+                          ..rotateY(math.pi / 2 * (1 - animationController.value)),
                         alignment: Alignment.centerRight,
                         child: MyDrawer(),
                       ),
                     ),
                     Transform.translate(
-                      offset: Offset(
-                          widget.maxSlide * animationController.value, 0),
+                      offset: Offset(widget.maxSlide * animationController.value, 0),
                       child: Transform(
                           transform: Matrix4.identity()
                             ..setEntry(3, 2, 0.001)
@@ -154,13 +146,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                     Positioned(
                       top: 4.0 + MediaQuery.of(context).padding.top,
-                      left: width * 0.01 +
-                          animationController.value * widget.maxSlide,
+                      left: width * 0.01 + animationController.value * widget.maxSlide,
                       child: IconButton(
                         icon: Icon(Icons.menu),
                         onPressed: toggle,
-                        color:
-                            themeChange.darkTheme ? Colors.white : Colors.black,
+                        color: themeChange.darkTheme ? Colors.white : Colors.black,
                       ),
                     ),
                   ],
@@ -218,8 +208,7 @@ class SurahBtn extends StatelessWidget {
           child: WidgetAnimator(
             Text(
               "Surah Index",
-              style: TextStyle(
-                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: height * 0.023, fontWeight: FontWeight.w400),
             ),
           ),
           color: Color(0xffee8f8b),
@@ -248,8 +237,7 @@ class SajdaBtn extends StatelessWidget {
           child: WidgetAnimator(
             Text(
               "Sajda Index",
-              style: TextStyle(
-                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: height * 0.023, fontWeight: FontWeight.w400),
             ),
           ),
           color: Color(0xffee8f8b),
@@ -278,8 +266,7 @@ class JuzzIndexBtn extends StatelessWidget {
           child: WidgetAnimator(
             Text(
               "Juzz Index",
-              style: TextStyle(
-                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: height * 0.023, fontWeight: FontWeight.w400),
             ),
           ),
           color: Color(0xffee8f8b),

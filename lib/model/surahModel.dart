@@ -1,5 +1,5 @@
 class SurahsList {
-  final List<Surah> surahs;
+  final List<Surah>? surahs;
 
   SurahsList({this.surahs});
 
@@ -12,12 +12,12 @@ class SurahsList {
 }
 
 class Surah {
-  final int number;
-  final String name;
-  final String englishName;
-  final String englishNameTranslation;
-  final String revelationType;
-  final List<Ayat> ayahs;
+  final int? number;
+  final String? name;
+  final String? englishName;
+  final String? englishNameTranslation;
+  final String? revelationType;
+  final List<Ayat>? ayahs;
 
   Surah(
       {this.number,
@@ -42,8 +42,8 @@ class Surah {
 }
 
 class Ayat {
-  final String text;
-  final int number;
+  final String? text;
+  final int? number;
   Ayat({this.text, this.number});
 
   factory Ayat.fromJSON(Map<String, dynamic> json) {
