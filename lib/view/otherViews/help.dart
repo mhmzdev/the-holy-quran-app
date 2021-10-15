@@ -103,9 +103,9 @@ class GuideContainer extends StatelessWidget {
   final int guideNo;
 
   GuideContainer(
-      {@required this.guideNo,
-      @required this.title,
-      @required this.guideDescription});
+      {required this.guideNo,
+      required this.title,
+      required this.guideDescription});
   @override
   Widget build(BuildContext context) {
     return Padding(

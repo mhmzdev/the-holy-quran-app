@@ -11,7 +11,7 @@ class MyDrawer extends StatelessWidget {
     IconData tileIcon,
     String title,
     String pushName,
-    Color color,
+    Color? color,
   ) {
     return Card(
       color: color,

@@ -5,15 +5,15 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SajdaAyah extends StatelessWidget {
-  final String sajdaAyahs;
-  final int juz;
-  final int ruku;
-  final int manzil;
-  final int sajdaNumber;
-  final String surahName;
-  final String surahEnglishName;
-  final String englishNameTranslation;
-  final String revelationType;
+  final String? sajdaAyahs;
+  final int? juz;
+  final int? ruku;
+  final int? manzil;
+  final int? sajdaNumber;
+  final String? surahName;
+  final String? surahEnglishName;
+  final String? englishNameTranslation;
+  final String? revelationType;
 
   SajdaAyah(
       {this.sajdaAyahs,
@@ -62,7 +62,7 @@ class SajdaAyah extends StatelessWidget {
                               fontWeight: FontWeight.w600),
                         ),
                         SizedBox(height: height * 0.02),
-                        sajda(height, sajdaNumber, sajdaAyahs),
+                        sajda(height, sajdaNumber, sajdaAyahs!),
                         SizedBox(height: height * 0.03),
                         sajdaInfo(ruku, juz, manzil, revelationType,
                             sajdaNumber, context),
@@ -76,7 +76,7 @@ class SajdaAyah extends StatelessWidget {
         ));
   }
 
-  Widget sajda(double height, int index, String ayahs) {
+  Widget sajda(double height, int? index, String ayahs) {
     return WidgetAnimator(
       ListTile(
         trailing: CircleAvatar(
@@ -100,7 +100,7 @@ class SajdaAyah extends StatelessWidget {
   Widget flexibleAppBar(BuildContext context, double width, double height) {
     return FlexibleSpaceBar(
         centerTitle: true,
-        title: Text(surahEnglishName,
+        title: Text(surahEnglishName!,
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: height * 0.045)),
         background: Stack(
@@ -116,9 +116,9 @@ class SajdaAyah extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(englishNameTranslation),
+          Text(englishNameTranslation!),
           Text(
-            surahName,
+            surahName!,
             style: Theme.of(context).textTheme.headline1,
           )
         ],
@@ -138,8 +138,8 @@ class SajdaAyah extends StatelessWidget {
     );
   }
 
-  Widget sajdaInfo(int ruku, int juz, int manzil, String relevationType,
-      int sajdaIndex, BuildContext context) {
+  Widget sajdaInfo(int? ruku, int? juz, int? manzil, String? relevationType,
+      int? sajdaIndex, BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Colors.black,
       highlightColor: Colors.grey,
@@ -151,7 +151,7 @@ class SajdaAyah extends StatelessWidget {
                   TextStyle(color: Colors.black, fontWeight: FontWeight.w600)),
           infoText("Juz", juz.toString(), context),
           infoText("Ruku", ruku.toString(), context),
-          infoText("Chapter", revelationType, context)
+          infoText("Chapter", revelationType!, context)
         ],
       ),
     );

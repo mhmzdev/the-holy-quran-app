@@ -1,6 +1,6 @@
 class JuzModel {
-  final int juzNumber;
-  final List<JuzAyahs> juzAyahs;
+  final int? juzNumber;
+  final List<JuzAyahs>? juzAyahs;
 
   JuzModel({this.juzAyahs, this.juzNumber});
 
@@ -14,17 +14,16 @@ class JuzModel {
 }
 
 class JuzAyahs {
-  final String ayahsText;
-  final int ayahNumber;
-  final String surahName;
+  final String? ayahsText;
+  final int? ayahNumber;
+  final String? surahName;
 
   JuzAyahs({this.ayahsText, this.surahName, this.ayahNumber});
 
   factory JuzAyahs.fromJSON(Map<String, dynamic> json) {
     return JuzAyahs(
-      ayahNumber: json['number'],
-      ayahsText: json['text'],
-      surahName: json['surah']['name']
-    );
+        ayahNumber: json['number'],
+        ayahsText: json['text'],
+        surahName: json['surah']['name']);
   }
 }

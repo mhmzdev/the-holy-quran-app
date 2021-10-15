@@ -2,11 +2,12 @@ import 'package:al_quran/animations/bottomAnimation.dart';
 import 'package:al_quran/controller/quranAPI.dart';
 import 'package:al_quran/customWidgets/loadingShimmer.dart';
 import 'package:al_quran/darkModeController/darkThemeProvider.dart';
+import 'package:al_quran/model/juzModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Juz extends StatelessWidget {
-  final int juzIndex;
+  final int? juzIndex;
   Juz({this.juzIndex});
 
   @override
@@ -39,23 +40,21 @@ class Juz extends StatelessWidget {
   }
 
   Widget futureBuilderUsage(double height) {
-    return FutureBuilder(
+    return FutureBuilder<JuzModel>(
       future: QuranAPI().getJuzz(juzIndex),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return LoadingShimmer(
-            text: "Ayahs",
-          );
+          return LoadingShimmer(text: "Ayahs");
         } else if (snapshot.hasError || (snapshot.hasData == null)) {
           return Center(
               child: Text("Connectivity Error! Please Check your Connection"));
         } else {
           return ListView.builder(
-            itemCount: snapshot.data.juzAyahs.length,
+            itemCount: snapshot.data!.juzAyahs!.length,
             itemBuilder: (context, index) {
               return WidgetAnimator(
                 ListTile(
-                    title: Text(snapshot.data.juzAyahs[index].ayahsText,
+                    title: Text(snapshot.data!.juzAyahs![index].ayahsText ?? '',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                             fontSize: height * 0.03, color: Colors.black)),
@@ -63,12 +62,13 @@ class Juz extends StatelessWidget {
                       radius: height * 0.018,
                       backgroundColor: Color(0xff04364f),
                       child: CircleAvatar(
-                          radius: height * 0.017,
-                          backgroundColor: Colors.white,
-                          child: Text(
-                            snapshot.data.juzAyahs[index].ayahNumber.toString(),
-                            style: TextStyle(fontSize: height * 0.0135),
-                          )),
+                        radius: height * 0.017,
+                        backgroundColor: Colors.white,
+                        child: Text(
+                          snapshot.data!.juzAyahs![index].ayahNumber.toString(),
+                          style: TextStyle(fontSize: height * 0.0135),
+                        ),
+                      ),
                     )),
               );
             },
@@ -80,16 +80,17 @@ class Juz extends StatelessWidget {
 
   Widget flexibleAppBar(BuildContext context, double width, double height) {
     return FlexibleSpaceBar(
-        centerTitle: true,
-        title: Text("Juzz No. $juzIndex",
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: height * 0.045)),
-        background: Stack(
-          children: <Widget>[
-            quranImageAppBar(height),
-            infoInAppBar(context),
-          ],
-        ));
+      centerTitle: true,
+      title: Text("Juzz No. $juzIndex",
+          style:
+              TextStyle(fontWeight: FontWeight.bold, fontSize: height * 0.045)),
+      background: Stack(
+        children: <Widget>[
+          quranImageAppBar(height),
+          infoInAppBar(context),
+        ],
+      ),
+    );
   }
 
   Widget infoInAppBar(BuildContext context) {
@@ -98,13 +99,13 @@ class Juz extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text("Starting Surah"),
-          FutureBuilder(
+          FutureBuilder<JuzModel>(
             future: QuranAPI().getJuzz(juzIndex),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Text('');
               } else {
-                return Text("${snapshot.data.juzAyahs[juzIndex].surahName}",
+                return Text(snapshot.data!.juzAyahs![juzIndex!].surahName ?? '',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: MediaQuery.of(context).size.height * 0.045));

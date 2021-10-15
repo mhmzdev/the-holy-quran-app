@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:math' as math;
-
+import 'dart:async';
 import 'package:al_quran/animations/bottomAnimation.dart';
 import 'package:al_quran/customWidgets/appName.dart';
 import 'package:al_quran/customWidgets/calligraphy.dart';
@@ -12,13 +12,13 @@ import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final double maxSlide;
-  HomeScreen({@required this.maxSlide});
+  HomeScreen({required this.maxSlide});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  AnimationController animationController;
+  late AnimationController animationController;
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ? animationController.forward()
       : animationController.reverse();
 
-  bool _canBeDragged;
+  late bool _canBeDragged;
 
   void _onDragStart(DragStartDetails details) {
     bool isDragOpenFromLeft = animationController.isDismissed;
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   void _onDragUpdate(DragUpdateDetails details) {
     if (_canBeDragged) {
-      double delta = details.primaryDelta / widget.maxSlide;
+      double delta = details.primaryDelta! / widget.maxSlide;
       animationController.value += delta;
     }
   }
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   Future<bool> _onWillPop() async {
-    return (await showDialog(
+    return (await (showDialog(
           context: context,
           builder: (context) => AlertDialog(
             shape:
@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ],
           ),
-        )) ??
+        ) as FutureOr<bool>?)) ??
         false;
   }
 

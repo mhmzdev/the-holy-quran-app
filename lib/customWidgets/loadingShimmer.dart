@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoadingShimmer extends StatelessWidget {
-  final String text;
+  final String? text;
   LoadingShimmer({this.text});
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,8 @@ class LoadingShimmer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset('assets/logo.png', height: height * 0.1),
-            WidgetAnimator(
-                Text("Loading $text..!", style: TextStyle(fontSize: height * 0.02)))
+            WidgetAnimator(Text("Loading $text..!",
+                style: TextStyle(fontSize: height * 0.02)))
           ],
         )),
       ),

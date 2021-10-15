@@ -1,5 +1,5 @@
 class SajdaList {
-  final List<SajdaAyat> sajdaAyahs;
+  final List<SajdaAyat>? sajdaAyahs;
   SajdaList({this.sajdaAyahs});
 
   factory SajdaList.fromJSON(Map<String, dynamic> json) {
@@ -12,16 +12,16 @@ class SajdaList {
 }
 
 class SajdaAyat {
-  final int number;
-  final String text;
-  final String surahName;
-  final String surahEnglishName;
-  final String englishNameTranslation;
-  final String revelationType;
-  final int juzNumber;
-  final int manzilNumber;
-  final int rukuNumber;
-  final int sajdaNumber;
+  final int? number;
+  final String? text;
+  final String? surahName;
+  final String? surahEnglishName;
+  final String? englishNameTranslation;
+  final String? revelationType;
+  final int? juzNumber;
+  final int? manzilNumber;
+  final int? rukuNumber;
+  final int? sajdaNumber;
 
   SajdaAyat(
       {this.number,
@@ -37,16 +37,15 @@ class SajdaAyat {
 
   factory SajdaAyat.fromJSON(Map<String, dynamic> json) {
     return SajdaAyat(
-      number: json['number'],
-      text: json['text'],
-      surahName: json['surah']['name'],
-      surahEnglishName: json['surah']['englishName'],
-      englishNameTranslation: json['surah']['englishNameTranslation'],
+        number: json['number'],
+        text: json['text'],
+        surahName: json['surah']['name'],
+        surahEnglishName: json['surah']['englishName'],
+        englishNameTranslation: json['surah']['englishNameTranslation'],
         juzNumber: json['juz'],
-      manzilNumber: json['manzil'],
-      rukuNumber: json['ruku'],
-      revelationType: json['surah']['revelationType'],
-      sajdaNumber: json['sajda']['id']
-    );
+        manzilNumber: json['manzil'],
+        rukuNumber: json['ruku'],
+        revelationType: json['surah']['revelationType'],
+        sajdaNumber: json['sajda']['id']);
   }
 }

@@ -32,13 +32,13 @@ class JuzIndex extends StatelessWidget {
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Juz(
-                          juzIndex: index + 1,
-                        ),
+                        builder: (context) => Juz(juzIndex: index + 1),
                       ),
                     ),
                     child: Card(
-                      shape: themeChange.darkTheme ? StadiumBorder() : RoundedRectangleBorder(),
+                      shape: themeChange.darkTheme
+                          ? StadiumBorder()
+                          : RoundedRectangleBorder(),
                       color: Colors.white,
                       child: Container(
                         decoration: BoxDecoration(

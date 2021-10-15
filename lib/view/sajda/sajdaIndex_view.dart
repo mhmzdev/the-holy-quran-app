@@ -57,23 +57,23 @@ class Sajda extends StatelessWidget {
                               showDialog(
                                   context: context,
                                   builder: (_) => new SajdaInformation(
-                                    juzNumber: snapshot
-                                        .data.sajdaAyahs[index].juzNumber,
-                                    rukuNumber: snapshot
-                                        .data.sajdaAyahs[index].rukuNumber,
-                                    sajdaNumber: snapshot
-                                        .data.sajdaAyahs[index].sajdaNumber,
-                                    surahName: snapshot
-                                        .data.sajdaAyahs[index].surahName,
-                                    surahEnglishName: snapshot.data
-                                        .sajdaAyahs[index].surahEnglishName,
-                                    englishNameTranslation: snapshot
-                                        .data
-                                        .sajdaAyahs[index]
-                                        .englishNameTranslation,
-                                    revelationType: snapshot
-                                        .data.sajdaAyahs[index].revelationType,
-                                  ));
+                                        juzNumber: snapshot
+                                            .data.sajdaAyahs[index].juzNumber,
+                                        rukuNumber: snapshot
+                                            .data.sajdaAyahs[index].rukuNumber,
+                                        sajdaNumber: snapshot
+                                            .data.sajdaAyahs[index].sajdaNumber,
+                                        surahName: snapshot
+                                            .data.sajdaAyahs[index].surahName,
+                                        surahEnglishName: snapshot.data
+                                            .sajdaAyahs[index].surahEnglishName,
+                                        englishNameTranslation: snapshot
+                                            .data
+                                            .sajdaAyahs[index]
+                                            .englishNameTranslation,
+                                        revelationType: snapshot.data
+                                            .sajdaAyahs[index].revelationType,
+                                      ));
                             },
                             leading: Text(
                               "${snapshot.data.sajdaAyahs[index].sajdaNumber}",
@@ -194,13 +194,13 @@ class Sajda extends StatelessWidget {
 }
 
 class SajdaInformation extends StatefulWidget {
-  final int sajdaNumber;
-  final String surahName;
-  final String surahEnglishName;
-  final String englishNameTranslation;
-  final int juzNumber;
-  final int rukuNumber;
-  final String revelationType;
+  final int? sajdaNumber;
+  final String? surahName;
+  final String? surahEnglishName;
+  final String? englishNameTranslation;
+  final int? juzNumber;
+  final int? rukuNumber;
+  final String? revelationType;
 
   SajdaInformation(
       {this.surahName,
@@ -217,8 +217,8 @@ class SajdaInformation extends StatefulWidget {
 
 class _SajdaInformationState extends State<SajdaInformation>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> scaleAnimation;
+  late AnimationController controller;
+  late Animation<double> scaleAnimation;
 
   @override
   void initState() {
@@ -272,11 +272,11 @@ class _SajdaInformationState extends State<SajdaInformation>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      widget.surahEnglishName,
+                      widget.surahEnglishName!,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     Text(
-                      widget.surahName,
+                      widget.surahName!,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ],
