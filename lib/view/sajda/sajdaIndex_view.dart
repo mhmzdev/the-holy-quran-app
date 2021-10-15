@@ -57,23 +57,23 @@ class Sajda extends StatelessWidget {
                               showDialog(
                                   context: context,
                                   builder: (_) => new SajdaInformation(
-                                    juzNumber: snapshot
-                                        .data.sajdaAyahs[index].juzNumber,
-                                    rukuNumber: snapshot
-                                        .data.sajdaAyahs[index].rukuNumber,
-                                    sajdaNumber: snapshot
-                                        .data.sajdaAyahs[index].sajdaNumber,
-                                    surahName: snapshot
-                                        .data.sajdaAyahs[index].surahName,
-                                    surahEnglishName: snapshot.data
-                                        .sajdaAyahs[index].surahEnglishName,
-                                    englishNameTranslation: snapshot
-                                        .data
-                                        .sajdaAyahs[index]
-                                        .englishNameTranslation,
-                                    revelationType: snapshot
-                                        .data.sajdaAyahs[index].revelationType,
-                                  ));
+                                        juzNumber: snapshot
+                                            .data.sajdaAyahs[index].juzNumber,
+                                        rukuNumber: snapshot
+                                            .data.sajdaAyahs[index].rukuNumber,
+                                        sajdaNumber: snapshot
+                                            .data.sajdaAyahs[index].sajdaNumber,
+                                        surahName: snapshot
+                                            .data.sajdaAyahs[index].surahName,
+                                        surahEnglishName: snapshot.data
+                                            .sajdaAyahs[index].surahEnglishName,
+                                        englishNameTranslation: snapshot
+                                            .data
+                                            .sajdaAyahs[index]
+                                            .englishNameTranslation,
+                                        revelationType: snapshot.data
+                                            .sajdaAyahs[index].revelationType,
+                                      ));
                             },
                             leading: Text(
                               "${snapshot.data.sajdaAyahs[index].sajdaNumber}",

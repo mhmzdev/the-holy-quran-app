@@ -23,10 +23,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 250));
+    animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 250));
   }
 
-  void toggle() => animationController.isDismissed ? animationController.forward() : animationController.reverse();
+  void toggle() => animationController.isDismissed
+      ? animationController.forward()
+      : animationController.reverse();
 
   late bool _canBeDragged;
 
@@ -56,7 +59,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       return;
     }
     if (details.velocity.pixelsPerSecond.dx.abs() >= _kMinFlingVelocity) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx / MediaQuery.of(context).size.width;
+      double visualVelocity = details.velocity.pixelsPerSecond.dx /
+          MediaQuery.of(context).size.width;
 
       animationController.fling(velocity: visualVelocity);
     } else if (animationController.value < 0.5) {
@@ -70,7 +74,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return (await (showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             title: new Text(
               "Exit Application",
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -126,17 +131,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 child: Stack(
                   children: <Widget>[
                     Transform.translate(
-                      offset: Offset(widget.maxSlide * (animationController.value - 1), 0),
+                      offset: Offset(
+                          widget.maxSlide * (animationController.value - 1), 0),
                       child: Transform(
                         transform: Matrix4.identity()
                           ..setEntry(3, 2, 0.001)
-                          ..rotateY(math.pi / 2 * (1 - animationController.value)),
+                          ..rotateY(
+                              math.pi / 2 * (1 - animationController.value)),
                         alignment: Alignment.centerRight,
                         child: MyDrawer(),
                       ),
                     ),
                     Transform.translate(
-                      offset: Offset(widget.maxSlide * animationController.value, 0),
+                      offset: Offset(
+                          widget.maxSlide * animationController.value, 0),
                       child: Transform(
                           transform: Matrix4.identity()
                             ..setEntry(3, 2, 0.001)
@@ -146,11 +154,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                     Positioned(
                       top: 4.0 + MediaQuery.of(context).padding.top,
-                      left: width * 0.01 + animationController.value * widget.maxSlide,
+                      left: width * 0.01 +
+                          animationController.value * widget.maxSlide,
                       child: IconButton(
                         icon: Icon(Icons.menu),
                         onPressed: toggle,
-                        color: themeChange.darkTheme ? Colors.white : Colors.black,
+                        color:
+                            themeChange.darkTheme ? Colors.white : Colors.black,
                       ),
                     ),
                   ],
@@ -208,7 +218,8 @@ class SurahBtn extends StatelessWidget {
           child: WidgetAnimator(
             Text(
               "Surah Index",
-              style: TextStyle(fontSize: height * 0.023, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
             ),
           ),
           color: Color(0xffee8f8b),
@@ -237,7 +248,8 @@ class SajdaBtn extends StatelessWidget {
           child: WidgetAnimator(
             Text(
               "Sajda Index",
-              style: TextStyle(fontSize: height * 0.023, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
             ),
           ),
           color: Color(0xffee8f8b),
@@ -266,7 +278,8 @@ class JuzzIndexBtn extends StatelessWidget {
           child: WidgetAnimator(
             Text(
               "Juzz Index",
-              style: TextStyle(fontSize: height * 0.023, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  fontSize: height * 0.023, fontWeight: FontWeight.w400),
             ),
           ),
           color: Color(0xffee8f8b),

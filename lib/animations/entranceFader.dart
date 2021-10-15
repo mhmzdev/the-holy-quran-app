@@ -52,12 +52,12 @@ class EntranceFaderState extends State<EntranceFader>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) => Opacity(
-            opacity: _controller.value,
-            child: Transform.translate(
-              offset: Offset(_dxAnimation.value, _dyAnimation.value),
-              child: widget.child,
-            ),
-          ),
+        opacity: _controller.value,
+        child: Transform.translate(
+          offset: Offset(_dxAnimation.value, _dyAnimation.value),
+          child: widget.child,
+        ),
+      ),
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 
 class OnBoardingCard extends StatelessWidget {
-
   final pages = [
     PageModel(
         color: Colors.grey[700],

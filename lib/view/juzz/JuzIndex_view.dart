@@ -24,7 +24,8 @@ class JuzIndex extends StatelessWidget {
             margin: EdgeInsets.fromLTRB(0, height * 0.2, 0, 0),
             child: GridView.builder(
               itemCount: 30,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (context, index) {
                 return WidgetAnimator(
                   GestureDetector(
@@ -35,11 +36,15 @@ class JuzIndex extends StatelessWidget {
                       ),
                     ),
                     child: Card(
-                      shape: themeChange.darkTheme ? StadiumBorder() : RoundedRectangleBorder(),
+                      shape: themeChange.darkTheme
+                          ? StadiumBorder()
+                          : RoundedRectangleBorder(),
                       color: Colors.white,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: themeChange.darkTheme ? Colors.grey[800] : Colors.white70,
+                          color: themeChange.darkTheme
+                              ? Colors.grey[800]
+                              : Colors.white70,
                           borderRadius: BorderRadius.circular(15.0),
                           border: Border.all(color: Colors.white, width: 1),
                         ),

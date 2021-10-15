@@ -37,16 +37,15 @@ class SajdaAyat {
 
   factory SajdaAyat.fromJSON(Map<String, dynamic> json) {
     return SajdaAyat(
-      number: json['number'],
-      text: json['text'],
-      surahName: json['surah']['name'],
-      surahEnglishName: json['surah']['englishName'],
-      englishNameTranslation: json['surah']['englishNameTranslation'],
+        number: json['number'],
+        text: json['text'],
+        surahName: json['surah']['name'],
+        surahEnglishName: json['surah']['englishName'],
+        englishNameTranslation: json['surah']['englishNameTranslation'],
         juzNumber: json['juz'],
-      manzilNumber: json['manzil'],
-      rukuNumber: json['ruku'],
-      revelationType: json['surah']['revelationType'],
-      sajdaNumber: json['sajda']['id']
-    );
+        manzilNumber: json['manzil'],
+        rukuNumber: json['ruku'],
+        revelationType: json['surah']['revelationType'],
+        sajdaNumber: json['sajda']['id']);
   }
 }

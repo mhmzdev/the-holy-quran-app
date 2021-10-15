@@ -21,13 +21,18 @@ class Juz extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            backgroundColor: themeChange.darkTheme ? Colors.grey[850] : Colors.white,
+            backgroundColor:
+                themeChange.darkTheme ? Colors.grey[850] : Colors.white,
             pinned: true,
             expandedHeight: height * 0.27,
             flexibleSpace: flexibleAppBar(context, height, width),
           ),
           SliverToBoxAdapter(
-            child: Container(padding: EdgeInsets.symmetric(horizontal: 5.0), height: height * 0.7, width: width, child: futureBuilderUsage(height)),
+            child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 5.0),
+                height: height * 0.7,
+                width: width,
+                child: futureBuilderUsage(height)),
           )
         ],
       ),
@@ -41,7 +46,8 @@ class Juz extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return LoadingShimmer(text: "Ayahs");
         } else if (snapshot.hasError || (snapshot.hasData == null)) {
-          return Center(child: Text("Connectivity Error! Please Check your Connection"));
+          return Center(
+              child: Text("Connectivity Error! Please Check your Connection"));
         } else {
           return ListView.builder(
             itemCount: snapshot.data!.juzAyahs!.length,
@@ -49,7 +55,9 @@ class Juz extends StatelessWidget {
               return WidgetAnimator(
                 ListTile(
                     title: Text(snapshot.data!.juzAyahs![index].ayahsText ?? '',
-                        textAlign: TextAlign.right, style: TextStyle(fontSize: height * 0.03, color: Colors.black)),
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                            fontSize: height * 0.03, color: Colors.black)),
                     trailing: CircleAvatar(
                       radius: height * 0.018,
                       backgroundColor: Color(0xff04364f),
@@ -73,7 +81,9 @@ class Juz extends StatelessWidget {
   Widget flexibleAppBar(BuildContext context, double width, double height) {
     return FlexibleSpaceBar(
       centerTitle: true,
-      title: Text("Juzz No. $juzIndex", style: TextStyle(fontWeight: FontWeight.bold, fontSize: height * 0.045)),
+      title: Text("Juzz No. $juzIndex",
+          style:
+              TextStyle(fontWeight: FontWeight.bold, fontSize: height * 0.045)),
       background: Stack(
         children: <Widget>[
           quranImageAppBar(height),
@@ -96,7 +106,9 @@ class Juz extends StatelessWidget {
                 return Text('');
               } else {
                 return Text(snapshot.data!.juzAyahs![juzIndex!].surahName ?? '',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.height * 0.045));
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.height * 0.045));
               }
             },
           ),
