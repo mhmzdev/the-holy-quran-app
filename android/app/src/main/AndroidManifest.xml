@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hmz.al_quran">
     <uses-permission android:name="android.permission.INTERNET" />
-    <application android:usesCleartextTraffic="true"/>
     <application
+        android:usesCleartextTraffic="true"
         android:name="io.flutter.app.FlutterApplication"
         android:label="The Holy Qur'an"
         android:icon="@mipmap/ic_launcher">
