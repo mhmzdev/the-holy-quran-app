@@ -15,15 +15,9 @@ class DrawerAppName extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Transform.scale(
-              scale: 1.5,
+              scale: 1.2,
               child: Switch(
-                inactiveThumbImage: NetworkImage(
-                  "https://user-images.githubusercontent.com/43790152/115108144-419b5680-9f88-11eb-82ea-8ee1af979fa4.png",
-                ),
-                activeThumbImage: NetworkImage(
-                  "https://user-images.githubusercontent.com/43790152/115108339-6217e080-9f89-11eb-9869-92dbf8e1476f.png",
-                ),
-                activeColor: Colors.grey[900],
+                activeColor: Colors.grey[500],
                 value: themeChange.darkTheme,
                 onChanged: (value) {
                   themeChange.darkTheme = value;

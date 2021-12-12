@@ -3,7 +3,6 @@ import 'package:al_quran/customWidgets/backBtn.dart';
 import 'package:al_quran/customWidgets/title.dart';
 import 'package:al_quran/darkModeController/darkThemeProvider.dart';
 import 'package:flutter/material.dart';
-import 'package:launch_review/launch_review.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -82,7 +81,7 @@ class GitHubRepoBtn extends StatelessWidget {
               ],
             ),
             onPressed: () =>
-                launch("https://github.com/m-hamzashakeel/The_Holy_Quran_App")),
+                launch("https://github.com/mhmzdev/The_Holy_Quran_App")),
       ),
     );
   }
@@ -94,7 +93,7 @@ class ShareAppBtn extends StatefulWidget {
 }
 
 class _ShareAppBtnState extends State<ShareAppBtn> {
-  String text = "Download the latest Holy Qur'an App on Play store\n\n"
+  String text = "Download the latest no-Ads Holy Qur'an App on Play store\n\n"
       "https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)";
 
   void share(BuildContext context) {
@@ -139,20 +138,21 @@ class RateFeedBackBtn extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.5,
         height: MediaQuery.of(context).size.height * 0.055,
         child: FlatButton(
-            padding: EdgeInsets.all(5.0),
-            color: Color(0xff689f38),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Icon(
-                  ShareIcon.google_play,
-                  size: MediaQuery.of(context).size.height * 0.025,
-                ),
-                Text("  Rate & Feedback")
-              ],
-            ),
-            onPressed: () =>
-                LaunchReview.launch(androidAppId: "com.hmz.al_quran")),
+          padding: EdgeInsets.all(5.0),
+          color: Color(0xff689f38),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(
+                ShareIcon.google_play,
+                size: MediaQuery.of(context).size.height * 0.025,
+              ),
+              Text("  Rate & Feedback")
+            ],
+          ),
+          onPressed: () => launch(
+              'https://play.google.com/store/apps/details?id=com.hmz.al_quran'),
+        ),
       ),
     );
   }

@@ -6,11 +6,28 @@ import 'package:al_quran/customWidgets/flare.dart';
 import 'package:al_quran/customWidgets/loadingShimmer.dart';
 import 'package:al_quran/customWidgets/title.dart';
 import 'package:al_quran/darkModeController/darkThemeProvider.dart';
+import 'package:al_quran/model/surah/surah.dart';
+import 'package:al_quran/model/surah/surah_list.dart';
 import 'package:al_quran/view/surahas/ayahs_view.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-class SurahIndex extends StatelessWidget {
+class SurahIndex extends StatefulWidget {
+  @override
+  State<SurahIndex> createState() => _SurahIndexState();
+}
+
+class _SurahIndexState extends State<SurahIndex> {
+  final _hiveBox = Hive.box('data');
+  List<Surah>? _surahs = [];
+
+  @override
+  void initState() {
+    _getSurahData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
@@ -21,32 +38,16 @@ class SurahIndex extends StatelessWidget {
         body: SafeArea(
       child: Stack(
         children: <Widget>[
-          FutureBuilder(
-            future: QuranAPI().getSurahList(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (!snapshot.hasData) {
-                return LoadingShimmer(
-                  text: "Surahs",
-                );
-              } else if (snapshot.connectionState == ConnectionState.done &&
-                  !snapshot.hasData) {
-                return Center(
-                    child:
-                        Text("Connectivity Error! Please Try Again Later :)"));
-              } else if (snapshot.hasData == null) {
-                return Center(
-                    child: Text(
-                        "Connectivity Error! Please Check your Internet Connection"));
-              } else if (snapshot.hasError) {
-                return Center(
-                    child: Text(
-                  "Something went wrong on our side!\nWe are trying to reconnect :)",
-                  textAlign: TextAlign.center,
-                ));
-              } else if (snapshot.hasData) {
-                return Container(
-                  padding: EdgeInsets.all(8.0),
-                  margin: EdgeInsets.fromLTRB(0, height * 0.2, 0, 0),
+          _surahs!.length == 0
+              ? Center(
+                  child: LoadingShimmer(
+                    text: "Surahs",
+                  ),
+                )
+              : Padding(
+                  padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.22,
+                  ),
                   child: ListView.separated(
                     separatorBuilder: (context, index) {
                       return Divider(
@@ -54,39 +55,23 @@ class SurahIndex extends StatelessWidget {
                         height: 2.0,
                       );
                     },
-                    itemCount: snapshot.data.surahs.length,
+                    itemCount: _surahs!.length,
                     itemBuilder: (context, index) {
                       return WidgetAnimator(
                         ListTile(
-                          onLongPress: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => SurahInformation(
-                                surahNumber: snapshot.data.surahs[index].number,
-                                arabicName:
-                                    "${snapshot.data.surahs[index].name}",
-                                englishName:
-                                    "${snapshot.data.surahs[index].englishName}",
-                                ayahs: snapshot.data.surahs[index].ayahs.length,
-                                revelationType:
-                                    "${snapshot.data.surahs[index].revelationType}",
-                                englishNameTranslation:
-                                    "${snapshot.data.surahs[index].englishNameTranslation}",
-                              ),
-                            );
-                          },
+                          onLongPress: () => _surahInforBox(index),
                           leading: Text(
-                            "${snapshot.data.surahs[index].number}",
+                            "${_surahs![index].number}",
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           title: Text(
-                            "${snapshot.data.surahs[index].englishName}",
+                            "${_surahs![index].englishName}",
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
-                          subtitle: Text(
-                              "${snapshot.data.surahs[index].englishNameTranslation}"),
+                          subtitle:
+                              Text("${_surahs![index].englishNameTranslation}"),
                           trailing: Text(
-                            "${snapshot.data.surahs[index].name}",
+                            "${_surahs![index].name}",
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           onTap: () {
@@ -94,12 +79,11 @@ class SurahIndex extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => SurahAyats(
-                                  ayatsList: snapshot.data.surahs[index].ayahs,
-                                  surahName: snapshot.data.surahs[index].name,
-                                  surahEnglishName:
-                                      snapshot.data.surahs[index].englishName,
-                                  englishMeaning: snapshot.data.surahs[index]
-                                      .englishNameTranslation,
+                                  ayatsList: _surahs![index].ayahs,
+                                  surahName: _surahs![index].name,
+                                  surahEnglishName: _surahs![index].englishName,
+                                  englishMeaning:
+                                      _surahs![index].englishNameTranslation,
                                 ),
                               ),
                             );
@@ -108,14 +92,7 @@ class SurahIndex extends StatelessWidget {
                       );
                     },
                   ),
-                );
-              } else {
-                return Center(
-                  child: Text("Connectivity Error! Please Try Again Later"),
-                );
-              }
-            },
-          ),
+                ),
           CustomImage(
             opacity: 0.3,
             height: height * 0.17,
@@ -184,6 +161,35 @@ class SurahIndex extends StatelessWidget {
         ],
       ),
     ));
+  }
+
+  void _surahInforBox(int index) {
+    showDialog(
+      context: context,
+      builder: (context) => SurahInformation(
+        surahNumber: _surahs![index].number,
+        arabicName: "${_surahs![index].name}",
+        englishName: "${_surahs![index].englishName}",
+        ayahs: _surahs![index].ayahs!.length,
+        revelationType: "${_surahs![index].revelationType}",
+        englishNameTranslation: "${_surahs![index].englishNameTranslation}",
+      ),
+    );
+  }
+
+  // getting data
+  Future<void> _getSurahData() async {
+    SurahsList? _cacheSurahList = await _hiveBox.get('surahList');
+    if (_cacheSurahList == null || _cacheSurahList.surahs!.isEmpty) {
+      SurahsList _newSurahsList = await QuranAPI.getSurahList();
+      setState(() {
+        _surahs = _newSurahsList.surahs;
+      });
+    } else {
+      setState(() {
+        _surahs = _cacheSurahList.surahs;
+      });
+    }
   }
 }
 

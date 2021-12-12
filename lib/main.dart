@@ -1,6 +1,12 @@
-import 'package:al_quran/darkModeController/darkThemePref.dart';
 import 'package:al_quran/darkModeController/darkThemeProvider.dart';
 import 'package:al_quran/darkModeController/themeStyle.dart';
+import 'package:al_quran/model/ayat/ayat.dart';
+import 'package:al_quran/model/juzz/juz.dart';
+import 'package:al_quran/model/juzz/juz_list.dart';
+import 'package:al_quran/model/sajda/sajda.dart';
+import 'package:al_quran/model/sajda/sajda_list.dart';
+import 'package:al_quran/model/surah/surah.dart';
+import 'package:al_quran/model/surah/surah_list.dart';
 import 'package:al_quran/view/juzz/JuzIndex_view.dart';
 import 'package:al_quran/view/homeScreen_view.dart';
 import 'package:al_quran/view/otherViews/help.dart';
@@ -10,6 +16,7 @@ import 'package:al_quran/view/sajda/sajdaIndex_view.dart';
 import 'package:al_quran/view/surahas/surahIndex_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,6 +27,26 @@ Future<void> main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   initScreen = prefs.getInt("initScreen");
   await prefs.setInt("initScreen", 1);
+
+  // hive
+  // hive
+  await Hive.initFlutter();
+
+  // hive adapter
+  Hive.registerAdapter<Ayat>(AyatAdapter());
+
+  Hive.registerAdapter<JuzList>(JuzListAdapter());
+  Hive.registerAdapter<JuzAyahs>(JuzAyahsAdapter());
+
+  Hive.registerAdapter<SajdaList>(SajdaListAdapter());
+  Hive.registerAdapter<SajdaAyat>(SajdaAyatAdapter());
+
+  Hive.registerAdapter<SurahsList>(SurahsListAdapter());
+  Hive.registerAdapter<Surah>(SurahAdapter());
+
+  // box
+  await Hive.openBox('data');
+
   runApp(MyApp());
 }
 
@@ -72,7 +99,7 @@ class _MyAppState extends State<MyApp> {
                 ),
             '/surahIndex': (context) => SurahIndex(),
             '/sajda': (context) => Sajda(),
-            '/juzzIndex': (context) => JuzIndex(),
+            '/juzIndex': (context) => JuzIndex(),
             '/help': (context) => Help(),
             '/shareApp': (context) => ShareApp()
           },

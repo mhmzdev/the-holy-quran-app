@@ -15,7 +15,7 @@ class CustomTitle extends StatelessWidget {
 
     return Positioned(
       top: height * 0.12,
-      left: width * 0.1,
+      left: width * 0.05,
       child: Shimmer.fromColors(
         baseColor: themeChange.darkTheme ? Colors.white : Colors.black,
         highlightColor: Colors.grey,

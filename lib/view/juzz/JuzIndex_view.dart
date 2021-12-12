@@ -1,4 +1,5 @@
 import 'package:al_quran/animations/bottomAnimation.dart';
+import 'package:al_quran/controller/quranAPI.dart';
 import 'package:al_quran/customWidgets/backBtn.dart';
 import 'package:al_quran/customWidgets/customImagePos.dart';
 import 'package:al_quran/customWidgets/flare.dart';
@@ -6,9 +7,40 @@ import 'package:al_quran/customWidgets/title.dart';
 import 'package:al_quran/darkModeController/darkThemeProvider.dart';
 import 'package:al_quran/view/juzz/juz_view.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-class JuzIndex extends StatelessWidget {
+class JuzIndex extends StatefulWidget {
+  @override
+  State<JuzIndex> createState() => _JuzIndexState();
+}
+
+class _JuzIndexState extends State<JuzIndex> {
+  // hive main box
+  final _hive = Hive.box('data');
+
+  // getting all Juz once!
+  Future<void> _getAllJuzHiveBox() async {
+    bool? _check = await _hive.get('isJuzIndexed');
+
+    // putting values
+    if (_check == null || !_check) {
+      print('calling api');
+      for (int i = 1; i <= 30; i++) {
+        // create box
+        await QuranAPI.getJuzz(i);
+      }
+      print('done!');
+      await _hive.put('isJuzIndexed', true);
+    }
+  }
+
+  @override
+  void initState() {
+    _getAllJuzHiveBox();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);

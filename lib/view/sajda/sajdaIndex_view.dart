@@ -6,11 +6,28 @@ import 'package:al_quran/customWidgets/flare.dart';
 import 'package:al_quran/customWidgets/loadingShimmer.dart';
 import 'package:al_quran/customWidgets/title.dart';
 import 'package:al_quran/darkModeController/darkThemeProvider.dart';
+import 'package:al_quran/model/sajda/sajda.dart';
+import 'package:al_quran/model/sajda/sajda_list.dart';
 import 'package:al_quran/view/sajda/sajdaAyahs_view.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-class Sajda extends StatelessWidget {
+class Sajda extends StatefulWidget {
+  @override
+  State<Sajda> createState() => _SajdaState();
+}
+
+class _SajdaState extends State<Sajda> {
+  final _hive = Hive.box('data');
+  List<SajdaAyat>? _sajdas = [];
+
+  @override
+  void initState() {
+    _getSajdaData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -20,119 +37,64 @@ class Sajda extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            FutureBuilder(
-              future: QuranAPI().getSajda(),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return LoadingShimmer(
+            _sajdas!.length == 0
+                ? LoadingShimmer(
                     text: "Sajdas",
-                  );
-                } else if (snapshot.hasData == null) {
-                  return Center(
-                      child: Text(
-                          "Connectivity Error! Please Check your Connection"));
-                } else if (snapshot.hasError) {
-                  return Center(
-                      child: Text(
-                    "Something went wrong on our side!\nWe are trying to reconnect :)",
-                    textAlign: TextAlign.center,
-                  ));
-                } else if (snapshot.connectionState == ConnectionState.done) {
-                  return Container(
-                    color: Colors.transparent,
-                    padding: EdgeInsets.all(8.0),
-                    margin: EdgeInsets.fromLTRB(0, height * 0.2, 0, 0),
+                  )
+                : Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        0, MediaQuery.of(context).size.height * 0.22, 0, 0),
                     child: ListView.separated(
-                      separatorBuilder: (context, index) {
-                        return Divider(
-                          color: Color(0xffee8f8b),
-                          height: 2.0,
-                        );
-                      },
-                      itemCount: snapshot.data.sajdaAyahs.length,
+                      itemCount: _sajdas!.length,
+                      separatorBuilder: (context, index) => Divider(
+                        color: Color(0xffee8f8b),
+                        height: 2.0,
+                      ),
                       itemBuilder: (context, index) {
                         return WidgetAnimator(
                           ListTile(
-                            onLongPress: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (_) => new SajdaInformation(
-                                        juzNumber: snapshot
-                                            .data.sajdaAyahs[index].juzNumber,
-                                        rukuNumber: snapshot
-                                            .data.sajdaAyahs[index].rukuNumber,
-                                        sajdaNumber: snapshot
-                                            .data.sajdaAyahs[index].sajdaNumber,
-                                        surahName: snapshot
-                                            .data.sajdaAyahs[index].surahName,
-                                        surahEnglishName: snapshot.data
-                                            .sajdaAyahs[index].surahEnglishName,
-                                        englishNameTranslation: snapshot
-                                            .data
-                                            .sajdaAyahs[index]
-                                            .englishNameTranslation,
-                                        revelationType: snapshot.data
-                                            .sajdaAyahs[index].revelationType,
-                                      ));
-                            },
+                            onLongPress: () => _sajdaInfoBox(index),
                             leading: Text(
-                              "${snapshot.data.sajdaAyahs[index].sajdaNumber}",
+                              "${_sajdas![index].sajdaNumber}",
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             title: Text(
-                              "${snapshot.data.sajdaAyahs[index].surahEnglishName}",
+                              "${_sajdas![index].surahEnglishName}",
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             subtitle: Text(
-                              "${snapshot.data.sajdaAyahs[index].englishNameTranslation}",
+                              "${_sajdas![index].englishNameTranslation}",
                             ),
                             trailing: Text(
-                              "${snapshot.data.sajdaAyahs[index].surahName}",
+                              "${_sajdas![index].surahName}",
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             onTap: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SajdaAyah(
-                                            surahName: snapshot.data
-                                                .sajdaAyahs[index].surahName,
-                                            surahEnglishName: snapshot
-                                                .data
-                                                .sajdaAyahs[index]
-                                                .surahEnglishName,
-                                            englishNameTranslation: snapshot
-                                                .data
-                                                .sajdaAyahs[index]
-                                                .englishNameTranslation,
-                                            juz: snapshot.data.sajdaAyahs[index]
-                                                .juzNumber,
-                                            manzil: snapshot.data
-                                                .sajdaAyahs[index].manzilNumber,
-                                            ruku: snapshot.data
-                                                .sajdaAyahs[index].rukuNumber,
-                                            sajdaAyahs: snapshot
-                                                .data.sajdaAyahs[index].text,
-                                            sajdaNumber: snapshot.data
-                                                .sajdaAyahs[index].sajdaNumber,
-                                            revelationType: snapshot
-                                                .data
-                                                .sajdaAyahs[index]
-                                                .revelationType,
-                                          )));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SajdaAyah(
+                                    surahName: _sajdas![index].surahName,
+                                    surahEnglishName:
+                                        _sajdas![index].surahEnglishName,
+                                    englishNameTranslation:
+                                        _sajdas![index].englishNameTranslation,
+                                    juz: _sajdas![index].juzNumber,
+                                    manzil: _sajdas![index].manzilNumber,
+                                    ruku: _sajdas![index].rukuNumber,
+                                    sajdaAyahs: _sajdas![index].text,
+                                    sajdaNumber: _sajdas![index].sajdaNumber,
+                                    revelationType:
+                                        _sajdas![index].revelationType,
+                                  ),
+                                ),
+                              );
                             },
                           ),
                         );
                       },
                     ),
-                  );
-                } else {
-                  return Center(
-                      child:
-                          Text("Connectivity Error! Please Try Again Later"));
-                }
-              },
-            ),
+                  ),
             BackBtn(),
             CustomTitle(
               title: "Sajda Index",
@@ -188,6 +150,38 @@ class Sajda extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  // gettin data
+  Future<void> _getSajdaData() async {
+    SajdaList? _cacheSajdaList = await _hive.get('sajdaList');
+
+    if (_cacheSajdaList == null || _cacheSajdaList.sajdaAyahs!.isEmpty) {
+      SajdaList _newSajdaList = await QuranAPI.getSajda();
+
+      setState(() {
+        _sajdas = _newSajdaList.sajdaAyahs;
+      });
+    } else {
+      setState(() {
+        _sajdas = _cacheSajdaList.sajdaAyahs;
+      });
+    }
+  }
+
+  void _sajdaInfoBox(int index) {
+    showDialog(
+      context: context,
+      builder: (_) => new SajdaInformation(
+        juzNumber: _sajdas![index].juzNumber,
+        rukuNumber: _sajdas![index].rukuNumber,
+        sajdaNumber: _sajdas![index].sajdaNumber,
+        surahName: _sajdas![index].surahName,
+        surahEnglishName: _sajdas![index].surahEnglishName,
+        englishNameTranslation: _sajdas![index].englishNameTranslation,
+        revelationType: _sajdas![index].revelationType,
       ),
     );
   }

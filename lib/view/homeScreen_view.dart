@@ -273,11 +273,11 @@ class JuzzIndexBtn extends StatelessWidget {
         child: RaisedButton(
           shape: StadiumBorder(),
           onPressed: () {
-            Navigator.pushNamed(context, '/juzzIndex');
+            Navigator.pushNamed(context, '/juzIndex');
           },
           child: WidgetAnimator(
             Text(
-              "Juzz Index",
+              "Juz Index",
               style: TextStyle(
                   fontSize: height * 0.023, fontWeight: FontWeight.w400),
             ),

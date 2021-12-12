@@ -1,6 +1,6 @@
 import 'package:al_quran/animations/bottomAnimation.dart';
 import 'package:al_quran/darkModeController/darkThemeProvider.dart';
-import 'package:al_quran/model/surahModel.dart';
+import 'package:al_quran/model/ayat/ayat.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

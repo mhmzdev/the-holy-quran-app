@@ -1,5 +1,6 @@
 import 'package:al_quran/animations/bottomAnimation.dart';
 import 'package:al_quran/darkModeController/darkThemeProvider.dart';
+import 'package:al_quran/view/juzz/juz_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -33,85 +34,107 @@ class SajdaAyah extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              backgroundColor:
-                  themeChange.darkTheme ? Colors.grey[850] : Colors.white,
-              pinned: true,
-              expandedHeight: height * 0.27,
-              flexibleSpace: flexibleAppBar(context, height, width),
+      backgroundColor: Colors.white,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
+            <Widget>[
+          SliverAppBar(
+            backgroundColor:
+                themeChange.darkTheme ? Colors.grey[850] : Colors.white,
+            pinned: true,
+            expandedHeight: height * 0.27,
+            flexibleSpace: CustomFlexibleAppBar(
+              surahName: surahName,
+              surahEnglishName: surahEnglishName,
+              englishNameTranslation: englishNameTranslation,
             ),
-            SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.all(5.0),
-                width: width,
-                height: height * 0.692,
-                child: Stack(
-                  children: <Widget>[
-                    SajdaImage(),
-                    Column(
-                      children: <Widget>[
-                        SizedBox(height: height * 0.05),
-                        Text(
-                          "Sajda Ayah",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: height * 0.03,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        SizedBox(height: height * 0.02),
-                        sajda(height, sajdaNumber, sajdaAyahs!),
-                        SizedBox(height: height * 0.03),
-                        sajdaInfo(ruku, juz, manzil, revelationType,
-                            sajdaNumber, context),
-                      ],
+          ),
+        ],
+        body: Container(
+          padding: EdgeInsets.all(5.0),
+          width: width,
+          height: height * 0.692,
+          child: Stack(
+            children: <Widget>[
+              SajdaImage(),
+              Column(
+                children: <Widget>[
+                  SizedBox(height: height * 0.05),
+                  Text(
+                    "Sajda Ayah",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: height * 0.03,
+                      fontWeight: FontWeight.w600,
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: height * 0.02),
+                  Sajda(
+                    ayah: sajdaAyahs,
+                    index: sajdaNumber,
+                  ),
+                  SizedBox(height: height * 0.03),
+                  SajdaInformation(
+                    juz: juz,
+                    ruku: ruku,
+                    revelationType: revelationType,
+                  ),
+                ],
               ),
-            )
-          ],
-        ));
-  }
-
-  Widget sajda(double height, int? index, String ayahs) {
-    return WidgetAnimator(
-      ListTile(
-        trailing: CircleAvatar(
-          radius: height * 0.013,
-          backgroundColor: Color(0xff04364f),
-          child: CircleAvatar(
-              radius: height * 0.012,
-              backgroundColor: Colors.white,
-              child: Text(
-                index.toString(),
-                style: TextStyle(fontSize: height * 0.015),
-              )),
+            ],
+          ),
         ),
-        title: Text(ayahs,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: height * 0.03, color: Colors.black)),
       ),
     );
   }
+}
 
-  Widget flexibleAppBar(BuildContext context, double width, double height) {
+class CustomFlexibleAppBar extends StatelessWidget {
+  final String? surahName;
+  final String? surahEnglishName;
+  final String? englishNameTranslation;
+  const CustomFlexibleAppBar({
+    Key? key,
+    required this.surahName,
+    required this.surahEnglishName,
+    required this.englishNameTranslation,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return FlexibleSpaceBar(
-        centerTitle: true,
-        title: Text(surahEnglishName!,
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: height * 0.045)),
-        background: Stack(
-          children: <Widget>[
-            quranImageAppBar(height),
-            infoInAppBar(context),
-          ],
-        ));
+      centerTitle: true,
+      title: Text(
+        surahEnglishName!,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: MediaQuery.of(context).size.height * 0.03,
+        ),
+      ),
+      background: Stack(
+        children: <Widget>[
+          QuranImage(),
+          InfoAppBar(
+            englishNameTranslation: englishNameTranslation,
+            surahName: surahName,
+          )
+        ],
+      ),
+    );
   }
+}
 
-  Widget infoInAppBar(BuildContext context) {
+class InfoAppBar extends StatelessWidget {
+  final String? englishNameTranslation;
+  final String? surahName;
+  const InfoAppBar({
+    Key? key,
+    required this.englishNameTranslation,
+    required this.surahName,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -125,52 +148,108 @@ class SajdaAyah extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget quranImageAppBar(double height) {
-    return Align(
-      alignment: Alignment.bottomRight,
-      child: Opacity(
-          opacity: 0.3,
-          child: Image.asset(
-            'assets/quranRail.png',
-            height: height * 0.4,
-          )),
+class Sajda extends StatelessWidget {
+  final int? index;
+  final String? ayah;
+  const Sajda({
+    Key? key,
+    required this.ayah,
+    required this.index,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return WidgetAnimator(
+      ListTile(
+        trailing: CircleAvatar(
+          radius: MediaQuery.of(context).size.height * 0.013,
+          backgroundColor: Color(0xff04364f),
+          child: CircleAvatar(
+              radius: MediaQuery.of(context).size.height * 0.012,
+              backgroundColor: Colors.white,
+              child: Text(
+                index.toString(),
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height * 0.015,
+                ),
+              )),
+        ),
+        title: Text(
+          ayah!,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: MediaQuery.of(context).size.height * 0.03,
+            color: Colors.black,
+          ),
+        ),
+      ),
     );
   }
+}
 
-  Widget sajdaInfo(int? ruku, int? juz, int? manzil, String? relevationType,
-      int? sajdaIndex, BuildContext context) {
+class SajdaInformation extends StatelessWidget {
+  final int? juz;
+  final int? ruku;
+  final String? revelationType;
+  const SajdaInformation({
+    Key? key,
+    required this.juz,
+    required this.ruku,
+    required this.revelationType,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Colors.black,
       highlightColor: Colors.grey,
       enabled: true,
       child: Column(
         children: <Widget>[
-          Text("--- Sajda Info ---\n",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w600)),
-          infoText("Juz", juz.toString(), context),
-          infoText("Ruku", ruku.toString(), context),
-          infoText("Chapter", revelationType!, context)
+          Text(
+            "--- Sajda Info ---\n",
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          InfoText(leading: 'Juz', info: juz.toString()),
+          InfoText(leading: 'Ruku', info: ruku.toString()),
+          InfoText(leading: 'Chapter', info: revelationType)
         ],
       ),
     );
   }
+}
 
-  Widget infoText(String leading, String info, BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+class InfoText extends StatelessWidget {
+  final String? leading;
+  final String? info;
+  const InfoText({
+    Key? key,
+    required this.leading,
+    required this.info,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Text(
-          leading + ": ",
-          style: TextStyle(color: Colors.black, fontSize: height * 0.025),
+          leading! + ": ",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: MediaQuery.of(context).size.height * 0.025,
+          ),
         ),
         Text(
-          info,
+          info!,
           style: TextStyle(
               color: Colors.black87,
-              fontSize: height * 0.025,
+              fontSize: MediaQuery.of(context).size.height * 0.025,
               fontWeight: FontWeight.w600),
         ),
       ],

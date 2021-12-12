@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">http://api.alquran.cloud/v1/quran/quran-uthmani</domain>
+        <domain includeSubdomains="true">http://api.alquran.cloud/v1/sajda/quran-uthmani</domain>
+        <domain includeSubdomains="true">http://api.alquran.cloud/v1/juz/1/quran-uthmani</domain>
+    </domain-config>
+</network-security-config>

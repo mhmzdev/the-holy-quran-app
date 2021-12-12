@@ -82,14 +82,14 @@ class HelpGuide extends StatelessWidget {
             title: "Code Available",
             guideDescription:
                 "Code for v1.0.0 is available at the following link: " +
-                    "\n\nhttps://github.com/m-hamzashakeel/The_Holy_Quran_App" +
+                    "\n\nhttps://github.com/mhmzdev/The_Holy_Quran_App" +
                     "\n\nThe code is only for learning purposes, it has proper LICENSE that you are not allowed to publish this app.",
           ),
           GuideContainer(
             guideNo: 8,
             title: "Developer's Info",
             guideDescription:
-                "Name: Muhammad Hamza \nEmail: hamza.6.shakeel@gmail.com \nGitHub: @m-hamzashakeel \nWebsite: m-hamzashakeel.github.io",
+                "Name: Muhammad Hamza \nEmail: hamza.6.shakeel@gmail.com \nGitHub: @mhmzdev \nWebsite: hamza@mhmz.dev",
           )
         ],
       ),
