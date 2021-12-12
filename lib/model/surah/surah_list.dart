@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-
 import 'package:al_quran/model/surah/surah.dart';
 
 part 'surah_list.g.dart';
@@ -33,7 +31,7 @@ class SurahsList {
 
   SurahsList merge(SurahsList model) {
     return SurahsList(
-      surahs: model.surahs ?? this.surahs,
+      surahs: model.surahs ?? surahs,
     );
   }
 
@@ -56,14 +54,4 @@ class SurahsList {
 
   @override
   String toString() => 'SurahsList(surahs: $surahs)';
-
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-
-    return o is SurahsList && listEquals(o.surahs, surahs);
-  }
-
-  @override
-  int get hashCode => surahs.hashCode;
 }

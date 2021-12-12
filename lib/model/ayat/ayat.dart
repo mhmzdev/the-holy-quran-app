@@ -32,8 +32,8 @@ class Ayat {
 
   Ayat merge(Ayat model) {
     return Ayat(
-      text: model.text ?? this.text,
-      number: model.number ?? this.number,
+      text: model.text ?? text,
+      number: model.number ?? number,
     );
   }
 
@@ -57,14 +57,4 @@ class Ayat {
 
   @override
   String toString() => 'Ayat(text: $text, number: $number)';
-
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-
-    return o is Ayat && o.text == text && o.number == number;
-  }
-
-  @override
-  int get hashCode => text.hashCode ^ number.hashCode;
 }

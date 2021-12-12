@@ -1,8 +1,5 @@
 import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-
 import 'package:al_quran/model/sajda/sajda.dart';
 
 part 'sajda_list.g.dart';
@@ -33,7 +30,7 @@ class SajdaList {
 
   SajdaList merge(SajdaList model) {
     return SajdaList(
-      sajdaAyahs: model.sajdaAyahs ?? this.sajdaAyahs,
+      sajdaAyahs: model.sajdaAyahs ?? sajdaAyahs,
     );
   }
 
@@ -44,7 +41,6 @@ class SajdaList {
   }
 
   factory SajdaList.fromMap(Map<String, dynamic> map) {
-    print(map);
     return SajdaList(
       sajdaAyahs: List<SajdaAyat>.from(
           map['sajdaAyahs']?.map((x) => SajdaAyat?.fromMap(x))),
@@ -58,14 +54,4 @@ class SajdaList {
 
   @override
   String toString() => 'SajdaList(sajdaAyahs: $sajdaAyahs)';
-
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-
-    return o is SajdaList && listEquals(o.sajdaAyahs, sajdaAyahs);
-  }
-
-  @override
-  int get hashCode => sajdaAyahs.hashCode;
 }

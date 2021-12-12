@@ -83,17 +83,17 @@ class SajdaAyat {
 
   SajdaAyat merge(SajdaAyat model) {
     return SajdaAyat(
-      number: model.number ?? this.number,
-      text: model.text ?? this.text,
-      surahName: model.surahName ?? this.surahName,
-      surahEnglishName: model.surahEnglishName ?? this.surahEnglishName,
+      number: model.number ?? number,
+      text: model.text ?? text,
+      surahName: model.surahName ?? surahName,
+      surahEnglishName: model.surahEnglishName ?? surahEnglishName,
       englishNameTranslation:
-          model.englishNameTranslation ?? this.englishNameTranslation,
-      revelationType: model.revelationType ?? this.revelationType,
-      juzNumber: model.juzNumber ?? this.juzNumber,
-      manzilNumber: model.manzilNumber ?? this.manzilNumber,
-      rukuNumber: model.rukuNumber ?? this.rukuNumber,
-      sajdaNumber: model.sajdaNumber ?? this.sajdaNumber,
+          model.englishNameTranslation ?? englishNameTranslation,
+      revelationType: model.revelationType ?? revelationType,
+      juzNumber: model.juzNumber ?? juzNumber,
+      manzilNumber: model.manzilNumber ?? manzilNumber,
+      rukuNumber: model.rukuNumber ?? rukuNumber,
+      sajdaNumber: model.sajdaNumber ?? sajdaNumber,
     );
   }
 
@@ -135,36 +135,5 @@ class SajdaAyat {
   @override
   String toString() {
     return 'SajdaAyat(number: $number, text: $text, surahName: $surahName, surahEnglishName: $surahEnglishName, englishNameTranslation: $englishNameTranslation, revelationType: $revelationType, juzNumber: $juzNumber, manzilNumber: $manzilNumber, rukuNumber: $rukuNumber, sajdaNumber: $sajdaNumber)';
-  }
-
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-
-    return o is SajdaAyat &&
-        o.number == number &&
-        o.text == text &&
-        o.surahName == surahName &&
-        o.surahEnglishName == surahEnglishName &&
-        o.englishNameTranslation == englishNameTranslation &&
-        o.revelationType == revelationType &&
-        o.juzNumber == juzNumber &&
-        o.manzilNumber == manzilNumber &&
-        o.rukuNumber == rukuNumber &&
-        o.sajdaNumber == sajdaNumber;
-  }
-
-  @override
-  int get hashCode {
-    return number.hashCode ^
-        text.hashCode ^
-        surahName.hashCode ^
-        surahEnglishName.hashCode ^
-        englishNameTranslation.hashCode ^
-        revelationType.hashCode ^
-        juzNumber.hashCode ^
-        manzilNumber.hashCode ^
-        rukuNumber.hashCode ^
-        sajdaNumber.hashCode;
   }
 }

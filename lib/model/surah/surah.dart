@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-
 import 'package:al_quran/model/ayat/ayat.dart';
 
 part 'surah.g.dart';
@@ -65,13 +63,13 @@ class Surah {
 
   Surah merge(Surah model) {
     return Surah(
-      number: model.number ?? this.number,
-      name: model.name ?? this.name,
-      englishName: model.englishName ?? this.englishName,
+      number: model.number ?? number,
+      name: model.name ?? name,
+      englishName: model.englishName ?? englishName,
       englishNameTranslation:
-          model.englishNameTranslation ?? this.englishNameTranslation,
-      revelationType: model.revelationType ?? this.revelationType,
-      ayahs: model.ayahs ?? this.ayahs,
+          model.englishNameTranslation ?? englishNameTranslation,
+      revelationType: model.revelationType ?? revelationType,
+      ayahs: model.ayahs ?? ayahs,
     );
   }
 
@@ -104,28 +102,5 @@ class Surah {
   @override
   String toString() {
     return 'Surah(number: $number, name: $name, englishName: $englishName, englishNameTranslation: $englishNameTranslation, revelationType: $revelationType, ayahs: $ayahs)';
-  }
-
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-
-    return o is Surah &&
-        o.number == number &&
-        o.name == name &&
-        o.englishName == englishName &&
-        o.englishNameTranslation == englishNameTranslation &&
-        o.revelationType == revelationType &&
-        listEquals(o.ayahs, ayahs);
-  }
-
-  @override
-  int get hashCode {
-    return number.hashCode ^
-        name.hashCode ^
-        englishName.hashCode ^
-        englishNameTranslation.hashCode ^
-        revelationType.hashCode ^
-        ayahs.hashCode;
   }
 }

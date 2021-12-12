@@ -1,5 +1,5 @@
-import 'package:al_quran/darkModeController/darkThemeProvider.dart';
-import 'package:al_quran/darkModeController/themeStyle.dart';
+import 'package:al_quran/dark_mode_controller/theme_provider.dart';
+import 'package:al_quran/dark_mode_controller/theme_style.dart';
 import 'package:al_quran/model/ayat/ayat.dart';
 import 'package:al_quran/model/juzz/juz.dart';
 import 'package:al_quran/model/juzz/juz_list.dart';
@@ -7,13 +7,13 @@ import 'package:al_quran/model/sajda/sajda.dart';
 import 'package:al_quran/model/sajda/sajda_list.dart';
 import 'package:al_quran/model/surah/surah.dart';
 import 'package:al_quran/model/surah/surah_list.dart';
-import 'package:al_quran/view/juzz/JuzIndex_view.dart';
-import 'package:al_quran/view/homeScreen_view.dart';
-import 'package:al_quran/view/otherViews/help.dart';
-import 'package:al_quran/view/otherViews/introduction.dart';
-import 'package:al_quran/view/otherViews/shareApp.dart';
-import 'package:al_quran/view/sajda/sajdaIndex_view.dart';
-import 'package:al_quran/view/surahas/surahIndex_view.dart';
+import 'package:al_quran/view/config/help.dart';
+import 'package:al_quran/view/config/introduction.dart';
+import 'package:al_quran/view/config/share_app.dart';
+import 'package:al_quran/view/juzz/juz_index.dart';
+import 'package:al_quran/view/home/home.dart';
+import 'package:al_quran/view/sajda/sajda_index.dart';
+import 'package:al_quran/view/surahas/surah_index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -21,14 +21,12 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 int? initScreen;
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   initScreen = prefs.getInt("initScreen");
   await prefs.setInt("initScreen", 1);
 
-  // hive
   // hive
   await Hive.initFlutter();
 
@@ -47,10 +45,12 @@ Future<void> main() async {
   // box
   await Hive.openBox('data');
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -93,15 +93,15 @@ class _MyAppState extends State<MyApp> {
               ? '/introduction'
               : '/homeScreen',
           routes: <String, WidgetBuilder>{
-            '/introduction': (context) => OnBoardingCard(),
             '/homeScreen': (context) => HomeScreen(
                   maxSlide: MediaQuery.of(context).size.width * 0.835,
                 ),
-            '/surahIndex': (context) => SurahIndex(),
-            '/sajda': (context) => Sajda(),
-            '/juzIndex': (context) => JuzIndex(),
-            '/help': (context) => Help(),
-            '/shareApp': (context) => ShareApp()
+            '/surahIndex': (context) => const SurahIndex(),
+            '/sajda': (context) => const Sajda(),
+            '/juzIndex': (context) => const JuzIndex(),
+            '/introduction': (context) => OnBoardingCard(),
+            '/help': (context) => const Help(),
+            '/shareApp': (context) => const ShareApp()
           },
         );
       },
