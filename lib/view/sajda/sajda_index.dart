@@ -164,13 +164,17 @@ class _SajdaState extends State<Sajda> {
     if (_cacheSajdaList == null || _cacheSajdaList.sajdaAyahs!.isEmpty) {
       SajdaList _newSajdaList = await QuranAPI.getSajda();
 
-      setState(() {
-        _sajdas = _newSajdaList.sajdaAyahs;
-      });
+      if (mounted) {
+        setState(() {
+          _sajdas = _newSajdaList.sajdaAyahs;
+        });
+      }
     } else {
-      setState(() {
-        _sajdas = _cacheSajdaList.sajdaAyahs;
-      });
+      if (mounted) {
+        setState(() {
+          _sajdas = _cacheSajdaList.sajdaAyahs;
+        });
+      }
     }
   }
 

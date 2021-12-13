@@ -183,13 +183,17 @@ class _SurahIndexState extends State<SurahIndex> {
     SurahsList? _cacheSurahList = await _hiveBox.get('surahList');
     if (_cacheSurahList == null || _cacheSurahList.surahs!.isEmpty) {
       SurahsList _newSurahsList = await QuranAPI.getSurahList();
-      setState(() {
-        _surahs = _newSurahsList.surahs;
-      });
+      if (mounted) {
+        setState(() {
+          _surahs = _newSurahsList.surahs;
+        });
+      }
     } else {
-      setState(() {
-        _surahs = _cacheSurahList.surahs;
-      });
+      if (mounted) {
+        setState(() {
+          _surahs = _cacheSurahList.surahs;
+        });
+      }
     }
   }
 }

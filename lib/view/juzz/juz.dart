@@ -71,13 +71,17 @@ class _JuzState extends State<Juz> {
     if (_cacheJuzList == null || _cacheJuzList.juzAyahs!.isEmpty) {
       JuzList _newJuzList = await QuranAPI.getJuzz(widget.juzIndex);
 
-      setState(() {
-        _juzAyahs = _newJuzList.juzAyahs;
-      });
+      if (mounted) {
+        setState(() {
+          _juzAyahs = _newJuzList.juzAyahs;
+        });
+      }
     } else {
-      setState(() {
-        _juzAyahs = _cacheJuzList.juzAyahs;
-      });
+      if (mounted) {
+        setState(() {
+          _juzAyahs = _cacheJuzList.juzAyahs;
+        });
+      }
     }
   }
 }
