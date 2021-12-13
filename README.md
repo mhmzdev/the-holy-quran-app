@@ -1,9 +1,9 @@
-# The Holy Qur'an
+# The Holy Qur'an 2.0
 
 Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
-The data is fetched using API. So, it is not being stored locally. Information about API is given at the bottom of README.md
+The data is fetched using API and now the **offline mode** is available. So, you need internet for the first time only!
 
-<img src="https://user-images.githubusercontent.com/43790152/115227888-7fd07b80-a12a-11eb-9f82-947c768ba655.png">
+<img src="https://user-images.githubusercontent.com/43790152/145754272-c4bc01ae-479c-4494-9d45-fd5b18835cbc.png">
 
 <div align="center">
 
@@ -24,7 +24,8 @@ Watch the promo video <a href="https://www.youtube.com/watch?v=ghD5H9TF9sU&ab_ch
 
 ## 💻 Installation steps
 
-It will be best compatible with `Flutter 1.22` version.
+- Updated to `Flutter 2.8` Now!
+- Dart SDK `2.15` with Sound Null Safety!
 
 Open CMD where you want to clone the project & run the following commands
 
@@ -52,11 +53,11 @@ flutter run
 
 API Used: https://alquran.cloud/api
 
-## 🎯 Features to be added
+## 🎯 Features Updated
 
-- Offline Mode
-- Translations
-- Audio Mode
+✅ No-Ads
+✅ Offline Mode
+✅ Bug Fixes from previous versions
 
 ## 🔑 License
 - This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
