@@ -1,7 +1,7 @@
 name: al_quran
 description: Flutter App for the holy book of Qur'an.
 
-version: 1.0.2+5
+version: 2.0.0+6
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
@@ -10,23 +10,32 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_lints: ^1.0.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
-  http: ^0.13.4
+  
+  # utils
   shimmer: ^2.0.0
-  shared_preferences: ^2.0.8
-  provider: ^6.0.1
-  share: ^2.0.4
-  url_launcher: ^6.0.12
   flutter_overboard: ^3.0.0
-  flutter_svg: ^0.23.0+1
+  share: ^2.0.4
 
+  # network
+  http: ^0.13.4
+  url_launcher: ^6.0.12
+  
+  # state management
+  provider: ^6.0.1
+
+  # flutter code
+  flutter_lints: ^1.0.4
+
+  # cache
   hive: ^2.0.4
   hive_flutter: ^1.1.0
+  shared_preferences: ^2.0.8
 
+  # app info
   package_info_plus: ^1.3.0
 
 dev_dependencies:
