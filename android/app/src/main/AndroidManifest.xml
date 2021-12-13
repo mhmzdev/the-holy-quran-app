@@ -2,7 +2,6 @@
     package="com.hmz.al_quran">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:usesCleartextTraffic="true"
         android:name="io.flutter.app.FlutterApplication"
         android:label="The Holy Qur'an"
         android:icon="@mipmap/ic_launcher">
@@ -23,9 +22,6 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
-              />
-            <meta-data android:name="io.flutter.network-policy"
-              android:resource="@xml/network_system_config"
               />
             <!-- Displays an Android View that continues showing the launch screen
                  Drawable until Flutter paints its first frame, then this splash
