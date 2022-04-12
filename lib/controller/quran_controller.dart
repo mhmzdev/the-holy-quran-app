@@ -1,6 +1,6 @@
-import 'package:al_quran/model/juzz/juz_list.dart';
-import 'package:al_quran/model/sajda/sajda_list.dart';
-import 'package:al_quran/model/surah/surah_list.dart';
+import 'package:al_quran/models/juzz/juz_list.dart';
+import 'package:al_quran/models/sajda/sajda_list.dart';
+import 'package:al_quran/models/surah/surah_list.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';

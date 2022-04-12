@@ -26,6 +26,9 @@ dependencies:
   
   # state management
   provider: ^6.0.1
+  bloc: ^7.1.0
+  flutter_bloc: ^7.2.0
+  equatable: ^2.0.3
 
   # flutter code
   flutter_lints: ^1.0.4
@@ -36,7 +39,7 @@ dependencies:
   shared_preferences: ^2.0.8
 
   # app info
-  package_info_plus: ^1.3.0
+  package_info_plus: ^1.4.2
 
 dev_dependencies:
   flutter_test:
@@ -55,11 +58,17 @@ flutter:
     - assets/
 
   fonts:
-    - family: Sogeo
+    - family: Poppins
       fonts:
-        - asset: fonts/sui.ttf
-    #     - asset: fonts/Raleway-Italic.ttf
-    #       style: italic
+        - asset: fonts/Poppins-Regular.ttf
+        - asset: fonts/Poppins-Medium.ttf
+          weight: 600
+        - asset: fonts/Poppins-Light.ttf
+          weight: 200
+        - asset: fonts/Poppins-Bold.ttf
+          weight: 900
+        - asset: fonts/Poppins-Italic.ttf
+        - asset: fonts/Poppins-SemiBold.ttf
     - family: ShareIcon
       fonts:
         - asset: fonts/ShareIcon.ttf

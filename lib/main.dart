@@ -1,19 +1,19 @@
 import 'package:al_quran/dark_mode_controller/theme_provider.dart';
 import 'package:al_quran/dark_mode_controller/theme_style.dart';
-import 'package:al_quran/model/ayat/ayat.dart';
-import 'package:al_quran/model/juzz/juz.dart';
-import 'package:al_quran/model/juzz/juz_list.dart';
-import 'package:al_quran/model/sajda/sajda.dart';
-import 'package:al_quran/model/sajda/sajda_list.dart';
-import 'package:al_quran/model/surah/surah.dart';
-import 'package:al_quran/model/surah/surah_list.dart';
-import 'package:al_quran/view/config/help.dart';
-import 'package:al_quran/view/config/introduction.dart';
-import 'package:al_quran/view/config/share_app.dart';
-import 'package:al_quran/view/juzz/juz_index.dart';
-import 'package:al_quran/view/home/home.dart';
-import 'package:al_quran/view/sajda/sajda_index.dart';
-import 'package:al_quran/view/surahas/surah_index.dart';
+import 'package:al_quran/models/ayat/ayat.dart';
+import 'package:al_quran/models/juzz/juz.dart';
+import 'package:al_quran/models/juzz/juz_list.dart';
+import 'package:al_quran/models/sajda/sajda.dart';
+import 'package:al_quran/models/sajda/sajda_list.dart';
+import 'package:al_quran/models/surah/surah.dart';
+import 'package:al_quran/models/surah/surah_list.dart';
+import 'package:al_quran/screens/config/help.dart';
+import 'package:al_quran/screens/config/introduction.dart';
+import 'package:al_quran/screens/config/share_app.dart';
+import 'package:al_quran/screens/home/home_screen.dart';
+import 'package:al_quran/screens/juz/juz_index_screen.dart';
+import 'package:al_quran/screens/sajda/sajda_screen.dart';
+import 'package:al_quran/screens/surah/surah_index_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -96,9 +96,9 @@ class _MyAppState extends State<MyApp> {
             '/homeScreen': (context) => HomeScreen(
                   maxSlide: MediaQuery.of(context).size.width * 0.835,
                 ),
-            '/surahIndex': (context) => const SurahIndex(),
-            '/sajda': (context) => const Sajda(),
-            '/juzIndex': (context) => const JuzIndex(),
+            '/surahIndex': (context) => const SurahIndexScreen(),
+            '/sajda': (context) => const SajdaScreen(),
+            '/juzIndex': (context) => const JuzIndexScreen(),
             '/introduction': (context) => OnBoardingCard(),
             '/help': (context) => const Help(),
             '/shareApp': (context) => const ShareApp()
