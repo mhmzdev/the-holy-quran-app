@@ -1,7 +1,8 @@
-import 'package:al_quran/dark_mode_controller/theme_provider.dart';
+import 'package:al_quran/configs/app_theme.dart';
+import 'package:al_quran/configs/app_typography.dart';
+import 'package:al_quran/providers/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CustomTitle extends StatelessWidget {
   final String? title;
@@ -16,13 +17,10 @@ class CustomTitle extends StatelessWidget {
     return Positioned(
       top: height * 0.12,
       left: width * 0.05,
-      child: Shimmer.fromColors(
-        baseColor: themeChange.darkTheme ? Colors.white : Colors.black,
-        highlightColor: Colors.grey,
-        enabled: true,
-        child: Text(
-          title!,
-          style: Theme.of(context).textTheme.headline1,
+      child: Text(
+        title!,
+        style: AppText.h1b!.copyWith(
+          color: AppTheme.c!.textSub2,
         ),
       ),
     );

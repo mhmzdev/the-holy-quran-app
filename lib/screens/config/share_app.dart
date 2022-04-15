@@ -1,7 +1,8 @@
+import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/widgets/app_version.dart';
-import 'package:al_quran/widgets/back_btn.dart';
+import 'package:al_quran/widgets/custom_back_button.dart';
 import 'package:al_quran/widgets/title.dart';
-import 'package:al_quran/dark_mode_controller/theme_provider.dart';
+import 'package:al_quran/providers/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
@@ -17,7 +18,7 @@ class ShareApp extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: const <Widget>[
-            BackBtn(),
+            CustomBackButton(),
             CustomTitle(
               title: 'Share App',
             ),
@@ -42,7 +43,7 @@ class ShareInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: height * 0.13),
-          Image.asset('assets/grad_logo.png', height: height * 0.2),
+          Image.asset(StaticAssets.gradLogo, height: height * 0.2),
           SizedBox(height: height * 0.02),
           Text(
               "The Holy Qur'an App is also available as Open Source on GitHub!",

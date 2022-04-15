@@ -1,3 +1,4 @@
+import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 
@@ -5,7 +6,7 @@ class OnBoardingCard extends StatelessWidget {
   final pages = [
     PageModel(
         color: Colors.grey[700],
-        imageAssetPath: 'assets/grad_logo.png',
+        imageAssetPath: StaticAssets.gradLogo,
         title: "The Holy Qur'an",
         body:
             "\"Indeed, It is We who sent down the Qur'an and indeed, We will be its Guardian\"\n",

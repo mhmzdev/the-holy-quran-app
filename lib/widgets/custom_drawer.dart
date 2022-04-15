@@ -1,7 +1,6 @@
-import 'package:al_quran/models/utils/drawer_list.dart';
 import 'package:al_quran/widgets/app_version.dart';
 import 'package:al_quran/widgets/drawer_app_name.dart';
-import 'package:al_quran/dark_mode_controller/theme_provider.dart';
+import 'package:al_quran/providers/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,39 +12,6 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  final List<DrawerListItem> _items = [
-    DrawerListItem(
-      iconData: Icons.format_list_bulleted,
-      title: 'Juz Index',
-      route: '/juzIndex',
-    ),
-    DrawerListItem(
-      iconData: Icons.format_list_numbered,
-      title: 'Surah Index',
-      route: '/surahIndex',
-    ),
-    DrawerListItem(
-      iconData: Icons.format_align_left,
-      title: 'Sajda Index',
-      route: '/sajda',
-    ),
-    DrawerListItem(
-      iconData: Icons.info,
-      title: 'Help Guide',
-      route: '/help',
-    ),
-    DrawerListItem(
-      iconData: Icons.book,
-      title: 'Introduction',
-      route: '/introduction',
-    ),
-    DrawerListItem(
-      iconData: Icons.share,
-      title: 'Share App',
-      route: '/shareApp',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
@@ -66,25 +32,25 @@ class _MyDrawerState extends State<MyDrawer> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const DrawerAppName(),
-              Column(
-                children: _items
-                    .map(
-                      (tile) => Card(
-                        color: themeChange.darkTheme
-                            ? Colors.grey[700]
-                            : Colors.white,
-                        child: ListTile(
-                          leading: Icon(tile.iconData),
-                          title: Text(tile.title!),
-                          onTap: () => Navigator.pushNamed(
-                            context,
-                            tile.route!,
-                          ),
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
+              // Column(
+              //   children: _items
+              //       .map(
+              //         (tile) => Card(
+              //           color: themeChange.darkTheme
+              //               ? Colors.grey[700]
+              //               : Colors.white,
+              //           child: ListTile(
+              //             leading: Icon(tile.iconData),
+              //             title: Text(tile.title!),
+              //             onTap: () => Navigator.pushNamed(
+              //               context,
+              //               tile.route!,
+              //             ),
+              //           ),
+              //         ),
+              //       )
+              //       .toList(),
+              // ),
               const AppVersion()
             ],
           ),

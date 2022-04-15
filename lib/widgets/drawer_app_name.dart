@@ -1,4 +1,5 @@
-import 'package:al_quran/dark_mode_controller/theme_provider.dart';
+import 'package:al_quran/providers/theme/theme_provider.dart';
+import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +47,7 @@ class DrawerAppName extends StatelessWidget {
             )
           ],
         ),
-        Image.asset('assets/grad_logo.png', height: height * 0.17)
+        Image.asset(StaticAssets.gradLogo, height: height * 0.17)
       ],
     );
   }

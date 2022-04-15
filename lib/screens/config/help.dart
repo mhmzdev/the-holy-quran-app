@@ -1,5 +1,6 @@
+import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/widgets/app_version.dart';
-import 'package:al_quran/widgets/back_btn.dart';
+import 'package:al_quran/widgets/custom_back_button.dart';
 import 'package:al_quran/widgets/custom_image.dart';
 import 'package:al_quran/widgets/title.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,11 @@ class Help extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             CustomImage(
-              imagePath: "assets/grad_logo.png",
+              imagePath: StaticAssets.gradLogo,
               opacity: 0.5,
               height: MediaQuery.of(context).size.height * 0.18,
             ),
-            const BackBtn(),
+            const CustomBackButton(),
             const CustomTitle(title: "Help Guide"),
             const Guidelines(),
             const AppVersion(),
