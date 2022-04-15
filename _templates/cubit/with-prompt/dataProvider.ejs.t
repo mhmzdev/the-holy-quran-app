@@ -7,7 +7,7 @@ part of 'cubit.dart';
 class <%= h.changeCase.pascal(name) %>DataProvider {
   static Future< <%= pmodel %>> fetch() async {
     try {
-      final Map raw = {"key": "value"};
+      final Map<String, dynamic> raw = {"key": "value"};
       return <%= pmodel %>.fromMap(raw);
     } catch (e) {
       throw Exception("Internal Server Error");

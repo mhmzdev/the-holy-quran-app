@@ -6,8 +6,8 @@ part of 'cubit.dart';
 
 @immutable
 class <%= pascal %>State extends Equatable {
-  final <%= h.changeCase.pascal(model) %> data;
-  final String message;
+  final <%= h.changeCase.pascal(model) %>? data;
+  final String? message;
 
   const <%= pascal %>State({
     this.data,
@@ -15,7 +15,7 @@ class <%= pascal %>State extends Equatable {
   });
 
   @override
-  List<Object> get props => [data, message,];
+  List<Object?> get props => [data, message,];
 }
 
 @immutable
@@ -28,10 +28,10 @@ class <%= pascal %>FetchLoading extends <%= pascal %>State {
 
 @immutable
 class <%= pascal %>FetchSuccess extends <%= pascal %>State {
-    const <%= pascal %>FetchSuccess({<%= h.changeCase.pascal(model) %> data}): super(data: data);
+    const <%= pascal %>FetchSuccess({<%= h.changeCase.pascal(model) %>? data}): super(data: data);
 }
 
 @immutable
 class <%= pascal %>FetchFailed extends <%= pascal %>State {
-    const <%= pascal %>FetchFailed({String message}): super(message: message);
+    const <%= pascal %>FetchFailed({String? message}): super(message: message);
 }
