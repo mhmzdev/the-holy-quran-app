@@ -1,7 +1,7 @@
 part of '../surah_index_screen.dart';
 
 class _SurahInformation extends StatefulWidget {
-  final ChapterData? chapterData;
+  final Chapter? chapterData;
   const _SurahInformation({
     Key? key,
     this.chapterData,
@@ -72,19 +72,19 @@ class _SurahInformationState extends State<_SurahInformation>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      widget.chapterData!.nameSimple!,
+                      widget.chapterData!.englishName!,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     Text(
-                      widget.chapterData!.nameArabic!,
+                      widget.chapterData!.name!,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ],
                 ),
-                Text("Ayahs: ${widget.chapterData!.verseCount!}"),
-                Text("Surah Number: ${widget.chapterData!.id!}"),
-                Text("Chapter: ${widget.chapterData!.revelationPlace!}"),
-                Text("Meaning: ${widget.chapterData!.translatedName!}"),
+                Text("Ayahs: ${widget.chapterData!.ayahs!.length}"),
+                Text("Surah Number: ${widget.chapterData!.number!}"),
+                Text("Revelation: ${widget.chapterData!.revelationType!}"),
+                Text("Meaning: ${widget.chapterData!.englishNameTranslation!}"),
                 SizedBox(
                   height: height * 0.02,
                 ),

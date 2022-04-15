@@ -1,11 +1,9 @@
 import 'dart:io';
 import 'dart:async';
 import 'dart:math' as math;
-import 'package:al_quran/configs/app_dimensions.dart';
-import 'package:al_quran/configs/app_typography.dart';
-import 'package:al_quran/configs/configs.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/widgets/app_name.dart';
 import 'package:al_quran/widgets/quran_rail.dart';
 import 'package:al_quran/widgets/calligraphy.dart';

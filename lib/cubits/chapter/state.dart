@@ -1,9 +1,8 @@
-
 part of 'cubit.dart';
 
 @immutable
 class ChapterState extends Equatable {
-  final Chapter? data;
+  final List<Chapter?>? data;
   final String? message;
 
   const ChapterState({
@@ -12,7 +11,10 @@ class ChapterState extends Equatable {
   });
 
   @override
-  List<Object?> get props => [data, message,];
+  List<Object?> get props => [
+        data,
+        message,
+      ];
 }
 
 @immutable
@@ -20,15 +22,15 @@ class ChapterDefault extends ChapterState {}
 
 @immutable
 class ChapterFetchLoading extends ChapterState {
-    const ChapterFetchLoading(): super();
+  const ChapterFetchLoading() : super();
 }
 
 @immutable
 class ChapterFetchSuccess extends ChapterState {
-    const ChapterFetchSuccess({Chapter? data}): super(data: data);
+  const ChapterFetchSuccess({List<Chapter?>? data}) : super(data: data);
 }
 
 @immutable
 class ChapterFetchFailed extends ChapterState {
-    const ChapterFetchFailed({String? message}): super(message: message);
+  const ChapterFetchFailed({String? message}) : super(message: message);
 }

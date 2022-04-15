@@ -1,13 +1,11 @@
 import 'dart:async';
 
-import 'package:al_quran/models/verse/verse.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-
-import 'package:al_quran/models/chapter/chapter.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:al_quran/models/juz/juz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'data_provider.dart';
 part 'repository.dart';
@@ -23,10 +21,11 @@ class JuzCubit extends Cubit<JuzState> {
 
   Future<void> fetch(num juzNumber) async {
     emit(const JuzFetchLoading());
+
     try {
-      Chapter? cached = await repo.juzFetchHive(juzNumber);
+      Juz? cached = await repo.juzFetchHive(juzNumber);
       if (cached == null) {
-        Chapter? data = await repo.juzFetchApi(juzNumber);
+        Juz? data = await repo.juzFetchApi(juzNumber);
         emit(JuzFetchSuccess(data: data));
       } else {
         emit(JuzFetchSuccess(data: cached));

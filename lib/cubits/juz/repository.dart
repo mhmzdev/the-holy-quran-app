@@ -1,9 +1,9 @@
 part of 'cubit.dart';
 
 class JuzRepository {
-  Future<Chapter?> juzFetchApi(num juzNumber) =>
+  Future<Juz?> juzFetchApi(num juzNumber) =>
       JuzDataProvider.juzFetchApi(juzNumber);
 
-  Future<Chapter?> juzFetchHive(num juzNumber) =>
+  Future<Juz?> juzFetchHive(num juzNumber) =>
       JuzDataProvider.juzFetchHive(juzNumber);
 }

@@ -2,9 +2,8 @@ import 'package:al_quran/animations/bottom_animation.dart';
 import 'package:al_quran/configs/app_dimensions.dart';
 import 'package:al_quran/configs/app_typography.dart';
 import 'package:al_quran/cubits/chapter/cubit.dart';
-import 'package:al_quran/cubits/chapter_data/cubit.dart';
 import 'package:al_quran/models/chapter/chapter.dart';
-import 'package:al_quran/models/chapter_data/chapter_data.dart';
+import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/utils/juz.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +16,7 @@ import 'package:al_quran/providers/theme/theme_provider.dart';
 
 part '../page/page_screen.dart';
 
+part 'widgets/surah_tile.dart';
 part 'widgets/surah_app_bar.dart';
 part 'widgets/surah_information.dart';
 
@@ -35,7 +35,6 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
     double width = MediaQuery.of(context).size.width;
 
     final chapterCubit = ChapterCubit.cubit(context);
-    final chaptersDataCubit = ChapterDataCubit.cubit(context);
 
     return Scaffold(
       body: SafeArea(
@@ -58,45 +57,11 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                 separatorBuilder: (context, index) => const Divider(
                   color: Color(0xffee8f8b),
                 ),
-                itemCount: chaptersDataCubit.state.data!.length,
+                itemCount: chapterCubit.state.data!.length,
                 itemBuilder: (context, index) {
-                  final chapter = chaptersDataCubit.state.data![index];
-                  return WidgetAnimator(
-                    child: ListTile(
-                      minLeadingWidth: 15.0,
-                      leading: Text(chapter!.id!.toString()),
-                      title: Text(
-                        chapter.nameSimple!,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      subtitle: Text(chapter.translatedName!),
-                      trailing: Text(
-                        chapter.nameArabic!,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      onTap: () async {
-                        await chapterCubit.fetch(chapter.id!);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => PageScreen(
-                              data: chapter,
-                              chapter: chapterCubit.state.data,
-                            ),
-                          ),
-                        );
-                      },
-                      onLongPress: () => showDialog(
-                        context: context,
-                        builder: (context) => _SurahInformation(
-                          chapterData: chapter,
-                        ),
-                      ),
-                    ),
+                  final chapter = chapterCubit.state.data![index];
+                  return _SuraTile(
+                    chapter: chapter,
                   );
                 },
               ),

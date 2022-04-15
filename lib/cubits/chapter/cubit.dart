@@ -1,13 +1,11 @@
 import 'dart:async';
 
-import 'package:al_quran/models/verse/verse.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-
-import 'package:al_quran/models/chapter/chapter.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:al_quran/models/chapter/chapter.dart';
 
 part 'data_provider.dart';
 part 'repository.dart';
@@ -21,12 +19,13 @@ class ChapterCubit extends Cubit<ChapterState> {
 
   final repo = ChapterRepository();
 
-  Future<void> fetch(num id) async {
+  Future<void> fetch() async {
     emit(const ChapterFetchLoading());
     try {
-      Chapter? cached = await repo.chapterHive(id);
+      List<Chapter?>? cached = await repo.chapterHive();
+
       if (cached == null) {
-        Chapter? data = await repo.chapterApi(id);
+        List<Chapter?>? data = await repo.chapterApi();
         emit(ChapterFetchSuccess(data: data));
       } else {
         emit(ChapterFetchSuccess(data: cached));

@@ -19,6 +19,7 @@ dependencies:
   shimmer: ^2.0.0
   flutter_overboard: ^3.0.0
   share: ^2.0.4
+  better_page_turn: ^0.0.6
 
   # network
   dio: ^4.0.6

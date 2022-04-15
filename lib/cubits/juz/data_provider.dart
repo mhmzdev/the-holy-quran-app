@@ -4,38 +4,32 @@ class JuzDataProvider {
   static final cache = Hive.box('data');
   static Dio ins = Dio();
 
-  static Future<Chapter?> juzFetchApi(num juzNumber) async {
+  static Future<Juz?> juzFetchApi(num juzNumber) async {
     try {
       final resp = await ins.get(
-        'https://api.quran.com/api/v4/quran/verses/indopak?juz_number=$juzNumber',
+        'http://api.alquran.cloud/v1/juz/$juzNumber/quran-uthmani',
       );
-      final List raw = resp.data['verses'];
-      final List<Verse> verses = List.generate(
-        raw.length,
-        (index) => Verse.fromMap(
-          raw[index],
-        ),
-      );
-
-      final chapter = Chapter(
-        verses: verses,
-      );
+      final Map<String, dynamic> raw = resp.data['data'];
+      final Juz juz = Juz.fromMap(raw);
 
       await cache.put(
         'juz$juzNumber',
-        chapter,
+        juz,
       );
 
-      return chapter;
+      return juz;
     } catch (e) {
       throw Exception("Internal Server Error");
     }
   }
 
-  static Future<Chapter?> juzFetchHive(num juzNumber) async {
+  static Future<Juz?> juzFetchHive(num juzNumber) async {
     try {
-      final chapter = await cache.get('juz$juzNumber');
-      return chapter;
+      final data = await cache.get('juz$juzNumber');
+      if (data == null) return null;
+      
+      final Juz? juz = data;
+      return juz;
     } catch (e) {
       throw Exception("Internal Server Error");
     }

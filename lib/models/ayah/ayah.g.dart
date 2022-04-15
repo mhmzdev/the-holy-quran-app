@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'verse.dart';
+part of 'ayah.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class VerseAdapter extends TypeAdapter<Verse> {
+class AyahAdapter extends TypeAdapter<Ayah> {
   @override
-  final int typeId = 2;
+  final int typeId = 0;
 
   @override
-  Verse read(BinaryReader reader) {
+  Ayah read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Verse(
-      id: fields[0] as num?,
-      textIndopak: fields[1] as String?,
+    return Ayah(
+      number: fields[0] as num?,
+      text: fields[1] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Verse obj) {
+  void write(BinaryWriter writer, Ayah obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.id)
+      ..write(obj.number)
       ..writeByte(1)
-      ..write(obj.textIndopak);
+      ..write(obj.text);
   }
 
   @override
@@ -38,7 +38,7 @@ class VerseAdapter extends TypeAdapter<Verse> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is VerseAdapter &&
+      other is AyahAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

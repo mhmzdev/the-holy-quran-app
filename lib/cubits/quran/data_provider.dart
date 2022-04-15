@@ -4,26 +4,24 @@ class QuranDataProvider {
   static final cache = Hive.box('data');
   static Dio ins = Dio();
 
-  static Future<Chapter?> quranApi() async {
+  static Future<List<Ayah?>?> quranApi(int pageNumber) async {
     try {
       final resp = await ins.get(
-        'https://api.quran.com/api/v4/quran/verses/indopak',
+        'http://api.alquran.cloud/v1/page/$pageNumber/quran-uthmani',
       );
-      final List raw = resp.data['verses'];
-      final List<Verse> verses = List.generate(
-        raw.length,
-        (index) => Verse.fromMap(
-          raw[index],
+      final Map<String, dynamic> raw = resp.data['data'];
+      final List ayahs = raw['ayahs'];
+
+      final List<Ayah?>? pageAyahs = List.generate(
+        ayahs.length,
+        (index) => Ayah.fromMap(
+          ayahs[index],
         ),
       );
 
-      final chapter = Chapter(
-        verses: verses,
-      );
+      await cache.put('ayahs$pageNumber', pageAyahs);
 
-      await cache.put('quran', chapter);
-
-      return chapter;
+      return pageAyahs;
     } on DioError catch (e) {
       if (e.type == DioErrorType.other) {
         throw Exception('Problem with internet connection');
@@ -35,10 +33,14 @@ class QuranDataProvider {
     }
   }
 
-  static Future<Chapter?> quranHive() async {
+  static Future<List<Ayah?>?> quranHive(int pageNumber) async {
     try {
-      final cachedData = await cache.get('quran');
-      return cachedData;
+      final cachedData = await cache.get('ayahs$pageNumber');
+      if (cachedData == null) return null;
+      
+      final List<Ayah?>? ayahs = List.from(cachedData);
+
+      return ayahs;
     } catch (e) {
       throw Exception("Internal Server Error");
     }

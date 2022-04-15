@@ -48,8 +48,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (_) => PageScreen(
-                            chapter: juzCubit.state.data,
-                            juzNumber: index + 1,
+                            juz: juzCubit.state.data,
                           ),
                         ),
                       );

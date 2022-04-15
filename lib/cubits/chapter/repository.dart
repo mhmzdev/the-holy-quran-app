@@ -1,7 +1,7 @@
 part of 'cubit.dart';
 
 class ChapterRepository {
-  Future<Chapter?> chapterApi(num id) => ChapterDataProvider.chapterApi(id);
+  Future<List<Chapter?>?> chapterApi() => ChapterDataProvider.chapterApi();
 
-  Future<Chapter?> chapterHive(num id) => ChapterDataProvider.chapterHive(id);
+  Future<List<Chapter?>?> chapterHive() => ChapterDataProvider.chapterHive();
 }

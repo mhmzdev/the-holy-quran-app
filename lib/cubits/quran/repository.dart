@@ -1,6 +1,6 @@
 part of 'cubit.dart';
 
 class QuranRepository {
-  Future<Chapter?> quranApi() => QuranDataProvider.quranApi();
-  Future<Chapter?> quranHive() => QuranDataProvider.quranHive();
+  Future<List<Ayah?>?> quranApi(int pg) => QuranDataProvider.quranApi(pg);
+  Future<List<Ayah?>?> quranHive(int pg) => QuranDataProvider.quranHive(pg);
 }
