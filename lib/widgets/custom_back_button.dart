@@ -15,7 +15,6 @@ class CustomBackButton extends StatelessWidget {
           Icons.arrow_back,
         ),
         onPressed: () => Navigator.pop(context),
-        splashColor: const Color(0xff04364f),
         iconSize: MediaQuery.of(context).size.height * 0.035,
         tooltip: 'Back Button',
         color: Provider.of<DarkThemeProvider>(context).darkTheme

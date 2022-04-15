@@ -1,7 +1,12 @@
 import 'package:al_quran/animations/bottom_animation.dart';
+import 'package:al_quran/configs/app_dimensions.dart';
+import 'package:al_quran/configs/app_typography.dart';
+import 'package:al_quran/cubits/chapter/cubit.dart';
 import 'package:al_quran/cubits/chapter_data/cubit.dart';
-import 'package:al_quran/models/chapter_data.dart';
+import 'package:al_quran/models/chapter/chapter.dart';
+import 'package:al_quran/models/chapter_data/chapter_data.dart';
 import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/utils/juz.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/widgets/flare.dart';
@@ -10,6 +15,9 @@ import 'package:al_quran/widgets/custom_back_button.dart';
 import 'package:al_quran/widgets/custom_image.dart';
 import 'package:al_quran/providers/theme/theme_provider.dart';
 
+part '../page/page_screen.dart';
+
+part 'widgets/surah_app_bar.dart';
 part 'widgets/surah_information.dart';
 
 class SurahIndexScreen extends StatefulWidget {
@@ -26,6 +34,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
+    final chapterCubit = ChapterCubit.cubit(context);
     final chaptersDataCubit = ChapterDataCubit.cubit(context);
 
     return Scaffold(
@@ -55,7 +64,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                   return WidgetAnimator(
                     child: ListTile(
                       minLeadingWidth: 15.0,
-                      leading: Text(chapter.id!.toString()),
+                      leading: Text(chapter!.id!.toString()),
                       title: Text(
                         chapter.nameSimple!,
                         style: const TextStyle(
@@ -69,7 +78,18 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () async {
+                        await chapterCubit.fetch(chapter.id!);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => PageScreen(
+                              data: chapter,
+                              chapter: chapterCubit.state.data,
+                            ),
+                          ),
+                        );
+                      },
                       onLongPress: () => showDialog(
                         context: context,
                         builder: (context) => _SurahInformation(

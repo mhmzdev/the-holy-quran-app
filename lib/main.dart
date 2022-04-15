@@ -1,3 +1,6 @@
+import 'package:al_quran/models/chapter/chapter.dart';
+import 'package:al_quran/models/chapter_data/chapter_data.dart';
+import 'package:al_quran/models/verse/verse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +27,12 @@ Future<void> main() async {
   // hive
   await Hive.initFlutter();
 
+  Hive.registerAdapter<ChapterData>(ChapterDataAdapter());
+  Hive.registerAdapter<Chapter>(ChapterAdapter());
+  Hive.registerAdapter<Verse>(VerseAdapter());
+
   await Hive.openBox('app');
+  await Hive.openBox('data');
 
   runApp(const MyApp());
 }

@@ -1,7 +1,14 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'verse.g.dart';
+
+@HiveType(typeId: 2)
 class Verse {
+  @HiveField(0)
   final num? id;
+  @HiveField(1)
   final String? textIndopak;
   Verse({
     this.id,

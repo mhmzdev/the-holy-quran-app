@@ -2,9 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:al_quran/models/verse.dart';
+import 'package:al_quran/models/verse/verse.dart';
+import 'package:hive/hive.dart';
 
+part 'chapter.g.dart';
+
+@HiveType(typeId: 1)
 class Chapter {
+  @HiveField(0)
   final List<Verse?>? verses;
   Chapter({
     this.verses,

@@ -1,11 +1,22 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'chapter_data.g.dart';
+
+@HiveType(typeId: 0)
 class ChapterData {
+  @HiveField(0)
   final num? id;
+  @HiveField(1)
   final String? revelationPlace;
+  @HiveField(2)
   final String? nameSimple;
+  @HiveField(3)
   final String? nameArabic;
+  @HiveField(4)
   final num? verseCount;
+  @HiveField(5)
   final String? translatedName;
   ChapterData({
     this.id,

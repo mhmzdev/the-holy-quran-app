@@ -19,8 +19,8 @@ class CustomTitle extends StatelessWidget {
       left: width * 0.05,
       child: Text(
         title!,
-        style: AppText.h1b!.copyWith(
-          color: AppTheme.c!.textSub2,
+        style: AppText.h2b!.copyWith(
+          color: AppTheme.c!.textSub,
         ),
       ),
     );

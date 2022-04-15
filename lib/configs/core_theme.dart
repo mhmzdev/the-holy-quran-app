@@ -13,8 +13,8 @@ final themeLight = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   pageTransitionsTheme: const PageTransitionsTheme(
     builders: {
-      TargetPlatform.android: OpenUpwardsPageTransitionsBuilder(),
-      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      TargetPlatform.android: ZoomPageTransitionsBuilder(),
+      TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
     },
   ),
   colorScheme: ThemeData.light().colorScheme.copyWith(

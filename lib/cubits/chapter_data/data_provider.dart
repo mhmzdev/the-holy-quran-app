@@ -1,9 +1,10 @@
 part of 'cubit.dart';
 
 class ChapterDataDataProvider {
+  static final cache = Hive.box('data');
   static Dio ins = Dio();
 
-  static Future<List<ChapterData>> chapterDataListApi() async {
+  static Future<List<ChapterData?>?>? chapterDataListApi() async {
     try {
       final resp = await ins.get(
         'https://api.quran.com/api/v4/chapters',
@@ -16,6 +17,11 @@ class ChapterDataDataProvider {
         ),
       );
 
+      await cache.put(
+        'chapters',
+        chapters,
+      );
+
       return chapters;
     } on DioError catch (e) {
       if (e.type == DioErrorType.other) {
@@ -23,6 +29,15 @@ class ChapterDataDataProvider {
       } else {
         throw Exception('Problem on our side, Please try again');
       }
+    } catch (e) {
+      throw Exception("Internal Server Error");
+    }
+  }
+
+  static Future<List<ChapterData?>?>? chapterDataListHive() async {
+    try {
+      final chapters = await cache.get('chapters');
+      return chapters;
     } catch (e) {
       throw Exception("Internal Server Error");
     }

@@ -2,7 +2,7 @@ part of 'cubit.dart';
 
 @immutable
 class ChapterDataState extends Equatable {
-  final List<ChapterData>? data;
+  final List<ChapterData?>? data;
   final String? message;
 
   const ChapterDataState({
@@ -27,7 +27,7 @@ class ChapterDataFetchLoading extends ChapterDataState {
 
 @immutable
 class ChapterDataFetchSuccess extends ChapterDataState {
-  const ChapterDataFetchSuccess({List<ChapterData>? data}) : super(data: data);
+  const ChapterDataFetchSuccess({List<ChapterData?>? data}) : super(data: data);
 }
 
 @immutable

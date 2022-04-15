@@ -50,10 +50,10 @@ class OnBoardingCard extends StatelessWidget {
         pages: pages,
         showBullets: true,
         skipCallback: () {
-          Navigator.pushNamed(context, '/homeScreen');
+          Navigator.pushNamed(context, '/home');
         },
         finishCallback: () {
-          Navigator.pushNamed(context, '/homeScreen');
+          Navigator.pushNamed(context, '/home');
         },
       ),
     );
