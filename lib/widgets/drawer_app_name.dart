@@ -1,3 +1,4 @@
+import 'package:al_quran/configs/app_theme.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +24,8 @@ class DrawerAppName extends StatelessWidget {
               child: Switch(
                 activeColor: Colors.grey[500],
                 value: appProvider.isDark,
+                activeTrackColor: AppTheme.c!.accent,
+                thumbColor: MaterialStateProperty.all(AppTheme.c!.accent),
                 onChanged: (value) {
                   if (value) {
                     appProvider.setTheme(ThemeMode.dark);
