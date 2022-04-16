@@ -37,7 +37,7 @@ class QuranDataProvider {
     try {
       final cachedData = await cache.get('ayahs$pageNumber');
       if (cachedData == null) return null;
-      
+
       final List<Ayah?>? ayahs = List.from(cachedData);
 
       return ayahs;

@@ -1,4 +1,5 @@
 import 'package:al_quran/configs/configs.dart';
+import 'package:al_quran/cubits/bookmarks/cubit.dart';
 import 'package:al_quran/cubits/juz/cubit.dart';
 import 'package:al_quran/cubits/quran/cubit.dart';
 import 'package:flutter/material.dart';
@@ -22,11 +23,14 @@ class _SplashScreenState extends State<SplashScreen> {
   void _next() async {
     final appProvider = Provider.of<AppProvider>(context, listen: false);
 
+    final bookmarkCubit = BookmarkCubit.cubit(context);
     final chapterCubit = ChapterCubit.cubit(context);
     final quranCubit = QuranCubit.cubit(context);
     final juzCubit = JuzCubit.cubit(context);
 
     await chapterCubit.fetch();
+
+    await bookmarkCubit.fetch();
 
     for (int i = 1; i <= 30; i++) {
       await juzCubit.fetch(i);
@@ -57,6 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     App.init(context);
 
+    final bookmarkCubit = BookmarkCubit.cubit(context);
     final quranCubit = QuranCubit.cubit(context);
     final juzCubit = JuzCubit.cubit(context);
 
@@ -80,6 +85,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 builder: (context, state) {
                   if (state is ChapterFetchLoading) {
                     return const Text('Getting all Surahs...');
+                  } else if (bookmarkCubit.state is BookmarkFetchLoading) {
+                    return const Text('Setting up Bookmarks...');
                   } else if (juzCubit.state is JuzFetchLoading) {
                     return const Text('Loading all Juz...');
                   } else if (quranCubit.state is QuranFetchLoading) {

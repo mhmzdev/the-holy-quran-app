@@ -1,9 +1,9 @@
 part of '../surah_index_screen.dart';
 
-class _SuraTile extends StatelessWidget {
+class SurahTile extends StatelessWidget {
   final Chapter? chapter;
 
-  const _SuraTile({
+  const SurahTile({
     Key? key,
     this.chapter,
   }) : super(key: key);
@@ -15,12 +15,12 @@ class _SuraTile extends StatelessWidget {
         minLeadingWidth: 15.0,
         leading: Text(chapter!.number!.toString()),
         title: Text(
-          chapter!.name!,
+          chapter!.englishName!,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        subtitle: Text(chapter!.englishName!),
+        subtitle: Text(chapter!.englishNameTranslation!),
         trailing: Text(
           chapter!.name!,
           style: const TextStyle(

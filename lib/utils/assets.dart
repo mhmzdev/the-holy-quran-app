@@ -4,7 +4,7 @@ class StaticAssets {
 
   static const String kaba = 'assets/images/kaba.png';
   static const String roza = 'assets/images/roza.png';
-  static const String sajda = 'assets/images/sajda.png';
+  static const String sajda = 'assets/images/sajda.jpg';
   static const String quranRail = 'assets/images/quranRail.png';
 
   static const String ui = 'assets/intro/ui.png';

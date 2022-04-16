@@ -1,6 +1,6 @@
 part of '../surah/surah_index_screen.dart';
 
-class PageScreen extends StatelessWidget {
+class PageScreen extends StatefulWidget {
   final Juz? juz;
   final Chapter? chapter;
   const PageScreen({
@@ -10,8 +10,23 @@ class PageScreen extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<PageScreen> createState() => _PageScreenState();
+}
+
+class _PageScreenState extends State<PageScreen> {
+  @override
+  void initState() {
+    final bookmarkCubit = BookmarkCubit.cubit(context);
+    if (widget.chapter != null) {
+      bookmarkCubit.checkBookmarked(widget.chapter!);
+    }
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
+    final bookmarkCubit = BookmarkCubit.cubit(context);
 
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -20,6 +35,32 @@ class PageScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
+              actions: [
+                if (widget.juz == null)
+                  BlocBuilder<BookmarkCubit, BookmarkState>(
+                    builder: (context, state) {
+                      return IconButton(
+                        onPressed: () {
+                          if (bookmarkCubit.state.isBookmarked!) {
+                            bookmarkCubit.updateBookmark(
+                                widget.chapter!, false);
+                          } else {
+                            bookmarkCubit.updateBookmark(widget.chapter!, true);
+                          }
+                        },
+                        icon: Icon(
+                          bookmarkCubit.state.isBookmarked!
+                              ? Icons.bookmark_added
+                              : Icons.bookmark_add_outlined,
+                          color:
+                              Provider.of<DarkThemeProvider>(context).darkTheme
+                                  ? Colors.white
+                                  : Colors.black54,
+                        ),
+                      );
+                    },
+                  ),
+              ],
               leading: BackButton(
                 color: themeChange.darkTheme ? Colors.white : Colors.black54,
               ),
@@ -29,21 +70,21 @@ class PageScreen extends StatelessWidget {
               floating: true,
               expandedHeight: height * 0.27,
               flexibleSpace: _SurahAppBar(
-                data: chapter ??
+                data: widget.chapter ??
                     Chapter(
-                      englishName: 'Juz No. ${juz!.number}',
+                      englishName: 'Juz No. ${widget.juz!.number}',
                       englishNameTranslation:
                           'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
-                      name: JuzUtils.juzNames[(juz!.number! - 1)],
+                      name: JuzUtils.juzNames[(widget.juz!.number! - 1)],
                     ),
               ),
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  final verse = chapter == null
-                      ? juz!.ayahs![index]
-                      : chapter!.ayahs![index];
+                  final verse = widget.chapter == null
+                      ? widget.juz!.ayahs![index]
+                      : widget.chapter!.ayahs![index];
 
                   return Padding(
                     padding: EdgeInsets.fromLTRB(width * 0.015, 0, 0, 0),
@@ -73,9 +114,9 @@ class PageScreen extends StatelessWidget {
                     ),
                   );
                 },
-                childCount: chapter == null
-                    ? juz!.ayahs!.length
-                    : chapter!.ayahs!.length,
+                childCount: widget.chapter == null
+                    ? widget.juz!.ayahs!.length
+                    : widget.chapter!.ayahs!.length,
               ),
             )
           ],

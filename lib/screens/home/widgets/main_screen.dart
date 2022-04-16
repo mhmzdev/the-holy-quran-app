@@ -21,11 +21,6 @@ class _MainScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 _CustomButton(
-                  title: 'Qur\'an',
-                  onPressed: () {},
-                ),
-                Space.y1!,
-                _CustomButton(
                   title: 'Surah Index',
                   onPressed: () => Navigator.pushNamed(context, '/surahIndex'),
                 ),
@@ -33,6 +28,11 @@ class _MainScreen extends StatelessWidget {
                 _CustomButton(
                   title: 'Juzz Index',
                   onPressed: () => Navigator.pushNamed(context, '/juzIndex'),
+                ),
+                Space.y1!,
+                _CustomButton(
+                  title: 'Bookmarks',
+                  onPressed: () => Navigator.pushNamed(context, '/bookmarks'),
                 ),
               ],
             ),
