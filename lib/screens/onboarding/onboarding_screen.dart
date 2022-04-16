@@ -3,29 +3,37 @@ import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 
-class OnBoardingCard extends StatefulWidget {
-  const OnBoardingCard({Key? key}) : super(key: key);
+part 'widgets/indicator.dart';
+part 'widgets/onboarding_page.dart';
+
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
-  State<OnBoardingCard> createState() => _OnBoardingCardState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnBoardingCardState extends State<OnBoardingCard> {
+class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
   int? _currentIndex = 0;
 
   List<Widget> pages = [
-    const _IntroWidget(
+    const _OnBoardingPage(
       image: StaticAssets.gradLogo,
+      text:
+          "\"Indeed, It is We who sent down the Qur'an and indeed, We will be its Guardian\"\n",
     ),
-    const _IntroWidget(
+    const _OnBoardingPage(
       image: StaticAssets.ui,
+      text: "",
     ),
-    const _IntroWidget(
+    const _OnBoardingPage(
       image: StaticAssets.easyNav,
+      text: "",
     ),
-    const _IntroWidget(
+    const _OnBoardingPage(
       image: StaticAssets.drawer3d,
+      text: "",
     ),
   ];
 
@@ -74,10 +82,11 @@ class _OnBoardingCardState extends State<OnBoardingCard> {
       floatingActionButton: Row(
         children: [
           Space.x2!,
-          for (int i = 0; i < pages.length; i++)
-            _Indicator(
-              isSelected: _currentIndex == i,
-            ),
+          ...pages.asMap().entries.map(
+                (e) => _Indicator(
+                  isSelected: _currentIndex == e.key,
+                ),
+              ),
           Space.xm!,
           FloatingActionButton(
             backgroundColor: AppTheme.c!.accent,
@@ -101,68 +110,6 @@ class _OnBoardingCardState extends State<OnBoardingCard> {
               }
             },
           )
-        ],
-      ),
-    );
-  }
-}
-
-class _Indicator extends StatelessWidget {
-  final bool isSelected;
-  const _Indicator({
-    Key? key,
-    required this.isSelected,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      margin: Space.hf(0.2),
-      duration: const Duration(milliseconds: 150),
-      width:
-          isSelected ? AppDimensions.normalize(12) : AppDimensions.normalize(4),
-      height: AppDimensions.normalize(4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(360.0),
-        color: isSelected ? AppTheme.c!.accent : Colors.grey,
-      ),
-    );
-  }
-}
-
-class _IntroWidget extends StatelessWidget {
-  final String image;
-  const _IntroWidget({
-    Key? key,
-    required this.image,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: Space.all(1),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Spacer(),
-          Image.asset(
-            image,
-            height: AppDimensions.normalize(150),
-          ),
-          const Spacer(),
-          Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Text(
-                  "\"Indeed, It is We who sent down the Qur'an and indeed, We will be its Guardian\"\n",
-                  style: AppText.b2b,
-                ),
-              ),
-              const Spacer(),
-            ],
-          ),
-          Space.y2!,
         ],
       ),
     );

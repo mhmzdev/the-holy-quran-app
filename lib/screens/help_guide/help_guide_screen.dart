@@ -12,7 +12,7 @@ class HelpGuide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     App.init(context);
-    
+
     return Scaffold(
       body: SafeArea(
         child: Stack(

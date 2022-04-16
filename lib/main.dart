@@ -6,18 +6,18 @@ import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/models/ayah/ayah.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:al_quran/cubits/juz/cubit.dart';
-import 'package:al_quran/screens/config/help_guide.dart';
 import 'package:al_quran/cubits/chapter/cubit.dart';
 import 'package:al_quran/screens/splash_screen.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/cubits/bookmarks/cubit.dart';
 import 'package:al_quran/models/chapter/chapter.dart';
-import 'package:al_quran/screens/config/share_app.dart';
 import 'package:al_quran/screens/home/home_screen.dart';
-import 'package:al_quran/screens/config/introduction.dart';
 import 'package:al_quran/screens/juz/juz_index_screen.dart';
 import 'package:al_quran/screens/surah/surah_index_screen.dart';
+import 'package:al_quran/screens/share_app/share_app_screen.dart';
 import 'package:al_quran/screens/bookmarks/bookmarks_screen.dart';
+import 'package:al_quran/screens/onboarding/onboarding_screen.dart';
+import 'package:al_quran/screens/help_guide/help_guide_screen.dart';
 import 'configs/core_theme.dart' as theme;
 
 Future<void> main() async {
@@ -79,7 +79,7 @@ class MaterialChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "They Holy Qur'an",
+      title: 'They Holy Qur\'an',
       debugShowCheckedModeBanner: false,
       theme: theme.themeLight,
       darkTheme: theme.themeDark,
@@ -92,9 +92,9 @@ class MaterialChild extends StatelessWidget {
       initialRoute: '/splash',
       routes: <String, WidgetBuilder>{
         '/help': (context) => const HelpGuide(),
-        '/intro': (context) => OnBoardingCard(),
-        '/share': (context) => const ShareApp(),
         '/splash': (context) => const SplashScreen(),
+        '/share': (context) => const ShareAppScreen(),
+        '/intro': (context) => const OnboardingScreen(),
         '/juzIndex': (context) => const JuzIndexScreen(),
         '/bookmarks': (context) => const BookmarksScreen(),
         '/surahIndex': (context) => const SurahIndexScreen(),
