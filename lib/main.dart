@@ -1,3 +1,4 @@
+import 'package:al_quran/providers/onboarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -57,6 +58,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (_) => ChapterCubit()),
         BlocProvider(create: (_) => BookmarkCubit()),
         ChangeNotifierProvider(create: (_) => AppProvider()),
+        ChangeNotifierProvider(create: (_) => OnBoardingProvider()),
       ],
       child: Consumer<AppProvider>(
         builder: ((context, value, child) {

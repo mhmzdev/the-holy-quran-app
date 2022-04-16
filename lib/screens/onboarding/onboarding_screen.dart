@@ -1,7 +1,9 @@
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
+import 'package:al_quran/providers/onboarding_provider.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 part 'widgets/indicator.dart';
 part 'widgets/onboarding_page.dart';
@@ -15,42 +17,42 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
-  int? _currentIndex = 0;
-
   List<Widget> pages = [
     const _OnBoardingPage(
       image: StaticAssets.gradLogo,
       text:
-          "\"Indeed, It is We who sent down the Qur'an and indeed, We will be its Guardian\"\n",
+          "The Holy Qur'an\n\n\"Indeed, It is We who sent down the Qur'an and indeed, We will be its Guardian\"\n",
     ),
     const _OnBoardingPage(
       image: StaticAssets.ui,
-      text: "",
+      text:
+          "With sleek & awesome User Interface to keep you in love with this amazing app and the Book.\n\nHope you will like our efforts!\n",
     ),
     const _OnBoardingPage(
       image: StaticAssets.easyNav,
-      text: "",
+      text:
+          "Now with Surah & Juz Index you can find your required Surahs & Juzs easily.\n\nNow with Bookmark option is available to access your daily readings.\n",
     ),
     const _OnBoardingPage(
       image: StaticAssets.drawer3d,
-      text: "",
+      text:
+          "For the first time ever, we introduce a very unique experience for our user with 3D Drawer.\n\nCan't wait for your reviews :)\n",
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     App.init(context);
+
+    final onBoardingProvider = Provider.of<OnBoardingProvider>(context);
+
     Object? args = ModalRoute.of(context)?.settings.arguments;
 
     return Scaffold(
       body: Stack(
         children: [
           PageView(
-            onPageChanged: (int value) {
-              setState(() {
-                _currentIndex = value;
-              });
-            },
+            onPageChanged: (int value) => onBoardingProvider.index = value,
             controller: _pageController,
             children: pages.asMap().entries.map((e) {
               return e.value;
@@ -84,19 +86,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Space.x2!,
           ...pages.asMap().entries.map(
                 (e) => _Indicator(
-                  isSelected: _currentIndex == e.key,
+                  isSelected: onBoardingProvider.index == e.key,
                 ),
               ),
           Space.xm!,
           FloatingActionButton(
             backgroundColor: AppTheme.c!.accent,
-            child: _currentIndex == pages.length - 1
+            child: onBoardingProvider.index == pages.length - 1
                 ? const Icon(Icons.check)
                 : const Icon(
                     Icons.arrow_forward,
                   ),
             onPressed: () {
-              if (_currentIndex == pages.length - 1) {
+              if (onBoardingProvider.index == pages.length - 1) {
                 if ((args as Map)['route'] == 'drawer') {
                   Navigator.pop(context);
                 } else {

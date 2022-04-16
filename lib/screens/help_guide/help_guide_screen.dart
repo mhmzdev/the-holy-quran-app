@@ -49,49 +49,43 @@ class Guidelines extends StatelessWidget {
             guideNo: 1,
             title: "Internet Connectivity",
             guideDescription:
-                "For now, the app is NOT available in Offline reading mode. So, internet connection is a must for getting all the data.",
+                "The application is available in Offline Mode. However, you will need internet connection first to load all the data.",
           ),
           GuideContainer(
-            title: "Juzz - Surah Index",
+            title: "Juz & Surah Index",
             guideNo: 2,
             guideDescription:
                 "Open any Juzz, Surah or Sajda directly from index. It has all 30 chapters and 114 surahs. Press and hold any Surah or Sajda for viewing a brief information about it.",
           ),
           GuideContainer(
             guideNo: 3,
-            title: "Sajda Index",
+            title: "Introduction Tab",
             guideDescription:
-                "Open any Sajda Ayah directly from index. It has all 15 Sajdas. Further there will be information about every Sajda inside, including Juzz, Ruku and Chapter type of Surah",
+                "It will re-open the introduction of app that you might have seen when opened the app for the first time",
           ),
           GuideContainer(
             guideNo: 4,
-            title: "Introduction Tab",
-            guideDescription:
-                "It will re-open the introduction of app that you might have saw when opened the app for the first time",
-          ),
-          GuideContainer(
-            guideNo: 5,
             title: "Rate & Feedback",
             guideDescription:
                 "You can give your precious feedback and rate our app on Google play store.",
           ),
           GuideContainer(
-            guideNo: 6,
+            guideNo: 5,
             title: "Reporting a Mistake",
             guideDescription:
                 "If you see any mistake in context of this Holy Book please report at the following link: \n\nhttps://api.alquran.cloud",
           ),
           GuideContainer(
-            guideNo: 7,
+            guideNo: 6,
             title: "Code Available",
             guideDescription:
-                "Code for v1.0.0 is available at the following link: \n\nhttps://github.com/mhmzdev/The_Holy_Quran_App \n\nThe code is only for learning purposes, it has proper LICENSE that you are not allowed to publish this app.",
+                "Code is available at the following link: \n\nhttps://github.com/mhmzdev/The_Holy_Quran_App \n\nThe code is for learning purposes, it has proper LICENSE but you are not allowed to publish this app.",
           ),
           GuideContainer(
-            guideNo: 8,
+            guideNo: 7,
             title: "Developer's Info",
             guideDescription:
-                "Name: Muhammad Hamza \nEmail: hamza.6.shakeel@gmail.com \nGitHub: @mhmzdev \nWebsite: hamza@mhmz.dev",
+                "Name: Muhammad Hamza \nEmail: hamza.6.shakeel@gmail.com \nGitHub: @mhmzdev \nWebsite: mhmz.dev",
           )
         ],
       ),
