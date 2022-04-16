@@ -1,3 +1,4 @@
+import 'package:al_quran/configs/app_typography.dart';
 import 'package:flutter/material.dart';
 
 class AppName extends StatelessWidget {
@@ -11,10 +12,19 @@ class AppName extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text("The", style: Theme.of(context).textTheme.headline2),
+          Text(
+            "The",
+            style: AppText.h2!.copyWith(
+              color: Colors.grey,
+            ),
+          ),
           Text(
             "Holy\nQur'an",
-            style: Theme.of(context).textTheme.headline1,
+            style: AppText.h1!.copyWith(
+              fontWeight: FontWeight.w600,
+              color: Colors.grey,
+              height: 1.3,
+            ),
           )
         ],
       ),

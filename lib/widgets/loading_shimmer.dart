@@ -1,4 +1,5 @@
 import 'package:al_quran/animations/bottom_animation.dart';
+import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -20,15 +21,24 @@ class LoadingShimmer extends StatelessWidget {
         color: Colors.transparent,
         padding: const EdgeInsets.all(8.0),
         child: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset('assets/logo.png', height: height * 0.1),
-            WidgetAnimator(
-                child: Text("Loading $text..!",
-                    style: TextStyle(fontSize: height * 0.02)))
-          ],
-        )),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                StaticAssets.logo,
+                height: height * 0.1,
+              ),
+              WidgetAnimator(
+                child: Text(
+                  "Loading $text..!",
+                  style: TextStyle(
+                    fontSize: height * 0.02,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

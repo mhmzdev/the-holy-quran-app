@@ -2,7 +2,7 @@
     package="com.hmz.al_quran">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="${applicationName}"
         android:label="The Holy Qur'an"
         android:icon="@mipmap/ic_launcher">
               <uses-library

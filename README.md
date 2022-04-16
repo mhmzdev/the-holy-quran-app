@@ -3,7 +3,7 @@
 Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
 The data is fetched using API and now the **offline mode** is available. So, you need internet for the first time only!
 
-<img src="https://user-images.githubusercontent.com/43790152/145754272-c4bc01ae-479c-4494-9d45-fd5b18835cbc.png">
+<img src="https://user-images.githubusercontent.com/43790152/163690699-e5a08def-5b9b-49f2-93d4-7f3ff5ee1862.png">
 
 <div align="center">
 
@@ -24,7 +24,7 @@ Watch the promo video <a href="https://www.youtube.com/watch?v=ghD5H9TF9sU&ab_ch
 
 ## 💻 Installation steps
 
-- Updated to `Flutter 2.8` Now!
+- Updated to `Flutter 2.10.4` Now!
 - Dart SDK `2.15` with Sound Null Safety!
 
 Open CMD where you want to clone the project & run the following commands
@@ -55,9 +55,15 @@ API Used: https://alquran.cloud/api
 
 ## 🎯 Features Updated
 
-✅ No-Ads
-✅ Offline Mode
-✅ Bug Fixes from previous versions
+✅ Offline Mode - Improved
+
+✅ Search Surah
+
+✅ Search Juz
+
+✅ Bookmarks
+
+✅ Other fixes from Previous verion.
 
 ## 🔑 License
 - This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
