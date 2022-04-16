@@ -56,13 +56,16 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                     });
                   }
                   if (value.isNotEmpty) {
-                    setState(() {
-                      _searchedIndex = int.parse(value);
-                      if (_searchedIndex <= JuzUtils.juzNames.length &&
-                          _searchedIndex >= 0) {
-                        _searchedJuzName = JuzUtils.juzNames[_searchedIndex - 1];
-                      }
-                    });
+                    if (value.length <= 2) {
+                      setState(() {
+                        _searchedIndex = int.parse(value);
+                        if (_searchedIndex <= JuzUtils.juzNames.length &&
+                            _searchedIndex >= 0) {
+                          _searchedJuzName =
+                              JuzUtils.juzNames[_searchedIndex - 1];
+                        }
+                      });
+                    }
                   }
                 },
                 decoration: InputDecoration(
@@ -96,32 +99,45 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                 top: MediaQuery.of(context).size.height * 0.28,
               ),
               child: hasSearched
-                  ? Card(
-                      shape: themeChange.darkTheme
-                          ? const StadiumBorder()
-                          : const RoundedRectangleBorder(),
-                      color: Colors.white,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: themeChange.darkTheme
-                              ? Colors.grey[800]
-                              : Colors.white70,
-                          borderRadius: BorderRadius.circular(15.0),
-                          border: Border.all(color: Colors.white, width: 1),
-                        ),
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              _searchedJuzName,
-                              style: AppText.b1b,
+                  ? GestureDetector(
+                      onTap: () async {
+                        await juzCubit.fetch(_searchedIndex);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => PageScreen(
+                              juz: juzCubit.state.data,
                             ),
-                            Text(
-                              _searchedIndex.toString(),
-                              style: AppText.l1,
-                            ),
-                          ],
+                          ),
+                        );
+                      },
+                      child: Card(
+                        shape: themeChange.darkTheme
+                            ? const StadiumBorder()
+                            : const RoundedRectangleBorder(),
+                        color: Colors.white,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: themeChange.darkTheme
+                                ? Colors.grey[800]
+                                : Colors.white70,
+                            borderRadius: BorderRadius.circular(15.0),
+                            border: Border.all(color: Colors.white, width: 1),
+                          ),
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                _searchedJuzName,
+                                style: AppText.b1b,
+                              ),
+                              Text(
+                                _searchedIndex.toString(),
+                                style: AppText.l1,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     )
