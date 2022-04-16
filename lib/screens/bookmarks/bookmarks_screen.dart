@@ -1,3 +1,4 @@
+import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/app_dimensions.dart';
 import 'package:al_quran/configs/app_theme.dart';
 import 'package:al_quran/configs/app_typography.dart';
@@ -30,6 +31,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
 
   @override
   Widget build(BuildContext context) {
+    App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
     final bookmarkCubit = BookmarkCubit.cubit(context);
 

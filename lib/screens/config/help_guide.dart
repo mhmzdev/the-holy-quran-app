@@ -1,3 +1,4 @@
+import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/widgets/app_version.dart';
 import 'package:al_quran/widgets/custom_back_button.dart';
@@ -10,6 +11,8 @@ class HelpGuide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    App.init(context);
+    
     return Scaffold(
       body: SafeArea(
         child: Stack(

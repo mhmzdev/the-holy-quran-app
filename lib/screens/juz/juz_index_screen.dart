@@ -1,4 +1,5 @@
 import 'package:al_quran/animations/bottom_animation.dart';
+import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/cubits/juz/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
@@ -25,6 +26,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
 
   @override
   Widget build(BuildContext context) {
+    App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
 
     double height = MediaQuery.of(context).size.height;

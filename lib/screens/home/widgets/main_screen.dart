@@ -5,6 +5,7 @@ class _MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
 
     return Container(

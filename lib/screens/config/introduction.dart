@@ -1,3 +1,4 @@
+import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
@@ -45,6 +46,7 @@ class OnBoardingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    App.init(context);
     return Scaffold(
       body: OverBoard(
         pages: pages,

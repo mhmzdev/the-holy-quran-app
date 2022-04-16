@@ -25,12 +25,14 @@ class _PageScreenState extends State<PageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
     final bookmarkCubit = BookmarkCubit.cubit(context);
 
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -95,9 +97,7 @@ class _PageScreenState extends State<PageScreen> {
                           child: Text(
                             (index + 1).toString(),
                             style: AppText.l1!.copyWith(
-                              color: appProvider.isDark
-                                  ? Colors.black
-                                  : Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                         ),

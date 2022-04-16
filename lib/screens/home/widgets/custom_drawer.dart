@@ -5,6 +5,7 @@ class _CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
 
     double width = MediaQuery.of(context).size.width;
