@@ -104,7 +104,9 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
               child: hasSearched
                   ? GestureDetector(
                       onTap: () async {
-                        await juzCubit.fetch(_searchedIndex);
+                        await juzCubit.fetch(
+                          JuzUtils.juzNames.indexOf(_searchedJuzName) + 1,
+                        );
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -138,11 +140,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                             children: [
                               Text(
                                 _searchedJuzName,
-                                style: AppText.b1b,
-                              ),
-                              Text(
-                                _searchedIndex.toString(),
-                                style: AppText.l1,
+                                style: AppText.h2b,
                               ),
                             ],
                           ),
