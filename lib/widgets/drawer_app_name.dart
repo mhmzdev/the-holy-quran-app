@@ -22,10 +22,9 @@ class DrawerAppName extends StatelessWidget {
             Transform.scale(
               scale: 1.2,
               child: Switch(
-                activeColor: Colors.grey[500],
+                activeColor: Colors.white,
                 value: appProvider.isDark,
                 activeTrackColor: AppTheme.c!.accent,
-                thumbColor: MaterialStateProperty.all(AppTheme.c!.accent),
                 onChanged: (value) {
                   if (value) {
                     appProvider.setTheme(ThemeMode.dark);
