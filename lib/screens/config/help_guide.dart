@@ -5,8 +5,8 @@ import 'package:al_quran/widgets/custom_image.dart';
 import 'package:al_quran/widgets/title.dart';
 import 'package:flutter/material.dart';
 
-class Help extends StatelessWidget {
-  const Help({Key? key}) : super(key: key);
+class HelpGuide extends StatelessWidget {
+  const HelpGuide({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

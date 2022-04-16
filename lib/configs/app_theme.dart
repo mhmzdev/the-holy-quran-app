@@ -23,16 +23,21 @@ class AppTheme {
   );
 
   static AppCoreTheme dark = _core.copyWith(
+    scaffold: const Color(0xff0e0e0e),
     background: const Color(0xFF212121),
     backgroundSub: const Color(0xff1c1c1e),
-    scaffold: const Color(0xff0e0e0e),
-    text: const Color(0xffc5c5c5),
+    text: Colors.white70,
+    textSub: Colors.white70,
+    textSub2: Colors.white70,
   );
 
   static AppCoreTheme? c;
 
   // Init
   static init(BuildContext context) {
-    c = light;
+    c = isDark(context) ? dark : light;
   }
+
+  static bool isDark(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark;
 }

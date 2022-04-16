@@ -1,6 +1,7 @@
 import 'package:al_quran/animations/bottom_animation.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/cubits/juz/cubit.dart';
+import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/screens/surah/surah_index_screen.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/utils/juz.dart';
@@ -8,7 +9,6 @@ import 'package:al_quran/widgets/custom_back_button.dart';
 import 'package:al_quran/widgets/custom_image.dart';
 import 'package:al_quran/widgets/flare.dart';
 import 'package:al_quran/widgets/title.dart';
-import 'package:al_quran/providers/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +25,8 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
+    final appProvider = Provider.of<AppProvider>(context);
+
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -112,17 +113,22 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                         );
                       },
                       child: Card(
-                        shape: themeChange.darkTheme
-                            ? const StadiumBorder()
-                            : const RoundedRectangleBorder(),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
                         color: Colors.white,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: themeChange.darkTheme
+                            color: appProvider.isDark
                                 ? Colors.grey[800]
-                                : Colors.white70,
+                                : Colors.white,
                             borderRadius: BorderRadius.circular(15.0),
-                            border: Border.all(color: Colors.white, width: 1),
+                            border: Border.all(
+                              color: appProvider.isDark
+                                  ? Colors.white
+                                  : Colors.black38,
+                              width: 1,
+                            ),
                           ),
                           alignment: Alignment.center,
                           child: Column(
@@ -161,18 +167,22 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                               );
                             },
                             child: Card(
-                              shape: themeChange.darkTheme
-                                  ? const StadiumBorder()
-                                  : const RoundedRectangleBorder(),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
                               color: Colors.white,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: themeChange.darkTheme
+                                  color: appProvider.isDark
                                       ? Colors.grey[800]
-                                      : Colors.white70,
+                                      : Colors.white,
                                   borderRadius: BorderRadius.circular(15.0),
-                                  border:
-                                      Border.all(color: Colors.white, width: 1),
+                                  border: Border.all(
+                                    color: appProvider.isDark
+                                        ? Colors.white
+                                        : Colors.black38,
+                                    width: 1,
+                                  ),
                                 ),
                                 alignment: Alignment.center,
                                 child: Column(
@@ -204,7 +214,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
             const CustomTitle(
               title: "Juzz Index",
             ),
-            if (themeChange.darkTheme) ...[
+            if (appProvider.isDark) ...[
               Flare(
                 color: const Color(0xfff9e9b8),
                 offset: Offset(width, -height),

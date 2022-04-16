@@ -1,6 +1,6 @@
-import 'package:al_quran/providers/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:al_quran/providers/app_provider.dart';
 
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class CustomBackButton extends StatelessWidget {
         onPressed: () => Navigator.pop(context),
         iconSize: MediaQuery.of(context).size.height * 0.035,
         tooltip: 'Back Button',
-        color: Provider.of<DarkThemeProvider>(context).darkTheme
+        color: Provider.of<AppProvider>(context).isDark
             ? Colors.white
             : Colors.black54,
       ),

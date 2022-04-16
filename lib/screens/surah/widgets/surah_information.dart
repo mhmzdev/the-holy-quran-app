@@ -34,7 +34,7 @@ class _SurahInformationState extends State<_SurahInformation>
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
+    final appProvider = Provider.of<AppProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -49,7 +49,7 @@ class _SurahInformationState extends State<_SurahInformation>
             width: width * 0.75,
             height: height * 0.37,
             decoration: ShapeDecoration(
-              color: themeChange.darkTheme ? Colors.grey[800] : Colors.white,
+              color: appProvider.isDark ? Colors.grey[800] : Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
@@ -91,8 +91,14 @@ class _SurahInformationState extends State<_SurahInformation>
                 SizedBox(
                   height: height * 0.05,
                   child: ElevatedButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: const Text("OK")),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        AppTheme.c!.accent,
+                      ),
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text("OK"),
+                  ),
                 )
               ],
             ),

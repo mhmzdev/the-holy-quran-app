@@ -5,7 +5,7 @@ class _CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
+    final appProvider = Provider.of<AppProvider>(context);
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -14,7 +14,7 @@ class _CustomDrawer extends StatelessWidget {
       width: width * 0.835,
       height: height,
       child: Material(
-        color: themeChange.darkTheme ? Colors.grey[800] : Colors.white,
+        color: appProvider.isDark ? Colors.grey[800] : Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -25,6 +25,7 @@ class _CustomDrawer extends StatelessWidget {
               Space.y1!,
               ...DrawerUtils.items.map(
                 (e) => Card(
+                  color: appProvider.isDark ? Colors.grey[700] : Colors.white,
                   child: ListTile(
                     title: Text(e['title']),
                     leading: Icon(e['icon']),

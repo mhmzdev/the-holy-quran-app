@@ -4,6 +4,7 @@ import 'package:al_quran/cubits/bookmarks/cubit.dart';
 import 'package:al_quran/cubits/chapter/cubit.dart';
 import 'package:al_quran/models/chapter/chapter.dart';
 import 'package:al_quran/models/juz/juz.dart';
+import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/utils/juz.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ import 'package:al_quran/widgets/flare.dart';
 import 'package:al_quran/widgets/title.dart';
 import 'package:al_quran/widgets/custom_back_button.dart';
 import 'package:al_quran/widgets/custom_image.dart';
-import 'package:al_quran/providers/theme/theme_provider.dart';
 
 part '../page/page_screen.dart';
 
@@ -41,13 +41,14 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
+    final appProvider = Provider.of<AppProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
+        backgroundColor: appProvider.isDark ? Colors.grey[850] : Colors.white,
         body: SafeArea(
           child: Stack(
             children: <Widget>[
@@ -152,7 +153,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                         },
                       ),
               ),
-              if (themeChange.darkTheme) ...[
+              if (appProvider.isDark) ...[
                 Flare(
                   color: const Color(0xfff9e9b8),
                   offset: Offset(width, -height),

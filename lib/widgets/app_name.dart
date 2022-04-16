@@ -14,12 +14,16 @@ class AppName extends StatelessWidget {
         children: <Widget>[
           Text(
             "The",
-            style: AppText.h2!,
+            style: AppText.h2!.copyWith(
+              color: Colors.grey,
+            ),
           ),
           Text(
             "Holy\nQur'an",
             style: AppText.h1!.copyWith(
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey,
+              height: 1.3,
             ),
           )
         ],

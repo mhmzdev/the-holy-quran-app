@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:al_quran/configs/app.dart';
+import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +13,6 @@ import 'package:al_quran/widgets/calligraphy.dart';
 import 'package:al_quran/widgets/app_version.dart';
 import 'package:al_quran/widgets/drawer_app_name.dart';
 import 'package:al_quran/animations/bottom_animation.dart';
-import 'package:al_quran/providers/theme/theme_provider.dart';
 
 part 'widgets/main_screen.dart';
 part 'widgets/bottom_ayah.dart';
@@ -117,7 +118,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
+    App.init(context);
+    final appProvider = Provider.of<AppProvider>(context);
     double width = MediaQuery.of(context).size.width;
 
     return WillPopScope(
@@ -131,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           animation: animationController,
           builder: (context, _) {
             return Material(
-              color: themeChange.darkTheme ? Colors.grey[850] : Colors.white70,
+              color: appProvider.isDark ? Colors.grey[850] : Colors.white70,
               child: SafeArea(
                 child: Stack(
                   children: <Widget>[
@@ -165,8 +167,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       child: IconButton(
                         icon: const Icon(Icons.menu),
                         onPressed: toggle,
-                        color:
-                            themeChange.darkTheme ? Colors.white : Colors.black,
+                        color: appProvider.isDark ? Colors.white : Colors.black,
                       ),
                     ),
                   ],
