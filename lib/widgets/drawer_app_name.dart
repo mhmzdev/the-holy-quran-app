@@ -47,7 +47,10 @@ class DrawerAppName extends StatelessWidget {
             )
           ],
         ),
-        Image.asset(StaticAssets.gradLogo, height: height * 0.17)
+        Image.asset(
+          StaticAssets.gradLogo,
+          height: height * 0.17,
+        )
       ],
     );
   }

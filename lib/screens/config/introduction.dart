@@ -13,28 +13,28 @@ class OnBoardingCard extends StatelessWidget {
         doAnimateImage: true),
     PageModel(
         color: const Color(0xff106791),
-        imageAssetPath: 'assets/ui.png',
+        imageAssetPath: StaticAssets.ui,
         title: "Fancy & Beautiful Design",
         body:
             "We have worked hard to choose beautiful Colors, Animations and overall an appealing Design for this Beautiful Book",
         doAnimateImage: true),
-    PageModel(
-        color: const Color(0xff664d7b),
-        imageAssetPath: 'assets/sajdaIndex.png',
-        title: "Sajda Index",
-        body:
-            "Now, with Sajda Index you can directly open any Sajda in Qur'an from the list along with brief information about it.",
-        doAnimateImage: true),
+    // PageModel(
+    //     color: const Color(0xff664d7b),
+    //     imageAssetPath: StaticAssets.sajda,
+    //     title: "Sajda Index",
+    //     body:
+    //         "Now, with Sajda Index you can directly open any Sajda in Qur'an from the list along with brief information about it.",
+    //     doAnimateImage: true),
     PageModel(
         color: const Color(0xff04364f),
-        imageAssetPath: 'assets/easyNav.png',
+        imageAssetPath: StaticAssets.easyNav,
         title: "Easy to Explore",
         body:
             "Open Juzz, Surah or Sajda directly from the index. Long press any Surah or Sajda will show brief information about it.",
         doAnimateImage: true),
     PageModel(
         color: Colors.grey[850],
-        imageAssetPath: 'assets/drawer3d.gif',
+        imageAssetPath: StaticAssets.drawer3d,
         title: "3D Animated Drawer",
         body:
             "We have introduced a unique 3D Animated drawer. Share your feedback about such ideas.",

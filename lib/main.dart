@@ -78,7 +78,7 @@ class _MyAppState extends State<MyApp> {
               routes: <String, WidgetBuilder>{
                 '/help': (context) => const Help(),
                 '/intro': (context) => OnBoardingCard(),
-                '/shareApp': (context) => const ShareApp(),
+                '/share': (context) => const ShareApp(),
                 '/splash': (context) => const SplashScreen(),
                 '/juzIndex': (context) => const JuzIndexScreen(),
                 '/bookmarks': (context) => const BookmarksScreen(),

@@ -1,19 +1,22 @@
 import 'dart:io';
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:al_quran/utils/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/widgets/app_name.dart';
 import 'package:al_quran/widgets/quran_rail.dart';
 import 'package:al_quran/widgets/calligraphy.dart';
-import 'package:al_quran/widgets/custom_drawer.dart';
+import 'package:al_quran/widgets/app_version.dart';
+import 'package:al_quran/widgets/drawer_app_name.dart';
 import 'package:al_quran/animations/bottom_animation.dart';
 import 'package:al_quran/providers/theme/theme_provider.dart';
 
 part 'widgets/main_screen.dart';
 part 'widgets/bottom_ayah.dart';
 part 'widgets/custom_button.dart';
+part 'widgets/custom_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   final double maxSlide;
@@ -141,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           ..rotateY(
                               math.pi / 2 * (1 - animationController.value)),
                         alignment: Alignment.centerRight,
-                        child: const MyDrawer(),
+                        child: const _CustomDrawer(),
                       ),
                     ),
                     Transform.translate(
