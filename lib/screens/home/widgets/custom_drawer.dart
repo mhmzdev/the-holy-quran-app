@@ -30,7 +30,13 @@ class _CustomDrawer extends StatelessWidget {
                   child: ListTile(
                     title: Text(e['title']),
                     leading: Icon(e['icon']),
-                    onTap: () => Navigator.pushNamed(context, '${e['route']}'),
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '${e['route']}',
+                      arguments: {
+                        'route': 'drawer',
+                      },
+                    ),
                   ),
                 ),
               ),

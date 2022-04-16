@@ -1,4 +1,5 @@
 import 'package:al_quran/configs/app.dart';
+import 'package:al_quran/configs/app_theme.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/widgets/app_version.dart';
@@ -104,6 +105,11 @@ class ShareCustomButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.55,
         height: MediaQuery.of(context).size.height * 0.055,
         child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+              AppTheme.c!.accent,
+            ),
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[

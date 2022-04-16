@@ -29,13 +29,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
-  better_page_turn:
-    dependency: "direct main"
-    description:
-      name: better_page_turn
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.6"
   bloc:
     dependency: "direct main"
     description:
@@ -237,13 +230,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-  flutter_overboard:
-    dependency: "direct main"
-    description:
-      name: flutter_overboard
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
