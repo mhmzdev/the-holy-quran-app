@@ -79,7 +79,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 child: const Text('Skip'),
                 onPressed: () {
-                  if ((args as Map)['route'] == 'drawer') {
+                  if (args != null && (args as Map)['route'] == 'drawer') {
                     Navigator.pop(context);
                   } else {
                     Navigator.pushReplacementNamed(context, '/home');

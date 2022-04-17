@@ -19,9 +19,11 @@ import 'package:al_quran/screens/share_app/share_app_screen.dart';
 import 'package:al_quran/screens/bookmarks/bookmarks_screen.dart';
 import 'package:al_quran/screens/onboarding/onboarding_screen.dart';
 import 'package:al_quran/screens/help_guide/help_guide_screen.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'configs/core_theme.dart' as theme;
 
 Future<void> main() async {
+  setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
 
   // hive
