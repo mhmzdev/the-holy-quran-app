@@ -1,4 +1,4 @@
-# The Holy Qur'an 2.0
+# The Holy Qur'an 2.5.0
 
 Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
 The data is fetched using API and now the **offline mode** is available. So, you need internet for the first time only!
