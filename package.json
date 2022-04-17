@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "hygen": "^6.2.0",
-    "async": "^2.6.4",
+    "async": ">=2.6.4"
   }
 }
