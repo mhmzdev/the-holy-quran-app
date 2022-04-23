@@ -93,10 +93,10 @@ class MaterialChild extends StatelessWidget {
           maxSlide: MediaQuery.of(context).size.width * 0.835,
         ),
       ),
-      initialRoute: '/splash',
+      initialRoute: '/',
       routes: <String, WidgetBuilder>{
+        '/': (context) => const SplashScreen(),
         '/help': (context) => const HelpGuide(),
-        '/splash': (context) => const SplashScreen(),
         '/share': (context) => const ShareAppScreen(),
         '/intro': (context) => const OnboardingScreen(),
         '/juzIndex': (context) => const JuzIndexScreen(),
