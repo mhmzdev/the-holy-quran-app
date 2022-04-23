@@ -88,15 +88,16 @@ class _PageScreenState extends State<PageScreen> {
                   padding: EdgeInsets.fromLTRB(width * 0.015, 0, 0, 0),
                   child: WidgetAnimator(
                     child: ListTile(
+                      contentPadding: Space.h,
                       trailing: CircleAvatar(
-                        radius: AppDimensions.normalize(4),
+                        radius: AppDimensions.normalize(3.2),
                         backgroundColor: const Color(0xff04364f),
                         child: CircleAvatar(
-                          radius: AppDimensions.normalize(3.5),
+                          radius: AppDimensions.normalize(2.9),
                           backgroundColor: Colors.white,
                           child: Text(
                             (index + 1).toString(),
-                            style: AppText.l1!.copyWith(
+                            style: AppText.l2!.copyWith(
                               color: Colors.black,
                             ),
                           ),
@@ -106,6 +107,7 @@ class _PageScreenState extends State<PageScreen> {
                         verse!.text!,
                         textAlign: TextAlign.right,
                         style: TextStyle(
+                          fontFamily: 'Noor',
                           fontSize: height * 0.03,
                           color: Colors.black,
                         ),

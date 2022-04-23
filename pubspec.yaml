@@ -75,3 +75,6 @@ flutter:
     - family: ShareIcon
       fonts:
         - asset: fonts/ShareIcon.ttf
+    - family: Noor
+      fonts:
+        - asset: fonts/noor-regular.ttf

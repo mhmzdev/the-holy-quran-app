@@ -34,7 +34,9 @@ class _SurahAppBar extends StatelessWidget {
                 Text(data!.englishNameTranslation!),
                 Text(
                   data!.name!,
-                  style: AppText.h1b,
+                  style: AppText.h1b!.copyWith(
+                    fontFamily: 'Noor',
+                  ),
                 )
               ],
             ),
