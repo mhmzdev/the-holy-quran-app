@@ -19,10 +19,16 @@ class ChapterCubit extends Cubit<ChapterState> {
 
   final repo = ChapterRepository();
 
-  Future<void> fetch() async {
+  Future<void> fetch({bool? api = false}) async {
     emit(const ChapterFetchLoading());
     try {
-      List<Chapter?>? cached = await repo.chapterHive();
+      List<Chapter?>? cached;
+
+      if (api!) {
+        cached = await repo.chapterApi();
+      } else {
+        cached = await repo.chapterHive();
+      }
 
       if (cached == null) {
         List<Chapter?>? data = await repo.chapterApi();

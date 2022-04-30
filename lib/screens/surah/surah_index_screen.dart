@@ -45,6 +45,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
     App.init(context);
 
     final appProvider = Provider.of<AppProvider>(context);
+    final chapterCubit = ChapterCubit.cubit(context);
+
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -64,98 +66,144 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
               const CustomTitle(
                 title: 'Surah Index',
               ),
-              Container(
-                height: AppDimensions.normalize(20),
-                margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.2,
-                  left: AppDimensions.normalize(5),
-                  right: AppDimensions.normalize(5),
-                ),
-                child: TextFormField(
-                  onChanged: (value) {
-                    if (value.isEmpty) {
-                      setState(() {
-                        searchedChapters = [];
-                      });
-                    }
-                    if (value.isNotEmpty) {
-                      setState(() {
-                        var lowerCaseQuery = value.toLowerCase();
-
-                        searchedChapters = chapters!.where((chapter) {
-                          final chapterName = chapter!.englishName!
-                              .toLowerCase()
-                              .contains(lowerCaseQuery);
-                          return chapterName;
-                        }).toList(growable: false)
-                          ..sort(
-                            (a, b) => a!.englishName!
-                                .toLowerCase()
-                                .indexOf(lowerCaseQuery)
-                                .compareTo(
-                                  b!.englishName!
-                                      .toLowerCase()
-                                      .indexOf(lowerCaseQuery),
+              if (chapters!.isEmpty)
+                Center(
+                  child: BlocBuilder<ChapterCubit, ChapterState>(
+                    builder: (context, state) {
+                      if (state is ChapterFetchLoading) {
+                        return LinearProgressIndicator(
+                          backgroundColor: AppTheme.c!.accent,
+                          valueColor:
+                              const AlwaysStoppedAnimation(Colors.white),
+                        );
+                      }
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.error_outline_rounded,
+                            size: AppDimensions.normalize(25),
+                          ),
+                          Space.y!,
+                          Text(
+                            'Something went wrong!',
+                            style: AppText.h3b,
+                          ),
+                          Space.y1!,
+                          SizedBox(
+                            width: AppDimensions.normalize(70),
+                            height: AppDimensions.normalize(17),
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                  AppTheme.c!.accent,
                                 ),
-                          );
-                      });
-                    }
-                  },
-                  decoration: InputDecoration(
-                    contentPadding: Space.h,
-                    hintText: 'Search Surah here...',
-                    hintStyle: AppText.b2!.copyWith(
-                      color: AppTheme.c!.textSub2,
-                    ),
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: AppTheme.c!.textSub2!,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                              ),
+                              onPressed: () {
+                                chapterCubit.fetch(api: true);
+                              },
+                              child: const Text('Retry'),
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              if (chapters!.isNotEmpty)
+                Container(
+                  height: AppDimensions.normalize(20),
+                  margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.2,
+                    left: AppDimensions.normalize(5),
+                    right: AppDimensions.normalize(5),
+                  ),
+                  child: TextFormField(
+                    onChanged: (value) {
+                      if (value.isEmpty) {
+                        setState(() {
+                          searchedChapters = [];
+                        });
+                      }
+                      if (value.isNotEmpty) {
+                        setState(() {
+                          var lowerCaseQuery = value.toLowerCase();
+
+                          searchedChapters = chapters!.where((chapter) {
+                            final chapterName = chapter!.englishName!
+                                .toLowerCase()
+                                .contains(lowerCaseQuery);
+                            return chapterName;
+                          }).toList(growable: false)
+                            ..sort(
+                              (a, b) => a!.englishName!
+                                  .toLowerCase()
+                                  .indexOf(lowerCaseQuery)
+                                  .compareTo(
+                                    b!.englishName!
+                                        .toLowerCase()
+                                        .indexOf(lowerCaseQuery),
+                                  ),
+                            );
+                        });
+                      }
+                    },
+                    decoration: InputDecoration(
+                      contentPadding: Space.h,
+                      hintText: 'Search Surah here...',
+                      hintStyle: AppText.b2!.copyWith(
+                        color: AppTheme.c!.textSub2,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
                         color: AppTheme.c!.textSub2!,
                       ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: AppTheme.c!.textSub2!,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppTheme.c!.textSub2!,
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      borderRadius: BorderRadius.circular(10.0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppTheme.c!.textSub2!,
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.28,
+              if (chapters!.isNotEmpty)
+                Container(
+                  margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.28,
+                  ),
+                  child: searchedChapters!.isNotEmpty
+                      ? ListView.separated(
+                          separatorBuilder: (context, index) => const Divider(
+                            color: Color(0xffee8f8b),
+                          ),
+                          itemCount: searchedChapters!.length,
+                          itemBuilder: (context, index) {
+                            final chapter = searchedChapters![index];
+                            return SurahTile(
+                              chapter: chapter,
+                            );
+                          },
+                        )
+                      : ListView.separated(
+                          separatorBuilder: (context, index) => const Divider(
+                            color: Color(0xffee8f8b),
+                          ),
+                          itemCount: chapters!.length,
+                          itemBuilder: (context, index) {
+                            final chapter = chapters![index];
+                            return SurahTile(
+                              chapter: chapter,
+                            );
+                          },
+                        ),
                 ),
-                child: searchedChapters!.isNotEmpty
-                    ? ListView.separated(
-                        separatorBuilder: (context, index) => const Divider(
-                          color: Color(0xffee8f8b),
-                        ),
-                        itemCount: searchedChapters!.length,
-                        itemBuilder: (context, index) {
-                          final chapter = searchedChapters![index];
-                          return SurahTile(
-                            chapter: chapter,
-                          );
-                        },
-                      )
-                    : ListView.separated(
-                        separatorBuilder: (context, index) => const Divider(
-                          color: Color(0xffee8f8b),
-                        ),
-                        itemCount: chapters!.length,
-                        itemBuilder: (context, index) {
-                          final chapter = chapters![index];
-                          return SurahTile(
-                            chapter: chapter,
-                          );
-                        },
-                      ),
-              ),
               if (appProvider.isDark) ...[
                 Flare(
                   color: const Color(0xfff9e9b8),
