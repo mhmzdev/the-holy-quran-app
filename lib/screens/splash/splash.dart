@@ -1,4 +1,5 @@
 import 'package:al_quran/animations/bottom_animation.dart';
+import 'package:al_quran/app_routes.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/cubits/bookmarks/cubit.dart';
 import 'package:al_quran/cubits/juz/cubit.dart';
@@ -44,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (mounted) {
         Navigator.pushReplacementNamed(
           context,
-          isNew ? '/intro' : '/home',
+          isNew ? AppRoutes.onboarding : AppRoutes.home,
         );
       }
     });

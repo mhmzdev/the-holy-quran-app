@@ -31,12 +31,17 @@ class _SurahAppBar extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(data!.englishNameTranslation!),
+                Text(
+                  data!.englishNameTranslation!,
+                ),
+                Space.y1!,
                 Text(
                   data!.name!,
                   style: AppText.h1b!.copyWith(
                     fontFamily: 'Noor',
+                    height: 1.5,
                   ),
+                  textAlign: TextAlign.center,
                 )
               ],
             ),

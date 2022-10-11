@@ -1,3 +1,4 @@
+import 'package:al_quran/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class DrawerUtils {
@@ -5,32 +6,32 @@ class DrawerUtils {
     {
       'title': 'Surah Index',
       'icon': Icons.format_list_numbered_outlined,
-      'route': '/surahIndex',
+      'route': AppRoutes.surah,
     },
     {
       'title': 'Juz Index',
       'icon': Icons.list,
-      'route': '/juzIndex',
+      'route': AppRoutes.juz,
     },
     {
       'title': 'Bookmarks',
       'icon': Icons.bookmark_outline,
-      'route': '/bookmarks',
+      'route': AppRoutes.bookmarks,
     },
     {
       'title': 'Help Guide',
       'icon': Icons.help_outline,
-      'route': '/help',
+      'route': AppRoutes.helpGuide,
     },
     {
       'title': 'Introduction',
       'icon': Icons.info_outline,
-      'route': '/intro',
+      'route': AppRoutes.onboarding,
     },
     {
       'title': 'Share App',
       'icon': Icons.share_outlined,
-      'route': '/share',
+      'route': AppRoutes.shareApp,
     },
   ];
 }

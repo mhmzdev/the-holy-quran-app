@@ -5,6 +5,8 @@ class _AyahBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    App.init(context);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -13,14 +15,14 @@ class _AyahBottom extends StatelessWidget {
             "\"Indeed, It is We who sent down the Qur'an\nand indeed, We will be its Guardian\"",
             textAlign: TextAlign.center,
             style: AppText.b2!.copyWith(
-              color: AppTheme.c!.textSub2,
+              color: AppTheme.c!.text,
             ),
           ),
           Space.y!,
           Text(
             "Surah Al-Hijr\n",
             style: AppText.l1!.copyWith(
-              color: AppTheme.c!.textSub2,
+              color: AppTheme.c!.text,
             ),
           ),
         ],

@@ -1,4 +1,4 @@
-part of '../onboarding_screen.dart';
+part of '../onboarding.dart';
 
 class _Indicator extends StatelessWidget {
   final bool isSelected;

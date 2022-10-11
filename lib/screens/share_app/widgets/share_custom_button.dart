@@ -1,4 +1,4 @@
-part of '../share_app_screen.dart';
+part of '../share_app.dart';
 
 class _ShareCustomButton extends StatelessWidget {
   final String? text;

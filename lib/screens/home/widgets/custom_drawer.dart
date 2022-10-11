@@ -15,7 +15,7 @@ class _CustomDrawer extends StatelessWidget {
       width: width * 0.835,
       height: height,
       child: Material(
-        color: appProvider.isDark ? Colors.grey[800] : Colors.white,
+        color: appProvider.isDark ? Colors.grey[850] : Colors.white,
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -27,7 +27,7 @@ class _CustomDrawer extends StatelessWidget {
                 Space.y1!,
                 ...DrawerUtils.items.map(
                   (e) => Card(
-                    color: appProvider.isDark ? Colors.grey[700] : Colors.white,
+                    color: appProvider.isDark ? Colors.grey[800] : Colors.white,
                     child: ListTile(
                       title: Text(e['title']),
                       leading: Icon(e['icon']),

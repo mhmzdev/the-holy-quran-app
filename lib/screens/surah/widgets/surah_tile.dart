@@ -11,22 +11,7 @@ class SurahTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WidgetAnimator(
-      child: ListTile(
-        minLeadingWidth: 15.0,
-        leading: Text(chapter!.number!.toString()),
-        title: Text(
-          chapter!.englishName!,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        subtitle: Text(chapter!.englishNameTranslation!),
-        trailing: Text(
-          chapter!.name!,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      child: InkWell(
         onTap: () {
           Navigator.push(
             context,
@@ -41,6 +26,38 @@ class SurahTile extends StatelessWidget {
           context: context,
           builder: (context) => _SurahInformation(
             chapterData: chapter,
+          ),
+        ),
+        child: Padding(
+          padding: Space.all(1),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(chapter!.number!.toString()),
+              Space.x1!,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    chapter!.englishName!,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    chapter!.englishNameTranslation!,
+                    style: AppText.b2,
+                  )
+                ],
+              ),
+              Expanded(
+                child: Text(
+                  chapter!.name!,
+                  style: AppText.b1b,
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ],
           ),
         ),
       ),

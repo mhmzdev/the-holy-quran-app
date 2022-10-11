@@ -1,22 +1,22 @@
 import 'dart:io';
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:al_quran/app_routes.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/drawer.dart';
+import 'package:al_quran/widgets/button/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/configs/configs.dart';
-import 'package:al_quran/widgets/app_name.dart';
+import 'package:al_quran/widgets/app/app_name.dart';
 import 'package:al_quran/widgets/quran_rail.dart';
 import 'package:al_quran/widgets/calligraphy.dart';
-import 'package:al_quran/widgets/app_version.dart';
-import 'package:al_quran/widgets/drawer_app_name.dart';
-import 'package:al_quran/animations/bottom_animation.dart';
+import 'package:al_quran/widgets/app/app_version.dart';
+import 'package:al_quran/widgets/app/drawer_app_name.dart';
 
 part 'widgets/main_screen.dart';
 part 'widgets/bottom_ayah.dart';
-part 'widgets/custom_button.dart';
 part 'widgets/custom_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           animation: animationController,
           builder: (context, _) {
             return Material(
-              color: appProvider.isDark ? Colors.grey[850] : Colors.white70,
+              color: appProvider.isDark ? Colors.grey[900] : Colors.white70,
               child: Stack(
                 children: <Widget>[
                   Transform.translate(

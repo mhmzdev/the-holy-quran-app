@@ -6,10 +6,10 @@ import 'package:al_quran/cubits/bookmarks/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/screens/surah/surah_index_screen.dart';
 import 'package:al_quran/utils/assets.dart';
-import 'package:al_quran/widgets/custom_back_button.dart';
+import 'package:al_quran/widgets/button/app_back_button.dart';
 import 'package:al_quran/widgets/custom_image.dart';
-import 'package:al_quran/widgets/loading_shimmer.dart';
-import 'package:al_quran/widgets/title.dart';
+import 'package:al_quran/widgets/loader/loading_shimmer.dart';
+import 'package:al_quran/widgets/app/title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +46,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                 height: AppDimensions.normalize(60),
                 imagePath: StaticAssets.sajda,
               ),
-            const CustomBackButton(),
+            const AppBackButton(),
             const CustomTitle(
               title: 'Bookmarks',
             ),

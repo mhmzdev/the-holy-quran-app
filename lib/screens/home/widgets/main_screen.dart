@@ -10,7 +10,7 @@ class _MainScreen extends StatelessWidget {
 
     return Container(
       width: MediaQuery.of(context).size.width,
-      color: appProvider.isDark ? Colors.grey[800] : Colors.white,
+      color: appProvider.isDark ? Colors.grey[850] : Colors.white,
       child: SafeArea(
         child: Stack(
           fit: StackFit.expand,
@@ -23,20 +23,22 @@ class _MainScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Space.y1!,
-                  _CustomButton(
+                  AppButton(
                     title: 'Surah Index',
                     onPressed: () =>
-                        Navigator.pushNamed(context, '/surahIndex'),
+                        Navigator.pushNamed(context, AppRoutes.surah),
                   ),
                   Space.y1!,
-                  _CustomButton(
+                  AppButton(
                     title: 'Juzz Index',
-                    onPressed: () => Navigator.pushNamed(context, '/juzIndex'),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, AppRoutes.juz),
                   ),
                   Space.y1!,
-                  _CustomButton(
+                  AppButton(
                     title: 'Bookmarks',
-                    onPressed: () => Navigator.pushNamed(context, '/bookmarks'),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, AppRoutes.bookmarks),
                   ),
                 ],
               ),

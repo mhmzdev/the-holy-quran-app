@@ -2,9 +2,9 @@ import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/app_theme.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/assets.dart';
-import 'package:al_quran/widgets/app_version.dart';
-import 'package:al_quran/widgets/custom_back_button.dart';
-import 'package:al_quran/widgets/title.dart';
+import 'package:al_quran/widgets/app/app_version.dart';
+import 'package:al_quran/widgets/button/app_back_button.dart';
+import 'package:al_quran/widgets/app/title.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
@@ -23,7 +23,7 @@ class ShareAppScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: const <Widget>[
-            CustomBackButton(),
+            AppBackButton(),
             CustomTitle(title: 'Share App'),
             ShareInfo()
           ],

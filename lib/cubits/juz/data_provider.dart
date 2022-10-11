@@ -27,7 +27,7 @@ class JuzDataProvider {
     try {
       final data = await cache.get('juz$juzNumber');
       if (data == null) return null;
-      
+
       final Juz? juz = data;
       return juz;
     } catch (e) {

@@ -1,3 +1,4 @@
+import 'package:al_quran/app_routes.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/providers/onboarding_provider.dart';
@@ -83,7 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     if (args != null && (args as Map)['route'] == 'drawer') {
                       Navigator.pop(context);
                     } else {
-                      Navigator.pushReplacementNamed(context, '/home');
+                      Navigator.pushReplacementNamed(context, AppRoutes.home);
                     }
                   },
                 ),
@@ -113,7 +114,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 if (args != null && (args as Map)['route'] == 'drawer') {
                   Navigator.pop(context);
                 } else {
-                  Navigator.pushReplacementNamed(context, '/home');
+                  Navigator.pushReplacementNamed(context, AppRoutes.home);
                 }
               } else {
                 _pageController.nextPage(

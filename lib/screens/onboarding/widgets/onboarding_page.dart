@@ -1,4 +1,4 @@
-part of '../onboarding_screen.dart';
+part of '../onboarding.dart';
 
 class _OnBoardingPage extends StatelessWidget {
   final String image;

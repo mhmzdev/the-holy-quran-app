@@ -49,7 +49,7 @@ class _SurahInformationState extends State<_SurahInformation>
             width: width * 0.75,
             height: height * 0.37,
             decoration: ShapeDecoration(
-              color: appProvider.isDark ? Colors.grey[800] : Colors.white,
+              color: appProvider.isDark ? Colors.grey[850] : Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),

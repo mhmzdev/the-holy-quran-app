@@ -9,7 +9,7 @@ class AppTheme {
     primaryDark: const Color(0xff896277),
     shadow: Colors.black.withOpacity(0.20),
     shadowSub: Colors.black.withOpacity(0.12),
-    text: const Color(0xffc5c5c5),
+    text: const Color.fromARGB(255, 255, 255, 255),
   );
 
   static AppCoreTheme light = _core.copyWith(

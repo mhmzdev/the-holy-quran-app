@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/widgets/flare.dart';
-import 'package:al_quran/widgets/title.dart';
-import 'package:al_quran/widgets/custom_back_button.dart';
+import 'package:al_quran/widgets/app/title.dart';
+import 'package:al_quran/widgets/button/app_back_button.dart';
 import 'package:al_quran/widgets/custom_image.dart';
 
 part '../page/page_screen.dart';
@@ -62,7 +62,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                 height: height * 0.17,
                 imagePath: StaticAssets.kaba,
               ),
-              const CustomBackButton(),
+              const AppBackButton(),
               const CustomTitle(
                 title: 'Surah Index',
               ),

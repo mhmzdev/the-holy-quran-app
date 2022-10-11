@@ -6,10 +6,10 @@ import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/screens/surah/surah_index_screen.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/utils/juz.dart';
-import 'package:al_quran/widgets/custom_back_button.dart';
+import 'package:al_quran/widgets/button/app_back_button.dart';
 import 'package:al_quran/widgets/custom_image.dart';
 import 'package:al_quran/widgets/flare.dart';
-import 'package:al_quran/widgets/title.dart';
+import 'package:al_quran/widgets/app/title.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -124,7 +124,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: appProvider.isDark
-                                ? Colors.grey[800]
+                                ? Colors.grey[850]
                                 : Colors.white,
                             borderRadius: BorderRadius.circular(15.0),
                             border: Border.all(
@@ -174,7 +174,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: appProvider.isDark
-                                      ? Colors.grey[800]
+                                      ? Colors.grey[850]
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(15.0),
                                   border: Border.all(
@@ -191,10 +191,12 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                                     Text(
                                       JuzUtils.juzNames[index],
                                       style: AppText.b1b,
+                                      textAlign: TextAlign.center,
                                     ),
+                                    Space.y!,
                                     Text(
                                       '${index + 1}',
-                                      style: AppText.l1,
+                                      style: AppText.b2b,
                                     ),
                                   ],
                                 ),
@@ -205,7 +207,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                       },
                     ),
             ),
-            const CustomBackButton(),
+            const AppBackButton(),
             CustomImage(
               opacity: 0.3,
               height: AppDimensions.normalize(60),
