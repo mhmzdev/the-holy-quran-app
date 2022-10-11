@@ -15,20 +15,21 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   
   # utils
+  share: ^2.0.4
+  recase: ^4.0.0
+  shimmer: ^2.0.0
   url_strategy: ^0.2.0
   cupertino_icons: ^1.0.3
-  shimmer: ^2.0.0
-  share: ^2.0.4
 
   # network
   dio: ^4.0.6
   url_launcher: ^6.0.12
   
   # state management
-  provider: ^6.0.1
   bloc: ^7.1.0
-  flutter_bloc: ^7.2.0
+  provider: ^6.0.1
   equatable: ^2.0.3
+  flutter_bloc: ^7.2.0
 
   # flutter code
   flutter_lints: ^1.0.4

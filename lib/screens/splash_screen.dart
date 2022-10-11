@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void _next() async {
     final appProvider = Provider.of<AppProvider>(context, listen: false);
 
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       appProvider.initTheme();
     });
 

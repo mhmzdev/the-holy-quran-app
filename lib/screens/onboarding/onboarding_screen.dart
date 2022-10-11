@@ -43,7 +43,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<OnBoardingProvider>(context, listen: false).index = 0;
     });
     super.initState();
@@ -58,37 +58,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Object? args = ModalRoute.of(context)?.settings.arguments;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          PageView(
-            onPageChanged: (int value) => onBoardingProvider.index = value,
-            controller: _pageController,
-            children: pages.asMap().entries.map((e) {
-              return e.value;
-            }).toList(),
-          ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              margin: Space.all(0.5, 2),
-              child: TextButton(
-                style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all(
-                    AppTheme.c!.accent,
-                  ),
-                ),
-                child: const Text('Skip'),
-                onPressed: () {
-                  if (args != null && (args as Map)['route'] == 'drawer') {
-                    Navigator.pop(context);
-                  } else {
-                    Navigator.pushReplacementNamed(context, '/home');
-                  }
-                },
-              ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            PageView(
+              onPageChanged: (int value) => onBoardingProvider.index = value,
+              controller: _pageController,
+              children: pages.asMap().entries.map((e) {
+                return e.value;
+              }).toList(),
             ),
-          )
-        ],
+            Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                margin: Space.hf(0.5),
+                child: TextButton(
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all(
+                      AppTheme.c!.accent,
+                    ),
+                  ),
+                  child: const Text('Skip'),
+                  onPressed: () {
+                    if (args != null && (args as Map)['route'] == 'drawer') {
+                      Navigator.pop(context);
+                    } else {
+                      Navigator.pushReplacementNamed(context, '/home');
+                    }
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
       ),
       floatingActionButton: Row(
         children: [

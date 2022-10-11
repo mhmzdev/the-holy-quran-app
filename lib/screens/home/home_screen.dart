@@ -134,44 +134,45 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           builder: (context, _) {
             return Material(
               color: appProvider.isDark ? Colors.grey[850] : Colors.white70,
-              child: SafeArea(
-                child: Stack(
-                  children: <Widget>[
-                    Transform.translate(
-                      offset: Offset(
-                          widget.maxSlide * (animationController.value - 1), 0),
-                      child: Transform(
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.001)
-                          ..rotateY(
-                              math.pi / 2 * (1 - animationController.value)),
-                        alignment: Alignment.centerRight,
-                        child: const _CustomDrawer(),
-                      ),
+              child: Stack(
+                children: <Widget>[
+                  Transform.translate(
+                    offset: Offset(
+                        widget.maxSlide * (animationController.value - 1), 0),
+                    child: Transform(
+                      transform: Matrix4.identity()
+                        ..setEntry(3, 2, 0.001)
+                        ..rotateY(
+                            math.pi / 2 * (1 - animationController.value)),
+                      alignment: Alignment.centerRight,
+                      child: const _CustomDrawer(),
                     ),
-                    Transform.translate(
-                      offset: Offset(
-                          widget.maxSlide * animationController.value, 0),
-                      child: Transform(
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.001)
-                          ..rotateY(-math.pi / 2 * animationController.value),
-                        alignment: Alignment.centerLeft,
-                        child: const _MainScreen(),
-                      ),
+                  ),
+                  Transform.translate(
+                    offset:
+                        Offset(widget.maxSlide * animationController.value, 0),
+                    child: Transform(
+                      transform: Matrix4.identity()
+                        ..setEntry(3, 2, 0.001)
+                        ..rotateY(-math.pi / 2 * animationController.value),
+                      alignment: Alignment.centerLeft,
+                      child: const _MainScreen(),
                     ),
-                    Positioned(
-                      top: 4.0 + MediaQuery.of(context).padding.top,
-                      left: width * 0.01 +
-                          animationController.value * widget.maxSlide,
-                      child: IconButton(
-                        icon: const Icon(Icons.menu),
-                        onPressed: toggle,
-                        color: appProvider.isDark ? Colors.white : Colors.black,
+                  ),
+                  Positioned(
+                    top: 4.0 + MediaQuery.of(context).padding.top,
+                    left: width * 0.01 +
+                        animationController.value * widget.maxSlide,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.menu,
+                        size: AppDimensions.normalize(11),
                       ),
+                      onPressed: toggle,
+                      color: appProvider.isDark ? Colors.white : Colors.black,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             );
           },
