@@ -4,7 +4,7 @@
     <application
         android:name="${applicationName}"
         android:label="The Holy Qur'an"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
               <uses-library
         android:name="org.apache.http.legacy"
         android:required="false" />
