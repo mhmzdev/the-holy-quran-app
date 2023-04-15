@@ -11,6 +11,7 @@ import 'package:al_quran/widgets/custom_image.dart';
 import 'package:al_quran/widgets/flare.dart';
 import 'package:al_quran/widgets/app/title.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
 class JuzIndexScreen extends StatefulWidget {
@@ -78,7 +79,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                     color: AppTheme.c!.textSub2,
                   ),
                   prefixIcon: Icon(
-                    Icons.search,
+                    Iconsax.search_normal,
                     color: AppTheme.c!.textSub2!,
                   ),
                   enabledBorder: OutlineInputBorder(

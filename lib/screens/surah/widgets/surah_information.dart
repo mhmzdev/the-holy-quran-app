@@ -73,11 +73,11 @@ class _SurahInformationState extends State<_SurahInformation>
                   children: <Widget>[
                     Text(
                       widget.chapterData!.englishName!,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     Text(
                       widget.chapterData!.name!,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ],
                 ),

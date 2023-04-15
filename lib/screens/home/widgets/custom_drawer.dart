@@ -23,6 +23,7 @@ class _CustomDrawer extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                Space.y1!,
                 const DrawerAppName(),
                 Space.y1!,
                 ...DrawerUtils.items.map(
@@ -38,6 +39,25 @@ class _CustomDrawer extends StatelessWidget {
                           'route': 'drawer',
                         },
                       ),
+                    ),
+                  ),
+                ),
+                Card(
+                  color: appProvider.isDark ? Colors.grey[800] : Colors.white,
+                  child: ListTile(
+                    leading: const Icon(Iconsax.moon),
+                    title: const Text("Dark Mode"),
+                    trailing: Switch(
+                      activeColor: Colors.white,
+                      value: appProvider.isDark,
+                      activeTrackColor: AppTheme.c!.accent,
+                      onChanged: (value) {
+                        if (value) {
+                          appProvider.setTheme(ThemeMode.dark);
+                        } else {
+                          appProvider.setTheme(ThemeMode.light);
+                        }
+                      },
                     ),
                   ),
                 ),

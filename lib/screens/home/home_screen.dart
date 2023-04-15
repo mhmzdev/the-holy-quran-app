@@ -7,6 +7,7 @@ import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/drawer.dart';
 import 'package:al_quran/widgets/button/app_button.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/widgets/app/app_name.dart';
@@ -133,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           animation: animationController,
           builder: (context, _) {
             return Material(
-              color: appProvider.isDark ? Colors.grey[900] : Colors.white70,
+              color: appProvider.isDark ? Colors.grey[900] : Colors.grey[200],
               child: Stack(
                 children: <Widget>[
                   Transform.translate(
@@ -161,12 +162,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ),
                   Positioned(
                     top: 4.0 + MediaQuery.of(context).padding.top,
-                    left: width * 0.01 +
+                    left: width * 0.02 +
                         animationController.value * widget.maxSlide,
                     child: IconButton(
                       icon: Icon(
-                        Icons.menu,
+                        Iconsax.menu,
                         size: AppDimensions.normalize(11),
+                        color: Colors.grey,
                       ),
                       onPressed: toggle,
                       color: appProvider.isDark ? Colors.white : Colors.black,

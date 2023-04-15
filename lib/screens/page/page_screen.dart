@@ -63,8 +63,13 @@ class _PageScreenState extends State<PageScreen> {
                     },
                   ),
               ],
-              leading: BackButton(
-                color: appProvider.isDark ? Colors.white : Colors.black54,
+              leading: IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(
+                  Iconsax.arrow_left,
+                  color: appProvider.isDark ? Colors.white : Colors.black,
+                  size: AppDimensions.normalize(12),
+                ),
               ),
               backgroundColor:
                   appProvider.isDark ? Colors.grey[850] : Colors.white,

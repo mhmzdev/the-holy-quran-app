@@ -6,10 +6,10 @@ import 'package:al_quran/widgets/app/app_version.dart';
 import 'package:al_quran/widgets/button/app_back_button.dart';
 import 'package:al_quran/widgets/app/title.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:al_quran/share_icon_icons.dart';
 
 part 'widgets/share_custom_button.dart';
 
@@ -60,21 +60,21 @@ class ShareInfo extends StatelessWidget {
           Text(
               "The Holy Qur'an App is also available as Open Source on GitHub!",
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.caption),
+              style: Theme.of(context).textTheme.bodySmall),
           SizedBox(height: height * 0.05),
           _ShareCustomButton(
-            iconData: Icons.share,
+            iconData: Iconsax.share,
             text: 'Share App',
             onPressed: () => share(context),
           ),
           _ShareCustomButton(
-            iconData: ShareIcon.github,
+            iconData: Iconsax.code,
             text: 'GitHub Repo',
             onPressed: () =>
                 launch("https://github.com/mhmzdev/The_Holy_Quran_App"),
           ),
           _ShareCustomButton(
-            iconData: ShareIcon.googlePlay,
+            iconData: Iconsax.message,
             text: 'Rate & Feedback',
             onPressed: () => launch(
                 "https://play.google.com/store/apps/details?id=com.hmz.al_quran"),

@@ -15,7 +15,6 @@ import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/providers/onboarding_provider.dart';
 import 'package:al_quran/screens/bookmarks/bookmarks_screen.dart';
-import 'package:al_quran/screens/help_guide/help_guide_screen.dart';
 import 'package:al_quran/screens/home/home_screen.dart';
 import 'package:al_quran/screens/juz/juz_index_screen.dart';
 import 'package:al_quran/screens/onboarding/onboarding.dart';
@@ -99,7 +98,6 @@ class MaterialChild extends StatelessWidget {
       initialRoute: AppRoutes.splash,
       routes: <String, WidgetBuilder>{
         AppRoutes.juz: (context) => const JuzIndexScreen(),
-        AppRoutes.helpGuide: (context) => const HelpGuide(),
         AppRoutes.splash: (context) => const SplashScreen(),
         AppRoutes.surah: (context) => const SurahIndexScreen(),
         AppRoutes.shareApp: (context) => const ShareAppScreen(),

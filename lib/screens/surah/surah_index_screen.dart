@@ -10,6 +10,7 @@ import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/utils/juz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/widgets/flare.dart';
 import 'package:al_quran/widgets/app/title.dart';
@@ -155,7 +156,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                         color: AppTheme.c!.textSub2,
                       ),
                       prefixIcon: Icon(
-                        Icons.search,
+                        Iconsax.search_normal,
                         color: AppTheme.c!.textSub2!,
                       ),
                       enabledBorder: OutlineInputBorder(
