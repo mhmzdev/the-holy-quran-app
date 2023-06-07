@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -14,11 +15,11 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="./">
+  <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="The Holy Qur'an in the web world!">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,16 +28,40 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>al_quran</title>
+  <title>The Holy Qur'an</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .heading {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .4s ease-out;
+    }
+  </style>
+
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script>
+    function delay(time) {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
     function loadMainDartJs() {
@@ -82,7 +107,11 @@
               console.log('Loading app from service worker.');
               loadMainDartJs();
             }
-          });
+          }).then(async function (appRunner) {
+            loaderContent.style.opacity = "0";
+            await delay(400);
+            return appRunner.runApp();
+          });;
 
         // If service worker doesn't succeed in a reasonable amount of time,
         // fallback to plaint <script> tag.
@@ -100,5 +129,10 @@
       loadMainDartJs();
     }
   </script>
+
+  <div class="heading" id="loader-content">
+    <img src="assets/logo.png" alt="the holy quran">
+  </div>
 </body>
+
 </html>
