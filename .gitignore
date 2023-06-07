@@ -12,7 +12,7 @@
 
 **/android/key.properties
 
-android/credentails/
+*.pem
 
 # IntelliJ related
 *.iml
