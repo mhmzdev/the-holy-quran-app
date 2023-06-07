@@ -12,6 +12,8 @@
 
 **/android/key.properties
 
+android/credentails/
+
 # IntelliJ related
 *.iml
 *.ipr
