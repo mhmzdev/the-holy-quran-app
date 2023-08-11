@@ -23,8 +23,8 @@ class ChapterDataProvider {
       );
 
       return chapters;
-    } on DioError catch (e) {
-      if (e.type == DioErrorType.other) {
+    } on DioExceptionType catch (e) {
+      if (e == DioExceptionType.connectionTimeout) {
         throw Exception('Problem with internet connection');
       } else {
         throw Exception('Problem on our side, Please try again');
@@ -40,7 +40,7 @@ class ChapterDataProvider {
 
       if (chapter == null) return null;
 
-      final List<Chapter?>? chapters = List.from(chapter);
+      final List<Chapter?> chapters = List.from(chapter);
 
       return chapters;
     } catch (e) {

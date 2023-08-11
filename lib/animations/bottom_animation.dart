@@ -9,10 +9,10 @@ class Animator extends StatefulWidget {
   const Animator({Key? key, this.child, this.time}) : super(key: key);
 
   @override
-  _AnimatorState createState() => _AnimatorState();
+  AnimatorState createState() => AnimatorState();
 }
 
-class _AnimatorState extends State<Animator>
+class AnimatorState extends State<Animator>
     with SingleTickerProviderStateMixin {
   late Timer timer;
   late AnimationController animationController;
@@ -74,8 +74,8 @@ class WidgetAnimator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Animator(
-      child: child,
       time: wait(),
+      child: child,
     );
   }
 }
