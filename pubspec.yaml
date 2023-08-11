@@ -38,7 +38,7 @@ dependencies:
   shared_preferences: ^2.0.8
 
   # app info
-  package_info_plus: ^1.4.2
+  package_info_plus: ^4.0.2
 
 dev_dependencies:
   flutter_test:
