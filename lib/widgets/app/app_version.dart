@@ -12,10 +12,10 @@ class _AppVersionState extends State<AppVersion> {
   String _version = "";
 
   void _getAppVersion() async {
-    PackageInfo _packageInfo = await PackageInfo.fromPlatform();
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
     if (mounted) {
       setState(() {
-        _version = _packageInfo.version;
+        _version = packageInfo.version;
       });
     }
   }

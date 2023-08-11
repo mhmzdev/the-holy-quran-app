@@ -24,10 +24,10 @@ class HomeScreen extends StatefulWidget {
   final double maxSlide;
   const HomeScreen({Key? key, required this.maxSlide}) : super(key: key);
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late AnimationController animationController;
 
   @override
@@ -64,12 +64,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   void _onDragEnd(DragEndDetails details) {
-    double _kMinFlingVelocity = 365.0;
+    double kMinFlingVelocity = 365.0;
 
     if (animationController.isDismissed || animationController.isCompleted) {
       return;
     }
-    if (details.velocity.pixelsPerSecond.dx.abs() >= _kMinFlingVelocity) {
+    if (details.velocity.pixelsPerSecond.dx.abs() >= kMinFlingVelocity) {
       double visualVelocity = details.velocity.pixelsPerSecond.dx /
           MediaQuery.of(context).size.width;
 

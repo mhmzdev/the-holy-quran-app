@@ -1,7 +1,7 @@
 name: al_quran
 description: Flutter App for the holy book of Qur'an.
 
-version: 2.5.5+10
+version: 2.5.6+11
 
 environment:
   sdk: ">=3.0.5 <4.0.0"
@@ -16,18 +16,18 @@ dependencies:
   # utils
   share: ^2.0.4
   recase: ^4.0.0
-  shimmer: ^2.0.0
+  shimmer: ^3.0.0
   url_strategy: ^0.2.0
   cupertino_icons: ^1.0.3
 
   # network
-  dio: ^4.0.6
+  dio: ^5.3.2
   url_launcher: ^6.0.12
   
   # state management
   provider: ^6.0.1
   equatable: ^2.0.3
-  flutter_bloc: ^7.2.0
+  flutter_bloc: ^8.1.3
 
   # icon pack
   iconsax: ^0.0.8
@@ -39,20 +39,21 @@ dependencies:
 
   # app info
   package_info_plus: ^4.0.2
+  collection: ^1.17.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
     # flutter code
-  flutter_lints: ^1.0.4
+  flutter_lints: ^2.0.2
 
   # cache local storage
   build_runner: ^2.1.5
-  hive_generator: ^1.1.1
+  hive_generator: ^2.0.0
 
   # launcher icons
-  flutter_launcher_icons: "^0.10.0"
+  flutter_launcher_icons: ^0.13.1
 
 flutter_icons:
   android: "launcher_icon"

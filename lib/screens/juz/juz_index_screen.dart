@@ -108,14 +108,18 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                         await juzCubit.fetch(
                           JuzUtils.juzNames.indexOf(_searchedJuzName) + 1,
                         );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => PageScreen(
-                              juz: juzCubit.state.data,
+
+                        WidgetsBinding.instance
+                            .addPostFrameCallback((timeStamp) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => PageScreen(
+                                juz: juzCubit.state.data,
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                        });
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -158,14 +162,18 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                           child: GestureDetector(
                             onTap: () async {
                               await juzCubit.fetch(index + 1);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => PageScreen(
-                                    juz: juzCubit.state.data,
+
+                              WidgetsBinding.instance
+                                  .addPostFrameCallback((timeStamp) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => PageScreen(
+                                      juz: juzCubit.state.data,
+                                    ),
                                   ),
-                                ),
-                              );
+                                );
+                              });
                             },
                             child: Card(
                               shape: RoundedRectangleBorder(

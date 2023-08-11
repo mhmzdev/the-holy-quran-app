@@ -11,7 +11,7 @@ class BookmarksDataProvider {
         await cache.put('bookmarks', bookmarks);
       }
 
-      final List<Chapter?>? cachedBookmarks = List.from(bookmarks);
+      final List<Chapter?> cachedBookmarks = List.from(bookmarks);
       return cachedBookmarks;
     } catch (e) {
       throw Exception("Internal Server Error");
@@ -26,8 +26,8 @@ class BookmarksDataProvider {
         await cache.put('bookmarks', bookmarks);
       }
 
-      final List<Chapter?>? updatedBookmarks = List.from(bookmarks);
-      updatedBookmarks!.add(chapter);
+      final List<Chapter?> updatedBookmarks = List.from(bookmarks);
+      updatedBookmarks.add(chapter);
 
       await cache.put('bookmarks', updatedBookmarks);
       return updatedBookmarks;
@@ -40,8 +40,8 @@ class BookmarksDataProvider {
     try {
       List bookmarks = await cache.get('bookmarks');
 
-      final List<Chapter?>? updatedBookmarks = List.from(bookmarks);
-      updatedBookmarks!.remove(chapter);
+      final List<Chapter?> updatedBookmarks = List.from(bookmarks);
+      updatedBookmarks.remove(chapter);
 
       await cache.put('bookmarks', updatedBookmarks);
       return updatedBookmarks;
@@ -54,8 +54,8 @@ class BookmarksDataProvider {
     try {
       List bookmarks = await cache.get('bookmarks');
 
-      final List<Chapter?>? updatedBookmarks = List.from(bookmarks);
-      return updatedBookmarks!.contains(chapter);
+      final List<Chapter?> updatedBookmarks = List.from(bookmarks);
+      return updatedBookmarks.contains(chapter);
     } catch (e) {
       throw Exception("Internal Server Error");
     }

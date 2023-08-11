@@ -18,13 +18,13 @@ class AppButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         onPressed: onPressed,
+        color: const Color(0xffee8f8b),
         child: WidgetAnimator(
           child: Text(
             title,
             style: AppText.b1,
           ),
         ),
-        color: const Color(0xffee8f8b),
       ),
     );
   }

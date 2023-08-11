@@ -25,6 +25,7 @@ class _ShareCustomButton extends StatelessWidget {
               AppTheme.c!.accent,
             ),
           ),
+          onPressed: onPressed,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -41,7 +42,6 @@ class _ShareCustomButton extends StatelessWidget {
               )
             ],
           ),
-          onPressed: onPressed,
         ),
       ),
     );
