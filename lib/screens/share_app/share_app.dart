@@ -19,10 +19,10 @@ class ShareAppScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     App.init(context);
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: Stack(
-          children: const <Widget>[
+          children: <Widget>[
             AppBackButton(),
             CustomTitle(title: 'Share App'),
             ShareInfo()
@@ -70,14 +70,14 @@ class ShareInfo extends StatelessWidget {
           _ShareCustomButton(
             iconData: Iconsax.code,
             text: 'GitHub Repo',
-            onPressed: () =>
-                launch("https://github.com/mhmzdev/The_Holy_Quran_App"),
+            onPressed: () => launchUrl(
+                Uri.parse("https://github.com/mhmzdev/The_Holy_Quran_App")),
           ),
           _ShareCustomButton(
             iconData: Iconsax.message,
             text: 'Rate & Feedback',
-            onPressed: () => launch(
-                "https://play.google.com/store/apps/details?id=com.hmz.al_quran"),
+            onPressed: () => launchUrl(Uri.parse(
+                "https://play.google.com/store/apps/details?id=com.hmz.al_quran")),
           ),
           SizedBox(height: height * 0.02),
           const AppVersion()
