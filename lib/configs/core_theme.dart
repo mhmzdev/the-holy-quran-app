@@ -7,16 +7,18 @@ const fontFamily = 'Poppins';
 final themeLight = ThemeData(
   fontFamily: fontFamily,
   brightness: Brightness.light,
-  backgroundColor: Colors.white,
   dividerColor: Colors.white60,
   splashColor: Colors.transparent,
   primaryColor: const Color(0xffee8f8b),
   scaffoldBackgroundColor: Colors.white,
-  colorScheme: ThemeData.light().colorScheme.copyWith(
+  colorScheme: ThemeData.light()
+      .colorScheme
+      .copyWith(
         brightness: Brightness.light,
         primary: AppTheme.light.primary,
         background: AppTheme.light.background,
-      ),
+      )
+      .copyWith(background: Colors.white),
 );
 
 final themeDark = ThemeData(
@@ -26,10 +28,12 @@ final themeDark = ThemeData(
   dividerColor: Colors.black12,
   splashColor: Colors.transparent,
   scaffoldBackgroundColor: Colors.grey[850],
-  backgroundColor: const Color(0xFF212121),
-  colorScheme: ThemeData.light().colorScheme.copyWith(
+  colorScheme: ThemeData.light()
+      .colorScheme
+      .copyWith(
         brightness: Brightness.dark,
         primary: AppTheme.light.primary,
         background: AppTheme.light.background,
-      ),
+      )
+      .copyWith(background: const Color(0xFF212121)),
 );
