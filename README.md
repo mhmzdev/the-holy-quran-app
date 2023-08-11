@@ -1,4 +1,4 @@
-# The Holy Qur'an 2.5.0
+# The Holy Qur'an
 
 Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
 The data is fetched using API and now the **offline mode** is available. So, you need internet for the first time only!
@@ -24,8 +24,8 @@ Watch the promo video <a href="https://www.youtube.com/watch?v=ghD5H9TF9sU&ab_ch
 
 ## 💻 Installation steps
 
-- Updated to `Flutter 2.10.4` Now!
-- Dart SDK `2.15` with Sound Null Safety!
+- Updated to `Flutter 3.10.0` Now!
+- Dart SDK `3.0.5` with Sound Null Safety!
 
 Open CMD where you want to clone the project & run the following commands
 
