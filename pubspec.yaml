@@ -4,7 +4,7 @@ description: Flutter App for the holy book of Qur'an.
 version: 2.5.6+11
 
 environment:
-  sdk: ">=3.0.5 <4.0.0"
+  sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
   flutter:
@@ -17,7 +17,7 @@ dependencies:
   share: ^2.0.4
   recase: ^4.0.0
   shimmer: ^3.0.0
-  url_strategy: ^0.2.0
+  url_strategy: ^0.3.0
   cupertino_icons: ^1.0.3
 
   # network
@@ -38,7 +38,7 @@ dependencies:
   shared_preferences: ^2.0.8
 
   # app info
-  package_info_plus: ^4.0.2
+  package_info_plus: ^8.0.3
   collection: ^1.17.1
 
 dev_dependencies:
@@ -46,14 +46,14 @@ dev_dependencies:
     sdk: flutter
 
     # flutter code
-  flutter_lints: ^2.0.2
+  flutter_lints: ^5.0.0
 
   # cache local storage
   build_runner: ^2.1.5
   hive_generator: ^2.0.0
 
   # launcher icons
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.1
 
 flutter_icons:
   android: "launcher_icon"

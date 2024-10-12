@@ -27,10 +27,10 @@ class ChapterFetchLoading extends ChapterState {
 
 @immutable
 class ChapterFetchSuccess extends ChapterState {
-  const ChapterFetchSuccess({List<Chapter?>? data}) : super(data: data);
+  const ChapterFetchSuccess({super.data});
 }
 
 @immutable
 class ChapterFetchFailed extends ChapterState {
-  const ChapterFetchFailed({String? message}) : super(message: message);
+  const ChapterFetchFailed({super.message});
 }

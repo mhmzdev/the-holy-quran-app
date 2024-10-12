@@ -30,14 +30,10 @@ class BookmarkFetchLoading extends BookmarkState {
 
 @immutable
 class BookmarkFetchSuccess extends BookmarkState {
-  const BookmarkFetchSuccess({List<Chapter?>? data, bool? isBookmarked})
-      : super(
-          data: data,
-          isBookmarked: isBookmarked,
-        );
+  const BookmarkFetchSuccess({super.data, super.isBookmarked = null});
 }
 
 @immutable
 class BookmarkFetchFailed extends BookmarkState {
-  const BookmarkFetchFailed({String? message}) : super(message: message);
+  const BookmarkFetchFailed({super.message});
 }
