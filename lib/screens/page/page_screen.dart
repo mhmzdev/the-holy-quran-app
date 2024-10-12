@@ -4,10 +4,10 @@ class PageScreen extends StatefulWidget {
   final Juz? juz;
   final Chapter? chapter;
   const PageScreen({
-    Key? key,
+    super.key,
     this.chapter,
     this.juz,
-  }) : super(key: key);
+  });
 
   @override
   State<PageScreen> createState() => _PageScreenState();

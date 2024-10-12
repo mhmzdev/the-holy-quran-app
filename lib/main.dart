@@ -24,25 +24,27 @@ import 'package:al_quran/screens/surah/surah_index_screen.dart';
 
 import 'configs/core_theme.dart' as theme;
 
-Future<void> main() async {
+void main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
 
-// hive
+  // hive
   await Hive.initFlutter();
 
   Hive.registerAdapter<Juz>(JuzAdapter());
   Hive.registerAdapter<Ayah>(AyahAdapter());
   Hive.registerAdapter<Chapter>(ChapterAdapter());
 
-  await Hive.openBox('app');
-  await Hive.openBox('data');
+  await Future.wait([
+    Hive.openBox('app'),
+    Hive.openBox('data'),
+  ]);
 
   runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   MyAppState createState() => MyAppState();
@@ -50,12 +52,16 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         BlocProvider(create: (_) => JuzCubit()),
@@ -65,11 +71,11 @@ class MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => OnBoardingProvider()),
       ],
       child: Consumer<AppProvider>(
-        builder: ((context, value, child) {
+        builder: (context, value, child) {
           return MaterialChild(
             value: value,
           );
-        }),
+        },
       ),
     );
   }
@@ -78,9 +84,9 @@ class MyAppState extends State<MyApp> {
 class MaterialChild extends StatelessWidget {
   final AppProvider? value;
   const MaterialChild({
-    Key? key,
+    super.key,
     this.value,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -90,11 +96,6 @@ class MaterialChild extends StatelessWidget {
       theme: theme.themeLight,
       darkTheme: theme.themeDark,
       themeMode: value!.themeMode,
-      home: Builder(
-        builder: (context) => HomeScreen(
-          maxSlide: MediaQuery.of(context).size.width * 0.835,
-        ),
-      ),
       initialRoute: AppRoutes.splash,
       routes: <String, WidgetBuilder>{
         AppRoutes.juz: (context) => const JuzIndexScreen(),

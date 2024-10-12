@@ -1,7 +1,7 @@
 part of '../home_screen.dart';
 
 class _CustomDrawer extends StatelessWidget {
-  const _CustomDrawer({Key? key}) : super(key: key);
+  const _CustomDrawer();
 
   @override
   Widget build(BuildContext context) {

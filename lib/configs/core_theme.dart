@@ -6,6 +6,7 @@ const fontFamily = 'Poppins';
 
 final themeLight = ThemeData(
   fontFamily: fontFamily,
+  useMaterial3: false,
   brightness: Brightness.light,
   dividerColor: Colors.white60,
   splashColor: Colors.transparent,
@@ -23,6 +24,7 @@ final themeLight = ThemeData(
 
 final themeDark = ThemeData(
   fontFamily: fontFamily,
+  useMaterial3: false,
   primaryColor: Colors.black,
   brightness: Brightness.dark,
   dividerColor: Colors.black12,

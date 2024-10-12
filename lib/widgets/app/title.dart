@@ -5,7 +5,7 @@ import 'package:al_quran/configs/app_typography.dart';
 class CustomTitle extends StatelessWidget {
   final String? title;
 
-  const CustomTitle({Key? key, this.title}) : super(key: key);
+  const CustomTitle({super.key, this.title});
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AppVersion extends StatefulWidget {
-  const AppVersion({Key? key}) : super(key: key);
+  const AppVersion({super.key});
 
   @override
   State<AppVersion> createState() => _AppVersionState();

@@ -3,9 +3,8 @@ part of '../onboarding.dart';
 class _Indicator extends StatelessWidget {
   final bool isSelected;
   const _Indicator({
-    Key? key,
     required this.isSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

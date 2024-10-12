@@ -15,7 +15,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
 class JuzIndexScreen extends StatefulWidget {
-  const JuzIndexScreen({Key? key}) : super(key: key);
+  const JuzIndexScreen({super.key});
 
   @override
   State<JuzIndexScreen> createState() => _JuzIndexScreenState();

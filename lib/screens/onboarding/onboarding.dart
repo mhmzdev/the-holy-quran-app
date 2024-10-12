@@ -10,7 +10,7 @@ part 'widgets/indicator.dart';
 part 'widgets/onboarding_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  const OnboardingScreen({super.key});
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -75,7 +75,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 margin: Space.hf(0.5),
                 child: TextButton(
                   style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all(
+                    foregroundColor: WidgetStateProperty.all(
                       AppTheme.c!.accent,
                     ),
                   ),

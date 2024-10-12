@@ -1,7 +1,7 @@
 part of '../home_screen.dart';
 
 class _AyahBottom extends StatelessWidget {
-  const _AyahBottom({Key? key}) : super(key: key);
+  const _AyahBottom();
 
   @override
   Widget build(BuildContext context) {

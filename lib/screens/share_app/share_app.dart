@@ -14,7 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 part 'widgets/share_custom_button.dart';
 
 class ShareAppScreen extends StatelessWidget {
-  const ShareAppScreen({Key? key}) : super(key: key);
+  const ShareAppScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class ShareAppScreen extends StatelessWidget {
 }
 
 class ShareInfo extends StatelessWidget {
-  const ShareInfo({Key? key}) : super(key: key);
+  const ShareInfo({super.key});
 
   void share(BuildContext context) {
     final RenderBox box = context.findRenderObject() as RenderBox;

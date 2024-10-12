@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 class LoadingShimmer extends StatelessWidget {
   final String? text;
-  const LoadingShimmer({Key? key, this.text}) : super(key: key);
+  const LoadingShimmer({super.key, this.text});
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;

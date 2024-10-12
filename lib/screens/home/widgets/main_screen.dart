@@ -1,7 +1,7 @@
 part of '../home_screen.dart';
 
 class _MainScreen extends StatelessWidget {
-  const _MainScreen({Key? key}) : super(key: key);
+  const _MainScreen();
 
   @override
   Widget build(BuildContext context) {

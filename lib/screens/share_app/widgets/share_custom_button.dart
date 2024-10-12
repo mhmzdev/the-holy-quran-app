@@ -5,11 +5,10 @@ class _ShareCustomButton extends StatelessWidget {
   final IconData? iconData;
   final void Function()? onPressed;
   const _ShareCustomButton({
-    Key? key,
     required this.iconData,
     required this.text,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class _ShareCustomButton extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.055,
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(
+            backgroundColor: WidgetStateProperty.all(
               AppTheme.c!.accent,
             ),
           ),

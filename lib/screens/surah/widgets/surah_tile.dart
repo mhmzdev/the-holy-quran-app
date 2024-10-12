@@ -4,9 +4,9 @@ class SurahTile extends StatelessWidget {
   final Chapter? chapter;
 
   const SurahTile({
-    Key? key,
+    super.key,
     this.chapter,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

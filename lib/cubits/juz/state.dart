@@ -27,10 +27,10 @@ class JuzFetchLoading extends JuzState {
 
 @immutable
 class JuzFetchSuccess extends JuzState {
-  const JuzFetchSuccess({Juz? data}) : super(data: data);
+  const JuzFetchSuccess({super.data});
 }
 
 @immutable
 class JuzFetchFailed extends JuzState {
-  const JuzFetchFailed({String? message}) : super(message: message);
+  const JuzFetchFailed({super.message});
 }

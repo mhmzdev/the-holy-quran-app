@@ -5,8 +5,12 @@ class CustomImage extends StatelessWidget {
   final double? height;
   final String? imagePath;
 
-  const CustomImage({Key? key, this.imagePath, this.height, this.opacity})
-      : super(key: key);
+  const CustomImage({
+    super.key,
+    this.imagePath,
+    this.height,
+    this.opacity,
+  });
 
   @override
   Widget build(BuildContext context) {

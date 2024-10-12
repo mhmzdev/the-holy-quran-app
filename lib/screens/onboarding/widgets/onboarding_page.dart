@@ -4,10 +4,9 @@ class _OnBoardingPage extends StatelessWidget {
   final String image;
   final String text;
   const _OnBoardingPage({
-    Key? key,
     required this.image,
     required this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -3,9 +3,8 @@ part of '../surah_index_screen.dart';
 class _SurahInformation extends StatefulWidget {
   final Chapter? chapterData;
   const _SurahInformation({
-    Key? key,
     this.chapterData,
-  }) : super(key: key);
+  });
 
   @override
   _SurahInformationState createState() => _SurahInformationState();
@@ -92,7 +91,7 @@ class _SurahInformationState extends State<_SurahInformation>
                   height: height * 0.05,
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
+                      backgroundColor: WidgetStateProperty.all(
                         AppTheme.c!.accent,
                       ),
                     ),

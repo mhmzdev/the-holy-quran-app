@@ -22,7 +22,7 @@ part 'widgets/custom_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   final double maxSlide;
-  const HomeScreen({Key? key, required this.maxSlide}) : super(key: key);
+  const HomeScreen({super.key, required this.maxSlide});
   @override
   HomeScreenState createState() => HomeScreenState();
 }

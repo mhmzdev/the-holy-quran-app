@@ -24,7 +24,7 @@ part 'widgets/surah_app_bar.dart';
 part 'widgets/surah_information.dart';
 
 class SurahIndexScreen extends StatefulWidget {
-  const SurahIndexScreen({Key? key}) : super(key: key);
+  const SurahIndexScreen({super.key});
 
   @override
   State<SurahIndexScreen> createState() => _SurahIndexScreenState();
@@ -96,7 +96,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                             height: AppDimensions.normalize(17),
                             child: ElevatedButton(
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
+                                backgroundColor: WidgetStateProperty.all(
                                   AppTheme.c!.accent,
                                 ),
                               ),
