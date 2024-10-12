@@ -17,9 +17,9 @@ final themeLight = ThemeData(
       .copyWith(
         brightness: Brightness.light,
         primary: AppTheme.light.primary,
-        background: AppTheme.light.background,
+        surface: AppTheme.light.background,
       )
-      .copyWith(background: Colors.white),
+      .copyWith(surface: Colors.white),
 );
 
 final themeDark = ThemeData(
@@ -35,7 +35,7 @@ final themeDark = ThemeData(
       .copyWith(
         brightness: Brightness.dark,
         primary: AppTheme.light.primary,
-        background: AppTheme.light.background,
+        surface: AppTheme.light.background,
       )
-      .copyWith(background: const Color(0xFF212121)),
+      .copyWith(surface: const Color(0xFF212121)),
 );

@@ -14,13 +14,13 @@ import 'package:al_quran/models/chapter/chapter.dart';
 import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/providers/onboarding_provider.dart';
-import 'package:al_quran/screens/bookmarks/bookmarks_screen.dart';
-import 'package:al_quran/screens/home/home_screen.dart';
-import 'package:al_quran/screens/juz/juz_index_screen.dart';
-import 'package:al_quran/screens/onboarding/onboarding.dart';
-import 'package:al_quran/screens/share_app/share_app.dart';
-import 'package:al_quran/screens/splash/splash.dart';
-import 'package:al_quran/screens/surah/surah_index_screen.dart';
+import 'package:al_quran/ui/screens/bookmarks/bookmarks_screen.dart';
+import 'package:al_quran/ui/screens/home/home_screen.dart';
+import 'package:al_quran/ui/screens/juz/juz_index_screen.dart';
+import 'package:al_quran/ui/screens/onboarding/onboarding.dart';
+import 'package:al_quran/ui/screens/share_app/share_app.dart';
+import 'package:al_quran/ui/screens/splash/splash.dart';
+import 'package:al_quran/ui/screens/surah/surah_index_screen.dart';
 
 import 'configs/core_theme.dart' as theme;
 

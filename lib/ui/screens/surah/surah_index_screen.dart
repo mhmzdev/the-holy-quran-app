@@ -1,4 +1,4 @@
-import 'package:al_quran/animations/bottom_animation.dart';
+import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/cubits/bookmarks/cubit.dart';
@@ -12,10 +12,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:al_quran/widgets/flare.dart';
-import 'package:al_quran/widgets/app/title.dart';
-import 'package:al_quran/widgets/button/app_back_button.dart';
-import 'package:al_quran/widgets/custom_image.dart';
+import 'package:al_quran/ui/widgets/flare.dart';
+import 'package:al_quran/ui/widgets/app/title.dart';
+import 'package:al_quran/ui/widgets/button/app_back_button.dart';
+import 'package:al_quran/ui/widgets/custom_image.dart';
 
 part '../page/page_screen.dart';
 

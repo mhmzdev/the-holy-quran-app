@@ -1,4 +1,4 @@
-import 'package:al_quran/animations/bottom_animation.dart';
+import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';

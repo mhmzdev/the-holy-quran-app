@@ -1,4 +1,4 @@
-import 'package:al_quran/animations/bottom_animation.dart';
+import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/app_routes.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/cubits/bookmarks/cubit.dart';
