@@ -4,7 +4,7 @@ description: Flutter App for the holy book of Qur'an.
 version: 2.5.6+11
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ^3.5.0
 
 dependencies:
   flutter:
@@ -14,46 +14,46 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   
   # utils
-  share: ^2.0.4
-  recase: ^4.0.0
-  shimmer: ^3.0.0
-  url_strategy: ^0.3.0
-  cupertino_icons: ^1.0.3
+  share_plus: 10.1.4
+  recase: 4.1.0
+  shimmer: 3.0.0
+  url_strategy: 0.3.0
+  cupertino_icons: 1.0.8
 
   # network
-  dio: ^5.3.2
-  url_launcher: ^6.0.12
+  dio: 5.8.0+1
+  url_launcher: 6.3.1
   
   # state management
-  provider: ^6.0.1
-  equatable: ^2.0.3
-  flutter_bloc: ^8.1.3
+  provider: 6.1.2
+  equatable: 2.0.7
+  flutter_bloc: 9.0.0
 
   # icon pack
-  iconsax: ^0.0.8
+  iconsax: 0.0.8
 
   # cache
-  hive: ^2.0.4
-  hive_flutter: ^1.1.0
-  shared_preferences: ^2.0.8
+  hive: 2.2.3
+  hive_flutter: 1.1.0
+  shared_preferences: 2.5.2
 
   # app info
-  package_info_plus: ^8.0.3
-  collection: ^1.17.1
+  package_info_plus: 8.2.1
+  collection: 1.18.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
     # flutter code
-  flutter_lints: ^5.0.0
+  flutter_lints: 5.0.0
 
   # cache local storage
-  build_runner: ^2.1.5
-  hive_generator: ^2.0.0
+  build_runner: 2.4.13
+  hive_generator: 2.0.1
 
   # launcher icons
-  flutter_launcher_icons: ^0.14.1
+  flutter_launcher_icons: 0.14.3
 
 flutter_icons:
   android: "launcher_icon"
