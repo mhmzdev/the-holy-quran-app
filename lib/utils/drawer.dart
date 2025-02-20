@@ -1,4 +1,4 @@
-import 'package:al_quran/app_routes.dart';
+import 'package:al_quran/router/routes.dart';
 import 'package:iconsax/iconsax.dart';
 
 class DrawerUtils {

@@ -1,14 +1,14 @@
 import 'package:al_quran/ui/animations/bottom_animation.dart';
-import 'package:al_quran/app_routes.dart';
+import 'package:al_quran/router/routes.dart';
 import 'package:al_quran/configs/configs.dart';
-import 'package:al_quran/cubits/bookmarks/cubit.dart';
-import 'package:al_quran/cubits/juz/cubit.dart';
+import 'package:al_quran/blocs/bookmarks/cubit.dart';
+import 'package:al_quran/blocs/juz/cubit.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/configs/app.dart';
-import 'package:al_quran/cubits/chapter/cubit.dart';
+import 'package:al_quran/blocs/chapter/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:shimmer/shimmer.dart';
 

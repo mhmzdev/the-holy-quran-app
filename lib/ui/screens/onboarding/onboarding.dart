@@ -1,4 +1,4 @@
-import 'package:al_quran/app_routes.dart';
+import 'package:al_quran/router/routes.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/providers/onboarding_provider.dart';
