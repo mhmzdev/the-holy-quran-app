@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ui.dart';
+import '../ui.dart';
 
 class AppDimensions {
   static double? maxContainerWidth;

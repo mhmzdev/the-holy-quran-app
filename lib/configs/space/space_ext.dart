@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_dimensions.dart';
-import 'ui.dart';
+import '../ui.dart';
 
 extension SuperEdgeInsets on EdgeInsets {
   EdgeInsets sv() {

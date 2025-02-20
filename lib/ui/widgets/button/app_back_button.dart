@@ -1,4 +1,4 @@
-import 'package:al_quran/configs/app_dimensions.dart';
+import 'package:al_quran/configs/space/app_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 

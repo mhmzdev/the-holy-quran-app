@@ -21,18 +21,20 @@ part 'widgets/bottom_ayah.dart';
 part 'widgets/custom_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
-  final double maxSlide;
-  const HomeScreen({super.key, required this.maxSlide});
+  const HomeScreen({super.key});
   @override
   HomeScreenState createState() => HomeScreenState();
 }
 
 class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late AnimationController animationController;
+  late double maxSlide;
 
   @override
   void initState() {
     super.initState();
+
+    maxSlide = UI.width! * 0.835;
 
     animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 250));
@@ -58,7 +60,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   void _onDragUpdate(DragUpdateDetails details) {
     if (_canBeDragged) {
-      double delta = details.primaryDelta! / widget.maxSlide;
+      double delta = details.primaryDelta! / maxSlide;
       animationController.value += delta;
     }
   }
@@ -142,8 +144,8 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               child: Stack(
                 children: <Widget>[
                   Transform.translate(
-                    offset: Offset(
-                        widget.maxSlide * (animationController.value - 1), 0),
+                    offset:
+                        Offset(maxSlide * (animationController.value - 1), 0),
                     child: Transform(
                       transform: Matrix4.identity()
                         ..setEntry(3, 2, 0.001)
@@ -154,8 +156,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                   ),
                   Transform.translate(
-                    offset:
-                        Offset(widget.maxSlide * animationController.value, 0),
+                    offset: Offset(maxSlide * animationController.value, 0),
                     child: Transform(
                       transform: Matrix4.identity()
                         ..setEntry(3, 2, 0.001)
@@ -166,8 +167,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ),
                   Positioned(
                     top: 4.0 + MediaQuery.of(context).padding.top,
-                    left: width * 0.02 +
-                        animationController.value * widget.maxSlide,
+                    left: width * 0.02 + animationController.value * maxSlide,
                     child: IconButton(
                       icon: Icon(
                         Iconsax.menu,

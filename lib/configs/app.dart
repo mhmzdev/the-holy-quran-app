@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'ui.dart';
-import 'space.dart';
-import 'ui_props.dart';
-import 'app_theme.dart';
-import 'app_typography.dart';
-import 'app_dimensions.dart';
+import 'space/space.dart';
+import 'ui/ui_props.dart';
+import 'theme/app_theme.dart';
+import 'typography/app_typography.dart';
+import 'space/app_dimensions.dart';
 
 class App {
   static bool? isLtr;

@@ -1,20 +1,13 @@
+import 'package:al_quran/configs/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 import 'router/routes.dart';
+import 'router/router.dart';
 
-import 'configs/core_theme.dart' as theme;
-
-// ui-imports-start
-import 'ui/screens/home/home_screen.dart';
-import 'ui/screens/juz/juz_index_screen.dart';
-import 'ui/screens/onboarding/onboarding.dart';
-import 'ui/screens/share_app/share_app.dart';
-import 'ui/screens/splash/splash.dart';
-import 'ui/screens/surah/surah_index_screen.dart';
-import 'ui/screens/bookmarks/bookmarks_screen.dart';
+import 'configs/theme/core_theme.dart' as theme;
 
 // bloc-imports-start
 import 'blocs/juz/cubit.dart';
@@ -61,40 +54,22 @@ class MyAppState extends State<MyApp> {
       ],
       child: Consumer<AppProvider>(
         builder: (context, state, child) {
-          return _AppChild(
-            state: state,
+          return MaterialApp(
+            title: 'They Holy Qur\'an',
+            navigatorKey: navigator,
+            debugShowCheckedModeBanner: false,
+            theme: theme.themeLight,
+            darkTheme: theme.themeDark,
+            themeMode: state.themeMode,
+            initialRoute: AppRoutes.splash,
+            routes: appRoutes,
+            builder: (context, child) {
+              App.init(context);
+              return child!;
+            },
           );
         },
       ),
-    );
-  }
-}
-
-class _AppChild extends StatelessWidget {
-  final AppProvider state;
-  const _AppChild({
-    required this.state,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'They Holy Qur\'an',
-      debugShowCheckedModeBanner: false,
-      theme: theme.themeLight,
-      darkTheme: theme.themeDark,
-      themeMode: state.themeMode,
-      initialRoute: AppRoutes.splash,
-      routes: <String, WidgetBuilder>{
-        AppRoutes.juz: (context) => const JuzIndexScreen(),
-        AppRoutes.splash: (context) => const SplashScreen(),
-        AppRoutes.surah: (context) => const SurahIndexScreen(),
-        AppRoutes.shareApp: (context) => const ShareAppScreen(),
-        AppRoutes.bookmarks: (context) => const BookmarksScreen(),
-        AppRoutes.onboarding: (context) => const OnboardingScreen(),
-        AppRoutes.home: (context) =>
-            HomeScreen(maxSlide: MediaQuery.of(context).size.width * 0.835),
-      },
     );
   }
 }

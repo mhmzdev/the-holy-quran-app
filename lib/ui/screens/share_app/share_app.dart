@@ -1,5 +1,5 @@
 import 'package:al_quran/configs/app.dart';
-import 'package:al_quran/configs/app_theme.dart';
+import 'package:al_quran/configs/theme/app_theme.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/ui/widgets/app/app_version.dart';

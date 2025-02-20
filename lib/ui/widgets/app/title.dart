@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:al_quran/configs/app_theme.dart';
-import 'package:al_quran/configs/app_typography.dart';
+import 'package:al_quran/configs/theme/app_theme.dart';
+import 'package:al_quran/configs/typography/app_typography.dart';
 
 class CustomTitle extends StatelessWidget {
   final String? title;
