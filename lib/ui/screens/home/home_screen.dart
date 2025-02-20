@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:al_quran/app_routes.dart';
@@ -7,6 +6,7 @@ import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/drawer.dart';
 import 'package:al_quran/ui/widgets/button/app_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/configs/configs.dart';
@@ -82,39 +82,39 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   Future<bool> _onWillPop() async {
-    return (await (showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            title: const Text(
-              "Exit Application",
-              style: TextStyle(fontWeight: FontWeight.bold),
+    final shouldPop = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        title: const Text(
+          "Exit Application",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        content: const Text("Are You Sure?"),
+        actions: <Widget>[
+          TextButton(
+            child: const Text(
+              "Yes",
+              style: TextStyle(color: Colors.red),
             ),
-            content: const Text("Are You Sure?"),
-            actions: <Widget>[
-              TextButton(
-                child: const Text(
-                  "Yes",
-                  style: TextStyle(color: Colors.red),
-                ),
-                onPressed: () {
-                  exit(0);
-                },
-              ),
-              TextButton(
-                child: const Text(
-                  "No",
-                  style: TextStyle(color: Colors.blue),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
+            onPressed: () {
+              Navigator.of(context).pop(true);
+              SystemNavigator.pop(animated: true);
+            },
           ),
-        ) as FutureOr<bool>?)) ??
-        false;
+          TextButton(
+            child: const Text(
+              "No",
+              style: TextStyle(color: Colors.blue),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+          ),
+        ],
+      ),
+    );
+    return shouldPop ?? false;
   }
 
   @override
@@ -123,8 +123,12 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     final appProvider = Provider.of<AppProvider>(context);
     double width = MediaQuery.of(context).size.width;
 
-    return WillPopScope(
-      onWillPop: _onWillPop,
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+        await _onWillPop();
+      },
       child: GestureDetector(
         onHorizontalDragStart: _onDragStart,
         onHorizontalDragUpdate: _onDragUpdate,
