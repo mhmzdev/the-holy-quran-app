@@ -1,7 +1,7 @@
 import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
-import 'package:al_quran/cubits/juz/cubit.dart';
+import 'package:al_quran/blocs/juz/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/ui/screens/surah/surah_index_screen.dart';
 import 'package:al_quran/utils/assets.dart';

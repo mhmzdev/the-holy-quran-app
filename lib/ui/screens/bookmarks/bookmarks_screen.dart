@@ -2,7 +2,7 @@ import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/app_dimensions.dart';
 import 'package:al_quran/configs/app_theme.dart';
 import 'package:al_quran/configs/app_typography.dart';
-import 'package:al_quran/cubits/bookmarks/cubit.dart';
+import 'package:al_quran/blocs/bookmarks/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/ui/screens/surah/surah_index_screen.dart';
 import 'package:al_quran/utils/assets.dart';

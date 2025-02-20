@@ -1,8 +1,8 @@
 import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
-import 'package:al_quran/cubits/bookmarks/cubit.dart';
-import 'package:al_quran/cubits/chapter/cubit.dart';
+import 'package:al_quran/blocs/bookmarks/cubit.dart';
+import 'package:al_quran/blocs/chapter/cubit.dart';
 import 'package:al_quran/models/chapter/chapter.dart';
 import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/providers/app_provider.dart';

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
-import 'package:al_quran/app_routes.dart';
+import 'package:al_quran/router/routes.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/drawer.dart';
