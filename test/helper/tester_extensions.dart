@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:al_quran/blocs/bookmarks/cubit.dart';
 import 'package:al_quran/blocs/chapter/cubit.dart';
 import 'package:al_quran/blocs/juz/cubit.dart';
@@ -91,20 +89,11 @@ extension WidgetTestExtensions on WidgetTester {
 
     /// Fix this, pixel ratio is working different for different screen. Should be same i.e. 3
     double devicePixelRatio = defaultDevicePixelRatio,
-  }) {
-    return runZoned(
-      () async {
-        initialise(
-          physicalSize: physicalSize,
-          devicePixelRatio: devicePixelRatio,
-        );
-        await body(this);
-      },
-      zoneValues: {
-        /// TODO: later after notification
-        // #LocalNotification: FakeLocalNotification(),
-        // #FakeAppFCM: FakeAppFcm(),
-      },
+  }) async {
+    initialise(
+      physicalSize: physicalSize,
+      devicePixelRatio: devicePixelRatio,
     );
+    await body(this);
   }
 }
