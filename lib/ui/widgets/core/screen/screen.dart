@@ -46,8 +46,8 @@ class Screen extends StatelessWidget {
     App.init(context);
 
     var body = child;
-    var onWillPop = onBackPressed;
-    var canPopValue = canPop ?? true;
+    final onWillPop = onBackPressed;
+    final canPopValue = canPop ?? true;
 
     if (keyboardHandler) {
       body = FocusHandler(child: body);

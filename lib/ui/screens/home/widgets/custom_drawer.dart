@@ -8,8 +8,8 @@ class _CustomDrawer extends StatelessWidget {
     App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
 
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
 
     return SizedBox(
       width: width * 0.835,
@@ -46,7 +46,7 @@ class _CustomDrawer extends StatelessWidget {
                   color: appProvider.isDark ? Colors.grey[800] : Colors.white,
                   child: ListTile(
                     leading: const Icon(Iconsax.moon),
-                    title: const Text("Dark Mode"),
+                    title: const Text('Dark Mode'),
                     trailing: Switch(
                       activeColor: Colors.white,
                       value: appProvider.isDark,

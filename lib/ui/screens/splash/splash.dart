@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       appProvider.initTheme();
     });
 
-    bool isNew = appProvider.init();
+    final isNew = appProvider.init();
 
     final bookmarkCubit = BookmarkCubit.cubit(context);
     final chapterCubit = ChapterCubit.cubit(context);
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     await bookmarkCubit.fetch();
 
-    for (int i = 1; i <= 30; i++) {
+    for (var i = 1; i <= 30; i++) {
       await juzCubit.fetch(i);
     }
 

@@ -41,7 +41,7 @@ class _SurahAppBar extends StatelessWidget {
                     height: 1.5,
                   ),
                   textAlign: TextAlign.center,
-                )
+                ),
               ],
             ),
           ),

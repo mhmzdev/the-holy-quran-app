@@ -47,7 +47,7 @@ class UI {
   }
 
   static initChecks(MediaQueryData query) {
-    var size = query.size;
+    final size = query.size;
     diagonal = sqrt((size.width * size.width) + (size.height * size.height));
     xxs = size.width > 300;
     xs = size.width > 360;

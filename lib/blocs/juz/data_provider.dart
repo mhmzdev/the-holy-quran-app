@@ -10,7 +10,7 @@ class JuzDataProvider {
         'http://api.alquran.cloud/v1/juz/$juzNumber/quran-uthmani',
       );
       final Map<String, dynamic> raw = resp.data['data'];
-      final Juz juz = Juz.fromMap(raw);
+      final juz = Juz.fromMap(raw);
 
       await cache.put(
         'juz$juzNumber',
@@ -19,7 +19,7 @@ class JuzDataProvider {
 
       return juz;
     } catch (e) {
-      throw Exception("Internal Server Error");
+      throw Exception('Internal Server Error');
     }
   }
 
@@ -31,7 +31,7 @@ class JuzDataProvider {
       final Juz? juz = data;
       return juz;
     } catch (e) {
-      throw Exception("Internal Server Error");
+      throw Exception('Internal Server Error');
     }
   }
 }

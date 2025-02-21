@@ -26,7 +26,7 @@ class ShareAppScreen extends StatelessWidget {
           children: <Widget>[
             AppBackButton(),
             CustomTitle(title: 'Share App'),
-            ShareInfo()
+            ShareInfo(),
           ],
         ),
       ),
@@ -38,17 +38,17 @@ class ShareInfo extends StatelessWidget {
   const ShareInfo({super.key});
 
   void share(BuildContext context) {
-    final RenderBox box = context.findRenderObject() as RenderBox;
+    final box = context.findRenderObject() as RenderBox;
 
     Share.share(
         "Download the latest no-Ads Holy Qur'an App on Play store\n\n"
-        "https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)",
-        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+        'https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)',
+        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,);
   }
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -61,7 +61,7 @@ class ShareInfo extends StatelessWidget {
           Text(
               "The Holy Qur'an App is also available as Open Source on GitHub!",
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodySmall),
+              style: Theme.of(context).textTheme.bodySmall,),
           SizedBox(height: height * 0.05),
           _ShareCustomButton(
             iconData: Iconsax.share,
@@ -72,16 +72,16 @@ class ShareInfo extends StatelessWidget {
             iconData: Iconsax.code,
             text: 'GitHub Repo',
             onPressed: () => launchUrl(
-                Uri.parse("https://github.com/mhmzdev/The_Holy_Quran_App")),
+                Uri.parse('https://github.com/mhmzdev/The_Holy_Quran_App'),),
           ),
           _ShareCustomButton(
             iconData: Iconsax.message,
             text: 'Rate & Feedback',
             onPressed: () => launchUrl(Uri.parse(
-                "https://play.google.com/store/apps/details?id=com.hmz.al_quran")),
+                'https://play.google.com/store/apps/details?id=com.hmz.al_quran',),),
           ),
           SizedBox(height: height * 0.02),
-          const AppVersion()
+          const AppVersion(),
         ],
       ),
     );

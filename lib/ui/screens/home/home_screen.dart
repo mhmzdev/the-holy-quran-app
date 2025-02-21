@@ -38,7 +38,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     maxSlide = UI.width! * 0.835;
 
     animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 250));
+        vsync: this, duration: const Duration(milliseconds: 250),);
   }
 
   void toggle() => animationController.isDismissed
@@ -54,26 +54,26 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   void _onDragStart(DragStartDetails details) {
-    bool isDragOpenFromLeft = animationController.isDismissed;
-    bool isDragCloseFromRight = animationController.isCompleted;
+    final isDragOpenFromLeft = animationController.isDismissed;
+    final isDragCloseFromRight = animationController.isCompleted;
     _canBeDragged = isDragOpenFromLeft || isDragCloseFromRight;
   }
 
   void _onDragUpdate(DragUpdateDetails details) {
     if (_canBeDragged) {
-      double delta = details.primaryDelta! / maxSlide;
+      final delta = details.primaryDelta! / maxSlide;
       animationController.value += delta;
     }
   }
 
   void _onDragEnd(DragEndDetails details) {
-    double kMinFlingVelocity = 365.0;
+    const kMinFlingVelocity = 365.0;
 
     if (animationController.isDismissed || animationController.isCompleted) {
       return;
     }
     if (details.velocity.pixelsPerSecond.dx.abs() >= kMinFlingVelocity) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx /
+      final visualVelocity = details.velocity.pixelsPerSecond.dx /
           MediaQuery.of(context).size.width;
 
       animationController.fling(velocity: visualVelocity);
@@ -90,14 +90,14 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         title: const Text(
-          "Exit Application",
+          'Exit Application',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        content: const Text("Are You Sure?"),
+        content: const Text('Are You Sure?'),
         actions: <Widget>[
           TextButton(
             child: const Text(
-              "Yes",
+              'Yes',
               style: TextStyle(color: Colors.red),
             ),
             onPressed: () {
@@ -107,7 +107,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
           TextButton(
             child: const Text(
-              "No",
+              'No',
               style: TextStyle(color: Colors.blue),
             ),
             onPressed: () {
@@ -124,7 +124,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
-    double width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
 
     return PopScope(
       canPop: false,
@@ -152,7 +152,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       transform: Matrix4.identity()
                         ..setEntry(3, 2, 0.001)
                         ..rotateY(
-                            math.pi / 2 * (1 - animationController.value)),
+                            math.pi / 2 * (1 - animationController.value),),
                       alignment: Alignment.centerRight,
                       child: const _CustomDrawer(),
                     ),

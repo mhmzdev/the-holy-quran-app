@@ -49,8 +49,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
     final appProvider = Provider.of<AppProvider>(context);
     final chapterCubit = ChapterCubit.cubit(context);
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -107,7 +107,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                               },
                               child: const Text('Retry'),
                             ),
-                          )
+                          ),
                         ],
                       );
                     },
@@ -130,7 +130,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                       }
                       if (value.isNotEmpty) {
                         setState(() {
-                          var lowerCaseQuery = value.toLowerCase();
+                          final lowerCaseQuery = value.toLowerCase();
 
                           searchedChapters = chapters!.where((chapter) {
                             final chapterName = chapter!.englishName!

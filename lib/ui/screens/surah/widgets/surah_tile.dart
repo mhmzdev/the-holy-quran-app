@@ -47,7 +47,7 @@ class SurahTile extends StatelessWidget {
                   Text(
                     chapter!.englishNameTranslation!,
                     style: AppText.b2,
-                  )
+                  ),
                 ],
               ),
               Expanded(

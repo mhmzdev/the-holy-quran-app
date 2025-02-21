@@ -23,9 +23,9 @@ class JuzCubit extends Cubit<JuzState> {
     emit(const JuzFetchLoading());
 
     try {
-      Juz? cached = await repo.juzFetchHive(juzNumber);
+      final cached = await repo.juzFetchHive(juzNumber);
       if (cached == null) {
-        Juz? data = await repo.juzFetchApi(juzNumber);
+        final data = await repo.juzFetchApi(juzNumber);
         emit(JuzFetchSuccess(data: data));
       } else {
         emit(JuzFetchSuccess(data: cached));

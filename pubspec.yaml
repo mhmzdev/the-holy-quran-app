@@ -29,6 +29,10 @@ dependencies:
   equatable: 2.0.7
   flutter_bloc: 9.0.0
 
+  # models generation
+  freezed_annotation: 2.4.4
+  json_annotation: 4.9.0
+
   # icon pack
   iconsax: 0.0.8
 
@@ -51,6 +55,10 @@ dev_dependencies:
   # cache local storage
   build_runner: 2.4.13
   hive_generator: 2.0.1
+  
+  # misc
+  freezed: 2.5.7
+  json_serializable: 6.8.0
 
   # tests
   mockito: 5.4.4

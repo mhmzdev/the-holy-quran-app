@@ -3,13 +3,13 @@ import 'package:recase/recase.dart';
 
 import 'utils.dart';
 
-const codeFilePath = "./lib/app_routes.dart";
-const navigatorFilePaht = "./lib/main.dart";
-const importMatch = "// screen imports";
-const routeMatch = "routes: {";
+const codeFilePath = './lib/app_routes.dart';
+const navigatorFilePaht = './lib/main.dart';
+const importMatch = '// screen imports';
+const routeMatch = 'routes: {';
 
 void main(List<String> args) async {
-  final assetsDir = Directory(normalize("./lib/screens/"));
+  final assetsDir = Directory(normalize('./lib/screens/'));
   final assetsDirPaths = assetsDir.listSync();
 
   final keys = [];
@@ -18,10 +18,10 @@ void main(List<String> args) async {
   final classFile = File(codeFilePath);
   final classFileData = File(codeFilePath).readAsLinesSync();
   final toIgnore = classFileData.first
-      .split(":")
+      .split(':')
       .last
       .trim()
-      .split(",")
+      .split(',')
       .map((e) => e.toLowerCase())
       .toList();
 
@@ -29,7 +29,7 @@ void main(List<String> args) async {
     if (file.path.contains('.DS_Store')) {
       continue;
     }
-    final chunks = file.path.split(normalize("/"));
+    final chunks = file.path.split(normalize('/'));
     final scope = chunks.last;
     final camel = scope.camelCase;
     final snake = scope.snakeCase;
@@ -40,24 +40,24 @@ void main(List<String> args) async {
       continue;
     }
 
-    final renderString = "AppRoutes.$camel: (_) => ${pascal}Screen(),";
+    final renderString = 'AppRoutes.$camel: (_) => ${pascal}Screen(),';
     routeStrings.add(renderString);
   }
 
-  final classData = generateStaticClass(keys.join("\n"), classFileData[0]);
+  final classData = generateStaticClass(keys.join('\n'), classFileData[0]);
   await classFile.writeAsString(classData);
 
   final navigator = File(navigatorFilePaht);
   final newAppNavigator = [];
   final navLines = navigator.readAsLinesSync().map((e) => e.trim()).toList();
-  bool flag4Screens = false;
+  var flag4Screens = false;
   for (final line in navLines) {
     if (flag4Screens) {
       if (line == '},') {
         flag4Screens = false;
         return;
       }
-      final parsed = line.split(":").first.split('.').last.toLowerCase();
+      final parsed = line.split(':').first.split('.').last.toLowerCase();
 
       if (toIgnore.contains(parsed)) {
         continue;
@@ -85,9 +85,9 @@ void main(List<String> args) async {
     }
   }
 
-  navigator.writeAsStringSync(newAppNavigator.join("\n"));
+  navigator.writeAsStringSync(newAppNavigator.join('\n'));
 
-  Process.runSync("dart", ["format", "lib"]);
+  Process.runSync('dart', ['format', 'lib']);
 }
 
 String generateStaticClass(String keys, ignore) {

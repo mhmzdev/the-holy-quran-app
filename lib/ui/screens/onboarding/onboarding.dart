@@ -29,12 +29,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     const _OnBoardingPage(
       image: StaticAssets.ui,
       text:
-          "With sleek & awesome User Interface to keep you in love with this amazing app and the Book.\n\nHope you will like our efforts!\n",
+          'With sleek & awesome User Interface to keep you in love with this amazing app and the Book.\n\nHope you will like our efforts!\n',
     ),
     const _OnBoardingPage(
       image: StaticAssets.easyNav,
       text:
-          "Now with Surah & Juz Index you can find your required Surahs & Juzs easily.\n\nWith Bookmark option you can access your daily readings.\n",
+          'Now with Surah & Juz Index you can find your required Surahs & Juzs easily.\n\nWith Bookmark option you can access your daily readings.\n',
     ),
     const _OnBoardingPage(
       image: StaticAssets.drawer3d,
@@ -57,7 +57,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     final onBoardingProvider = Provider.of<OnBoardingProvider>(context);
 
-    Object? args = ModalRoute.of(context)?.settings.arguments;
+    final args = ModalRoute.of(context)?.settings.arguments;
 
     return Screen(
       floatingActionButton: Row(
@@ -90,7 +90,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 );
               }
             },
-          )
+          ),
         ],
       ),
       child: SafeArea(
@@ -123,7 +123,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   },
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

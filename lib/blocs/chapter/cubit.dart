@@ -31,7 +31,7 @@ class ChapterCubit extends Cubit<ChapterState> {
       }
 
       if (cached == null) {
-        List<Chapter?>? data = await repo.chapterApi();
+        final data = await repo.chapterApi();
         emit(ChapterFetchSuccess(data: data));
       } else {
         emit(ChapterFetchSuccess(data: cached));

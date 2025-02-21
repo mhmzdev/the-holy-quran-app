@@ -31,12 +31,12 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
     App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     final juzCubit = JuzCubit.cubit(context);
 
-    bool hasSearched = _searchedIndex != -1 && _searchedJuzName.isNotEmpty;
+    final hasSearched = _searchedIndex != -1 && _searchedJuzName.isNotEmpty;
 
     return Screen(
       keyboardHandler: true,
@@ -155,7 +155,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                     itemCount: JuzUtils.juzNames.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3),
+                            crossAxisCount: 3,),
                     itemBuilder: (context, index) {
                       return WidgetAnimator(
                         child: GestureDetector(
@@ -222,7 +222,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
             imagePath: StaticAssets.quranRail,
           ),
           const CustomTitle(
-            title: "Juzz Index",
+            title: 'Juzz Index',
           ),
           if (appProvider.isDark) ...[
             Flare(
@@ -272,7 +272,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
             ),
           ],
         ],
-      )),
+      ),),
     );
   }
 }

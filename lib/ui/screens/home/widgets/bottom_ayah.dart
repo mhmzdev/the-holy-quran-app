@@ -20,7 +20,7 @@ class _AyahBottom extends StatelessWidget {
           ),
           Space.y!,
           Text(
-            "Surah Al-Hijr\n",
+            'Surah Al-Hijr\n',
             style: AppText.l1!.copyWith(
               color: AppTheme.c!.text,
             ),
