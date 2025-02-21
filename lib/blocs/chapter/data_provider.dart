@@ -15,7 +15,7 @@ class ChapterDataProvider {
       final List data = raw['surahs'];
       final chapters = List<Chapter>.generate(
         data.length,
-        (index) => Chapter.fromMap(data[index]),
+        (index) => Chapter.fromJson(data[index]),
       );
       await cache.put(
         'chapters',

@@ -1,65 +1,22 @@
-import 'dart:convert';
-
+import 'package:al_quran/static/hive.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 
+part 'ayah.freezed.dart';
 part 'ayah.g.dart';
 
-@HiveType(typeId: 0)
-class Ayah {
-  @HiveField(0)
-  final num? number;
-  @HiveField(1)
-  final String? text;
-  Ayah({
-    this.number,
-    this.text,
-  });
+@freezed
+class Ayah with _$Ayah {
+  const Ayah._();
 
-  Ayah copyWith({
-    num? number,
-    String? text,
-  }) {
-    return Ayah(
-      number: number ?? number,
-      text: text ?? text,
-    );
-  }
+  @HiveType(
+    typeId: AppHiveTypes.ayah,
+    adapterName: 'AyahAdapter',
+  )
+  const factory Ayah({
+    @HiveField(0) int? number,
+    @HiveField(1) String? text,
+  }) = _Ayah;
 
-  Ayah merge(Ayah model) {
-    return Ayah(
-      number: model.number ?? number,
-      text: model.text ?? text,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'number': number,
-      'text': text,
-    };
-  }
-
-  factory Ayah.fromMap(Map<String, dynamic> map) {
-    return Ayah(
-      number: map['number'],
-      text: map['text'],
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Ayah.fromJson(String source) => Ayah.fromMap(json.decode(source));
-
-  @override
-  String toString() => 'Ayah(number: $number, text: $text)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is Ayah && other.number == number && other.text == text;
-  }
-
-  @override
-  int get hashCode => number.hashCode ^ text.hashCode;
+  factory Ayah.fromJson(Map<String, Object?> json) => _$AyahFromJson(json);
 }

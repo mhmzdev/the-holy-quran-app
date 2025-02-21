@@ -10,7 +10,7 @@ class JuzDataProvider {
         'http://api.alquran.cloud/v1/juz/$juzNumber/quran-uthmani',
       );
       final Map<String, dynamic> raw = resp.data['data'];
-      final juz = Juz.fromMap(raw);
+      final juz = Juz.fromJson(raw);
 
       await cache.put(
         'juz$juzNumber',
