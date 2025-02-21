@@ -3,12 +3,10 @@ part of 'cubit.dart';
 class ChapterDataProvider {
   static final cache = Hive.box('data');
 
-  static Dio ins = Dio();
-
   static Future<List<Chapter?>?> chapterApi() async {
     try {
-      final resp = await ins.get(
-        'http://api.alquran.cloud/v1/quran/quran-uthmani',
+      final resp = await Api.ins.get(
+        '/v1/quran/quran-uthmani',
       );
       final Map<String, dynamic> raw = resp.data['data'];
 
