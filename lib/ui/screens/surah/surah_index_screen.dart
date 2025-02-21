@@ -7,7 +7,7 @@ import 'package:al_quran/models/chapter/chapter.dart';
 import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
-import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/static/assets.dart';
 import 'package:al_quran/utils/juz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,7 +63,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
               CustomImage(
                 opacity: 0.3,
                 height: height * 0.17,
-                imagePath: StaticAssets.kaba,
+                imagePath: StaticAssets.imagesKaba,
               ),
               const AppBackButton(),
               const CustomTitle(

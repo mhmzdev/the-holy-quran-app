@@ -1,5 +1,5 @@
 import 'package:al_quran/ui/animations/bottom_animation.dart';
-import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/static/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -25,7 +25,7 @@ class LoadingShimmer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                StaticAssets.logo,
+                StaticAssets.logosLogo,
                 height: height * 0.1,
               ),
               WidgetAnimator(

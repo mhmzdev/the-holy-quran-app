@@ -1,5 +1,5 @@
 import 'package:al_quran/configs/space/app_dimensions.dart';
-import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/static/assets.dart';
 import 'package:flutter/material.dart';
 
 class Calligraphy extends StatelessWidget {
@@ -13,7 +13,7 @@ class Calligraphy extends StatelessWidget {
       right: width * 0.01,
       top: height * 0.045,
       child: Image.asset(
-        StaticAssets.gradLogo,
+        StaticAssets.logosGradLogo,
         height: AppDimensions.normalize(75),
       ),
     );

@@ -4,7 +4,7 @@ import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/blocs/bookmarks/cubit.dart';
 import 'package:al_quran/blocs/juz/cubit.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
-import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/static/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -76,7 +76,9 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             WidgetAnimator(
               child: Image.asset(
-                appProvider.isDark ? StaticAssets.gradLogo : StaticAssets.logo,
+                appProvider.isDark
+                    ? StaticAssets.logosGradLogo
+                    : StaticAssets.logosLogo,
                 height: AppDimensions.normalize(100),
               ),
             ),

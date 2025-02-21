@@ -1,4 +1,4 @@
-import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/static/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/providers/app_provider.dart';
@@ -37,7 +37,7 @@ class DrawerAppName extends StatelessWidget {
           ],
         ),
         Image.asset(
-          StaticAssets.gradLogo,
+          StaticAssets.logosGradLogo,
           height: height * 0.17,
         ),
       ],
