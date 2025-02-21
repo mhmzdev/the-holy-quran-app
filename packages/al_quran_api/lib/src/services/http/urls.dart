@@ -1,5 +1,5 @@
 part of 'api.dart';
 
 class URLs {
-  static const base = 'http://api.alquran.cloud/v1';
+  static const base = 'http://api.alquran.cloud';
 }

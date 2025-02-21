@@ -1,8 +1,8 @@
-part of 'cubit.dart';
+part of 'bloc.dart';
 
 @immutable
 class ChapterState extends Equatable {
-  final List<Chapter?>? data;
+  final List<Chapter>? data;
   final String? message;
 
   const ChapterState({

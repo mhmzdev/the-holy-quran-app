@@ -10,8 +10,8 @@ import 'router/router.dart';
 import 'configs/theme/core_theme.dart' as theme;
 
 // bloc-imports-start
+import 'blocs/chapter/bloc.dart';
 import 'blocs/juz/cubit.dart';
-import 'blocs/chapter/cubit.dart';
 import 'blocs/bookmarks/cubit.dart';
 // bloc-imports-end
 
@@ -43,7 +43,7 @@ class MyAppState extends State<MyApp> {
       providers: [
         // bloc-initiate-start
         BlocProvider(create: (_) => JuzCubit()),
-        BlocProvider(create: (_) => ChapterCubit()),
+        BlocProvider(create: (_) => ChapterBloc()),
         BlocProvider(create: (_) => BookmarkCubit()),
         // bloc-initiate-end
 
