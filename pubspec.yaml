@@ -37,6 +37,7 @@ dependencies:
   provider: 6.1.2
   equatable: 2.0.7
   flutter_bloc: 9.0.0
+  get_it: 8.0.3
 
   # models generation
   freezed_annotation: 2.4.4
