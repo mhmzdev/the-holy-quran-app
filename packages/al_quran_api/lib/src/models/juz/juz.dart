@@ -1,9 +1,7 @@
-import 'package:flutter/foundation.dart';
+import 'package:al_quran_api/src/models/ayah/ayah.dart';
+import 'package:al_quran_api/src/static/hive.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
-
-import 'package:al_quran/models/ayah/ayah.dart';
-import 'package:al_quran/static/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'juz.freezed.dart';
 part 'juz.g.dart';

@@ -1,6 +1,6 @@
-import 'package:al_quran/static/hive.dart';
+import 'package:al_quran_api/src/static/hive.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'ayah.freezed.dart';
 part 'ayah.g.dart';

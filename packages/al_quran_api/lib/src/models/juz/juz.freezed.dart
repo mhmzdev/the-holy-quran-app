@@ -111,7 +111,7 @@ class __$$JuzImplCopyWithImpl<$Res> extends _$JuzCopyWithImpl<$Res, _$JuzImpl>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: AppHiveTypes.juz, adapterName: 'JuzAdapter')
-class _$JuzImpl extends _Juz with DiagnosticableTreeMixin {
+class _$JuzImpl extends _Juz {
   const _$JuzImpl({@HiveField(0) this.number, @HiveField(1) this.ayahs})
       : super._();
 
@@ -126,17 +126,8 @@ class _$JuzImpl extends _Juz with DiagnosticableTreeMixin {
   final List<Ayah?>? ayahs;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Juz(number: $number, ayahs: $ayahs)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Juz'))
-      ..add(DiagnosticsProperty('number', number))
-      ..add(DiagnosticsProperty('ayahs', ayahs));
   }
 
   @override

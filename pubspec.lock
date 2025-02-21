@@ -14,6 +14,20 @@ packages:
     description: dart
     source: sdk
     version: "0.3.2"
+  al_quran_api:
+    dependency: "direct main"
+    description:
+      path: "packages/al_quran_api"
+      relative: true
+    source: path
+    version: "1.0.0"
+  al_quran_repo:
+    dependency: "direct main"
+    description:
+      path: "packages/al_quran_repo"
+      relative: true
+    source: path
+    version: "1.0.0"
   analyzer:
     dependency: transitive
     description:
@@ -350,7 +364,7 @@ packages:
     source: hosted
     version: "2.3.2"
   hive:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: hive
       sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
@@ -421,6 +435,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.2"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.19.0"
   io:
     dependency: transitive
     description:
@@ -866,6 +888,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  supercharged:
+    dependency: "direct main"
+    description:
+      name: supercharged
+      sha256: ab49c848b33e28243f5ce82b976736de17d0852b71d0dfbde53fbb5e2ecca7cb
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
+  supercharged_dart:
+    dependency: transitive
+    description:
+      name: supercharged_dart
+      sha256: cb95edda32eacd27664089700a750120be41daa84aa6cd2aeded46227c16b867
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
   term_glyph:
     dependency: transitive
     description:

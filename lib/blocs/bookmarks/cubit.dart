@@ -1,4 +1,4 @@
-import 'package:al_quran/models/chapter/chapter.dart';
+import 'package:al_quran_api/al_quran_api.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,15 +1,11 @@
 import 'dart:async';
 
-import 'package:al_quran/services/http/api.dart';
-import 'package:dio/dio.dart';
+import 'package:al_quran_api/al_quran_api.dart';
+import 'package:al_quran_repo/al_quran_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:al_quran/models/chapter/chapter.dart';
 
-part 'data_provider.dart';
-part 'repository.dart';
 part 'state.dart';
 
 class ChapterCubit extends Cubit<ChapterState> {
@@ -18,21 +14,21 @@ class ChapterCubit extends Cubit<ChapterState> {
 
   ChapterCubit() : super(ChapterDefault());
 
-  final repo = ChapterRepository();
+  final _repo = AlQuranRepo();
 
-  Future<void> fetch({bool? api = false}) async {
+  Future<void> fetch({bool api = false}) async {
     emit(const ChapterFetchLoading());
     try {
-      List<Chapter?>? cached;
+      List<Chapter>? cached;
 
-      if (api!) {
-        cached = await repo.chapterApi();
+      if (api) {
+        cached = await _repo.getChapters();
       } else {
-        cached = await repo.chapterHive();
+        cached = await _repo.getChaptersHive();
       }
 
       if (cached == null) {
-        final data = await repo.chapterApi();
+        final data = await _repo.getChapters();
         emit(ChapterFetchSuccess(data: data));
       } else {
         emit(ChapterFetchSuccess(data: cached));

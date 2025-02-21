@@ -175,7 +175,7 @@ class __$$ChapterImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: AppHiveTypes.chapter, adapterName: 'ChapterAdapter')
-class _$ChapterImpl extends _Chapter with DiagnosticableTreeMixin {
+class _$ChapterImpl extends _Chapter {
   const _$ChapterImpl(
       {@HiveField(0) this.number,
       @HiveField(1) this.name,
@@ -208,22 +208,8 @@ class _$ChapterImpl extends _Chapter with DiagnosticableTreeMixin {
   final List<Ayah?>? ayahs;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Chapter(number: $number, name: $name, englishName: $englishName, englishNameTranslation: $englishNameTranslation, revelationType: $revelationType, ayahs: $ayahs)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Chapter'))
-      ..add(DiagnosticsProperty('number', number))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('englishName', englishName))
-      ..add(
-          DiagnosticsProperty('englishNameTranslation', englishNameTranslation))
-      ..add(DiagnosticsProperty('revelationType', revelationType))
-      ..add(DiagnosticsProperty('ayahs', ayahs));
   }
 
   @override
