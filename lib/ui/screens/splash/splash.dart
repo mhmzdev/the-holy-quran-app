@@ -1,3 +1,4 @@
+import 'package:al_quran/blocs/chapter/bloc.dart';
 import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/router/routes.dart';
 import 'package:al_quran/configs/configs.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/configs/app.dart';
-import 'package:al_quran/blocs/chapter/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -31,10 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
     final isNew = appProvider.init();
 
     final bookmarkCubit = BookmarkCubit.cubit(context);
-    final chapterCubit = ChapterCubit.cubit(context);
     final juzCubit = JuzCubit.cubit(context);
 
-    await chapterCubit.fetch();
+    context.read<ChapterBloc>().add(const ChapterFetch());
 
     await bookmarkCubit.fetch();
 
@@ -87,7 +86,7 @@ class _SplashScreenState extends State<SplashScreen> {
               enabled: true,
               baseColor: appProvider.isDark ? Colors.white : Colors.black,
               highlightColor: appProvider.isDark ? Colors.grey : Colors.white,
-              child: BlocBuilder<ChapterCubit, ChapterState>(
+              child: BlocBuilder<ChapterBloc, ChapterState>(
                 builder: (context, state) {
                   if (state is ChapterFetchLoading) {
                     return const Text('Getting all Surahs...');

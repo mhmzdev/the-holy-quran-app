@@ -1,8 +1,9 @@
 import 'package:al_quran/blocs/bookmarks/cubit.dart';
-import 'package:al_quran/blocs/chapter/cubit.dart';
+import 'package:al_quran/blocs/chapter/bloc.dart';
 import 'package:al_quran/blocs/juz/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/router/router.dart';
+import 'package:al_quran/services/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -23,7 +24,7 @@ extension WidgetTestExtensions on WidgetTester {
   Future<MultiProvider> createRootWidgetAndPump({
     // Cubits
     JuzCubit? juzCubit,
-    ChapterCubit? chapterCubit,
+    ChapterBloc? chapterBloc,
     BookmarkCubit? bookmarkCubit,
 
     // Provider
@@ -45,8 +46,8 @@ extension WidgetTestExtensions on WidgetTester {
     final root = MultiProvider(
       providers: [
         /// Blocs
-        BlocProvider(create: (_) => juzCubit ?? JuzCubit()),
-        BlocProvider(create: (_) => chapterCubit ?? ChapterCubit()),
+        BlocProvider(create: (_) => juzCubit ?? sl<JuzCubit>()),
+        BlocProvider(create: (_) => chapterBloc ?? sl<ChapterBloc>()),
         BlocProvider(create: (_) => bookmarkCubit ?? BookmarkCubit()),
 
         /// Providers

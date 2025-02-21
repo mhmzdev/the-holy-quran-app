@@ -1,0 +1,17 @@
+name: al_quran_repo
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+  al_quran_api:
+    path: ../al_quran_api
+
+dev_dependencies:
+  lints: ^4.0.0
+  test: ^1.24.0

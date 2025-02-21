@@ -1,10 +1,8 @@
+import 'package:al_quran/services/locator.dart';
+import 'package:al_quran_api/al_quran_api.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:url_strategy/url_strategy.dart';
-
-import 'package:al_quran/models/ayah/ayah.dart';
-import 'package:al_quran/models/chapter/chapter.dart';
-import 'package:al_quran/models/juz/juz.dart';
 
 import 'app.dart';
 
@@ -23,6 +21,9 @@ void main() async {
     Hive.openBox('app'),
     Hive.openBox('data'),
   ]);
+
+  // locator
+  await initServiceLocator();
 
   runApp(const MyApp());
 }

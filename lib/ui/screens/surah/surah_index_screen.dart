@@ -1,14 +1,13 @@
+import 'package:al_quran/blocs/chapter/bloc.dart';
 import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/blocs/bookmarks/cubit.dart';
-import 'package:al_quran/blocs/chapter/cubit.dart';
-import 'package:al_quran/models/chapter/chapter.dart';
-import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/static/assets.dart';
 import 'package:al_quran/utils/juz.dart';
+import 'package:al_quran_api/al_quran_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -37,8 +36,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
 
   @override
   void initState() {
-    final chapterCubit = ChapterCubit.cubit(context);
-    chapters = chapterCubit.state.data;
+    final chapterBloc = context.read<ChapterBloc>();
+    chapters = chapterBloc.state.data;
     super.initState();
   }
 
@@ -47,7 +46,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
     App.init(context);
 
     final appProvider = Provider.of<AppProvider>(context);
-    final chapterCubit = ChapterCubit.cubit(context);
+    final chapterBloc = context.read<ChapterBloc>();
 
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -71,7 +70,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
               ),
               if (chapters!.isEmpty)
                 Center(
-                  child: BlocBuilder<ChapterCubit, ChapterState>(
+                  child: BlocBuilder<ChapterBloc, ChapterState>(
+                    buildWhen: (previous, current) => current != previous,
                     builder: (context, state) {
                       if (state is ChapterFetchLoading) {
                         return LinearProgressIndicator(
@@ -103,7 +103,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                                 ),
                               ),
                               onPressed: () {
-                                chapterCubit.fetch(api: true);
+                                chapterBloc.add(const ChapterFetch(api: true));
                               },
                               child: const Text('Retry'),
                             ),
