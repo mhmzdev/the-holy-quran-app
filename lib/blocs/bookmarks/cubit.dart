@@ -16,7 +16,7 @@ class BookmarkCubit extends Cubit<BookmarkState> {
   Future<void> fetch() async {
     emit(const BookmarkFetchLoading());
     try {
-      List<Chapter?>? data = await BookmarksDataProvider.fetch();
+      final data = await BookmarksDataProvider.fetch();
 
       emit(BookmarkFetchSuccess(data: data, isBookmarked: false));
     } catch (e) {

@@ -29,8 +29,8 @@ class _PageScreenState extends State<PageScreen> {
     final appProvider = Provider.of<AppProvider>(context);
     final bookmarkCubit = BookmarkCubit.cubit(context);
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: appProvider.isDark ? Colors.grey[900] : Colors.white,
       body: SafeArea(
@@ -46,7 +46,7 @@ class _PageScreenState extends State<PageScreen> {
                         onPressed: () {
                           if (bookmarkCubit.state.isBookmarked!) {
                             bookmarkCubit.updateBookmark(
-                                widget.chapter!, false);
+                                widget.chapter!, false,);
                           } else {
                             bookmarkCubit.updateBookmark(widget.chapter!, true);
                           }

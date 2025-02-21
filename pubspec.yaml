@@ -29,6 +29,10 @@ dependencies:
   equatable: 2.0.7
   flutter_bloc: 9.0.0
 
+  # models generation
+  freezed_annotation: 2.4.4
+  json_annotation: 4.9.0
+
   # icon pack
   iconsax: 0.0.8
 
@@ -51,6 +55,14 @@ dev_dependencies:
   # cache local storage
   build_runner: 2.4.13
   hive_generator: 2.0.1
+  
+  # misc
+  freezed: 2.5.7
+  json_serializable: 6.8.0
+
+  # tests
+  mockito: 5.4.4
+  hive_test: 1.0.1
 
   # launcher icons
   flutter_launcher_icons: 0.14.3
@@ -85,9 +97,6 @@ flutter:
           weight: 900
         - asset: fonts/Poppins-Italic.ttf
         - asset: fonts/Poppins-SemiBold.ttf
-    - family: ShareIcon
-      fonts:
-        - asset: fonts/ShareIcon.ttf
     - family: Noor
       fonts:
         - asset: fonts/noor-regular.ttf

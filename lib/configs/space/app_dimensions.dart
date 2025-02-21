@@ -13,7 +13,7 @@ class AppDimensions {
 
   static init() {
     ratio = UI.width! / UI.height!;
-    double pixelDensity = UI.mediaQuery().devicePixelRatio;
+    final pixelDensity = UI.mediaQuery().devicePixelRatio;
     ratio = (ratio) + ((pixelDensity + ratio) / 2);
 
     if (UI.width! <= 380 && pixelDensity >= 3) {
@@ -51,13 +51,13 @@ class AppDimensions {
   static String inString(BuildContext context) {
     final x = UI.width! / UI.height!;
     final ps = View.of(context).physicalSize;
-    return """
+    return '''
       Width: ${UI.width} | ${ps.width}
       Height: ${UI.height} | ${ps.height}
       app_ratio: $ratio
       ratio: $x
       pixels: ${UI.mediaQuery().devicePixelRatio}
-    """;
+    ''';
   }
 
   static double space([double multiplier = 1.0]) {

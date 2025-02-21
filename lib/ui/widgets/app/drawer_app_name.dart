@@ -10,7 +10,7 @@ class DrawerAppName extends StatelessWidget {
   Widget build(BuildContext context) {
     final appProvider = Provider.of<AppProvider>(context);
 
-    double height = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -19,7 +19,7 @@ class DrawerAppName extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              "\nThe",
+              '\nThe',
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: height * 0.025,
@@ -33,13 +33,13 @@ class DrawerAppName extends StatelessWidget {
                 color: appProvider.isDark ? Colors.grey[200] : Colors.black54,
                 fontSize: height * 0.035,
               ),
-            )
+            ),
           ],
         ),
         Image.asset(
           StaticAssets.gradLogo,
           height: height * 0.17,
-        )
+        ),
       ],
     );
   }

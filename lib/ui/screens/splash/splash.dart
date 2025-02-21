@@ -3,6 +3,7 @@ import 'package:al_quran/router/routes.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/blocs/bookmarks/cubit.dart';
 import 'package:al_quran/blocs/juz/cubit.dart';
+import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       appProvider.initTheme();
     });
 
-    bool isNew = appProvider.init();
+    final isNew = appProvider.init();
 
     final bookmarkCubit = BookmarkCubit.cubit(context);
     final chapterCubit = ChapterCubit.cubit(context);
@@ -37,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     await bookmarkCubit.fetch();
 
-    for (int i = 1; i <= 30; i++) {
+    for (var i = 1; i <= 30; i++) {
       await juzCubit.fetch(i);
     }
 
@@ -66,9 +67,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
     final appProvider = Provider.of<AppProvider>(context);
 
-    return Scaffold(
-      backgroundColor: appProvider.isDark ? Colors.grey[850] : Colors.white,
-      body: Center(
+    return Screen(
+      scaffoldBackgroundColor:
+          appProvider.isDark ? Colors.grey[850] : Colors.white,
+      child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

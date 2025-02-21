@@ -20,7 +20,7 @@ class _SurahInformationState extends State<_SurahInformation>
     super.initState();
 
     controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500));
+        vsync: this, duration: const Duration(milliseconds: 500),);
     scaleAnimation =
         CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
 
@@ -34,8 +34,8 @@ class _SurahInformationState extends State<_SurahInformation>
   @override
   Widget build(BuildContext context) {
     final appProvider = Provider.of<AppProvider>(context);
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     return ScaleTransition(
       scale: scaleAnimation,
@@ -80,10 +80,10 @@ class _SurahInformationState extends State<_SurahInformation>
                     ),
                   ],
                 ),
-                Text("Ayahs: ${widget.chapterData!.ayahs!.length}"),
-                Text("Surah Number: ${widget.chapterData!.number!}"),
-                Text("Revelation: ${widget.chapterData!.revelationType!}"),
-                Text("Meaning: ${widget.chapterData!.englishNameTranslation!}"),
+                Text('Ayahs: ${widget.chapterData!.ayahs!.length}'),
+                Text('Surah Number: ${widget.chapterData!.number!}'),
+                Text('Revelation: ${widget.chapterData!.revelationType!}'),
+                Text('Meaning: ${widget.chapterData!.englishNameTranslation!}'),
                 SizedBox(
                   height: height * 0.02,
                 ),
@@ -96,9 +96,9 @@ class _SurahInformationState extends State<_SurahInformation>
                       ),
                     ),
                     onPressed: () => Navigator.pop(context),
-                    child: const Text("OK"),
+                    child: const Text('OK'),
                   ),
-                )
+                ),
               ],
             ),
           ),

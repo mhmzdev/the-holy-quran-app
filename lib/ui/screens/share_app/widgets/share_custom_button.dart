@@ -34,11 +34,11 @@ class _ShareCustomButton extends StatelessWidget {
                 color: appProvider.isDark ? Colors.black : Colors.white,
               ),
               Text(
-                "  $text",
+                '  $text',
                 style: TextStyle(
                   color: appProvider.isDark ? Colors.black : Colors.white,
                 ),
-              )
+              ),
             ],
           ),
         ),

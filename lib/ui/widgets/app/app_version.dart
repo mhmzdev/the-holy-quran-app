@@ -9,10 +9,10 @@ class AppVersion extends StatefulWidget {
 }
 
 class _AppVersionState extends State<AppVersion> {
-  String _version = "";
+  String _version = '';
 
   void _getAppVersion() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    final packageInfo = await PackageInfo.fromPlatform();
     if (mounted) {
       setState(() {
         _version = packageInfo.version;
@@ -37,13 +37,13 @@ class _AppVersionState extends State<AppVersion> {
             "The Holy Qur'an",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: MediaQuery.of(context).size.height * 0.018),
+                fontSize: MediaQuery.of(context).size.height * 0.018,),
           ),
           Text(
-            "Version: $_version\n",
+            'Version: $_version\n',
             style:
                 TextStyle(fontSize: MediaQuery.of(context).size.height * 0.015),
-          )
+          ),
         ],
       ),
     );

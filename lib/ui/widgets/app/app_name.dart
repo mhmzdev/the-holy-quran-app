@@ -13,7 +13,7 @@ class AppName extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "The",
+            'The',
             style: AppText.h2!.copyWith(
               color: Colors.grey,
             ),
@@ -25,7 +25,7 @@ class AppName extends StatelessWidget {
               color: Colors.grey,
               height: 1.3,
             ),
-          )
+          ),
         ],
       ),
     );

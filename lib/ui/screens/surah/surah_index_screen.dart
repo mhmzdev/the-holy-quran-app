@@ -6,6 +6,7 @@ import 'package:al_quran/blocs/chapter/cubit.dart';
 import 'package:al_quran/models/chapter/chapter.dart';
 import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/providers/app_provider.dart';
+import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/utils/juz.dart';
 import 'package:flutter/material.dart';
@@ -48,14 +49,15 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
     final appProvider = Provider.of<AppProvider>(context);
     final chapterCubit = ChapterCubit.cubit(context);
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: appProvider.isDark ? Colors.grey[850] : Colors.white,
-        body: SafeArea(
+      child: Screen(
+        scaffoldBackgroundColor:
+            appProvider.isDark ? Colors.grey[850] : Colors.white,
+        child: SafeArea(
           child: Stack(
             children: <Widget>[
               CustomImage(
@@ -105,7 +107,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                               },
                               child: const Text('Retry'),
                             ),
-                          )
+                          ),
                         ],
                       );
                     },
@@ -128,7 +130,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                       }
                       if (value.isNotEmpty) {
                         setState(() {
-                          var lowerCaseQuery = value.toLowerCase();
+                          final lowerCaseQuery = value.toLowerCase();
 
                           searchedChapters = chapters!.where((chapter) {
                             final chapterName = chapter!.englishName!

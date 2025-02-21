@@ -8,8 +8,8 @@ class LoadingShimmer extends StatelessWidget {
   const LoadingShimmer({super.key, this.text});
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     return Shimmer.fromColors(
       baseColor: Colors.transparent,
@@ -30,12 +30,12 @@ class LoadingShimmer extends StatelessWidget {
               ),
               WidgetAnimator(
                 child: Text(
-                  "Loading $text..!",
+                  'Loading $text..!',
                   style: TextStyle(
                     fontSize: height * 0.02,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

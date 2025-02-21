@@ -13,7 +13,7 @@ class ChapterDataProvider {
       final Map<String, dynamic> raw = resp.data['data'];
 
       final List data = raw['surahs'];
-      final List<Chapter> chapters = List.generate(
+      final chapters = List<Chapter>.generate(
         data.length,
         (index) => Chapter.fromMap(data[index]),
       );
@@ -30,7 +30,7 @@ class ChapterDataProvider {
         throw Exception('Problem on our side, Please try again');
       }
     } catch (e) {
-      throw Exception("Internal Server Error");
+      throw Exception('Internal Server Error');
     }
   }
 
@@ -40,11 +40,11 @@ class ChapterDataProvider {
 
       if (chapter == null) return null;
 
-      final List<Chapter?> chapters = List.from(chapter);
+      final chapters = List<Chapter?>.from(chapter);
 
       return chapters;
     } catch (e) {
-      throw Exception("Internal Server Error");
+      throw Exception('Internal Server Error');
     }
   }
 }

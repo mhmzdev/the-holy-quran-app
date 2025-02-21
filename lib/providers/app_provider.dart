@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 
 final themeMap = {
-  "dark": ThemeMode.dark,
-  "light": ThemeMode.light,
+  'dark': ThemeMode.dark,
+  'light': ThemeMode.light,
 };
 
 class AppProvider extends ChangeNotifier {
@@ -14,7 +14,7 @@ class AppProvider extends ChangeNotifier {
   int get checkVisit => _first;
 
   bool init() {
-    int? visit = _cache.get('visit');
+    final int? visit = _cache.get('visit');
     if (visit == null || visit == 0) {
       _cache.put('visit', 1);
       return true;
@@ -33,15 +33,15 @@ class AppProvider extends ChangeNotifier {
   bool get isDark => _themeMode == ThemeMode.dark;
 
   void initTheme() {
-    String? stringTheme = _cache.get('theme');
+    final String? stringTheme = _cache.get('theme');
 
-    ThemeMode? theme =
+    final theme =
         stringTheme == null ? ThemeMode.light : themeMap[stringTheme];
 
     if (theme == null) {
       _cache.put(
         'theme',
-        ThemeMode.light.toString().split(".").last,
+        ThemeMode.light.toString().split('.').last,
       );
       _themeMode = ThemeMode.light;
     }

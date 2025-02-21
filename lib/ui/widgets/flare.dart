@@ -47,7 +47,7 @@ class Flare extends StatelessWidget {
                 color!.withAlpha(100),
                 color!.withAlpha(50),
                 color!.withAlpha(5),
-              ])),
+              ],),),
         ),
       ),
     );

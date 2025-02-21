@@ -20,7 +20,7 @@ extension SuperTextStyles on TextStyle {
   }
 
   TextStyle w(int i) {
-    FontWeight w = FontWeight.w400;
+    var w = FontWeight.w400;
 
     if (i == 3) {
       w = FontWeight.w300;
