@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:al_quran/router/routes.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/providers/app_provider.dart';
+import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/utils/drawer.dart';
 import 'package:al_quran/ui/widgets/button/app_button.dart';
 import 'package:flutter/material.dart';
@@ -139,8 +140,9 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         child: AnimatedBuilder(
           animation: animationController,
           builder: (context, _) {
-            return Material(
-              color: appProvider.isDark ? Colors.grey[900] : Colors.grey[200],
+            return Screen(
+              scaffoldBackgroundColor:
+                  appProvider.isDark ? Colors.grey[900] : Colors.grey[200],
               child: Stack(
                 children: <Widget>[
                   Transform.translate(

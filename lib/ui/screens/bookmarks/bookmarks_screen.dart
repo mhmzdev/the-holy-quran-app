@@ -5,6 +5,7 @@ import 'package:al_quran/configs/typography/app_typography.dart';
 import 'package:al_quran/blocs/bookmarks/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/ui/screens/surah/surah_index_screen.dart';
+import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/ui/widgets/button/app_back_button.dart';
 import 'package:al_quran/ui/widgets/custom_image.dart';
@@ -35,9 +36,10 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
     final appProvider = Provider.of<AppProvider>(context);
     final bookmarkCubit = BookmarkCubit.cubit(context);
 
-    return Scaffold(
-      backgroundColor: appProvider.isDark ? Colors.grey[850] : Colors.white,
-      body: SafeArea(
+    return Screen(
+      scaffoldBackgroundColor:
+          appProvider.isDark ? Colors.grey[850] : Colors.white,
+      child: SafeArea(
         child: Stack(
           children: [
             if (!appProvider.isDark)

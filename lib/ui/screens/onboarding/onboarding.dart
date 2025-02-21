@@ -2,6 +2,7 @@ import 'package:al_quran/router/routes.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/providers/onboarding_provider.dart';
+import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -58,41 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     Object? args = ModalRoute.of(context)?.settings.arguments;
 
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            PageView(
-              onPageChanged: (int value) => onBoardingProvider.index = value,
-              controller: _pageController,
-              children: pages.asMap().entries.map((e) {
-                return e.value;
-              }).toList(),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                margin: Space.hf(0.5),
-                child: TextButton(
-                  style: ButtonStyle(
-                    foregroundColor: WidgetStateProperty.all(
-                      AppTheme.c!.accent,
-                    ),
-                  ),
-                  child: const Text('Skip'),
-                  onPressed: () {
-                    if (args != null && (args as Map)['route'] == 'drawer') {
-                      Navigator.pop(context);
-                    } else {
-                      Navigator.pushReplacementNamed(context, AppRoutes.home);
-                    }
-                  },
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
+    return Screen(
       floatingActionButton: Row(
         children: [
           Space.x2!,
@@ -125,6 +92,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             },
           )
         ],
+      ),
+      child: SafeArea(
+        child: Stack(
+          children: [
+            PageView(
+              onPageChanged: (int value) => onBoardingProvider.index = value,
+              controller: _pageController,
+              children: pages.asMap().entries.map((e) {
+                return e.value;
+              }).toList(),
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                margin: Space.hf(0.5),
+                child: TextButton(
+                  style: ButtonStyle(
+                    foregroundColor: WidgetStateProperty.all(
+                      AppTheme.c!.accent,
+                    ),
+                  ),
+                  child: const Text('Skip'),
+                  onPressed: () {
+                    if (args != null && (args as Map)['route'] == 'drawer') {
+                      Navigator.pop(context);
+                    } else {
+                      Navigator.pushReplacementNamed(context, AppRoutes.home);
+                    }
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

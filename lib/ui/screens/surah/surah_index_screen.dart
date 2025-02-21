@@ -6,6 +6,7 @@ import 'package:al_quran/blocs/chapter/cubit.dart';
 import 'package:al_quran/models/chapter/chapter.dart';
 import 'package:al_quran/models/juz/juz.dart';
 import 'package:al_quran/providers/app_provider.dart';
+import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/utils/juz.dart';
 import 'package:flutter/material.dart';
@@ -53,9 +54,10 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: appProvider.isDark ? Colors.grey[850] : Colors.white,
-        body: SafeArea(
+      child: Screen(
+        scaffoldBackgroundColor:
+            appProvider.isDark ? Colors.grey[850] : Colors.white,
+        child: SafeArea(
           child: Stack(
             children: <Widget>[
               CustomImage(

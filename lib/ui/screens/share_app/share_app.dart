@@ -1,6 +1,7 @@
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/theme/app_theme.dart';
 import 'package:al_quran/providers/app_provider.dart';
+import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:al_quran/ui/widgets/app/app_version.dart';
 import 'package:al_quran/ui/widgets/button/app_back_button.dart';
@@ -19,8 +20,8 @@ class ShareAppScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     App.init(context);
-    return const Scaffold(
-      body: SafeArea(
+    return const Screen(
+      child: SafeArea(
         child: Stack(
           children: <Widget>[
             AppBackButton(),
