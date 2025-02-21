@@ -1,4 +1,5 @@
 import 'package:al_quran/configs/app.dart';
+import 'package:al_quran/services/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,8 +43,8 @@ class MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         // bloc-initiate-start
-        BlocProvider(create: (_) => JuzCubit()),
-        BlocProvider(create: (_) => ChapterBloc()),
+        BlocProvider(create: (_) => sl<ChapterBloc>()),
+        BlocProvider(create: (_) => sl<JuzCubit>()),
         BlocProvider(create: (_) => BookmarkCubit()),
         // bloc-initiate-end
 
