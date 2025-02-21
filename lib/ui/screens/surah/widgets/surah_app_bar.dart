@@ -21,7 +21,7 @@ class _SurahAppBar extends StatelessWidget {
             child: Opacity(
               opacity: 0.3,
               child: Image.asset(
-                StaticAssets.quranRail,
+                StaticAssets.imagesQuranRail,
                 height: AppDimensions.normalize(60),
               ),
             ),

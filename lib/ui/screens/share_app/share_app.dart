@@ -2,7 +2,7 @@ import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/theme/app_theme.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
-import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/static/assets.dart';
 import 'package:al_quran/ui/widgets/app/app_version.dart';
 import 'package:al_quran/ui/widgets/button/app_back_button.dart';
 import 'package:al_quran/ui/widgets/app/title.dart';
@@ -41,9 +41,10 @@ class ShareInfo extends StatelessWidget {
     final box = context.findRenderObject() as RenderBox;
 
     Share.share(
-        "Download the latest no-Ads Holy Qur'an App on Play store\n\n"
-        'https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)',
-        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,);
+      "Download the latest no-Ads Holy Qur'an App on Play store\n\n"
+      'https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)',
+      sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+    );
   }
 
   @override
@@ -56,12 +57,13 @@ class ShareInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: height * 0.13),
-          Image.asset(StaticAssets.gradLogo, height: height * 0.2),
+          Image.asset(StaticAssets.logosGradLogo, height: height * 0.2),
           SizedBox(height: height * 0.02),
           Text(
-              "The Holy Qur'an App is also available as Open Source on GitHub!",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodySmall,),
+            "The Holy Qur'an App is also available as Open Source on GitHub!",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
           SizedBox(height: height * 0.05),
           _ShareCustomButton(
             iconData: Iconsax.share,
@@ -72,13 +74,17 @@ class ShareInfo extends StatelessWidget {
             iconData: Iconsax.code,
             text: 'GitHub Repo',
             onPressed: () => launchUrl(
-                Uri.parse('https://github.com/mhmzdev/The_Holy_Quran_App'),),
+              Uri.parse('https://github.com/mhmzdev/The_Holy_Quran_App'),
+            ),
           ),
           _ShareCustomButton(
             iconData: Iconsax.message,
             text: 'Rate & Feedback',
-            onPressed: () => launchUrl(Uri.parse(
-                'https://play.google.com/store/apps/details?id=com.hmz.al_quran',),),
+            onPressed: () => launchUrl(
+              Uri.parse(
+                'https://play.google.com/store/apps/details?id=com.hmz.al_quran',
+              ),
+            ),
           ),
           SizedBox(height: height * 0.02),
           const AppVersion(),

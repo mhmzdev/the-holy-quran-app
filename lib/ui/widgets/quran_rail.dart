@@ -1,5 +1,5 @@
 import 'package:al_quran/configs/space/app_dimensions.dart';
-import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/static/assets.dart';
 import 'package:flutter/material.dart';
 
 class QuranRail extends StatelessWidget {
@@ -15,7 +15,7 @@ class QuranRail extends StatelessWidget {
       child: Opacity(
         opacity: 0.2,
         child: Image.asset(
-          StaticAssets.quranRail,
+          StaticAssets.imagesQuranRail,
           height: AppDimensions.normalize(110),
         ),
       ),

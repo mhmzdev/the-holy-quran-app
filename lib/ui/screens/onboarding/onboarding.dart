@@ -3,7 +3,7 @@ import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/providers/onboarding_provider.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
-import 'package:al_quran/utils/assets.dart';
+import 'package:al_quran/static/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,22 +22,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   List<Widget> pages = [
     const _OnBoardingPage(
-      image: StaticAssets.gradLogo,
+      image: StaticAssets.logosGradLogo,
       text:
           "The Holy Qur'an\n\n\"Indeed, It is We who sent down the Qur'an and indeed, We will be its Guardian\"\n",
     ),
     const _OnBoardingPage(
-      image: StaticAssets.ui,
+      image: StaticAssets.introUi,
       text:
           'With sleek & awesome User Interface to keep you in love with this amazing app and the Book.\n\nHope you will like our efforts!\n',
     ),
     const _OnBoardingPage(
-      image: StaticAssets.easyNav,
+      image: StaticAssets.introEasyNav,
       text:
           'Now with Surah & Juz Index you can find your required Surahs & Juzs easily.\n\nWith Bookmark option you can access your daily readings.\n',
     ),
     const _OnBoardingPage(
-      image: StaticAssets.drawer3d,
+      image: StaticAssets.introDrawer3d,
       text:
           "For the first time ever, we introduced a very unique experience for our users with 3D Drawer.\n\nCan't wait for your reviews :)\n",
     ),
