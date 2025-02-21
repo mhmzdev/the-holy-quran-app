@@ -12,9 +12,11 @@ class JuzCubit extends Cubit<JuzState> {
   static JuzCubit cubit(BuildContext context, [bool listen = false]) =>
       BlocProvider.of<JuzCubit>(context, listen: listen);
 
-  JuzCubit() : super(JuzDefault());
+  JuzCubit({required JuzRepo repo})
+      : _repo = repo,
+        super(JuzDefault());
 
-  final _repo = AlQuranRepo();
+  final JuzRepo _repo;
 
   Future<void> fetch(num juzNumber) async {
     emit(const JuzFetchLoading());

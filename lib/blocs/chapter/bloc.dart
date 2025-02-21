@@ -8,11 +8,13 @@ part 'state.dart';
 part 'event.dart';
 
 class ChapterBloc extends Bloc<ChapterEvent, ChapterState> {
-  ChapterBloc() : super(ChapterDefault()) {
+  ChapterBloc({required ChapterRepo repo})
+      : _repo = repo,
+        super(ChapterDefault()) {
     on<ChapterFetch>(_onChapterFetch);
   }
 
-  final _repo = AlQuranRepo();
+  final ChapterRepo _repo;
 
   void _onChapterFetch(
     ChapterFetch event,

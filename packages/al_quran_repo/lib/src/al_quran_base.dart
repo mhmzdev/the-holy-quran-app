@@ -1,1 +1,2 @@
-export 'repos/al_quran_repo.dart';
+export 'repos/impls/impls.dart';
+export 'repos/interfaces/interfaces.dart';
