@@ -1,6 +1,6 @@
 import 'package:al_quran/blocs/bookmarks/cubit.dart';
 import 'package:al_quran/blocs/chapter/bloc.dart';
-import 'package:al_quran/blocs/juz/cubit.dart';
+import 'package:al_quran/blocs/juz/bloc.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/router/router.dart';
 import 'package:al_quran/services/locator.dart';
@@ -23,7 +23,7 @@ extension WidgetTestExtensions on WidgetTester {
   /// Creates the main multi provider so that the any part of it can be substituted
   Future<MultiProvider> createRootWidgetAndPump({
     // Cubits
-    JuzCubit? juzCubit,
+    JuzBloc? juzBloc,
     ChapterBloc? chapterBloc,
     BookmarkCubit? bookmarkCubit,
 
@@ -46,7 +46,7 @@ extension WidgetTestExtensions on WidgetTester {
     final root = MultiProvider(
       providers: [
         /// Blocs
-        BlocProvider(create: (_) => juzCubit ?? sl<JuzCubit>()),
+        BlocProvider(create: (_) => juzBloc ?? sl<JuzBloc>()),
         BlocProvider(create: (_) => chapterBloc ?? sl<ChapterBloc>()),
         BlocProvider(create: (_) => bookmarkCubit ?? BookmarkCubit()),
 
