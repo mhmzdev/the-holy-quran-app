@@ -51,7 +51,7 @@ Future<void> go(WidgetTester tester) async {
 
   // First pass - small scrolls with progress tracking
   for (var i = 0; i < 30; i++) {
-    final beforeCount = seenChapterNumbers.length;
+    // final beforeCount = seenChapterNumbers.length;
 
     // Get current visible items
     final currentTiles = tester.widgetList<SurahTile>(find.byType(SurahTile));
@@ -78,9 +78,9 @@ Future<void> go(WidgetTester tester) async {
     lastCount = seenChapterNumbers.length;
 
     // Log progress if we found new chapters
-    if (seenChapterNumbers.length > beforeCount) {
-      debugPrint('Found ${seenChapterNumbers.length} chapters after scroll $i');
-    }
+    // if (seenChapterNumbers.length > beforeCount) {
+    //   debugPrint('Found ${seenChapterNumbers.length} chapters after scroll $i');
+    // }
 
     // Regular scroll
     await tester.drag(listView, const Offset(0, -200));
