@@ -1,5 +1,6 @@
 import 'package:al_quran/blocs/bookmarks/bloc.dart';
 import 'package:al_quran_api/al_quran_api.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -26,116 +27,117 @@ void main() {
     });
 
     group('BookmarksFetch', () {
-      test('emits [BookmarkFetchLoading, BookmarkFetchSuccess] when successful',
-          () async {
-        final mockData = <Chapter?>[mockChapter];
-        when(() => mockRepo.fetchBookmarks()).thenAnswer((_) async => mockData);
-
-        final expected = [
+      blocTest(
+        'emits [BookmarkFetchLoading, BookmarkFetchSuccess] when successful',
+        build: () {
+          when(() => mockRepo.fetchBookmarks())
+              .thenAnswer((_) async => <Chapter?>[mockChapter]);
+          return BookmarksBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(const BookmarksFetch()),
+        expect: () => [
           const BookmarkFetchLoading(),
-          BookmarkFetchSuccess(data: mockData),
-        ];
+          BookmarkFetchSuccess(data: <Chapter?>[mockChapter]),
+        ],
+      );
 
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(const BookmarksFetch());
-      });
-
-      test(
-          'emits [BookmarkFetchLoading, BookmarkFetchFailed] when error occurs',
-          () async {
-        when(() => mockRepo.fetchBookmarks())
-            .thenThrow('Error fetching bookmarks');
-
-        final expected = [
+      blocTest(
+        'emits [BookmarkFetchLoading, BookmarkFetchFailed] when error occurs',
+        build: () {
+          when(() => mockRepo.fetchBookmarks())
+              .thenThrow('Error fetching bookmarks');
+          return BookmarksBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(const BookmarksFetch()),
+        expect: () => [
           const BookmarkFetchLoading(),
           const BookmarkFetchFailed(message: 'Error fetching bookmarks'),
-        ];
-
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(const BookmarksFetch());
-      });
+        ],
+      );
     });
 
     group('UpdateBookmark', () {
-      test(
-          'emits [BookmarkFetchLoading, BookmarkFetchSuccess] when adding bookmark',
-          () async {
-        final mockData = <Chapter?>[mockChapter];
-        when(() => mockRepo.addBookmark(mockChapter))
-            .thenAnswer((_) async => mockData);
-
-        final expected = [
+      blocTest(
+        'emits [BookmarkFetchLoading, BookmarkFetchSuccess] when adding bookmark',
+        build: () {
+          final mockData = <Chapter?>[mockChapter];
+          when(() => mockRepo.addBookmark(mockChapter))
+              .thenAnswer((_) async => mockData);
+          return BookmarksBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(UpdateBookmark(mockChapter, true)),
+        expect: () => [
           const BookmarkFetchLoading(),
-          BookmarkFetchSuccess(data: mockData, isBookmarked: true),
-        ];
+          BookmarkFetchSuccess(
+            data: <Chapter?>[mockChapter],
+            isBookmarked: true,
+          ),
+        ],
+      );
 
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(UpdateBookmark(mockChapter, true));
-      });
-
-      test(
-          'emits [BookmarkFetchLoading, BookmarkFetchSuccess] when removing bookmark',
-          () async {
-        final mockData = <Chapter?>[];
-        when(() => mockRepo.removeBookmark(mockChapter))
-            .thenAnswer((_) async => mockData);
-
-        final expected = [
+      blocTest(
+        'emits [BookmarkFetchLoading, BookmarkFetchSuccess] when removing bookmark',
+        build: () {
+          final mockData = <Chapter?>[];
+          when(() => mockRepo.removeBookmark(mockChapter))
+              .thenAnswer((_) async => mockData);
+          return BookmarksBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(UpdateBookmark(mockChapter, false)),
+        expect: () => [
           const BookmarkFetchLoading(),
-          BookmarkFetchSuccess(data: mockData, isBookmarked: false),
-        ];
+          BookmarkFetchSuccess(data: <Chapter?>[], isBookmarked: false),
+        ],
+      );
 
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(UpdateBookmark(mockChapter, false));
-      });
-
-      test(
-          'emits [BookmarkFetchLoading, BookmarkFetchFailed] when error occurs',
-          () async {
-        when(() => mockRepo.addBookmark(mockChapter))
-            .thenThrow('Error updating bookmark');
-
-        final expected = [
+      blocTest(
+        'emits [BookmarkFetchLoading, BookmarkFetchFailed] when error occurs',
+        build: () {
+          when(() => mockRepo.addBookmark(mockChapter))
+              .thenThrow('Error updating bookmark');
+          return BookmarksBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(UpdateBookmark(mockChapter, true)),
+        expect: () => [
           const BookmarkFetchLoading(),
           const BookmarkFetchFailed(message: 'Error updating bookmark'),
-        ];
-
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(UpdateBookmark(mockChapter, true));
-      });
+        ],
+      );
     });
 
     group('CheckBookmark', () {
-      test('emits [BookmarkFetchLoading, BookmarkFetchSuccess] when successful',
-          () async {
-        final mockData = <Chapter?>[mockChapter];
-        when(() => mockRepo.checkBookmarked(mockChapter))
-            .thenAnswer((_) async => true);
-        when(() => mockRepo.fetchBookmarks()).thenAnswer((_) async => mockData);
-
-        final expected = [
+      blocTest(
+        'emits [BookmarkFetchLoading, BookmarkFetchSuccess] when successful',
+        build: () {
+          when(() => mockRepo.checkBookmarked(mockChapter))
+              .thenAnswer((_) async => true);
+          when(() => mockRepo.fetchBookmarks())
+              .thenAnswer((_) async => <Chapter?>[mockChapter]);
+          return BookmarksBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(CheckBookmark(mockChapter)),
+        expect: () => [
           const BookmarkFetchLoading(),
-          BookmarkFetchSuccess(data: mockData, isBookmarked: true),
-        ];
+          BookmarkFetchSuccess(
+            data: <Chapter?>[mockChapter],
+            isBookmarked: true,
+          ),
+        ],
+      );
 
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(CheckBookmark(mockChapter));
-      });
-
-      test(
-          'emits [BookmarkFetchLoading, BookmarkFetchFailed] when error occurs',
-          () async {
-        when(() => mockRepo.checkBookmarked(mockChapter))
-            .thenThrow('Error checking bookmark');
-
-        final expected = [
+      blocTest(
+        'emits [BookmarkFetchLoading, BookmarkFetchFailed] when error occurs',
+        build: () {
+          when(() => mockRepo.checkBookmarked(mockChapter))
+              .thenThrow('Error checking bookmark');
+          return BookmarksBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(CheckBookmark(mockChapter)),
+        expect: () => [
           const BookmarkFetchLoading(),
           const BookmarkFetchFailed(message: 'Error checking bookmark'),
-        ];
-
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(CheckBookmark(mockChapter));
-      });
+        ],
+      );
     });
   });
 }
