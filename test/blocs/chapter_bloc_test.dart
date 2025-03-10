@@ -1,4 +1,5 @@
 import 'package:al_quran/blocs/chapter/bloc.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -16,89 +17,87 @@ void main() {
   tearDown(() {
     bloc.close();
   });
-
   group('ChapterBloc Tests: ', () {
-    test('initial state should be ChapterDefault', () {
-      expect(bloc.state, const ChapterDefault());
-    });
+    blocTest<ChapterBloc, ChapterState>(
+      'initial state should be ChapterDefault',
+      build: () => ChapterBloc(repo: mockRepo),
+      verify: (bloc) {
+        expect(bloc.state, const ChapterDefault());
+      },
+    );
 
     group('ChapterFetch', () {
-      test(
-          'emits [ChapterFetchLoading, ChapterFetchSuccess] when fetching from API',
-          () async {
-        // No cached data
-        when(() => mockRepo.getChaptersHive()).thenAnswer((_) async => null);
-        when(() => mockRepo.getChapters())
-            .thenAnswer((_) async => chapterMocks);
-
-        final expected = [
+      blocTest<ChapterBloc, ChapterState>(
+        'emits [ChapterFetchLoading, ChapterFetchSuccess] when fetching from API',
+        build: () {
+          when(() => mockRepo.getChaptersHive()).thenAnswer((_) async => null);
+          when(() => mockRepo.getChapters())
+              .thenAnswer((_) async => chapterMocks);
+          return ChapterBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(const ChapterFetch(api: true)),
+        expect: () => [
           const ChapterFetchLoading(),
           ChapterFetchSuccess(data: chapterMocks),
-        ];
+        ],
+      );
 
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(const ChapterFetch(api: true));
-      });
-
-      test(
-          'emits [ChapterFetchLoading, ChapterFetchSuccess] when using cached data',
-          () async {
-        // Has cached data
-        when(() => mockRepo.getChaptersHive())
-            .thenAnswer((_) async => chapterMocks);
-
-        final expected = [
+      blocTest<ChapterBloc, ChapterState>(
+        'emits [ChapterFetchLoading, ChapterFetchSuccess] when using cached data',
+        build: () {
+          when(() => mockRepo.getChaptersHive())
+              .thenAnswer((_) async => chapterMocks);
+          return ChapterBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(const ChapterFetch(api: false)),
+        expect: () => [
           const ChapterFetchLoading(),
           ChapterFetchSuccess(data: chapterMocks),
-        ];
+        ],
+      );
 
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(const ChapterFetch(api: false));
-      });
-
-      test(
-          'emits [ChapterFetchLoading, ChapterFetchFailed] when API fetch fails',
-          () async {
-        when(() => mockRepo.getChaptersHive()).thenAnswer((_) async => null);
-        when(() => mockRepo.getChapters()).thenThrow(Exception('API Error'));
-
-        final expected = [
+      blocTest<ChapterBloc, ChapterState>(
+        'emits [ChapterFetchLoading, ChapterFetchFailed] when API fetch fails',
+        build: () {
+          when(() => mockRepo.getChaptersHive()).thenAnswer((_) async => null);
+          when(() => mockRepo.getChapters()).thenThrow(Exception('API Error'));
+          return ChapterBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(const ChapterFetch(api: true)),
+        expect: () => [
           const ChapterFetchLoading(),
           const ChapterFetchFailed(message: 'Exception: API Error'),
-        ];
+        ],
+      );
 
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(const ChapterFetch(api: true));
-      });
-
-      test(
-          'emits [ChapterFetchLoading, ChapterFetchFailed] when Hive fetch fails',
-          () async {
-        when(() => mockRepo.getChaptersHive())
-            .thenThrow(Exception('Hive Error'));
-
-        final expected = [
+      blocTest<ChapterBloc, ChapterState>(
+        'emits [ChapterFetchLoading, ChapterFetchFailed] when Hive fetch fails',
+        build: () {
+          when(() => mockRepo.getChaptersHive())
+              .thenThrow(Exception('Hive Error'));
+          return ChapterBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(const ChapterFetch(api: false)),
+        expect: () => [
           const ChapterFetchLoading(),
           const ChapterFetchFailed(message: 'Exception: Hive Error'),
-        ];
+        ],
+      );
 
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(const ChapterFetch(api: false));
-      });
-
-      test('falls back to API when Hive returns null', () async {
-        when(() => mockRepo.getChaptersHive()).thenAnswer((_) async => null);
-        when(() => mockRepo.getChapters())
-            .thenAnswer((_) async => chapterMocks);
-
-        final expected = [
+      blocTest<ChapterBloc, ChapterState>(
+        'falls back to API when Hive returns null',
+        build: () {
+          when(() => mockRepo.getChaptersHive()).thenAnswer((_) async => null);
+          when(() => mockRepo.getChapters())
+              .thenAnswer((_) async => chapterMocks);
+          return ChapterBloc(repo: mockRepo);
+        },
+        act: (bloc) => bloc.add(const ChapterFetch(api: false)),
+        expect: () => [
           const ChapterFetchLoading(),
           ChapterFetchSuccess(data: chapterMocks),
-        ];
-
-        expectLater(bloc.stream, emitsInOrder(expected));
-        bloc.add(const ChapterFetch(api: false));
-      });
+        ],
+      );
     });
   });
 }
