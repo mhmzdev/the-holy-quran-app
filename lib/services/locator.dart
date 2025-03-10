@@ -1,5 +1,6 @@
+import 'package:al_quran/blocs/bookmarks/bloc.dart';
 import 'package:al_quran/blocs/chapter/bloc.dart';
-import 'package:al_quran/blocs/juz/cubit.dart';
+import 'package:al_quran/blocs/juz/bloc.dart';
 import 'package:al_quran_api/al_quran_api.dart';
 import 'package:al_quran_repo/al_quran_repo.dart';
 import 'package:get_it/get_it.dart';
@@ -15,9 +16,14 @@ Future<void> initServiceLocator() async {
     ChapterRepo(
       provider: sl(),
     ),
-  ); 
+  );
   sl.registerSingleton<JuzRepo>(
     JuzRepo(
+      provider: sl(),
+    ),
+  );
+  sl.registerSingleton<BookmarksRepo>(
+    BookmarksRepo(
       provider: sl(),
     ),
   );
@@ -29,8 +35,14 @@ Future<void> initServiceLocator() async {
     ),
   );
 
-  sl.registerSingleton<JuzCubit>(
-    JuzCubit(
+  sl.registerSingleton<JuzBloc>(
+    JuzBloc(
+      repo: sl(),
+    ),
+  );
+
+  sl.registerSingleton<BookmarksBloc>(
+    BookmarksBloc(
       repo: sl(),
     ),
   );

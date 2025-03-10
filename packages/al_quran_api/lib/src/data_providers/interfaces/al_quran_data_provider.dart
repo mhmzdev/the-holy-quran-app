@@ -8,4 +8,10 @@ abstract interface class IAlQuranDataProvider {
   /// Juz API
   Future<Juz?> juzFetchHive(num juxIndex);
   Future<Juz?> juzFetchApi(num juxIndex);
+
+  /// Bookmarks API
+  Future<List<Chapter?>?> fetchBookmarks();
+  Future<List<Chapter?>?> addBookmark(Chapter chapter);
+  Future<List<Chapter?>?> removeBookmark(Chapter chapter);
+  Future<bool?> checkBookmarked(Chapter chapter);
 }

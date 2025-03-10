@@ -1,9 +1,10 @@
+import 'package:al_quran/blocs/bookmarks/bloc.dart';
 import 'package:al_quran/blocs/chapter/bloc.dart';
+import 'package:al_quran/blocs/juz/bloc.dart';
+import 'package:al_quran/services/locator.dart';
 import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/router/routes.dart';
 import 'package:al_quran/configs/configs.dart';
-import 'package:al_quran/blocs/bookmarks/cubit.dart';
-import 'package:al_quran/blocs/juz/cubit.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/static/assets.dart';
 import 'package:flutter/material.dart';
@@ -30,15 +31,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
     final isNew = appProvider.init();
 
-    final bookmarkCubit = BookmarkCubit.cubit(context);
-    final juzCubit = JuzCubit.cubit(context);
+    final bookmarkBloc = sl<BookmarksBloc>();
+    final juzBloc = sl<JuzBloc>();
 
     context.read<ChapterBloc>().add(const ChapterFetch());
 
-    await bookmarkCubit.fetch();
+    bookmarkBloc.add(const BookmarksFetch());
 
     for (var i = 1; i <= 30; i++) {
-      await juzCubit.fetch(i);
+      juzBloc.add(JuzFetch(juzIndex: i));
     }
 
     Future.delayed(const Duration(seconds: 1), () {
@@ -61,8 +62,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     App.init(context);
 
-    final bookmarkCubit = BookmarkCubit.cubit(context);
-    final juzCubit = JuzCubit.cubit(context);
+    final bookmarkCubit = sl<BookmarksBloc>();
+    final juzBloc = sl<JuzBloc>();
 
     final appProvider = Provider.of<AppProvider>(context);
 
@@ -92,7 +93,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     return const Text('Getting all Surahs...');
                   } else if (bookmarkCubit.state is BookmarkFetchLoading) {
                     return const Text('Setting up Bookmarks...');
-                  } else if (juzCubit.state is JuzFetchLoading) {
+                  } else if (juzBloc.state is JuzFetchLoading) {
                     return const Text('Setting up offline mode...');
                   }
                   return const Text('Initializing data...');

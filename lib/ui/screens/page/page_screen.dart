@@ -16,21 +16,23 @@ class PageScreen extends StatefulWidget {
 class _PageScreenState extends State<PageScreen> {
   @override
   void initState() {
-    final bookmarkCubit = BookmarkCubit.cubit(context);
-    if (widget.chapter != null) {
-      bookmarkCubit.checkBookmarked(widget.chapter!);
-    }
     super.initState();
+
+    final bookmarkBloc = sl<BookmarksBloc>();
+    if (widget.chapter != null) {
+      bookmarkBloc.add(CheckBookmark(widget.chapter!));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
-    final bookmarkCubit = BookmarkCubit.cubit(context);
+    final bookmarkBloc = sl<BookmarksBloc>();
 
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: appProvider.isDark ? Colors.grey[900] : Colors.white,
       body: SafeArea(
@@ -40,19 +42,20 @@ class _PageScreenState extends State<PageScreen> {
             SliverAppBar(
               actions: [
                 if (widget.juz == null)
-                  BlocBuilder<BookmarkCubit, BookmarkState>(
+                  BlocBuilder<BookmarksBloc, BookmarkState>(
+                    bloc: bookmarkBloc,
                     builder: (context, state) {
                       return IconButton(
                         onPressed: () {
-                          if (bookmarkCubit.state.isBookmarked!) {
-                            bookmarkCubit.updateBookmark(
-                                widget.chapter!, false,);
-                          } else {
-                            bookmarkCubit.updateBookmark(widget.chapter!, true);
-                          }
+                          bookmarkBloc.add(
+                            UpdateBookmark(
+                              widget.chapter!,
+                              !state.isBookmarked,
+                            ),
+                          );
                         },
                         icon: Icon(
-                          bookmarkCubit.state.isBookmarked!
+                          state.isBookmarked
                               ? Icons.bookmark_added
                               : Icons.bookmark_add_outlined,
                           color: appProvider.isDark

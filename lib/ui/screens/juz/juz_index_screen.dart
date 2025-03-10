@@ -1,7 +1,8 @@
+import 'package:al_quran/blocs/juz/bloc.dart';
+import 'package:al_quran/services/locator.dart';
 import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
-import 'package:al_quran/blocs/juz/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/ui/screens/surah/surah_index_screen.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
@@ -12,6 +13,7 @@ import 'package:al_quran/ui/widgets/custom_image.dart';
 import 'package:al_quran/ui/widgets/flare.dart';
 import 'package:al_quran/ui/widgets/app/title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +36,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
 
-    final juzCubit = JuzCubit.cubit(context);
+    final juzBloc = sl<JuzBloc>();
 
     final hasSearched = _searchedIndex != -1 && _searchedJuzName.isNotEmpty;
 
@@ -52,6 +54,10 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
               ),
               child: TextFormField(
                 keyboardType: TextInputType.number,
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(2),
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
                 onChanged: (value) {
                   if (value.isEmpty) {
                     setState(() {
@@ -60,16 +66,15 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                     });
                   }
                   if (value.isNotEmpty) {
-                    if (value.length <= 2) {
-                      setState(() {
-                        _searchedIndex = int.parse(value);
-                        if (_searchedIndex <= JuzUtils.juzNames.length &&
-                            _searchedIndex >= 0) {
-                          _searchedJuzName =
-                              JuzUtils.juzNames[_searchedIndex - 1];
-                        }
-                      });
-                    }
+                    _searchedIndex = int.parse(value);
+                    if (_searchedIndex <= 0) return;
+                    setState(() {
+                      if (_searchedIndex <= JuzUtils.juzNames.length &&
+                          _searchedIndex >= 0) {
+                        _searchedJuzName =
+                            JuzUtils.juzNames[_searchedIndex - 1];
+                      }
+                    });
                   }
                 },
                 decoration: InputDecoration(
@@ -104,9 +109,12 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
               ),
               child: hasSearched
                   ? GestureDetector(
-                      onTap: () async {
-                        await juzCubit.fetch(
-                          JuzUtils.juzNames.indexOf(_searchedJuzName) + 1,
+                      onTap: () {
+                        juzBloc.add(
+                          JuzFetch(
+                            juzIndex:
+                                JuzUtils.juzNames.indexOf(_searchedJuzName) + 1,
+                          ),
                         );
 
                         WidgetsBinding.instance
@@ -115,7 +123,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (_) => PageScreen(
-                                juz: juzCubit.state.data,
+                                juz: juzBloc.state.data,
                               ),
                             ),
                           );
@@ -162,7 +170,11 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                         return WidgetAnimator(
                           child: GestureDetector(
                             onTap: () async {
-                              await juzCubit.fetch(index + 1);
+                              juzBloc.add(
+                                JuzFetch(
+                                  juzIndex: index + 1,
+                                ),
+                              );
 
                               WidgetsBinding.instance
                                   .addPostFrameCallback((timeStamp) {
@@ -170,7 +182,7 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (_) => PageScreen(
-                                      juz: juzCubit.state.data,
+                                      juz: juzBloc.state.data,
                                     ),
                                   ),
                                 );

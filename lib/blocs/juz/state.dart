@@ -1,4 +1,4 @@
-part of 'cubit.dart';
+part of 'bloc.dart';
 
 @immutable
 class JuzState extends Equatable {

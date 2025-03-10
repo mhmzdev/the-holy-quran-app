@@ -1,8 +1,8 @@
 import 'package:al_quran_api/al_quran_api.dart';
 import 'package:al_quran_repo/al_quran_repo.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state.dart';
 part 'event.dart';
