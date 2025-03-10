@@ -25,11 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void _next() async {
     final appProvider = Provider.of<AppProvider>(context, listen: false);
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      appProvider.initTheme();
-    });
-
-    final isNew = appProvider.init();
+    final isNew = appProvider.firstOpen;
 
     final bookmarkBloc = sl<BookmarksBloc>();
     final juzBloc = sl<JuzBloc>();
