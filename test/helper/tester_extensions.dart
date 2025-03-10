@@ -1,7 +1,9 @@
 import 'package:al_quran/blocs/bookmarks/bloc.dart';
 import 'package:al_quran/blocs/chapter/bloc.dart';
 import 'package:al_quran/blocs/juz/bloc.dart';
+import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/providers/app_provider.dart';
+import 'package:al_quran/providers/onboarding_provider.dart';
 import 'package:al_quran/router/router.dart';
 import 'package:al_quran/services/locator.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +31,8 @@ extension WidgetTestExtensions on WidgetTester {
 
     // Provider
     AppProvider? appProvider,
+    OnBoardingProvider? onboardingProvider,
+
     //
     Widget? body,
 
@@ -52,6 +56,9 @@ extension WidgetTestExtensions on WidgetTester {
 
         /// Providers
         ChangeNotifierProvider(create: (_) => appProvider ?? AppProvider()),
+        ChangeNotifierProvider(
+          create: (_) => onboardingProvider ?? OnBoardingProvider(),
+        ),
       ],
       child: Consumer<AppProvider>(
         builder: (context, state, child) {
@@ -64,6 +71,10 @@ extension WidgetTestExtensions on WidgetTester {
 
             // can be replaced for testing
             routes: router ?? appRoutes,
+            builder: (context, child) {
+              App.init(context);
+              return child!;
+            },
           );
         },
       ),
