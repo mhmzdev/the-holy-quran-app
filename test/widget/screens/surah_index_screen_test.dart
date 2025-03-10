@@ -49,8 +49,10 @@ Future<void> go(WidgetTester tester) async {
   var lastCount = 0;
   var stuckCounter = 0;
 
-  // First pass - small scrolls
+  // First pass - small scrolls with progress tracking
   for (var i = 0; i < 30; i++) {
+    final beforeCount = seenChapterNumbers.length;
+
     // Get current visible items
     final currentTiles = tester.widgetList<SurahTile>(find.byType(SurahTile));
     for (var tile in currentTiles) {
@@ -59,33 +61,43 @@ Future<void> go(WidgetTester tester) async {
       }
     }
 
+    // Check if we're stuck and handle it
     if (seenChapterNumbers.length == lastCount) {
       stuckCounter++;
       if (stuckCounter >= 3) {
-        // If stuck, try a medium scroll
-        await tester.drag(listView, const Offset(0, -800));
+        // Try alternating scroll directions when stuck
+        final offset = stuckCounter % 2 == 0 ? -800.0 : 400.0;
+        await tester.drag(listView, Offset(0, offset));
         await tester.pump();
         await tester.pump(const Duration(milliseconds: 500));
-        stuckCounter = 0;
       }
     } else {
       stuckCounter = 0;
     }
 
     lastCount = seenChapterNumbers.length;
-    // debugPrint('Pass 1 - Scroll $i - Found ${seenChapterNumbers.length} chapters');
 
-    // Small scroll
+    // Log progress if we found new chapters
+    if (seenChapterNumbers.length > beforeCount) {
+      debugPrint('Found ${seenChapterNumbers.length} chapters after scroll $i');
+    }
+
+    // Regular scroll
     await tester.drag(listView, const Offset(0, -200));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
     await tester.pumpAndSettle();
+
+    // Break early if we found all chapters
+    if (seenChapterNumbers.length >= 114) break;
   }
 
-  // Second pass - medium scrolls for any gaps
+  // Second pass - larger scrolls if needed
   if (seenChapterNumbers.length < 114) {
-    lastCount = seenChapterNumbers.length;
-    for (var i = 0; i < 15; i++) {
+    final beforeSecondPass = seenChapterNumbers.length;
+    debugPrint('Starting second pass, found $beforeSecondPass chapters so far');
+
+    for (var i = 0; i < 15 && seenChapterNumbers.length < 114; i++) {
       await tester.drag(listView, const Offset(0, -600));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 400));
@@ -98,10 +110,8 @@ Future<void> go(WidgetTester tester) async {
         }
       }
 
-      // debugPrint('Pass 2 - Scroll $i - Found ${seenChapterNumbers.length} chapters');
-
+      // Scroll back up a bit if we're not finding new chapters
       if (seenChapterNumbers.length == lastCount) {
-        // If stuck, try scrolling back up a bit
         await tester.drag(listView, const Offset(0, 300));
         await tester.pumpAndSettle();
       }
@@ -109,13 +119,18 @@ Future<void> go(WidgetTester tester) async {
     }
   }
 
+  // Final report
+  final missing = List.generate(114, (i) => i + 1)
+      .where((i) => !seenChapterNumbers.contains(i))
+      .toList();
+
   debugPrint('Final chapter count: ${seenChapterNumbers.length}');
-  final sortedChapters = seenChapterNumbers.toList()..sort();
-  debugPrint('Found chapters: $sortedChapters');
+  debugPrint('Missing chapters: $missing');
 
   expect(
     seenChapterNumbers.length,
     114,
-    reason: 'Expected 114 unique chapters, found ${seenChapterNumbers.length}',
+    reason:
+        'Expected 114 chapters, found ${seenChapterNumbers.length}. Missing: $missing',
   );
 }
