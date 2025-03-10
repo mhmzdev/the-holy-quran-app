@@ -32,13 +32,13 @@ class SurahIndexScreen extends StatefulWidget {
 }
 
 class _SurahIndexScreenState extends State<SurahIndexScreen> {
-  List<Chapter?>? chapters = [];
-  List<Chapter?>? searchedChapters = [];
+  List<Chapter?> chapters = [];
+  List<Chapter?> searchedChapters = [];
 
   @override
   void initState() {
     final chapterBloc = context.read<ChapterBloc>();
-    chapters = chapterBloc.state.data;
+    chapters = chapterBloc.state.data ?? [];
     super.initState();
   }
 
@@ -69,7 +69,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
               const CustomTitle(
                 title: 'Surah Index',
               ),
-              if (chapters!.isEmpty)
+              if (chapters.isEmpty)
                 Center(
                   child: BlocBuilder<ChapterBloc, ChapterState>(
                     buildWhen: (previous, current) => current != previous,
@@ -114,7 +114,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                     },
                   ),
                 ),
-              if (chapters!.isNotEmpty)
+              if (chapters.isNotEmpty)
                 Container(
                   height: AppDimensions.normalize(20),
                   margin: EdgeInsets.only(
@@ -133,7 +133,7 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                         setState(() {
                           final lowerCaseQuery = value.toLowerCase();
 
-                          searchedChapters = chapters!.where((chapter) {
+                          searchedChapters = chapters.where((chapter) {
                             final chapterName = chapter!.englishName!
                                 .toLowerCase()
                                 .contains(lowerCaseQuery);
@@ -177,19 +177,19 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                     ),
                   ),
                 ),
-              if (chapters!.isNotEmpty)
+              if (chapters.isNotEmpty)
                 Container(
                   margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.28,
                   ),
-                  child: searchedChapters!.isNotEmpty
+                  child: searchedChapters.isNotEmpty
                       ? ListView.separated(
                           separatorBuilder: (context, index) => const Divider(
                             color: Color(0xffee8f8b),
                           ),
-                          itemCount: searchedChapters!.length,
+                          itemCount: searchedChapters.length,
                           itemBuilder: (context, index) {
-                            final chapter = searchedChapters![index];
+                            final chapter = searchedChapters[index];
                             return SurahTile(
                               chapter: chapter,
                             );
@@ -199,9 +199,9 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                           separatorBuilder: (context, index) => const Divider(
                             color: Color(0xffee8f8b),
                           ),
-                          itemCount: chapters!.length,
+                          itemCount: chapters.length,
                           itemBuilder: (context, index) {
-                            final chapter = chapters![index];
+                            final chapter = chapters[index];
                             return SurahTile(
                               chapter: chapter,
                             );

@@ -30,7 +30,7 @@ class _MainScreen extends StatelessWidget {
                   ),
                   Space.y1!,
                   AppButton(
-                    title: 'Juzz Index',
+                    title: 'Juz Index',
                     onPressed: () =>
                         Navigator.pushNamed(context, AppRoutes.juz),
                   ),
