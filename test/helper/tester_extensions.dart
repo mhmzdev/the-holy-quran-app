@@ -1,4 +1,4 @@
-import 'package:al_quran/blocs/bookmarks/cubit.dart';
+import 'package:al_quran/blocs/bookmarks/bloc.dart';
 import 'package:al_quran/blocs/chapter/bloc.dart';
 import 'package:al_quran/blocs/juz/bloc.dart';
 import 'package:al_quran/providers/app_provider.dart';
@@ -25,7 +25,7 @@ extension WidgetTestExtensions on WidgetTester {
     // Cubits
     JuzBloc? juzBloc,
     ChapterBloc? chapterBloc,
-    BookmarkCubit? bookmarkCubit,
+    BookmarksBloc? bookmarksBloc,
 
     // Provider
     AppProvider? appProvider,
@@ -48,7 +48,7 @@ extension WidgetTestExtensions on WidgetTester {
         /// Blocs
         BlocProvider(create: (_) => juzBloc ?? sl<JuzBloc>()),
         BlocProvider(create: (_) => chapterBloc ?? sl<ChapterBloc>()),
-        BlocProvider(create: (_) => bookmarkCubit ?? BookmarkCubit()),
+        BlocProvider(create: (_) => bookmarksBloc ?? sl<BookmarksBloc>()),
 
         /// Providers
         ChangeNotifierProvider(create: (_) => appProvider ?? AppProvider()),

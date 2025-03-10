@@ -1,8 +1,9 @@
+import 'package:al_quran/blocs/bookmarks/bloc.dart';
 import 'package:al_quran/blocs/chapter/bloc.dart';
+import 'package:al_quran/services/locator.dart';
 import 'package:al_quran/ui/animations/bottom_animation.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
-import 'package:al_quran/blocs/bookmarks/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/static/assets.dart';

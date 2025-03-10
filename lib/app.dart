@@ -13,7 +13,7 @@ import 'configs/theme/core_theme.dart' as theme;
 // bloc-imports-start
 import 'blocs/chapter/bloc.dart';
 import 'blocs/juz/bloc.dart';
-import 'blocs/bookmarks/cubit.dart';
+import 'blocs/bookmarks/bloc.dart';
 // bloc-imports-end
 
 // provider-imports-start
@@ -45,7 +45,7 @@ class MyAppState extends State<MyApp> {
         // bloc-initiate-start
         BlocProvider(create: (_) => sl<ChapterBloc>()),
         BlocProvider(create: (_) => sl<JuzBloc>()),
-        BlocProvider(create: (_) => BookmarkCubit()),
+        BlocProvider(create: (_) => sl<BookmarksBloc>()),
         // bloc-initiate-end
 
         // provider-initiate-start

@@ -1,9 +1,10 @@
+import 'package:al_quran/blocs/bookmarks/bloc.dart';
 import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/space/app_dimensions.dart';
 import 'package:al_quran/configs/theme/app_theme.dart';
 import 'package:al_quran/configs/typography/app_typography.dart';
-import 'package:al_quran/blocs/bookmarks/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
+import 'package:al_quran/services/locator.dart';
 import 'package:al_quran/ui/screens/surah/surah_index_screen.dart';
 import 'package:al_quran/ui/widgets/core/screen/screen.dart';
 import 'package:al_quran/static/assets.dart';
@@ -25,16 +26,15 @@ class BookmarksScreen extends StatefulWidget {
 class _BookmarksScreenState extends State<BookmarksScreen> {
   @override
   void initState() {
-    final bookmarkCubit = BookmarkCubit.cubit(context);
-    bookmarkCubit.fetch();
     super.initState();
+    final bookmarkBloc = sl<BookmarksBloc>();
+    bookmarkBloc.add(const BookmarksFetch());
   }
 
   @override
   Widget build(BuildContext context) {
     App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
-    final bookmarkCubit = BookmarkCubit.cubit(context);
 
     return Screen(
       scaffoldBackgroundColor:
@@ -56,7 +56,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
               margin: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height * 0.22,
               ),
-              child: BlocBuilder<BookmarkCubit, BookmarkState>(
+              child: BlocBuilder<BookmarksBloc, BookmarkState>(
                 builder: (context, state) {
                   if (state is BookmarkFetchLoading) {
                     return const Center(
@@ -74,14 +74,15 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                         ),
                       ),
                     );
-                  } else if (state is BookmarkFetchSuccess) {
+                  } else if (state is BookmarkFetchSuccess &&
+                      state.data!.isNotEmpty) {
                     return ListView.separated(
                       separatorBuilder: (context, index) => const Divider(
                         color: Color(0xffee8f8b),
                       ),
-                      itemCount: bookmarkCubit.state.data!.length,
+                      itemCount: state.data!.length,
                       itemBuilder: (context, index) {
-                        final chapter = bookmarkCubit.state.data![index];
+                        final chapter = state.data![index];
                         return SurahTile(
                           chapter: chapter,
                         );
@@ -90,7 +91,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                   }
                   return Center(
                     child: Text(
-                      state.message!,
+                      state.message ?? 'Something went wrong',
                       style: AppText.b1b!.copyWith(
                         color: AppTheme.c!.text,
                       ),

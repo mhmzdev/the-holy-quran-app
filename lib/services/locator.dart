@@ -1,3 +1,4 @@
+import 'package:al_quran/blocs/bookmarks/bloc.dart';
 import 'package:al_quran/blocs/chapter/bloc.dart';
 import 'package:al_quran/blocs/juz/bloc.dart';
 import 'package:al_quran_api/al_quran_api.dart';
@@ -21,6 +22,11 @@ Future<void> initServiceLocator() async {
       provider: sl(),
     ),
   );
+  sl.registerSingleton<BookmarksRepo>(
+    BookmarksRepo(
+      provider: sl(),
+    ),
+  );
 
   // Blocs
   sl.registerSingleton<ChapterBloc>(
@@ -31,6 +37,12 @@ Future<void> initServiceLocator() async {
 
   sl.registerSingleton<JuzBloc>(
     JuzBloc(
+      repo: sl(),
+    ),
+  );
+
+  sl.registerSingleton<BookmarksBloc>(
+    BookmarksBloc(
       repo: sl(),
     ),
   );
