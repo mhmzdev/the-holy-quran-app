@@ -1,5 +1,7 @@
 import 'package:al_quran/blocs/chapter/bloc.dart';
 import 'package:al_quran_api/al_quran_api.dart';
+import 'package:al_quran_repo/al_quran_repo.dart';
+import 'package:mocktail/mocktail.dart';
 
 /// Mock Data
 final chapterMocks = List.generate(
@@ -24,3 +26,15 @@ final chapterMocks = List.generate(
 class MockChapterState extends ChapterState {
   MockChapterState() : super(data: chapterMocks);
 }
+
+/// Repos
+class MockBookmarksRepo extends Mock implements BookmarksRepo {}
+
+class MockChapterRepo extends Mock implements ChapterRepo {}
+
+class MockJuzRepo extends Mock implements JuzRepo {}
+
+/// Models
+class MockChapter extends Mock implements Chapter {}
+
+class MockJuz extends Mock implements Juz {}

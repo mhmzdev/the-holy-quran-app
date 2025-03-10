@@ -18,7 +18,9 @@ class JuzState extends Equatable {
 }
 
 @immutable
-class JuzDefault extends JuzState {}
+class JuzDefault extends JuzState {
+  const JuzDefault() : super();
+}
 
 @immutable
 class JuzFetchLoading extends JuzState {

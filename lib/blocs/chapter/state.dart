@@ -18,7 +18,9 @@ class ChapterState extends Equatable {
 }
 
 @immutable
-class ChapterDefault extends ChapterState {}
+class ChapterDefault extends ChapterState {
+  const ChapterDefault() : super();
+}
 
 @immutable
 class ChapterFetchLoading extends ChapterState {

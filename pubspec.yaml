@@ -71,6 +71,7 @@ dev_dependencies:
 
   # tests
   mockito: 5.4.4
+  mocktail: ^1.0.3
   hive_test: 1.0.1
 
   # launcher icons
