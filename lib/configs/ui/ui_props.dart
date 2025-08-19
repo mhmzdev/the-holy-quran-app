@@ -25,26 +25,23 @@ abstract class UIProps {
   // BoxDecoration
   static BoxDecoration? boxCard;
 
-  static init() {
+  static void init() {
     initRadius();
     initButtons();
     initShadows();
     initBoxDecorations();
   }
 
-  static initRadius() {
+  static void initRadius() {
     tabRadius = BorderRadius.circular(radius * 2);
     buttonRadius = BorderRadius.circular(radius);
     cardRadius = BorderRadius.circular(radius * 2);
   }
 
-  static initButtons() {
+  static void initButtons() {
     borderButton = BoxDecoration(
       borderRadius: UIProps.buttonRadius,
-      border: Border.all(
-        width: 1.4,
-        color: AppTheme.c!.primary!,
-      ),
+      border: Border.all(width: 1.4, color: AppTheme.c!.primary!),
     );
     btnPadSm = EdgeInsets.symmetric(
       horizontal: AppDimensions.padding! * 2,
@@ -56,16 +53,11 @@ abstract class UIProps {
     );
   }
 
-  static initShadows() {
-    cardShadow = [
-      BoxShadow(
-        color: AppTheme.c!.shadowSub!,
-        blurRadius: 6,
-      ),
-    ];
+  static void initShadows() {
+    cardShadow = [BoxShadow(color: AppTheme.c!.shadowSub!, blurRadius: 6)];
   }
 
-  static initBoxDecorations() {
+  static void initBoxDecorations() {
     boxCard = BoxDecoration(
       borderRadius: cardRadius,
       boxShadow: cardShadow,

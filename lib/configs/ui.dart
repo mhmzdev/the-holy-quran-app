@@ -46,7 +46,7 @@ class UI {
     safeHeight = (height! - _safeAreaVertical!);
   }
 
-  static initChecks(MediaQueryData query) {
+  static void initChecks(MediaQueryData query) {
     final size = query.size;
     diagonal = sqrt((size.width * size.width) + (size.height * size.height));
     xxs = size.width > 300;

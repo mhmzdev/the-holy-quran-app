@@ -7,8 +7,8 @@ class AppTheme {
     accent: const Color(0xffee8f8b),
     primary: const Color(0xff5BA897),
     primaryDark: const Color(0xff896277),
-    shadow: Colors.black.withOpacity(0.20),
-    shadowSub: Colors.black.withOpacity(0.12),
+    shadow: Colors.black.withValues(alpha: 0.20),
+    shadowSub: Colors.black.withValues(alpha: 0.12),
     text: const Color.fromARGB(255, 255, 255, 255),
   );
 
@@ -34,7 +34,7 @@ class AppTheme {
   static AppCoreTheme? c;
 
   // Init
-  static init(BuildContext context) {
+  static void init(BuildContext context) {
     c = isDark(context) ? dark : light;
   }
 

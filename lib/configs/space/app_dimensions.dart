@@ -11,7 +11,7 @@ class AppDimensions {
 
   static Size? size;
 
-  static init() {
+  static void init() {
     ratio = UI.width! / UI.height!;
     final pixelDensity = UI.mediaQuery().devicePixelRatio;
     ratio = (ratio) + ((pixelDensity + ratio) / 2);
@@ -26,7 +26,7 @@ class AppDimensions {
     padding = ratio * 3;
   }
 
-  static _initLargeScreens() {
+  static void _initLargeScreens() {
     const safe = 2.4;
 
     ratio *= 1.5;
@@ -36,7 +36,7 @@ class AppDimensions {
     }
   }
 
-  static _initSmallScreensHighDensity() {
+  static void _initSmallScreensHighDensity() {
     if (!UI.sm! && ratio > 2.0) {
       ratio = 2.0;
     }

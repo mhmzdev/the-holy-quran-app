@@ -7,7 +7,7 @@ import 'utils.dart';
 
 const codeFilePath = './lib/static/assets.dart';
 
-main(List<String> args) async {
+Future<void> main(List<String> args) async {
   final start = DateTime.now();
 
   final assetsDir = Directory(normalize('./assets/'));

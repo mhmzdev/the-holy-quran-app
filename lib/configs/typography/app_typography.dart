@@ -24,7 +24,7 @@ class AppText {
   static TextStyle? l2;
   static TextStyle? l2b;
 
-  static init() {
+  static void init() {
     const b = FontWeight.w600;
     const baseStyle = TextStyle(fontFamily: fontFamily);
 
@@ -32,63 +32,42 @@ class AppText {
       fontSize: AppDimensions.font(20),
       color: AppTheme.c!.text,
     );
-    h1b = h1!.copyWith(
-      fontWeight: b,
-      color: AppTheme.c!.text,
-    );
+    h1b = h1!.copyWith(fontWeight: b, color: AppTheme.c!.text);
 
     h2 = baseStyle.copyWith(
       fontSize: AppDimensions.font(14),
       color: AppTheme.c!.text,
     );
-    h2b = h2!.copyWith(
-      fontWeight: b,
-      color: AppTheme.c!.text,
-    );
+    h2b = h2!.copyWith(fontWeight: b, color: AppTheme.c!.text);
 
     h3 = baseStyle.copyWith(
       fontSize: AppDimensions.font(8),
       color: AppTheme.c!.text,
     );
-    h3b = h3!.copyWith(
-      fontWeight: b,
-      color: AppTheme.c!.text,
-    );
+    h3b = h3!.copyWith(fontWeight: b, color: AppTheme.c!.text);
 
     b1 = baseStyle.copyWith(
       fontSize: AppDimensions.font(8),
       color: AppTheme.c!.text,
     );
-    b1b = b1!.copyWith(
-      fontWeight: b,
-      color: AppTheme.c!.text,
-    );
+    b1b = b1!.copyWith(fontWeight: b, color: AppTheme.c!.text);
 
     b2 = baseStyle.copyWith(
       fontSize: AppDimensions.font(6.25),
       color: AppTheme.c!.text,
     );
-    b2b = b2!.copyWith(
-      fontWeight: b,
-      color: AppTheme.c!.text,
-    );
+    b2b = b2!.copyWith(fontWeight: b, color: AppTheme.c!.text);
 
     l1 = baseStyle.copyWith(
       fontSize: AppDimensions.font(5),
       color: AppTheme.c!.text,
     );
-    l1b = l1!.copyWith(
-      fontWeight: b,
-      color: AppTheme.c!.text,
-    );
+    l1b = l1!.copyWith(fontWeight: b, color: AppTheme.c!.text);
 
     l2 = baseStyle.copyWith(
       fontSize: AppDimensions.font(4),
       color: AppTheme.c!.text,
     );
-    l2b = l2!.copyWith(
-      fontWeight: b,
-      color: AppTheme.c!.text,
-    );
+    l2b = l2!.copyWith(fontWeight: b, color: AppTheme.c!.text);
   }
 }

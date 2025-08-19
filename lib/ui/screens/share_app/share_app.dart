@@ -40,11 +40,15 @@ class ShareInfo extends StatelessWidget {
   void share(BuildContext context) {
     final box = context.findRenderObject() as RenderBox;
 
-    Share.share(
-      "Download the latest no-Ads Holy Qur'an App on Play store\n\n"
-      'https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)',
+    final param = ShareParams(
+      text:
+          "Download the latest no-Ads Holy Qur'an App on Play store\n\n"
+          'https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)',
+      subject: 'The Holy Qur\'an App',
       sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
     );
+
+    SharePlus.instance.share(param);
   }
 
   @override
