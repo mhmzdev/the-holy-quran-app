@@ -5,7 +5,7 @@ publish_to: none
 version: 2.5.6+11
 
 environment:
-  sdk: ^3.5.0
+  sdk: 3.8.1
 
 dependencies:
   flutter:
@@ -21,8 +21,8 @@ dependencies:
     path: packages/al_quran_api
   
   # utils
-  intl: 0.19.0
-  share_plus: 10.1.4
+  intl: 0.20.2
+  share_plus: 11.1.0
   recase: 4.1.0
   shimmer: 3.0.0
   url_strategy: 0.3.0
@@ -31,13 +31,13 @@ dependencies:
 
   # network
   dio: 5.8.0+1
-  url_launcher: 6.3.1
+  url_launcher: 6.3.2
   
   # state management
-  provider: 6.1.2
+  provider: 6.1.5
   equatable: 2.0.7
-  flutter_bloc: 9.0.0
-  get_it: 8.0.3
+  flutter_bloc: 9.1.1
+  get_it: 8.2.0
 
   # models generation
   freezed_annotation: 2.4.4
@@ -48,18 +48,18 @@ dependencies:
 
   # cache
   hive_flutter: 1.1.0
-  shared_preferences: 2.5.2
+  shared_preferences: 2.5.3
 
   # app info
-  package_info_plus: 8.2.1
-  collection: 1.18.0
+  package_info_plus: 8.3.1
+  collection: 1.19.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
     # flutter code
-  flutter_lints: 5.0.0
+  flutter_lints: 6.0.0
 
   # cache local storage
   build_runner: 2.4.13
@@ -67,15 +67,15 @@ dev_dependencies:
   
   # misc
   freezed: 2.5.7
-  json_serializable: 6.8.0
+  json_serializable: 6.9.0
 
   # tests
-  mocktail: 1.0.3
+  mocktail: 1.0.4
   bloc_test: 10.0.0
   hive_test: 1.0.1
 
   # launcher icons
-  flutter_launcher_icons: 0.14.3
+  flutter_launcher_icons: 0.14.4
 
 flutter_icons:
   android: "launcher_icon"
