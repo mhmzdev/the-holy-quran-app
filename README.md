@@ -66,6 +66,10 @@ API Used: https://alquran.cloud/api
 
 ✅ Other fixes from Previous verion.
 
+## ⭐️ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mhmzdev/the-holy-quran-app&type=Date)](https://www.star-history.com/#mhmzdev/the-holy-quran-app&Date)
+
 ## 🔑 License
 - This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
 
