@@ -25,17 +25,18 @@ Watch the promo video <a href="https://www.youtube.com/watch?v=ghD5H9TF9sU&ab_ch
 
 ## 💻 Installation steps
 
-- Updated to `Flutter 3.10.0` Now!
-- Dart SDK `3.0.5` with Sound Null Safety!
-
-Open CMD where you want to clone the project & run the following commands
+- Flutter **3.47.3** (Dart 3.13) pinned with [FVM](https://fvm.app) via `.fvmrc`
+- Android target/compile SDK 36, min SDK 24 · iOS 15+
 
 ```
-git clone https://github.com/mhmzdev/The_Holy_Quran_App.git
-cd The_Holy_Quran_App
-flutter packages get
-flutter run
+git clone https://github.com/mhmzdev/the-holy-quran-app.git
+cd the-holy-quran-app
+fvm install
+fvm flutter pub get
+fvm flutter run
 ```
+
+Project documentation (architecture, conventions, ADRs, release process) lives in [`docs/`](docs/index.md); agent guidance in [`AGENTS.md`](AGENTS.md).
 
 ## 📱 Screen Shots
 

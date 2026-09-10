@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(fvm flutter:*)",
+      "Bash(fvm dart:*)",
+      "Bash(flutter:*)",
+      "Bash(dart:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(wc:*)",
+      "WebFetch(domain:pub.dev)",
+      "WebFetch(domain:docs.flutter.dev)",
+      "WebFetch(domain:dart.dev)",
+      "WebFetch(domain:developer.android.com)",
+      "WebFetch(domain:alquran.cloud)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && files=$({ git diff --name-only; git diff --cached --name-only; git ls-files --others --exclude-standard; } 2>/dev/null | grep -E '\\.dart$' | grep -vE '\\.(g|freezed)\\.dart$' | sort -u); [ -n \"$files\" ] && echo \"$files\" | xargs fvm dart format >/dev/null 2>&1; true",
+            "statusMessage": "Formatting changed .dart files..."
+          }
+        ]
+      }
+    ]
+  }
+}
