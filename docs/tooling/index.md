@@ -14,3 +14,4 @@ timestamp: 2026-09-10T08:30:00Z
 | [codegen.md](codegen.md) | Freezed / json_serializable / Hive CE adapters in packages/al_quran_api |
 | [hygen.md](hygen.md) | `_templates/` generators and which ones still fit this app |
 | [ci.md](ci.md) | GitHub Actions workflow |
+| [../platforms/web.md](../platforms/web.md) | `scripts/deploy_web.sh` — web build + GitHub Pages copy |

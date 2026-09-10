@@ -3,7 +3,7 @@ type: Feature
 title: Juz index & reading
 description: Grid of the 30 juz with Arabic names, search by number, read a juz end-to-end.
 tags: [feature, juz, reading]
-timestamp: 2026-09-10T08:30:00Z
+timestamp: 2026-09-10T09:40:00Z
 ---
 
 # Juz index & reading
@@ -22,3 +22,5 @@ timestamp: 2026-09-10T08:30:00Z
 **Known gaps**
 - The push reads `juzBloc.state.data` one frame after dispatch; if the juz is not cached yet (first launch, slow network) the page can open with the previously loaded juz or `null` ayahs. A fix is to navigate from a `BlocListener` on `JuzFetchSuccess` for the requested number, or carry the number and let the page own the fetch.
 - `JuzState.data` holds only the last fetched juz; there is no per-juz loading state.
+- Because `JuzFetch` is processed sequentially, a tap during the first-launch preload waits behind the remaining preload fetches.
+- Backlog idea: derive juz from the already-cached chapters (each ayah in the whole-Qur'an payload carries a `juz` number) and drop the 30 extra requests entirely.
