@@ -35,9 +35,7 @@ class _CustomDrawer extends StatelessWidget {
                       onTap: () => Navigator.pushNamed(
                         context,
                         '${e['route']}',
-                        arguments: {
-                          'route': 'drawer',
-                        },
+                        arguments: {'route': 'drawer'},
                       ),
                     ),
                   ),
@@ -48,7 +46,7 @@ class _CustomDrawer extends StatelessWidget {
                     leading: const Icon(Iconsax.moon),
                     title: const Text('Dark Mode'),
                     trailing: Switch(
-                      activeColor: Colors.white,
+                      activeThumbColor: Colors.white,
                       value: appProvider.isDark,
                       activeTrackColor: AppTheme.c!.accent,
                       onChanged: (value) {

@@ -6,24 +6,24 @@ part of 'ayah.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AyahAdapter extends TypeAdapter<_$AyahImpl> {
+class AyahAdapter extends TypeAdapter<_Ayah> {
   @override
-  final int typeId = 0;
+  final typeId = 0;
 
   @override
-  _$AyahImpl read(BinaryReader reader) {
+  _Ayah read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$AyahImpl(
-      number: fields[0] as int?,
+    return _Ayah(
+      number: (fields[0] as num?)?.toInt(),
       text: fields[1] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$AyahImpl obj) {
+  void write(BinaryWriter writer, _Ayah obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -47,13 +47,12 @@ class AyahAdapter extends TypeAdapter<_$AyahImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AyahImpl _$$AyahImplFromJson(Map<String, dynamic> json) => _$AyahImpl(
-      number: (json['number'] as num?)?.toInt(),
-      text: json['text'] as String?,
-    );
+_Ayah _$AyahFromJson(Map<String, dynamic> json) => _Ayah(
+  number: (json['number'] as num?)?.toInt(),
+  text: json['text'] as String?,
+);
 
-Map<String, dynamic> _$$AyahImplToJson(_$AyahImpl instance) =>
-    <String, dynamic>{
-      'number': instance.number,
-      'text': instance.text,
-    };
+Map<String, dynamic> _$AyahToJson(_Ayah instance) => <String, dynamic>{
+  'number': instance.number,
+  'text': instance.text,
+};

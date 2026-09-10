@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 final themeMap = {
@@ -8,11 +8,7 @@ final themeMap = {
   'light': ThemeMode.light,
 };
 
-enum Cache {
-  theme,
-  locale,
-  firstOpen,
-}
+enum Cache { theme, locale, firstOpen }
 
 class AppProvider extends ChangeNotifier {
   static AppProvider s(BuildContext context, [bool listen = false]) =>
@@ -44,10 +40,7 @@ class AppProvider extends ChangeNotifier {
     if (themeMode == newTheme) return;
     themeMode = newTheme;
     notifyListeners();
-    _cache.put(
-      Cache.theme.toString(),
-      newTheme.toString().split('.').last,
-    );
+    _cache.put(Cache.theme.toString(), newTheme.toString().split('.').last);
   }
 
   void setFirstOpen() {

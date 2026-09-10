@@ -1,19 +1,16 @@
 import 'package:al_quran_api/src/models/ayah/ayah.dart';
 import 'package:al_quran_api/src/static/hive.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce/hive.dart';
 
 part 'chapter.freezed.dart';
 part 'chapter.g.dart';
 
 @Freezed(makeCollectionsUnmodifiable: false)
-class Chapter with _$Chapter {
+abstract class Chapter with _$Chapter {
   const Chapter._();
 
-  @HiveType(
-    typeId: AppHiveTypes.chapter,
-    adapterName: 'ChapterAdapter',
-  )
+  @HiveType(typeId: AppHiveTypes.chapter, adapterName: 'ChapterAdapter')
   const factory Chapter({
     @HiveField(0) int? number,
     @HiveField(1) String? name,

@@ -1,24 +1,21 @@
 import 'package:al_quran/services/locator.dart';
 import 'package:al_quran/ui/screens/home/home_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive_test/hive_test.dart';
+import 'package:hive_ce/hive.dart';
+
+import '../../helper/hive.dart';
 
 import '../../helper/tester_extensions.dart';
 
 void main() {
   setUp(() async {
     await setUpTestHive();
-    await Future.wait([
-      Hive.openBox('app'),
-      Hive.openBox('data'),
-    ]);
+    await Future.wait([Hive.openBox('app'), Hive.openBox('data')]);
 
     initServiceLocator();
   });
 
   tearDown(() async {
-    await Hive.close();
     await tearDownTestHive();
   });
 
@@ -28,9 +25,7 @@ void main() {
 }
 
 Future<void> init(WidgetTester tester) async {
-  await tester.createRootWidgetAndPump(
-    body: const HomeScreen(),
-  );
+  await tester.createRootWidgetAndPump(body: const HomeScreen());
 }
 
 Future<void> go(WidgetTester tester) async {

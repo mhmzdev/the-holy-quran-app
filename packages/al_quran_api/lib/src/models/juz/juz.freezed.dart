@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'juz.dart';
@@ -9,176 +9,280 @@ part of 'juz.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Juz _$JuzFromJson(Map<String, dynamic> json) {
-  return _Juz.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Juz {
-  @HiveField(0)
-  int? get number => throw _privateConstructorUsedError;
-  @HiveField(1)
-  List<Ayah?>? get ayahs => throw _privateConstructorUsedError;
+
+@HiveField(0) int? get number;@HiveField(1) List<Ayah?>? get ayahs;
+/// Create a copy of Juz
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$JuzCopyWith<Juz> get copyWith => _$JuzCopyWithImpl<Juz>(this as Juz, _$identity);
 
   /// Serializes this Juz to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Juz
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $JuzCopyWith<Juz> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  final _this = this as Juz;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Juz&&(identical(other.number, _this.number) || other.number == _this.number)&&const DeepCollectionEquality().equals(other.ayahs, _this.ayahs));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+  final _this = this as Juz;
+  return Object.hash(runtimeType,_this.number,const DeepCollectionEquality().hash(_this.ayahs));
+}
+
+@override
+String toString() {
+  final _this = this as Juz;
+  return 'Juz(number: ${_this.number}, ayahs: ${_this.ayahs})';
+}
+
+
 }
 
 /// @nodoc
-abstract class $JuzCopyWith<$Res> {
-  factory $JuzCopyWith(Juz value, $Res Function(Juz) then) =
-      _$JuzCopyWithImpl<$Res, Juz>;
-  @useResult
-  $Res call({@HiveField(0) int? number, @HiveField(1) List<Ayah?>? ayahs});
+abstract mixin class $JuzCopyWith<$Res>  {
+  factory $JuzCopyWith(Juz value, $Res Function(Juz) _then) = _$JuzCopyWithImpl;
+@useResult
+$Res call({
+@HiveField(0) int? number,@HiveField(1) List<Ayah?>? ayahs
+});
+
+
+
+
+}
+/// @nodoc
+class _$JuzCopyWithImpl<$Res>
+    implements $JuzCopyWith<$Res> {
+  _$JuzCopyWithImpl(this._self, this._then);
+
+  final Juz _self;
+  final $Res Function(Juz) _then;
+
+/// Create a copy of Juz
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? number = freezed,Object? ayahs = freezed,}) {
+  return _then(Juz(
+number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
+as int?,ayahs: freezed == ayahs ? _self.ayahs : ayahs // ignore: cast_nullable_to_non_nullable
+as List<Ayah?>?,
+  ));
 }
 
-/// @nodoc
-class _$JuzCopyWithImpl<$Res, $Val extends Juz> implements $JuzCopyWith<$Res> {
-  _$JuzCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Juz
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? number = freezed,
-    Object? ayahs = freezed,
-  }) {
-    return _then(_value.copyWith(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ayahs: freezed == ayahs
-          ? _value.ayahs
-          : ayahs // ignore: cast_nullable_to_non_nullable
-              as List<Ayah?>?,
-    ) as $Val);
-  }
 }
 
-/// @nodoc
-abstract class _$$JuzImplCopyWith<$Res> implements $JuzCopyWith<$Res> {
-  factory _$$JuzImplCopyWith(_$JuzImpl value, $Res Function(_$JuzImpl) then) =
-      __$$JuzImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@HiveField(0) int? number, @HiveField(1) List<Ayah?>? ayahs});
+
+/// Adds pattern-matching-related methods to [Juz].
+extension JuzPatterns on Juz {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Juz value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Juz() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Juz value)  $default,){
+final _that = this;
+switch (_that) {
+case _Juz():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Juz value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Juz() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  int? number, @HiveField(1)  List<Ayah?>? ayahs)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Juz() when $default != null:
+return $default(_that.number,_that.ayahs);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  int? number, @HiveField(1)  List<Ayah?>? ayahs)  $default,) {final _that = this;
+switch (_that) {
+case _Juz():
+return $default(_that.number,_that.ayahs);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  int? number, @HiveField(1)  List<Ayah?>? ayahs)?  $default,) {final _that = this;
+switch (_that) {
+case _Juz() when $default != null:
+return $default(_that.number,_that.ayahs);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$JuzImplCopyWithImpl<$Res> extends _$JuzCopyWithImpl<$Res, _$JuzImpl>
-    implements _$$JuzImplCopyWith<$Res> {
-  __$$JuzImplCopyWithImpl(_$JuzImpl _value, $Res Function(_$JuzImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Juz
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? number = freezed,
-    Object? ayahs = freezed,
-  }) {
-    return _then(_$JuzImpl(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ayahs: freezed == ayahs
-          ? _value.ayahs
-          : ayahs // ignore: cast_nullable_to_non_nullable
-              as List<Ayah?>?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: AppHiveTypes.juz, adapterName: 'JuzAdapter')
-class _$JuzImpl extends _Juz {
-  const _$JuzImpl({@HiveField(0) this.number, @HiveField(1) this.ayahs})
-      : super._();
+class _Juz extends Juz {
+  const _Juz({@HiveField(0) this.number, @HiveField(1) this.ayahs}): super._();
+  factory _Juz.fromJson(Map<String, dynamic> json) => _$JuzFromJson(json);
 
-  factory _$JuzImpl.fromJson(Map<String, dynamic> json) =>
-      _$$JuzImplFromJson(json);
+@override@HiveField(0) final  int? number;
+@override@HiveField(1) final  List<Ayah?>? ayahs;
 
-  @override
-  @HiveField(0)
-  final int? number;
-  @override
-  @HiveField(1)
-  final List<Ayah?>? ayahs;
+/// Create a copy of Juz
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$JuzCopyWith<_Juz> get copyWith => __$JuzCopyWithImpl<_Juz>(this, _$identity);
 
-  @override
-  String toString() {
+@override
+Map<String, dynamic> toJson() {
+  return _$JuzToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Juz&&(identical(other.number, number) || other.number == number)&&const DeepCollectionEquality().equals(other.ayahs, ayahs));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+    return Object.hash(runtimeType,number,const DeepCollectionEquality().hash(ayahs));
+}
+
+@override
+String toString() {
     return 'Juz(number: $number, ayahs: $ayahs)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$JuzImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            const DeepCollectionEquality().equals(other.ayahs, ayahs));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, number, const DeepCollectionEquality().hash(ayahs));
-
-  /// Create a copy of Juz
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$JuzImplCopyWith<_$JuzImpl> get copyWith =>
-      __$$JuzImplCopyWithImpl<_$JuzImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$JuzImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _Juz extends Juz {
-  const factory _Juz(
-      {@HiveField(0) final int? number,
-      @HiveField(1) final List<Ayah?>? ayahs}) = _$JuzImpl;
-  const _Juz._() : super._();
 
-  factory _Juz.fromJson(Map<String, dynamic> json) = _$JuzImpl.fromJson;
-
-  @override
-  @HiveField(0)
-  int? get number;
-  @override
-  @HiveField(1)
-  List<Ayah?>? get ayahs;
-
-  /// Create a copy of Juz
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$JuzImplCopyWith<_$JuzImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+abstract mixin class _$JuzCopyWith<$Res> implements $JuzCopyWith<$Res> {
+  factory _$JuzCopyWith(_Juz value, $Res Function(_Juz) _then) = __$JuzCopyWithImpl;
+@override @useResult
+$Res call({
+@HiveField(0) int? number,@HiveField(1) List<Ayah?>? ayahs
+});
+
+
+
+
+}
+/// @nodoc
+class __$JuzCopyWithImpl<$Res>
+    implements _$JuzCopyWith<$Res> {
+  __$JuzCopyWithImpl(this._self, this._then);
+
+  final _Juz _self;
+  final $Res Function(_Juz) _then;
+
+/// Create a copy of Juz
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? number = freezed,Object? ayahs = freezed,}) {
+  return _then(_Juz(
+number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
+as int?,ayahs: freezed == ayahs ? _self.ayahs : ayahs // ignore: cast_nullable_to_non_nullable
+as List<Ayah?>?,
+  ));
+}
+
+
+}
+
+// dart format on

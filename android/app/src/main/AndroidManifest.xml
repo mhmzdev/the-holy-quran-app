@@ -1,13 +1,9 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hmz.al_quran">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name="${applicationName}"
         android:label="The Holy Qur'an"
         android:icon="@mipmap/launcher_icon">
-              <uses-library
-        android:name="org.apache.http.legacy"
-        android:required="false" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

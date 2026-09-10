@@ -8,18 +8,13 @@ part 'event.dart';
 part 'state.dart';
 
 class JuzBloc extends Bloc<JuzEvent, JuzState> {
-  JuzBloc({required JuzRepo repo})
-      : _repo = repo,
-        super(JuzDefault()) {
+  JuzBloc({required this._repo}) : super(JuzDefault()) {
     on<JuzFetch>(_onJuzFetch);
   }
 
   final JuzRepo _repo;
 
-  void _onJuzFetch(
-    JuzFetch event,
-    Emitter<JuzState> emit,
-  ) async {
+  void _onJuzFetch(JuzFetch event, Emitter<JuzState> emit) async {
     emit(const JuzFetchLoading());
 
     try {
