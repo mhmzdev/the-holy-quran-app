@@ -42,4 +42,4 @@ Current blocs and events:
 
 ## Known gaps
 - `AppProvider.setFirstOpen()` is never called, and `_init()` is async — `SplashScreen` reads `firstOpen` immediately, so whether onboarding shows on first launch depends on a race. Tracked in [features/onboarding-and-theme.md](../features/onboarding-and-theme.md).
-- `JuzIndexScreen` pushes `PageScreen(juz: juzBloc.state.data)` in a post-frame callback right after dispatching `JuzFetch`; if that juz isn't cached yet the page can open with the previous juz. See [features/juz-index.md](../features/juz-index.md).
+- `JuzBloc` processes events sequentially (splash preload vs. the API's 12 req/s limit), so a juz tapped during the first-launch preload waits for the queue. See [features/juz-index.md](../features/juz-index.md).
