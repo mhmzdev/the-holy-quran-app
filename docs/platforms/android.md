@@ -25,6 +25,15 @@ resource: https://play.google.com/store/apps/details?id=com.hmz.al_quran
 ## Signing
 Release config reads `android/key.properties` (git-ignored; keys `storeFile`, `storePassword`, `keyAlias`, `keyPassword`). If the file is missing the `release` signingConfig is empty and `flutter build` fails at signing — expected on machines without the keystore.
 
+**Play App Signing is enabled**: Google holds the app signing key; our keystore is only the **upload key**.
+
+| Key | Where | Alias | SHA-1 |
+|---|---|---|---|
+| Upload key (current, since the 2026-09 reset) | `holy-quran.keystore`, kept outside the repo next to the checkout; public cert exported as `holy-quran-upload-certificate.pem` | `holyquran` | `12:11:A7:9A:99:EF:59:8A:68:B0:24:6B:B3:BB:8A:9C:EB:8A:D5:19` |
+| Upload key (2020–2025, **lost**) | `alquran.jks` on a Windows machine that was sold | `alquran` | `EB:39:70:BF:73:C8:02:41:21:32:87:68:AA:91:31:4B:0A:0C:0B:3A` |
+
+If Play rejects an AAB with "signed with the wrong key", compare the AAB's certificate (`keytool -printcert -jarfile app-release.aab`) with the upload certificate shown in Play Console → Setup → App signing. A lost upload key is recoverable via **Request upload key reset** on that page (upload the new key's `.pem`, exported with `keytool -export -rfc -keystore holy-quran.keystore -alias holyquran -file upload_certificate.pem`); Google applies it within about two days. Back the keystore and its password up somewhere durable — a second loss means another reset, and the old `key.properties` passwords are in this public repo's git history (2020–2022 commits), so never reuse them.
+
 ## Google Play policy
 - Target API ≥ 36 required for updates from **2026-08-31** ([policy](https://developer.android.com/google/play/requirements/target-sdk)); extension to 2026-11-01 requestable in Play Console. API 37 expected for Aug 2027.
 - Existing apps must target ≥ 35 to stay visible to new users on newer devices.
