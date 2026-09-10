@@ -13,8 +13,10 @@ sealed class BaseApi {
     Duration connectTimeout = const Duration(seconds: 30),
     Duration receiveTimeout = const Duration(seconds: 30),
   }) {
+    // No default contentType: a Content-Type header on GET requests turns them
+    // into CORS-preflighted requests on web, and api.alquran.cloud answers
+    // OPTIONS with 405. Dio still sets the right type for request bodies.
     final options = BaseOptions(
-      contentType: 'application/json',
       connectTimeout: connectTimeout,
       receiveTimeout: receiveTimeout,
       baseUrl: baseUrl,

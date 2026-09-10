@@ -61,25 +61,14 @@
     <img src="assets/logo.png" alt="the holy quran">
   </div>
   <script>
-    window.addEventListener('load', function (ev) {
+    // flutter_bootstrap.js boots the app on its own; do NOT call
+    // _flutter.loader.load() here as well or two Flutter instances start.
+    // Fade the HTML loader out once Flutter has painted its first frame.
+    window.addEventListener('flutter-first-frame', function () {
       var loaderContent = document.getElementById('loader-content');
-      // Download main.dart.js
-      _flutter.loader.load({
-        onEntrypointLoaded: function (engineInitializer) {
-          engineInitializer.initializeEngine().then(function (appRunner) {
-            appRunner.runApp().then(function (app) {
-              // Wait for the first frame to be rendered and then fade out the
-              // loader.
-              window.requestAnimationFrame(function () {
-                loaderContent.style.opacity = "0";
-                setTimeout(function () {
-                  loaderContent.remove();
-                }, 400);
-              });
-            });
-          });
-        }
-      });
+      if (!loaderContent) return;
+      loaderContent.style.opacity = '0';
+      setTimeout(function () { loaderContent.remove(); }, 400);
     });
   </script>
   <script src="flutter_bootstrap.js" async></script>

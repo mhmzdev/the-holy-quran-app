@@ -9,7 +9,14 @@ part 'state.dart';
 
 class JuzBloc extends Bloc<JuzEvent, JuzState> {
   JuzBloc({required this._repo}) : super(JuzDefault()) {
-    on<JuzFetch>(_onJuzFetch);
+    // Sequential: the splash dispatches JuzFetch for all 30 juz at once and
+    // api.alquran.cloud allows ~12 requests/second. Processing one at a time
+    // keeps the preload under the limit (equivalent to bloc_concurrency's
+    // `sequential()` without the extra dependency).
+    on<JuzFetch>(
+      _onJuzFetch,
+      transformer: (events, mapper) => events.asyncExpand(mapper),
+    );
   }
 
   final JuzRepo _repo;

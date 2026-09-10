@@ -56,7 +56,7 @@ class MyAppState extends State<MyApp> {
       child: Consumer<AppProvider>(
         builder: (context, state, child) {
           return MaterialApp(
-            title: 'They Holy Qur\'an',
+            title: 'The Holy Qur\'an',
             navigatorKey: navigator,
             debugShowCheckedModeBanner: false,
             theme: theme.themeLight,
