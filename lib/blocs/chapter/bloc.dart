@@ -8,18 +8,13 @@ part 'state.dart';
 part 'event.dart';
 
 class ChapterBloc extends Bloc<ChapterEvent, ChapterState> {
-  ChapterBloc({required ChapterRepo repo})
-      : _repo = repo,
-        super(ChapterDefault()) {
+  ChapterBloc({required this._repo}) : super(ChapterDefault()) {
     on<ChapterFetch>(_onChapterFetch);
   }
 
   final ChapterRepo _repo;
 
-  void _onChapterFetch(
-    ChapterFetch event,
-    Emitter<ChapterState> emit,
-  ) async {
+  void _onChapterFetch(ChapterFetch event, Emitter<ChapterState> emit) async {
     emit(const ChapterFetchLoading());
 
     try {

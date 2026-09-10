@@ -4,8 +4,9 @@ import 'package:al_quran/ui/screens/surah/surah_index_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive_test/hive_test.dart';
+import 'package:hive_ce/hive.dart';
+
+import '../../helper/hive.dart';
 
 import '../../helper/mocks.dart';
 import '../../helper/tester_extensions.dart';
@@ -13,16 +14,12 @@ import '../../helper/tester_extensions.dart';
 void main() {
   setUp(() async {
     await setUpTestHive();
-    await Future.wait([
-      Hive.openBox('app'),
-      Hive.openBox('data'),
-    ]);
+    await Future.wait([Hive.openBox('app'), Hive.openBox('data')]);
 
     initServiceLocator();
   });
 
   tearDown(() async {
-    await Hive.close();
     await tearDownTestHive();
   });
 
@@ -120,9 +117,10 @@ Future<void> go(WidgetTester tester) async {
   }
 
   // Final report
-  final missing = List.generate(114, (i) => i + 1)
-      .where((i) => !seenChapterNumbers.contains(i))
-      .toList();
+  final missing = List.generate(
+    114,
+    (i) => i + 1,
+  ).where((i) => !seenChapterNumbers.contains(i)).toList();
 
   debugPrint('Final chapter count: ${seenChapterNumbers.length}');
   debugPrint('Missing chapters: $missing');

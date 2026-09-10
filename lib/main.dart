@@ -1,13 +1,13 @@
 import 'package:al_quran/services/locator.dart';
 import 'package:al_quran_api/al_quran_api.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:url_strategy/url_strategy.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'app.dart';
 
 void main() async {
-  setPathUrlStrategy();
+  usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
 
   // hive
@@ -17,10 +17,7 @@ void main() async {
   Hive.registerAdapter<Ayah>(AyahAdapter());
   Hive.registerAdapter<Chapter>(ChapterAdapter());
 
-  await Future.wait([
-    Hive.openBox('app'),
-    Hive.openBox('data'),
-  ]);
+  await Future.wait([Hive.openBox('app'), Hive.openBox('data')]);
 
   // locator
   await initServiceLocator();

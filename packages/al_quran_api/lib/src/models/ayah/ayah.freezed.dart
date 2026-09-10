@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ayah.dart';
@@ -9,178 +9,280 @@ part of 'ayah.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Ayah _$AyahFromJson(Map<String, dynamic> json) {
-  return _Ayah.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Ayah {
-  @HiveField(0)
-  int? get number => throw _privateConstructorUsedError;
-  @HiveField(1)
-  String? get text => throw _privateConstructorUsedError;
+
+@HiveField(0) int? get number;@HiveField(1) String? get text;
+/// Create a copy of Ayah
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AyahCopyWith<Ayah> get copyWith => _$AyahCopyWithImpl<Ayah>(this as Ayah, _$identity);
 
   /// Serializes this Ayah to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Ayah
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AyahCopyWith<Ayah> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  final _this = this as Ayah;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Ayah&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.text, _this.text) || other.text == _this.text));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+  final _this = this as Ayah;
+  return Object.hash(runtimeType,_this.number,_this.text);
+}
+
+@override
+String toString() {
+  final _this = this as Ayah;
+  return 'Ayah(number: ${_this.number}, text: ${_this.text})';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AyahCopyWith<$Res> {
-  factory $AyahCopyWith(Ayah value, $Res Function(Ayah) then) =
-      _$AyahCopyWithImpl<$Res, Ayah>;
-  @useResult
-  $Res call({@HiveField(0) int? number, @HiveField(1) String? text});
-}
+abstract mixin class $AyahCopyWith<$Res>  {
+  factory $AyahCopyWith(Ayah value, $Res Function(Ayah) _then) = _$AyahCopyWithImpl;
+@useResult
+$Res call({
+@HiveField(0) int? number,@HiveField(1) String? text
+});
 
+
+
+
+}
 /// @nodoc
-class _$AyahCopyWithImpl<$Res, $Val extends Ayah>
+class _$AyahCopyWithImpl<$Res>
     implements $AyahCopyWith<$Res> {
-  _$AyahCopyWithImpl(this._value, this._then);
+  _$AyahCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Ayah _self;
+  final $Res Function(Ayah) _then;
 
-  /// Create a copy of Ayah
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? number = freezed,
-    Object? text = freezed,
-  }) {
-    return _then(_value.copyWith(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int?,
-      text: freezed == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of Ayah
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? number = freezed,Object? text = freezed,}) {
+  return _then(Ayah(
+number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
+as int?,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AyahImplCopyWith<$Res> implements $AyahCopyWith<$Res> {
-  factory _$$AyahImplCopyWith(
-          _$AyahImpl value, $Res Function(_$AyahImpl) then) =
-      __$$AyahImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@HiveField(0) int? number, @HiveField(1) String? text});
 }
 
-/// @nodoc
-class __$$AyahImplCopyWithImpl<$Res>
-    extends _$AyahCopyWithImpl<$Res, _$AyahImpl>
-    implements _$$AyahImplCopyWith<$Res> {
-  __$$AyahImplCopyWithImpl(_$AyahImpl _value, $Res Function(_$AyahImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Ayah
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? number = freezed,
-    Object? text = freezed,
-  }) {
-    return _then(_$AyahImpl(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int?,
-      text: freezed == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Ayah].
+extension AyahPatterns on Ayah {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Ayah value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Ayah() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Ayah value)  $default,){
+final _that = this;
+switch (_that) {
+case _Ayah():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Ayah value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Ayah() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  int? number, @HiveField(1)  String? text)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Ayah() when $default != null:
+return $default(_that.number,_that.text);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  int? number, @HiveField(1)  String? text)  $default,) {final _that = this;
+switch (_that) {
+case _Ayah():
+return $default(_that.number,_that.text);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  int? number, @HiveField(1)  String? text)?  $default,) {final _that = this;
+switch (_that) {
+case _Ayah() when $default != null:
+return $default(_that.number,_that.text);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: AppHiveTypes.ayah, adapterName: 'AyahAdapter')
-class _$AyahImpl extends _Ayah {
-  const _$AyahImpl({@HiveField(0) this.number, @HiveField(1) this.text})
-      : super._();
+class _Ayah extends Ayah {
+  const _Ayah({@HiveField(0) this.number, @HiveField(1) this.text}): super._();
+  factory _Ayah.fromJson(Map<String, dynamic> json) => _$AyahFromJson(json);
 
-  factory _$AyahImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AyahImplFromJson(json);
+@override@HiveField(0) final  int? number;
+@override@HiveField(1) final  String? text;
 
-  @override
-  @HiveField(0)
-  final int? number;
-  @override
-  @HiveField(1)
-  final String? text;
+/// Create a copy of Ayah
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AyahCopyWith<_Ayah> get copyWith => __$AyahCopyWithImpl<_Ayah>(this, _$identity);
 
-  @override
-  String toString() {
+@override
+Map<String, dynamic> toJson() {
+  return _$AyahToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Ayah&&(identical(other.number, number) || other.number == number)&&(identical(other.text, text) || other.text == text));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+    return Object.hash(runtimeType,number,text);
+}
+
+@override
+String toString() {
     return 'Ayah(number: $number, text: $text)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AyahImpl &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.text, text) || other.text == text));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, number, text);
-
-  /// Create a copy of Ayah
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AyahImplCopyWith<_$AyahImpl> get copyWith =>
-      __$$AyahImplCopyWithImpl<_$AyahImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AyahImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _Ayah extends Ayah {
-  const factory _Ayah(
-      {@HiveField(0) final int? number,
-      @HiveField(1) final String? text}) = _$AyahImpl;
-  const _Ayah._() : super._();
 
-  factory _Ayah.fromJson(Map<String, dynamic> json) = _$AyahImpl.fromJson;
-
-  @override
-  @HiveField(0)
-  int? get number;
-  @override
-  @HiveField(1)
-  String? get text;
-
-  /// Create a copy of Ayah
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AyahImplCopyWith<_$AyahImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+abstract mixin class _$AyahCopyWith<$Res> implements $AyahCopyWith<$Res> {
+  factory _$AyahCopyWith(_Ayah value, $Res Function(_Ayah) _then) = __$AyahCopyWithImpl;
+@override @useResult
+$Res call({
+@HiveField(0) int? number,@HiveField(1) String? text
+});
+
+
+
+
+}
+/// @nodoc
+class __$AyahCopyWithImpl<$Res>
+    implements _$AyahCopyWith<$Res> {
+  __$AyahCopyWithImpl(this._self, this._then);
+
+  final _Ayah _self;
+  final $Res Function(_Ayah) _then;
+
+/// Create a copy of Ayah
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? number = freezed,Object? text = freezed,}) {
+  return _then(_Ayah(
+number: freezed == number ? _self.number : number // ignore: cast_nullable_to_non_nullable
+as int?,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

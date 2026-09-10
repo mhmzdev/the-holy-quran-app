@@ -12,11 +12,11 @@ jobs:
 
     env:
       # Setup env variables that will be used throughout the workflow
-      FLUTTER_VERSION: 3.24.0
+      FLUTTER_VERSION: 3.47.3
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2

@@ -3,24 +3,21 @@ import 'package:al_quran/ui/screens/juz/juz_index_screen.dart';
 import 'package:al_quran/utils/juz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive_test/hive_test.dart';
+import 'package:hive_ce/hive.dart';
+
+import '../../helper/hive.dart';
 
 import '../../helper/tester_extensions.dart';
 
 void main() {
   setUp(() async {
     await setUpTestHive();
-    await Future.wait([
-      Hive.openBox('app'),
-      Hive.openBox('data'),
-    ]);
+    await Future.wait([Hive.openBox('app'), Hive.openBox('data')]);
 
     initServiceLocator();
   });
 
   tearDown(() async {
-    await Hive.close();
     await tearDownTestHive();
   });
 
@@ -30,9 +27,7 @@ void main() {
 }
 
 Future<void> init(WidgetTester tester) async {
-  await tester.createRootWidgetAndPump(
-    body: const JuzIndexScreen(),
-  );
+  await tester.createRootWidgetAndPump(body: const JuzIndexScreen());
 }
 
 Future<void> go(WidgetTester tester) async {
@@ -50,14 +45,16 @@ Future<void> go(WidgetTester tester) async {
     final currentCards = tester.widgetList<Card>(find.byType(Card));
     for (var card in currentCards) {
       // Extract juz name from the card
-      final juzText = find
-          .descendant(
-            of: find.byWidget(card),
-            matching: find.byType(Text),
-          )
-          .evaluate()
-          .first
-          .widget as Text;
+      final juzText =
+          find
+                  .descendant(
+                    of: find.byWidget(card),
+                    matching: find.byType(Text),
+                  )
+                  .evaluate()
+                  .first
+                  .widget
+              as Text;
 
       // Add juz name if it's in our known list
       if (JuzUtils.juzNames.contains(juzText.data)) {
@@ -92,8 +89,9 @@ Future<void> go(WidgetTester tester) async {
   }
 
   // Final report
-  final missing =
-      JuzUtils.juzNames.where((name) => !seenJuzNames.contains(name)).toList();
+  final missing = JuzUtils.juzNames
+      .where((name) => !seenJuzNames.contains(name))
+      .toList();
 
   debugPrint('Final juz count: ${seenJuzNames.length}');
   if (missing.isNotEmpty) {

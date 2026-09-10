@@ -1,7 +1,7 @@
 import 'package:al_quran_api/src/data_providers/interfaces/al_quran_data_provider.dart';
 import 'package:al_quran_api/src/models/base.dart';
 import 'package:al_quran_api/src/services/services.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce/hive.dart';
 
 class AlQuranDataProviderImpl implements IAlQuranDataProvider {
   AlQuranDataProviderImpl({BaseApi? api}) : _api = api ?? Api.ins;
@@ -12,16 +12,11 @@ class AlQuranDataProviderImpl implements IAlQuranDataProvider {
   @override
   Future<Juz?> juzFetchApi(num juzNumber) async {
     try {
-      final resp = await Api.ins.get(
-        '/v1/juz/$juzNumber/quran-uthmani',
-      );
+      final resp = await Api.ins.get('/v1/juz/$juzNumber/quran-uthmani');
       final Map<String, dynamic> raw = resp.data['data'];
       final juz = Juz.fromJson(raw);
 
-      await cache.put(
-        'juz$juzNumber',
-        juz,
-      );
+      await cache.put('juz$juzNumber', juz);
 
       return juz;
     } catch (e) {
@@ -51,10 +46,7 @@ class AlQuranDataProviderImpl implements IAlQuranDataProvider {
       final List data = raw['surahs'];
       final chapters = data.map((e) => Chapter.fromJson(e)).toList();
 
-      await cache.put(
-        'chapters',
-        chapters,
-      );
+      await cache.put('chapters', chapters);
 
       return chapters;
     } catch (e) {

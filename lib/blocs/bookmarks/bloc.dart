@@ -8,9 +8,7 @@ part 'events.dart';
 part 'state.dart';
 
 class BookmarksBloc extends Bloc<BookmarksEvent, BookmarkState> {
-  BookmarksBloc({required BookmarksRepo repo})
-      : _repo = repo,
-        super(const BookmarkDefault()) {
+  BookmarksBloc({required this._repo}) : super(const BookmarkDefault()) {
     on<BookmarksFetch>(_onBookmarksFetch);
     on<UpdateBookmark>(_onUpdateBookmark);
     on<CheckBookmark>(_onCheckBookmark);
