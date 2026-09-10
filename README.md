@@ -1,5 +1,5 @@
 # The Holy Qur'an
-### DOC MIGHT HAVE SOME OUT-DATED INFO
+> Updated 2026-09-10. The maintained, in-depth documentation lives in [`docs/`](docs/index.md).
 
 Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
 The data is fetched using API and now the **offline mode** is available. So, you need internet for the first time only!
@@ -9,8 +9,8 @@ The data is fetched using API and now the **offline mode** is available. So, you
 <div align="center">
 
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](#)
-[![GitHub Forks](https://img.shields.io/github/forks/saadhaxxan/Car_Game_Python_Pygame.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/m-hamzashakeel/The_Holy_Quran_App/fork)
-[![GitHub Issues](https://img.shields.io/github/issues/saadhaxxan/Car_Game_Python_Pygame.svg?style=flat&label=Issues&maxAge=2592000)](https://github.com/m-hamzashakeel/The_Holy_Quran_App/issues)
+[![GitHub Forks](https://img.shields.io/github/forks/mhmzdev/the-holy-quran-app.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/mhmzdev/the-holy-quran-app/fork)
+[![GitHub Issues](https://img.shields.io/github/issues/mhmzdev/the-holy-quran-app.svg?style=flat&label=Issues&maxAge=2592000)](https://github.com/mhmzdev/the-holy-quran-app/issues)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&label=Contributions&colorA=red&colorB=black	)](#)
 
 </div>
@@ -36,7 +36,22 @@ fvm flutter pub get
 fvm flutter run
 ```
 
-Project documentation (architecture, conventions, ADRs, release process) lives in [`docs/`](docs/index.md); agent guidance in [`AGENTS.md`](AGENTS.md).
+## 🧱 Tech stack
+
+- **Flutter 3.47.3 / Dart 3.13** via FVM · state: `flutter_bloc` + `provider` + `get_it`
+- **Data:** [alquran.cloud](https://alquran.cloud/api) over Dio, cached offline with **Hive CE**; Freezed models — split into `packages/al_quran_api` (client, models, data provider, codegen) and `packages/al_quran_repo` (repositories)
+- **Android:** Kotlin DSL Gradle (AGP 9.1, Gradle 9.3), target/compile SDK 36, min SDK 24 · **iOS:** 15+, buildable but not published · **Web:** build currently broken
+
+## 🛠 Development
+
+```
+fvm flutter analyze && fvm flutter test                          # gates before a PR
+cd packages/al_quran_api && fvm dart run build_runner build      # after changing models
+fvm flutter build appbundle --release                            # Play Store bundle (needs android/key.properties)
+fvm flutter build apk --release                                  # sideload/test build
+```
+
+Project documentation (architecture, conventions, ADRs, domain notes, release process) lives in [`docs/`](docs/index.md). AI-agent guidance is in [`AGENTS.md`](AGENTS.md) with path-scoped rules and skills under [`.agents/`](.agents/).
 
 ## 📱 Screen Shots
 
@@ -82,7 +97,7 @@ API Used: https://alquran.cloud/api
 
 You can also follow my GitHub Profile to stay updated about my latest projects:
 
-[![GitHub Follow](https://img.shields.io/badge/Connect-Hamza-blue.svg?logo=Github&longCache=true&style=social&label=Follow)](https://github.com/m-hamzashakeel)
+[![GitHub Follow](https://img.shields.io/badge/Connect-Hamza-blue.svg?logo=Github&longCache=true&style=social&label=Follow)](https://github.com/mhmzdev)
 
 If you liked the repo then kindly support it by giving it a star ⭐!
 
