@@ -31,6 +31,13 @@ timestamp: 2026-09-10T08:30:00Z
 - Flutter's `minSdkVersion` default is 24 now; Play users on Android 5/6 fall off updates.
 - Verify the artifact, not the config: `aapt2 dump badging app-release.apk` showed `targetSdkVersion:'36'`, `versionCode='12'`.
 
+## Web / GitHub Pages
+- A `<base href>` that doesn't match the Pages sub-path shows only the HTML loader — check `index.html` in the deployed folder first.
+- Post-3.22 `index.html` must not call `_flutter.loader.load()` if `flutter_bootstrap.js` is included; two instances start and every request doubles. Use the `flutter-first-frame` event for loaders.
+- Browser "CORS" errors can be rate limiting in disguise: 429 pages from the gateway carry no `Access-Control-Allow-Origin`. Reproduce with `curl -H "Origin: …"` in parallel to see the real status.
+- Dio `BaseOptions(contentType: …)` applies to GETs too and triggers preflights on web.
+- `flutter build web` icon tree-shaking can abort on third-party icon fonts; `--no-tree-shake-icons` is the workaround.
+
 ## Misc
 - `url_strategy` → `flutter_web_plugins` `usePathUrlStrategy()` (SDK package, no pin).
 - Lints on Dart 3.13: `prefer_initializing_formals` now suggests private named params (`XBloc({required this._repo})` — public name stays `repo`); `Switch.activeColor` → `activeThumbColor`.
